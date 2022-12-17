@@ -15,4 +15,16 @@ export enum MESSAGE_TYPE {
   RICH_LINK = "richLink",
   LIST_PICKER = "listPicker",
   QUICK_REPLY = "quickReply",
+  LOCATION = "location"
+}
+
+export enum SEND_MESSAGE_VIA {
+  QUEUE = 1,
+  DIRECTLY = 2
+}
+
+export enum MESSAGE_REACTION {
+  REPLY = 1,
+  LIKE = 2,
+  SUGGESTION_CLICK = 3
 }
