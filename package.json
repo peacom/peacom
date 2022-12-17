@@ -2,8 +2,10 @@
   "name": "peacom",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
-  "private": true,
+  "scripts": {
+    "build-core": "npx nx build core"
+  },
+  "private": false,
   "devDependencies": {
     "@nrwl/eslint-plugin-nx": "15.3.3",
     "@nrwl/jest": "15.3.3",
