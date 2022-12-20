@@ -1,5 +1,9 @@
 {
   "name": "@peacom/core",
   "version": "0.0.1",
-  "type": "commonjs"
+  "type": "commonjs",
+  "dependencies": {
+    "moment": "^2.29.4",
+    "moment-timezone": "^0.5.40"
+  }
 }
