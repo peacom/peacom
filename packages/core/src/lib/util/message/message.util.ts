@@ -8,7 +8,7 @@ interface ImageMessage {
 }
 
 export const buildImageMessage = ({imageUrl, fileName = "", fileSize, message = ""}: ImageMessage, extra = null) => ({
-  type: "picture",
+  type: MESSAGE_TYPE.PICTURE,
   fileName: fileName,
   fileSize: fileSize,
   fileUrl: imageUrl,
@@ -37,7 +37,7 @@ export const buildVideoMessage = (
 
 
 interface TextMessage {
-  attachments?: Array<any>,
+  attachments?: Array<unknown>,
   message: string
 }
 
@@ -88,12 +88,24 @@ export const buildFileMessage = (
 });
 
 interface RichCardMessage {
-  richCards: Array<any>,
+  richCards: Array<unknown>,
 }
 
 export const buildRichCardMessage = ({richCards}: RichCardMessage, extra = null) => ({
   message: "",
   type: MESSAGE_TYPE.RICH_CARD,
   richCards,
+  extra
+});
+
+export const buildTypingIndicatorStartMessage = (extra = null) => ({
+  message: "",
+  type: MESSAGE_TYPE.TYPING_INDICATOR_START,
+  extra
+});
+
+export const buildTypingIndicatorStopMessage = (extra = null) => ({
+  message: "",
+  type: MESSAGE_TYPE.TYPING_INDICATOR_STOP,
   extra
 });

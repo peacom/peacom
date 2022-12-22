@@ -21,3 +21,11 @@ export enum PARTNER {
   FACEBOOK,
   TELEGRAM,
 }
+
+export const isBotApplication = (appId: string | number) => {
+  return [Application.VIBER, Application.APPLE, Application.TELEGRAM, Application.FACEBOOK, Application.ZALO].includes(Number(appId))
+}
+
+export const isOAApplication = (appId: string | number) => {
+  return [Application.RCS, Application.SMS, Application.ZALO_ZNS, Application.VIBER_BUSINESS].includes(Number(appId))
+}
