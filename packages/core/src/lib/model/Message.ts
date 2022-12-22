@@ -58,9 +58,10 @@ export enum SuggestionActionType {
 export interface FileInfo {
   type: string
   name: string
-  size: number
   url: string
-  uuid: string
+  extension?: string
+  size?: number
+  uuid?: string
   preview?: string
 }
 

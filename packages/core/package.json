@@ -4,6 +4,10 @@
   "type": "commonjs",
   "dependencies": {
     "moment": "^2.29.4",
-    "moment-timezone": "^0.5.40"
+    "moment-timezone": "^0.5.40",
+    "mime-types": "^2.1.35"
+  },
+  "devDependencies": {
+    "@types/mime-types": "^2.1.1"
   }
 }
