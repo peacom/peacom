@@ -5,9 +5,11 @@
   "dependencies": {
     "moment": "^2.29.4",
     "moment-timezone": "^0.5.40",
-    "mime-types": "^2.1.35"
+    "mime-types": "^2.1.35",
+    "google-libphonenumber": "^3.2.31"
   },
   "devDependencies": {
-    "@types/mime-types": "^2.1.1"
+    "@types/mime-types": "^2.1.1",
+    "@types/google-libphonenumber": "^7.4.23"
   }
 }
