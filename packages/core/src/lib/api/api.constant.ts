@@ -1,4 +1,4 @@
-import {Application, PARTNER, RawMessage, SEND_MESSAGE_VIA} from '../model/';
+import {Application, Message, PARTNER, RawMessage, SEND_MESSAGE_VIA} from '../model/';
 
 interface ApplicationInfo {
   application: Application
@@ -24,6 +24,14 @@ export interface ApiCoreHandleParams {
   extraData?: Record<string, unknown>
   applicationMessageId: string;
   from: Contact
+}
+
+export interface ApiCoreHandleResponse {
+  receiverId: string
+  messages: Array<Message>
+  contact: unknown
+  application: Record<string, unknown>
+  applicationId: Application;
 }
 
 export interface ApiChannelMessageParams {

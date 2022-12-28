@@ -1,4 +1,5 @@
 import {Application} from "./Application";
+import {BILLING_STATUS} from "./Billing";
 
 export enum MESSAGE_STATUS {
   PENDING = 1,
@@ -112,4 +113,13 @@ export interface RawMessage {
   receivedMessage?: ReceivedMessage
   replyMessage?: ReplyMessage
   richLinkUrl?: string
+}
+
+export interface Message {
+  id: number;
+  publicId: number;
+  extraData?: RawMessage;
+  createdDate: string;
+  cost?: number;
+  billingStatus?: BILLING_STATUS
 }

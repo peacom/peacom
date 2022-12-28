@@ -1,9 +1,8 @@
-import {ApiCoreHandleParams, LOG_FUNCTION} from "./api.constant";
+import {ApiCoreHandleParams, ApiCoreHandleResponse, LOG_FUNCTION} from "./api.constant";
 import {FormError} from "../error/FormError";
 
 
-
-export const handleCoreMessage = async (CORE_URL: string, params: ApiCoreHandleParams, log: LOG_FUNCTION = null) => {
+export const handleCoreMessage = async (CORE_URL: string, params: ApiCoreHandleParams, log: LOG_FUNCTION = null): Promise<ApiCoreHandleResponse> => {
   if (log) {
     log(`CORE REQUEST: ${CORE_URL} - ${JSON.stringify(params)}`)
   }
