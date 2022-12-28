@@ -5,12 +5,15 @@ import {FormError} from "../error/FormError";
 export const handleCoreMessage = async (CORE_URL: string, params: ApiCoreHandleParams, log: LOG_FUNCTION = null): Promise<ApiCoreHandleResponse> => {
   const url = `${CORE_URL}/message`
   if (log) {
-    log(`CORE REQUEST: ${CORE_URL} - ${JSON.stringify(params)}`)
+    log(`CORE REQUEST: ${url} - ${JSON.stringify(params)}`)
   }
 
   const rs = await fetch(url, {
     method: "POST",
-    body: JSON.stringify(params)
+    body: JSON.stringify(params),
+    headers: {
+      "content-type": "application/json"
+    }
   })
   const bodyStr = await rs.text();
   if (log) {

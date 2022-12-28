@@ -9,7 +9,10 @@ export const sendChannelMessage = async (MICROSERVICE_URL: string, params: ApiCh
 
   const rs = await fetch(url, {
     method: "POST",
-    body: JSON.stringify(params)
+    body: JSON.stringify(params),
+    headers: {
+      "content-type": "application/json"
+    }
   })
   const bodyStr = await rs.text();
   if (log) {
