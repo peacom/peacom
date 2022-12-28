@@ -1,5 +1,5 @@
 import {PhoneNumberUtil} from "google-libphonenumber";
-import {hasText} from "@peacom/core";
+import {hasText} from "./";
 
 const phoneUtil = PhoneNumberUtil.getInstance();
 

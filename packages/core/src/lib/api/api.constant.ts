@@ -48,9 +48,9 @@ export interface ApiChannelMessageParams {
 export type LOG_FUNCTION = ((t: unknown) => void) | null
 
 export const MICROSERVICE_URL: Record<Application, string> = {
-  [Application.APPLE]: process.env['APPLE_INTEGRATION'] || 'http://127.0.0.1:4005',
-  [Application.ZALO]: process.env['ZALO_INTEGRATION'] || 'http://127.0.0.1:4001',
-  [Application.ZALO_ZNS]: process.env['ZALO_INTEGRATION'] || 'http://127.0.0.1:4001',
+  [Application.APPLE]: process.env['APPLE_INTEGRATION'] || 'http://127.0.0.1:4005/eip/apple',
+  [Application.ZALO]: process.env['ZALO_INTEGRATION'] || 'http://127.0.0.1:4001/eip/zalo',
+  [Application.ZALO_ZNS]: process.env['ZALO_INTEGRATION'] || 'http://127.0.0.1:4001/eip/zalo',
   [Application.RCS]: process.env['APPLE_INTEGRATION'] || 'http://127.0.0.1:4006',
   [Application.VIBER]: process.env['APPLE_INTEGRATION'] || 'http://127.0.0.1:4007',
   [Application.VIBER_BUSINESS]: process.env['APPLE_INTEGRATION'] || 'http://127.0.0.1:4008',

@@ -2,17 +2,18 @@ import {ApiChannelMessageParams, LOG_FUNCTION} from "./api.constant";
 import {FormError} from "../error/FormError";
 
 export const sendChannelMessage = async (MICROSERVICE_URL: string, params: ApiChannelMessageParams, log: LOG_FUNCTION = null) => {
+  const url = `${MICROSERVICE_URL}/message`
   if (log) {
-    log(`SERVICE REQUEST: ${MICROSERVICE_URL} - ${JSON.stringify(params)}`)
+    log(`SERVICE REQUEST: ${url} - ${JSON.stringify(params)}`)
   }
 
-  const rs = await fetch(MICROSERVICE_URL, {
+  const rs = await fetch(url, {
     method: "POST",
     body: JSON.stringify(params)
   })
   const bodyStr = await rs.text();
   if (log) {
-    log(`SERVICE RESPONSE: ${MICROSERVICE_URL} - ${bodyStr}`)
+    log(`SERVICE RESPONSE: ${url} - ${bodyStr}`)
   }
 
   if (!rs.ok) {
