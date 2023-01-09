@@ -8,7 +8,8 @@ export interface QueueMessageStatus {
   status: MESSAGE_STATUS;
   date: number;
   extraData: Record<string, unknown>;
-  deliveryStatus?: string
+  deliveryStatus?: string,
+  jobOpt: Record<string, unknown>
 }
 
 
