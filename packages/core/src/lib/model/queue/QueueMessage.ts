@@ -1,4 +1,4 @@
-import {Application, Message, RawMessage} from "../";
+import {Application, Message, PARTNER, RawMessage} from "../";
 import {MESSAGE_STATUS} from "../Message";
 import {JobsOptions} from "bullmq";
 
@@ -25,6 +25,7 @@ export interface QueueOutgoingMessage {
     rawMessage: RawMessage,
     messageId?: string
   }>
+  partnerId: PARTNER,
   contact: unknown
   application: Record<string, unknown>
   applicationId: Application;
