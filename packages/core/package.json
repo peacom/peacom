@@ -7,10 +7,12 @@
     "moment-timezone": "^0.5.40",
     "mime-types": "^2.1.35",
     "google-libphonenumber": "^3.2.31",
-    "bullmq": "^3.5.2"
+    "bullmq": "^3.5.2",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@types/mime-types": "^2.1.1",
-    "@types/google-libphonenumber": "^7.4.23"
+    "@types/google-libphonenumber": "^7.4.23",
+    "@types/uuid": "^9.0.0"
   }
 }

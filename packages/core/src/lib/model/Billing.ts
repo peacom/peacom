@@ -4,3 +4,8 @@ export enum BILLING_STATUS {
   BILLED = 2,
   CANCEL = 3
 }
+
+export enum COMPANY_BILLING_TYPE {
+  POSTPAID = 1,
+  PREPAID = 2
+}
