@@ -1,4 +1,4 @@
-import {MESSAGE_TYPE} from "../../model";
+import {FileInfo, MESSAGE_TYPE} from "../../model";
 
 interface ImageMessage {
   imageUrl: string,
@@ -37,7 +37,7 @@ export const buildVideoMessage = (
 
 
 interface TextMessage {
-  attachments?: Array<unknown>,
+  attachments?: Array<FileInfo>,
   message: string
 }
 

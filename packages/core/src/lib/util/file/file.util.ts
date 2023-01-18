@@ -9,7 +9,8 @@ export const getFileInfoFromUrl = (
   const rs = {
     name: "",
     type: defaultMimeType,
-    extension: ""
+    extension: "",
+    url
   } as FileInfo;
 
   rs.name = new URL(url).pathname.split("/").pop() || url;

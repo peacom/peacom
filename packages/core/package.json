@@ -1,6 +1,6 @@
 {
   "name": "@peacom/core",
-  "version": "0.0.1",
+  "version": "0.0.20",
   "type": "commonjs",
   "dependencies": {
     "moment": "^2.29.4",
