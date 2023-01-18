@@ -41,9 +41,10 @@ interface TextMessage {
   message: string
 }
 
-export const buildTextMessage = ({message}: TextMessage, extra = null) => ({
+export const buildTextMessage = ({message, attachments}: TextMessage, extra = null) => ({
   type: MESSAGE_TYPE.TEXT,
   message,
+  attachments,
   extra
 });
 
