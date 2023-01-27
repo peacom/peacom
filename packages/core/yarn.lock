@@ -64,10 +64,10 @@ brace-expansion@^2.0.1:
   dependencies:
     balanced-match "^1.0.0"
 
-bullmq@^3.5.2:
-  version "3.5.2"
-  resolved "https://registry.yarnpkg.com/bullmq/-/bullmq-3.5.2.tgz#e198a897acefc5d4365e9af16b8836dbc1f0bcd1"
-  integrity sha512-QUnbYydQPAZmyFEso+Vi1MfjKM4/xY8/sCJROZBI2QXc15jMEkhckEhKVsoYtTmdZdD6q/RMRPsf9eHgJrM9yA==
+bullmq@^3.5.11:
+  version "3.5.11"
+  resolved "https://registry.yarnpkg.com/bullmq/-/bullmq-3.5.11.tgz#341ebef53cc2e3685276c6deeffbc6350e474ba0"
+  integrity sha512-dhj5FXeAcPh3P+TnMOCCXKVn+TMcT88c4N1BL7La7dZ1VkmdNbuXFP+iGC5sqkVuN5Ga1/8jof1gYHaBqL4i1Q==
   dependencies:
     cron-parser "^4.6.0"
     glob "^8.0.3"
@@ -118,10 +118,10 @@ glob@^8.0.3:
     minimatch "^5.0.1"
     once "^1.3.0"
 
-google-libphonenumber@^3.2.31:
-  version "3.2.31"
-  resolved "https://registry.yarnpkg.com/google-libphonenumber/-/google-libphonenumber-3.2.31.tgz#d2c4d4c8d7385be70b515086e4d28dd20da50600"
-  integrity sha512-l3bzAkfN4ITICKvuqEiY7JN06RxDAviOoKMtD2KfGYjGK3btPO8Xav7k0fgmf1Ud/pEm523yBh1/s/xDtKEvnw==
+google-libphonenumber@^3.2.32:
+  version "3.2.32"
+  resolved "https://registry.yarnpkg.com/google-libphonenumber/-/google-libphonenumber-3.2.32.tgz#63c48a9c247b64a3bc2eec21bdf3fcfbf2e148c0"
+  integrity sha512-mcNgakausov/B/eTgVeX8qc8IwWjRrupk9UzZZ/QDEvdh5fAjE7Aa211bkZpZj42zKkeS6MTT8avHUwjcLxuGQ==
 
 inflight@^1.0.4:
   version "1.0.6"

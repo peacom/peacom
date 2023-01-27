@@ -21,4 +21,4 @@ Visit the [Nx Documentation](https://nx.dev) to learn more.
  
  - npx nx generate @nrwl/js:library core --publishable --importPath @peacom/core
  - npx nx build core
- - npx nx publish core --ver=0.0.19 --tag=latest
+ - npx nx publish core --ver=0.0.21 --tag=latest
