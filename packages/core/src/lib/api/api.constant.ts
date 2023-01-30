@@ -1,9 +1,4 @@
-import {Application, Message, PARTNER, RawMessage, SEND_MESSAGE_VIA} from '../model/';
-
-interface ApplicationInfo {
-  application: Application
-  id: string
-}
+import {Application, ApplicationInfo, Message, PARTNER, RawMessage, SEND_MESSAGE_VIA} from '../model/';
 
 interface Contact {
   id: string
@@ -30,8 +25,7 @@ export interface ApiCoreHandleResponse {
   receiverId: string
   messages: Array<Message>
   contact: unknown
-  application: Record<string, unknown>
-  applicationId: Application;
+  applicationInfo: ApplicationInfo
 }
 
 export interface ApiChannelMessageParams {
@@ -40,6 +34,7 @@ export interface ApiChannelMessageParams {
   partnerId: PARTNER,
   rawMessage: RawMessage,
   messageId?: string // message Public ID
+  internalMessageId?: number
   receiverId: string
   sendVia: SEND_MESSAGE_VIA
   queueOption?: Record<string, unknown>,
@@ -58,6 +53,8 @@ export const MICROSERVICE_URL: Record<Application, string> = {
   [Application.TELEGRAM]: process.env['TELEGRAM_INTEGRATION'] || 'http://127.0.0.1:4009',
   [Application.FACEBOOK]: process.env['FACEBOOK_INTEGRATION'] || 'http://127.0.0.1:4010',
   [Application.SMS]: process.env['SMS_INTEGRATION'] || 'http://127.0.0.1:4011',
+  [Application.VIBER_BOT]: process.env['VIBER_BOT_INTEGRATION'] || 'http://127.0.0.1:4001/eip/viber/bot',
+  [Application.WHATSAPP]: process.env['WHATSAPP_INTEGRATION'] || 'http://127.0.0.1:4001/eip/whatsapp',
 }
 
 export const INTEGRATED_CHANNEL = [Application.APPLE, Application.ZALO, Application.ZALO_ZNS]

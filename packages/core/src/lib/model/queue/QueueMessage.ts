@@ -1,4 +1,4 @@
-import {Application, Message, PARTNER, RawMessage} from "../";
+import {ApplicationInfo, RawMessage} from "../";
 import {MESSAGE_STATUS} from "../Message";
 import {JobsOptions} from "bullmq";
 
@@ -8,12 +8,12 @@ export enum QueueMessageStatusSource {
 }
 
 export interface QueueMessageStatus {
-  messageId: string;
-  applicationMessageId: string;
-  applicationId: Application;
+  messageId?: string;
+  applicationMessageId?: string;
+  applicationInfo: ApplicationInfo;
   status: MESSAGE_STATUS;
   date: number;
-  extraData: Record<string, unknown>;
+  extraData?: Record<string, unknown>;
   deliveryStatus?: string,
   jobOpt?: JobsOptions,
   source: QueueMessageStatusSource
@@ -23,12 +23,11 @@ export interface QueueOutgoingMessage {
   receiverId: string
   messages: Array<{
     rawMessage: RawMessage,
-    messageId?: string
+    publicId?: string,
+    id?: number
   }>
-  partnerId: PARTNER,
+  applicationInfo: ApplicationInfo
   contact: unknown
-  application: Record<string, unknown>
-  applicationId: Application;
   jobOpt?: JobsOptions,
   name?: string
 }
