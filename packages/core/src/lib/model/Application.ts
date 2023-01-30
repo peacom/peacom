@@ -7,9 +7,9 @@ export enum Application {
   FACEBOOK = 6,
   ZALO = 7,
   ZALO_ZNS = 8,
-  VIBER_BUSINESS = 9,
-  VIBER_BOT = 10,
-  WHATSAPP = 12
+  VIBER_BUSINESS = 9, // Not use now
+  VIBER_BOT = 10, // Not use now
+  WHATSAPP = 11
 }
 
 export enum PARTNER {
@@ -25,11 +25,11 @@ export enum PARTNER {
 }
 
 export const isBotApplication = (appId: string | number) => {
-  return [Application.VIBER, Application.APPLE, Application.TELEGRAM, Application.FACEBOOK, Application.ZALO].includes(Number(appId))
+  return [Application.VIBER_BOT, Application.VIBER, Application.APPLE, Application.TELEGRAM, Application.FACEBOOK, Application.ZALO].includes(Number(appId))
 }
 
 export const isOAApplication = (appId: string | number) => {
-  return [Application.RCS, Application.SMS, Application.ZALO_ZNS, Application.VIBER_BUSINESS].includes(Number(appId))
+  return [Application.RCS, Application.SMS, Application.ZALO_ZNS, Application.VIBER_BUSINESS, Application.VIBER].includes(Number(appId))
 }
 
 export interface ApplicationInfo {
