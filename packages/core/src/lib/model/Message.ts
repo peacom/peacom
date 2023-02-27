@@ -39,6 +39,7 @@ export const APPLICATION_MESSAGE: Record<Application, Array<MESSAGE_TYPE>> = {
   [Application.ZALO_ZNS]: [MESSAGE_TYPE.TEXT],
   [Application.VIBER_BOT]: GENERAL_MESSAGE,
   [Application.WHATSAPP]: GENERAL_MESSAGE,
+  [Application.GOOGLE_BUSINESS]: GENERAL_MESSAGE,
 }
 
 export enum SEND_MESSAGE_VIA {
