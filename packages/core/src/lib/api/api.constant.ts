@@ -1,4 +1,5 @@
 import {Application, ApplicationInfo, Message, PARTNER, RawMessage, SEND_MESSAGE_VIA} from '../model/';
+import {Conversation} from "../model";
 
 interface Contact {
   id: string
@@ -19,6 +20,7 @@ export interface ApiCoreHandleParams {
   extraData?: Record<string, unknown>
   applicationMessageId: string;
   from: Contact
+  conversation?: Conversation
 }
 
 export interface ApiCoreHandleResponse {
@@ -26,17 +28,20 @@ export interface ApiCoreHandleResponse {
   messages: Array<Message>
   contact: unknown
   applicationInfo: ApplicationInfo
+  conversation?: Conversation
 }
 
 export interface ApiChannelMessageParams {
-  applicationId: Application,
-  application: Record<string, unknown>,
-  partnerId: PARTNER,
+  applicationInfo?: ApplicationInfo
+  applicationId?: Application,
+  application?: Record<string, unknown>,
+  partnerId?: PARTNER,
   rawMessage: RawMessage,
   messageId?: string // message Public ID
   internalMessageId?: number
   receiverId: string
-  sendVia: SEND_MESSAGE_VIA
+  sendVia?: SEND_MESSAGE_VIA
+  conversation?: Conversation
   queueOption?: Record<string, unknown>,
 
   [key: string]: unknown

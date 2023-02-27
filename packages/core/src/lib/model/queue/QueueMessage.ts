@@ -1,6 +1,7 @@
 import {ApplicationInfo, RawMessage} from "../";
 import {MESSAGE_STATUS} from "../Message";
 import {JobsOptions} from "bullmq";
+import {Conversation} from "../conversation";
 
 export enum QueueMessageStatusSource {
   LOCAL = 1,
@@ -30,4 +31,5 @@ export interface QueueOutgoingMessage {
   contact: unknown
   jobOpt?: JobsOptions,
   name?: string
+  conversation?: Conversation
 }
