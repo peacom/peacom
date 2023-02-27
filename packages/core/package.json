@@ -1,18 +1,18 @@
 {
   "name": "@peacom/core",
-  "version": "0.0.21",
+  "version": "0.0.22",
   "type": "commonjs",
   "dependencies": {
     "moment": "^2.29.4",
-    "moment-timezone": "^0.5.40",
+    "moment-timezone": "^0.5.41",
     "mime-types": "^2.1.35",
     "google-libphonenumber": "^3.2.32",
-    "bullmq": "^3.5.11",
+    "bullmq": "^3.9.0",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@types/mime-types": "^2.1.1",
     "@types/google-libphonenumber": "^7.4.23",
-    "@types/uuid": "^9.0.0"
+    "@types/uuid": "^9.0.1"
   }
 }
