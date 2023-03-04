@@ -57,6 +57,7 @@ export enum SuggestionActionType {
   OPEN_URL = "open-url",
   REPLY = "reply",
   DIAL = "dial",
+  LIVE_AGENT_REQUEST = "liveAgentRequest"
 }
 
 export interface FileInfo {

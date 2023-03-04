@@ -1,4 +1,4 @@
-import {FileInfo, MESSAGE_TYPE} from "../../model";
+import {FileInfo, MESSAGE_TYPE, RawMessageSuggestion} from "../../model";
 
 interface ImageMessage {
   imageUrl: string,
@@ -7,15 +7,6 @@ interface ImageMessage {
   message?: string
 }
 
-export const buildImageMessage = ({imageUrl, fileName = "", fileSize, message = ""}: ImageMessage, extra = null) => ({
-  type: MESSAGE_TYPE.PICTURE,
-  fileName: fileName,
-  fileSize: fileSize,
-  fileUrl: imageUrl,
-  message: message,
-  extra
-});
-
 interface VideoMessage {
   fileUrl: string,
   thumbnailUrl?: string,
@@ -23,30 +14,11 @@ interface VideoMessage {
   message?: string
 }
 
-export const buildVideoMessage = (
-  {fileUrl, duration, thumbnailUrl, message = ""}: VideoMessage,
-  extra = null
-) => ({
-  type: MESSAGE_TYPE.VIDEO,
-  duration,
-  fileUrl,
-  thumbnailUrl,
-  message,
-  extra
-});
-
-
 interface TextMessage {
   attachments?: Array<FileInfo>,
-  message: string
+  message: string,
+  suggestions?: Array<RawMessageSuggestion>
 }
-
-export const buildTextMessage = ({message, attachments}: TextMessage, extra = null) => ({
-  type: MESSAGE_TYPE.TEXT,
-  message,
-  attachments,
-  extra
-});
 
 interface Location {
   longitude: number
@@ -67,7 +39,6 @@ export const buildLocationMessage = (
   location,
   extra
 });
-
 
 interface FileMessage {
   fileUrl: string,
@@ -92,6 +63,14 @@ interface RichCardMessage {
   richCards: Array<unknown>,
 }
 
+export const buildTextMessage = ({message, attachments, suggestions}: TextMessage, extra = null) => ({
+  type: MESSAGE_TYPE.TEXT,
+  message,
+  suggestions,
+  attachments,
+  extra
+});
+
 export const buildRichCardMessage = ({richCards}: RichCardMessage, extra = null) => ({
   message: "",
   type: MESSAGE_TYPE.RICH_CARD,
@@ -108,5 +87,26 @@ export const buildTypingIndicatorStartMessage = (extra = null) => ({
 export const buildTypingIndicatorStopMessage = (extra = null) => ({
   message: "",
   type: MESSAGE_TYPE.TYPING_INDICATOR_STOP,
+  extra
+});
+
+export const buildImageMessage = ({imageUrl, fileName = "", fileSize, message = ""}: ImageMessage, extra = null) => ({
+  type: MESSAGE_TYPE.PICTURE,
+  fileName: fileName,
+  fileSize: fileSize,
+  fileUrl: imageUrl,
+  message: message,
+  extra
+});
+
+export const buildVideoMessage = (
+  {fileUrl, duration, thumbnailUrl, message = ""}: VideoMessage,
+  extra = null
+) => ({
+  type: MESSAGE_TYPE.VIDEO,
+  duration,
+  fileUrl,
+  thumbnailUrl,
+  message,
   extra
 });
