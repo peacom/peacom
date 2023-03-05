@@ -1,6 +1,11 @@
 import {Application} from "./Application";
 import {BILLING_STATUS} from "./Billing";
 
+export enum MESSAGE_CONTENT_TYPE {
+  EVENT = 1,
+  MESSAGE
+}
+
 export enum MESSAGE_STATUS {
   PENDING = 1,
   SUCCESS = 2,
@@ -39,7 +44,7 @@ export const APPLICATION_MESSAGE: Record<Application, Array<MESSAGE_TYPE>> = {
   [Application.ZALO_ZNS]: [MESSAGE_TYPE.TEXT],
   [Application.VIBER_BOT]: GENERAL_MESSAGE,
   [Application.WHATSAPP]: GENERAL_MESSAGE,
-  [Application.GOOGLE_BUSINESS]: GENERAL_MESSAGE,
+  [Application.GOOGLE_BUSINESS]: [MESSAGE_TYPE.TEXT, MESSAGE_TYPE.RICH_CARD, MESSAGE_TYPE.PICTURE, MESSAGE_TYPE.TEXT_WITH_ATTACHMENT],
 }
 
 export enum SEND_MESSAGE_VIA {

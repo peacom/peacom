@@ -37,6 +37,6 @@ export const isOAApplication = (appId: string | number) => {
 export interface ApplicationInfo {
   setting?: Record<string, unknown>,
   application: Application,
-  id: string // Public OA ID
+  id: string // Official Account username - Mapping with Partner OfficialAccount ID
   partnerId: PARTNER
 }
