@@ -2,8 +2,10 @@ import {Application} from "./Application";
 import {BILLING_STATUS} from "./Billing";
 
 export enum MESSAGE_CONTENT_TYPE {
-  EVENT = 1,
-  MESSAGE
+  EVENT = 1, // DELIVERY STATUS
+  MESSAGE,
+  LIVE_AGENT_REQUEST,
+  TYPING_INDICATOR
 }
 
 export enum MESSAGE_STATUS {
