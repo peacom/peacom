@@ -7,7 +7,19 @@ export const DEFAULT_PHONE_COUNTRY = "VN";
 
 export const PHONE_COUNTRY_SUPPORT = {
   84: {
-    code: "VN"
+    countries: [{
+      ios2: "VN"
+    }]
+  },
+  1: {
+    countries: [
+      {
+        iso2: "US",
+        regions: [""]
+      }, {
+        iso2: "CA"
+      }
+    ]
   }
 };
 
@@ -33,6 +45,7 @@ export function isPhoneValid(phone: string, country = DEFAULT_PHONE_COUNTRY) {
     countryCode: number.getCountryCode(),
     nationalNumber: `0${number.getNationalNumber()}`,
     e164: `${number.getCountryCode()}${number.getNationalNumber()}`,
-    network: number.preferredDomesticCarrierCodeCount()
+    network: number.preferredDomesticCarrierCodeCount(),
+    region: phoneUtil.getRegionCodeForNumber(number)
   };
 }

@@ -18,4 +18,23 @@ describe('phone.util', () => {
       network: 0
     })
   });
+  it('isValidPhoneRegion', () => {
+    const canada = '+1-416-750-9999'
+    const us = '+1-406-750-9999'
+    console.log(isPhoneValid(us))
+    expect(isPhoneValid(us)).toEqual({
+      countryCode: 1,
+      nationalNumber: '04067509999',
+      e164: '14067509999',
+      network: 0,
+      region: 'US'
+    })
+    expect(isPhoneValid(canada)).toEqual({
+      countryCode: 1,
+      nationalNumber: '04167509999',
+      e164: '14167509999',
+      network: 0,
+      region: 'CA'
+    })
+  });
 });
