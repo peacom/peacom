@@ -20,8 +20,16 @@ describe('phone.util', () => {
   });
   it('isValidPhoneRegion', () => {
     const canada = '+1-416-750-9999'
-    const us = '+1-406-750-9999'
-    console.log(isPhoneValid(us))
+    const us = '0014067509999'
+    const vn = '0938130683'
+    console.log(isPhoneValid(vn))
+    expect(isPhoneValid('0938130683')).toEqual({
+      countryCode: 84,
+      nationalNumber: '0938130683',
+      e164: '84938130683',
+      network: 0,
+      region: 'VN'
+    })
     expect(isPhoneValid(us)).toEqual({
       countryCode: 1,
       nationalNumber: '04067509999',
