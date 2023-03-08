@@ -1,5 +1,4 @@
 import {ApiChannelMessageParams, LOG_FUNCTION} from "./api.constant";
-import {FormError} from "../error/FormError";
 
 export const sendChannelMessage = async (MICROSERVICE_URL: string, params: ApiChannelMessageParams, log: LOG_FUNCTION = null) => {
   const url = `${MICROSERVICE_URL}/message`
@@ -20,7 +19,17 @@ export const sendChannelMessage = async (MICROSERVICE_URL: string, params: ApiCh
   }
 
   if (!rs.ok) {
-    throw new FormError(JSON.parse(bodyStr))
+    let errorMessage = ''
+    try {
+      const errors = JSON.parse(bodyStr)
+      if (errors.length) {
+        errorMessage = errors[0]?.message
+      }
+    } catch (e) {
+      errorMessage = bodyStr
+    }
+
+    throw new Error(errorMessage)
   }
   return JSON.parse(bodyStr)
 }

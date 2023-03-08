@@ -1,6 +1,6 @@
 {
   "name": "@peacom/core",
-  "version": "0.0.29",
+  "version": "0.0.36",
   "type": "commonjs",
   "dependencies": {
     "moment": "^2.29.4",
@@ -13,6 +13,7 @@
   "devDependencies": {
     "@types/mime-types": "^2.1.1",
     "@types/google-libphonenumber": "^7.4.23",
-    "@types/uuid": "^9.0.1"
+    "@types/uuid": "^9.0.1",
+    "isomorphic-fetch": "^3.0.0"
   }
 }
