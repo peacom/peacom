@@ -24,9 +24,19 @@ export enum TemplateMessageScriptOP {
   CUSTOM = 100,
 }
 
-export const TEMPLATE_MESSAGE_SCRIPT_DATA_TYPE = {
-  TEXT: 1,
-  NUMBER: 2,
+export enum TEMPLATE_MESSAGE_SCRIPT_DATA_TYPE {
+  TEXT = 1,
+  NUMBER
+}
+
+export enum TemplateApiEventPosition {
+  BEFORE = 1,
+  AFTER
+}
+
+export enum TemplateApiFailActionType {
+  ShowErrorMessage = 1,
+  NextQuestion
 }
 
 export enum OperatorType {
