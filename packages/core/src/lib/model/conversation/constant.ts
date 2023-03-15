@@ -9,4 +9,5 @@ export const LIVE_AGENT_REQUEST_MESSAGE = 'LIVE_AGENT_REQUEST'
 export interface Conversation {
   id?: number // Local Conversation ID
   partnerId?: string | null // Partner conversation ID
+  status?: LIVE_AGENT_STATUS
 }
