@@ -28,7 +28,7 @@ export enum PARTNER {
 }
 
 export const isBotApplication = (appId: string | number) => {
-  return [Application.VIBER_BOT, Application.VIBER, Application.APPLE, Application.TELEGRAM, Application.FACEBOOK, Application.ZALO, Application.GOOGLE_BUSINESS].includes(Number(appId))
+  return [Application.VIBER_BOT, Application.APPLE, Application.TELEGRAM, Application.FACEBOOK, Application.ZALO, Application.GOOGLE_BUSINESS].includes(Number(appId))
 }
 
 export const isOAApplication = (appId: string | number) => {
