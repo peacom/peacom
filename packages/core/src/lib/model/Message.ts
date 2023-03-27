@@ -8,12 +8,25 @@ export enum MESSAGE_CONTENT_TYPE {
   TYPING_INDICATOR
 }
 
+export enum SEND_TYPE {
+  VIA_BROADCAST = 1,
+  VIA_BOT = 2,
+  VIA_TEMPLATE_TEST = 3,
+  VIA_CONVERSATION = 4,
+  VIA_PARTNER = 5
+}
+
 export enum MESSAGE_STATUS {
   PENDING = 1,
   SUCCESS = 2,
   FAIL = 3,
   DELIVERED = 4,
   READ = 5,
+}
+
+export enum DIRECTION_TYPE {
+  SEND = 1,
+  RECEIVE
 }
 
 export enum MESSAGE_TYPE {

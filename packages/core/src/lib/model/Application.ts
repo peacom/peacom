@@ -23,8 +23,8 @@ export enum PARTNER {
   ZALO,
   FACEBOOK,
   TELEGRAM,
-  DATALYTIS= 10,
-  CM= 11
+  DATALYTIS = 10,
+  CM = 11
 }
 
 export const isBotApplication = (appId: string | number) => {
