@@ -1,5 +1,6 @@
-import {Application} from "./Application";
-import {BILLING_STATUS} from "./Billing";
+import {Application} from "../Application";
+import {BILLING_STATUS} from "../Billing";
+import {FileInfo} from "../FileInfo";
 
 export enum MESSAGE_CONTENT_TYPE {
   EVENT = 1, // DELIVERY STATUS
@@ -78,16 +79,6 @@ export enum SuggestionActionType {
   REPLY = "reply",
   DIAL = "dial",
   LIVE_AGENT_REQUEST = "liveAgentRequest"
-}
-
-export interface FileInfo {
-  type: string
-  name: string
-  url: string
-  extension?: string
-  size?: number
-  uuid?: string
-  preview?: string
 }
 
 export interface RawMessageSuggestion {
