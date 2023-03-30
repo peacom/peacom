@@ -32,7 +32,9 @@ export const isBotApplication = (appId: string | number) => {
 }
 
 export const isOAApplication = (appId: string | number) => {
-  return [Application.RCS, Application.SMS, Application.ZALO_ZNS, Application.VIBER_BUSINESS, Application.VIBER].includes(Number(appId))
+  return [Application.RCS, Application.SMS, Application.ZALO_ZNS,
+    Application.WHATSAPP,
+    Application.VIBER_BUSINESS, Application.VIBER].includes(Number(appId))
 }
 
 export interface ApplicationInfo {
