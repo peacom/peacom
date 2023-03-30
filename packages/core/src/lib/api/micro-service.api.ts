@@ -1,6 +1,6 @@
-import {ApiChannelMessageParams, LOG_FUNCTION} from "./api.constant";
+import {ApiChannelMessageParams, ApiChannelMessageResponse, LOG_FUNCTION} from "./api.constant";
 
-export const sendChannelMessage = async (MICROSERVICE_URL: string, params: ApiChannelMessageParams, log: LOG_FUNCTION = null) => {
+export const sendChannelMessage = async (MICROSERVICE_URL: string, params: ApiChannelMessageParams, log: LOG_FUNCTION = null): Promise<ApiChannelMessageResponse> => {
   const url = `${MICROSERVICE_URL}/message`
   if (log) {
     log(`SERVICE REQUEST: ${url} - ${JSON.stringify(params)}`)
