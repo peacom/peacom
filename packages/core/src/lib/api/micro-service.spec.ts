@@ -12,7 +12,7 @@ describe('micro-service.spec', () => {
           message: 'testing'
         }, receiverId: "84938130683",
         applicationInfo: {
-          application: Application.VIBER_BUSINESS,
+          applicationId: Application.VIBER_BUSINESS,
           setting: {},
           partnerId: PARTNER.VIBER,
           id: '001'
