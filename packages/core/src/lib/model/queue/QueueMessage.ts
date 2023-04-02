@@ -13,7 +13,7 @@ export interface QueueMessageStatus {
   applicationMessageId?: string;
   applicationInfo: ApplicationInfo;
   status: MESSAGE_STATUS;
-  date: number;
+  sentTime: number;
   extraData?: Record<string, unknown>;
   deliveryStatus?: string,
   jobOpt?: JobsOptions,
