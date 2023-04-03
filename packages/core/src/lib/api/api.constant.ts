@@ -46,12 +46,7 @@ export interface ApiCoreHandleResponse {
 
 export interface ApiChannelMessageParams {
   applicationInfo?: ApplicationInfo
-  applicationId?: Application, // Should use via applicationInfo
-  application?: Record<string, unknown>,  // Should use via applicationInfo
-  partnerId?: PARTNER,  // Should use via applicationInfo
-  rawMessage: RawMessage,
-  messageId?: string // message Public ID
-  internalMessageId?: number
+  message: Message
   receiverId: string
   sendVia?: SEND_MESSAGE_VIA
   conversation?: Conversation
