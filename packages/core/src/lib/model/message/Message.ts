@@ -133,8 +133,9 @@ export interface RawMessage {
 export interface Message {
   id: number;
   publicId: number;
+  rawMessage: RawMessage;
   extraData?: RawMessage;
-  createdDate: string;
+  createdDate?: string;
   cost?: number;
   billingStatus?: BILLING_STATUS
 }
