@@ -1,4 +1,4 @@
-import {Application, ApplicationInfo, Message, PARTNER, RawMessage, SEND_MESSAGE_VIA} from '../model/';
+import {Application, ApplicationInfo, Message, RawMessage, SEND_MESSAGE_VIA} from '../model/';
 import {Conversation} from "../model";
 
 interface Contact {
