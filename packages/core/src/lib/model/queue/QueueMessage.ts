@@ -1,4 +1,4 @@
-import {ApplicationInfo, RawMessage} from "../";
+import {ApplicationInfo, Message, RawMessage} from "../";
 import {MESSAGE_STATUS} from "../";
 import {JobsOptions} from "bullmq";
 import {Conversation} from "../conversation";
@@ -22,11 +22,7 @@ export interface QueueMessageStatus {
 
 export interface QueueOutgoingMessage {
   receiverId: string
-  messages: Array<{
-    rawMessage: RawMessage,
-    publicId?: string,
-    id?: number
-  }>
+  messages: Array<Message>
   applicationInfo: ApplicationInfo
   contact: unknown
   jobOpt?: JobsOptions,
