@@ -78,7 +78,7 @@ export enum SuggestionActionType {
   OPEN_URL = "open-url",
   REPLY = "reply",
   DIAL = "dial",
-  LIVE_AGENT_REQUEST = "liveAgentRequest"
+  LIVE_AGENT_REQUEST = "liveAgent"
 }
 
 export interface RawMessageSuggestion {
