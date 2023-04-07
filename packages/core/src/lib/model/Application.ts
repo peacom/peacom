@@ -10,7 +10,22 @@ export enum Application {
   VIBER_BUSINESS = 9, // Not use now
   VIBER_BOT = 10, // Not use now
   WHATSAPP = 11,
-  GOOGLE_BUSINESS
+  GOOGLE_BUSINESS = 12
+}
+
+export const Application_Text = {
+  [Application.VIBER]: "VIBER",
+  [Application.RCS]: "RCS",
+  [Application.SMS]: "SMS",
+  [Application.APPLE]: "APPLE",
+  [Application.TELEGRAM]: "TELEGRAM",
+  [Application.FACEBOOK]: "FACEBOOK",
+  [Application.ZALO]: "ZALO",
+  [Application.ZALO_ZNS]: "ZALO ZNS",
+  [Application.VIBER_BUSINESS]: "VIBER BUSINESS",
+  [Application.VIBER_BOT]: "VIBER BOT",
+  [Application.WHATSAPP]: "WHATSAPP",
+  [Application.GOOGLE_BUSINESS]: "GOOGLE BUSINESS",
 }
 
 export enum PARTNER {
@@ -18,11 +33,11 @@ export enum PARTNER {
   GOOGLE = 2,
   GMS = 3,
   VIBER = 4,
-  APPLE,
-  SINCH,
-  ZALO,
-  FACEBOOK,
-  TELEGRAM,
+  APPLE = 5,
+  SINCH = 6,
+  ZALO = 7,
+  FACEBOOK = 8,
+  TELEGRAM = 9,
   DATALYTIS = 10,
   CM = 11
 }
