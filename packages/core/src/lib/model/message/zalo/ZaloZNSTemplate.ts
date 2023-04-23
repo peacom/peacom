@@ -16,12 +16,11 @@ export interface ZaloZnsParam {
 }
 
 export interface ZaloZnsTemmplateParam {
-  oa: Record<string, string | number | null>;
   template: ZaloZnsTemplateInfo;
   templateInfo: ZaloZnsTemplateInfo;
   templateData: Array<{
     name: string,
-    value: string | number | null | undefined,
+    value?: string | number,
     param: ZaloZnsParam
   }>
 }
