@@ -3,7 +3,7 @@ import {Queue} from "bullmq";
 import {v4} from 'uuid'
 
 const toBullQueueMessage = (message: QueueMessageStatus) => {
-  const jobId = `${message.applicationInfo.applicationId}_${message.applicationMessageId}_${message.status}_${message.sentTime}`
+  const jobId = `${message.applicationInfo.applicationId}_${message.applicationMessageId || ''}_${message.status}_${message.sentTime}`
   return {
     name: jobId, data: message, opts: {
       ...(message.jobOpt || {}), jobId

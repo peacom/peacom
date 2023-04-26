@@ -1,7 +1,7 @@
 import {Application} from "../Application";
 import {BILLING_STATUS} from "../Billing";
 import {FileInfo} from "../FileInfo";
-import { ZaloZnsParam, ZaloZnsTemmplateParam } from "./zalo/ZaloZNSTemplate";
+import {ZaloZnsParam, ZaloZnsTemmplateParam} from "./zalo/ZaloZNSTemplate";
 
 export enum MESSAGE_CONTENT_TYPE {
   EVENT = 1, // DELIVERY STATUS
@@ -134,8 +134,8 @@ export interface RawMessage {
 }
 
 export interface Message {
-  id: number;
-  publicId: number;
+  id?: number;
+  publicId?: string;
   rawMessage: RawMessage;
   extraData?: RawMessage;
   createdDate?: string;

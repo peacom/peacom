@@ -7,9 +7,13 @@ describe('micro-service.spec', () => {
   it('sendChannelMessage', async () => {
     try {
       console.log(await sendChannelMessage('http://localhost:4001/eip/viber/business', {
-        rawMessage: {
-          type: MESSAGE_TYPE.TEXT,
-          message: 'testing'
+        message: {
+          rawMessage: {
+            type: MESSAGE_TYPE.TEXT,
+            message: 'testing'
+          },
+          id: 1,
+          publicId: '1234'
         }, receiverId: "84938130683",
         applicationInfo: {
           applicationId: Application.VIBER_BUSINESS,
