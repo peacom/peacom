@@ -14,7 +14,7 @@ export enum CORE_API_PATH {
 }
 
 export const handleCoreMessage = async (CORE_URL: string, params: ApiCoreHandleParams, log: LOG_FUNCTION = null): Promise<ApiCoreHandleResponse> => {
-  const url = `${CORE_URL}/${CORE_API_PATH.MESSAGE}`
+  const url = `${CORE_URL}${CORE_API_PATH.MESSAGE}`
   if (log) {
     log(`CORE REQUEST: ${url} - ${JSON.stringify(params)}`)
   }
@@ -38,7 +38,7 @@ export const handleCoreMessage = async (CORE_URL: string, params: ApiCoreHandleP
 }
 
 export const handleCoreLiveAgent = async (CORE_URL: string, params: ApiCoreLiveAgentParams, log: LOG_FUNCTION = null): Promise<ApiCoreLiveAgentResponse> => {
-  const url = `${CORE_URL}/${CORE_API_PATH.LIVE_AGENT}`
+  const url = `${CORE_URL}${CORE_API_PATH.LIVE_AGENT}`
   if (log) {
     log(`CORE LIVE AGENT REQUEST: ${url} - ${JSON.stringify(params)}`)
   }
@@ -62,7 +62,7 @@ export const handleCoreLiveAgent = async (CORE_URL: string, params: ApiCoreLiveA
 }
 
 export const handleCoreConversationClose = async (CORE_URL: string, params: ApiCoreLiveAgentParams, log: LOG_FUNCTION = null): Promise<ApiCoreLiveAgentResponse> => {
-  const url = `${CORE_URL}/${CORE_API_PATH.CONVERSATION_CLOSE}`
+  const url = `${CORE_URL}${CORE_API_PATH.CONVERSATION_CLOSE}`
   if (log) {
     log(`CORE CONVERSATION CLOSE REQUEST: ${url} - ${JSON.stringify(params)}`)
   }
