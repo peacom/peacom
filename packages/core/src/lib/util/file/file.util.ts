@@ -2,6 +2,21 @@ import {FileInfo} from "../../model/";
 
 import mime = require("mime-types");
 
+export const isImage = (mimetype: string) => {
+  const regex = /(^image)(\/)[a-zA-Z0-9_]*/gm
+  return regex.test(mimetype)
+}
+
+export const isVideo = (mimetype: string) => {
+  const regex = /(^video)(\/)[a-zA-Z0-9_]*/gm
+  return regex.test(mimetype)
+}
+
+export const isAudio = (mimetype: string) => {
+  const regex = /(^audio)(\/)[a-zA-Z0-9_]*/gm
+  return regex.test(mimetype)
+}
+
 export const getFileInfoFromUrl = (
   url: string,
   defaultMimeType = "application/binary"

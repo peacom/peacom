@@ -1,13 +1,14 @@
 import {Application} from "../Application";
 import {BILLING_STATUS} from "../Billing";
 import {FileInfo} from "../FileInfo";
-import {ZaloZnsParam, ZaloZnsTemmplateParam} from "./zalo/ZaloZNSTemplate";
+import {ZaloZnsTemmplateParam} from "./zalo/ZaloZNSTemplate";
 
 export enum MESSAGE_CONTENT_TYPE {
   EVENT = 1, // DELIVERY STATUS
   MESSAGE,
   LIVE_AGENT_REQUEST,
-  TYPING_INDICATOR
+  TYPING_INDICATOR,
+  CONVERSATION_CLOSE
 }
 
 export enum SEND_TYPE {
