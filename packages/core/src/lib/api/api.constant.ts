@@ -27,7 +27,7 @@ export interface ApiCoreLiveAgentParams {
   to: ApplicationInfo
   sentTime: number;
   extraData?: Record<string, unknown>
-  applicationMessageId: string;
+  applicationMessageId?: string;
   from: Contact
   conversation?: Conversation
 }
