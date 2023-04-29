@@ -66,8 +66,8 @@ export type LOG_FUNCTION = ((t: unknown) => void) | null
 
 export const MICROSERVICE_URL: Record<Application, string> = {
   [Application.APPLE]: process.env['APPLE_INTEGRATION'] || 'http://127.0.0.1:4005/eip/apple',
-  [Application.ZALO]: process.env['ZALO_INTEGRATION'] || 'http://127.0.0.1:4001/eip/zalo/bot',
-  [Application.ZALO_ZNS]: process.env['ZALO_ZNS_INTEGRATION'] || 'http://127.0.0.1:4001/eip/zalo/zns',
+  [Application.ZALO]: process.env['ZALO_INTEGRATION'] || 'http://127.0.0.1:4003/eip/zalo/bot',
+  [Application.ZALO_ZNS]: process.env['ZALO_ZNS_INTEGRATION'] || 'http://127.0.0.1:4003/eip/zalo/zns',
   [Application.RCS]: process.env['RCS_INTEGRATION'] || 'http://127.0.0.1:4006',
   [Application.VIBER]: process.env['VIBER_BOT_INTEGRATION'] || 'http://127.0.0.1:4001/eip/viber/bot',
   [Application.VIBER_BUSINESS]: process.env['VIBER_BUSINESS_INTEGRATION'] || 'http://127.0.0.1:4001/eip/viber/business',
@@ -75,7 +75,7 @@ export const MICROSERVICE_URL: Record<Application, string> = {
   [Application.FACEBOOK]: process.env['FACEBOOK_INTEGRATION'] || 'http://127.0.0.1:4010',
   [Application.SMS]: process.env['SMS_INTEGRATION'] || 'http://127.0.0.1:4011',
   [Application.VIBER_BOT]: process.env['VIBER_BOT_INTEGRATION'] || 'http://127.0.0.1:4001/eip/viber/bot',
-  [Application.WHATSAPP]: process.env['WHATSAPP_INTEGRATION'] || 'http://127.0.0.1:4001/eip/whatsapp',
+  [Application.WHATSAPP]: process.env['WHATSAPP_INTEGRATION'] || 'http://127.0.0.1:4008/eip/whatsapp',
   [Application.GOOGLE_BUSINESS]: process.env['GOOGLE_BUSINESS_INTEGRATION'] || 'http://127.0.0.1:4006/eip/google/business',
 }
 
