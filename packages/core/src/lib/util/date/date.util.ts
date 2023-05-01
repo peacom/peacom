@@ -40,3 +40,7 @@ export function endOfWeek(date: DateType, tz = "") {
 export function lastWeek(date: DateType, tz = "") {
   return getDate(date, tz).subtract(1, "week").startOf("week").toDate()
 }
+
+export function differentMinute(date: DateType, date1: DateType) {
+  return Math.ceil(moment(date).diff(moment(date1), "minutes", true));
+}
