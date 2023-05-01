@@ -10,7 +10,7 @@ import {FormError} from "../error/FormError";
 export enum CORE_API_PATH {
   MESSAGE = "/message",
   LIVE_AGENT = "/conversation/live-agent",
-  CONVERSATION_CLOSE = "/conversation/close"
+  UNSUBSCRIBE = "/unsubscribe"
 }
 
 export const handleCoreMessage = async (CORE_URL: string, params: ApiCoreHandleParams, log: LOG_FUNCTION = null): Promise<ApiCoreHandleResponse> => {
@@ -61,10 +61,10 @@ export const handleCoreLiveAgent = async (CORE_URL: string, params: ApiCoreLiveA
   return JSON.parse(bodyStr)
 }
 
-export const handleCoreConversationClose = async (CORE_URL: string, params: ApiCoreLiveAgentParams, log: LOG_FUNCTION = null): Promise<ApiCoreLiveAgentResponse> => {
-  const url = `${CORE_URL}${CORE_API_PATH.CONVERSATION_CLOSE}`
+export const handleUnsubscribe = async (CORE_URL: string, params: ApiCoreLiveAgentParams, log: LOG_FUNCTION = null): Promise<ApiCoreLiveAgentResponse> => {
+  const url = `${CORE_URL}${CORE_API_PATH.UNSUBSCRIBE}`
   if (log) {
-    log(`CORE CONVERSATION CLOSE REQUEST: ${url} - ${JSON.stringify(params)}`)
+    log(`CORE UNSUBSCRIBE REQUEST: ${url} - ${JSON.stringify(params)}`)
   }
 
   const rs = await fetch(url, {
@@ -76,7 +76,7 @@ export const handleCoreConversationClose = async (CORE_URL: string, params: ApiC
   })
   const bodyStr = await rs.text();
   if (log) {
-    log(`CORE CONVERSATION CLOSE RESPONSE: ${url} - ${bodyStr}`)
+    log(`CORE UNSUBSCRIBE RESPONSE: ${url} - ${bodyStr}`)
   }
 
   if (!rs.ok) {
