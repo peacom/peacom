@@ -44,3 +44,7 @@ export function lastWeek(date: DateType, tz = "") {
 export function differentMinute(date: DateType, date1: DateType) {
   return Math.ceil(moment(date).diff(moment(date1), "minutes", true));
 }
+
+export function formatTimeTZ(date: DateType, timezone = DEFAULT_TIME_ZONE, format = "LT") {
+  return moment(date).tz(timezone).format(format);
+}
