@@ -33,6 +33,7 @@ export enum DIRECTION_TYPE {
 }
 
 export enum MESSAGE_TYPE {
+  NONE = 'NONE',
   TEXT = "text",
   TEXT_WITH_ATTACHMENT = "text_with_attachment",
   RICH_CARD = "rich_card",
