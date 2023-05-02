@@ -106,3 +106,13 @@ export const rightString = (string: string, count: number) => {
   }
   return str;
 };
+
+export function alphaNumericToListString(str: string) {
+  if (!hasText(str)) {
+    return [];
+  }
+  return str
+    .split(/[ _\-,]/)
+    .map((t) => filterNonAlphaNumeric(t))
+    .filter((t) => hasText(t));
+}
