@@ -1,6 +1,8 @@
 import {QueueMessageStatus, QueueOutgoingMessage} from "../../model";
 import {Queue} from "bullmq";
 import {v4} from 'uuid'
+import {QueuePartnerEventParam} from "../../model/partner/PartnerEvent";
+import {PARTNER_MESSAGE_TYPE} from "../../model/partner";
 
 const toBullQueueMessage = (message: QueueMessageStatus) => {
   const jobId = `${message.applicationInfo.applicationId}_${message.applicationMessageId || ''}_${message.status}_${message.sentTime}`
@@ -22,4 +24,16 @@ export const queueAddBulkMessageStatus = (queue: Queue, messages: Array<QueueMes
 
 export const queueAddOutgoingMessage = (queue: Queue, message: QueueOutgoingMessage) => {
   return queue.add(message.name || v4(), message, message.jobOpt)
+}
+
+export const queueAddPartnerEvent = (queue: Queue, message: QueuePartnerEventParam) => {
+  let jobId = ''
+  switch (message.event.type) {
+    case PARTNER_MESSAGE_TYPE.EVENT:
+      jobId = `${message.id}_${message.event.status}`
+      break;
+    case PARTNER_MESSAGE_TYPE.MESSAGE:
+      jobId = message.id
+  }
+  return queue.add(jobId, message, {jobId, ...(message.jobOpt || {})})
 }
