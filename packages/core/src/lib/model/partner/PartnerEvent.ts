@@ -9,7 +9,7 @@ export interface PartnerEvent {
   cause: string
   status: MESSAGE_STATUS
   message?: RawMessage
-  officialAccountId?: string
+  channelId?: string
   from?: string
   clientMessageId?: string
 }
