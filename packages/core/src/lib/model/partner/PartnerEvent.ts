@@ -15,7 +15,6 @@ export interface PartnerEvent {
 }
 
 export interface QueuePartnerEventParam {
-  id: string
   webHookUrl: string
   event: PartnerEvent
   companyId: number

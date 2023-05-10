@@ -30,10 +30,10 @@ export const queueAddPartnerEvent = (queue: Queue, message: QueuePartnerEventPar
   let jobId = ''
   switch (message.event.type) {
     case PARTNER_MESSAGE_TYPE.EVENT:
-      jobId = `${message.id}_${message.event.status}`
+      jobId = `${message.event.messageId}_${message.event.status}`
       break;
     case PARTNER_MESSAGE_TYPE.MESSAGE:
-      jobId = message.id
+      jobId = message.event.messageId
   }
   return queue.add(jobId, message, {jobId, ...(message.jobOpt || {})})
 }
