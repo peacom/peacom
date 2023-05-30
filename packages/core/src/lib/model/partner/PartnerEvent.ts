@@ -1,6 +1,7 @@
 import {PARTNER_MESSAGE_TYPE} from "./index";
 import {MESSAGE_STATUS, RawMessage} from "../message";
 import {JobsOptions} from "bullmq";
+import {Application} from "../Application";
 
 export interface PartnerEvent {
   messageId: string
@@ -9,7 +10,8 @@ export interface PartnerEvent {
   cause: string
   status: MESSAGE_STATUS
   message?: RawMessage
-  channelId?: string
+  publicId?: string // channel publicId
+  applicationId: Application
   from?: string
   clientMessageId?: string
 }
