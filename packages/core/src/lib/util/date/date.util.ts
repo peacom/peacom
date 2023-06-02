@@ -48,3 +48,13 @@ export function differentMinute(date: DateType, date1: DateType) {
 export function formatTimeTZ(date: DateType, timezone = DEFAULT_TIME_ZONE, format = "LT") {
   return moment(date).tz(timezone).format(format);
 }
+
+export const parseDateTimeByFormat = (
+  dateStr: string,
+  format = DATE_TIME_FORMAT,
+  timezone = DEFAULT_TIME_ZONE
+) => {
+  return moment
+    .tz(`${dateStr}`, DATE_TIME_FORMAT, timezone)
+    .toDate();
+};
