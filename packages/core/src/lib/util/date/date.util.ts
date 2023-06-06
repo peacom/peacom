@@ -24,6 +24,10 @@ export function startOfDate(date: DateType, tz = "") {
   return getDate(date, tz).startOf("date").toDate();
 }
 
+export function addHours(date: DateType, hours: number, tz = "") {
+  return getDate(date, tz).add(hours, "hours").toDate();
+}
+
 /**
  * Week start from sunday
  * @param date
