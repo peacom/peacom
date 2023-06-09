@@ -1,4 +1,4 @@
-import {endOfDate, endOfWeek, formatDateTimeTZ, startOfWeeks} from "./date.util";
+import {addHours, endOfDate, endOfWeek, formatDateTimeTZ, startOfWeeks} from "./date.util";
 import {DEFAULT_TIME_ZONE} from "./constant";
 
 describe('date.util', () => {
@@ -10,6 +10,9 @@ describe('date.util', () => {
   });
   it('endOfDate', () => {
     console.log(endOfDate(new Date(), DEFAULT_TIME_ZONE))
+  });
+  it('addHour', () => {
+    console.log(addHours(new Date(), -0.25))
   });
   it('startOfWeek', () => {
     const dateStr = '2022-12-20T10:23:55Z'

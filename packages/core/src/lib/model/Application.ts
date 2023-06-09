@@ -58,5 +58,6 @@ export interface ApplicationInfo {
   setting?: Record<string, unknown>,
   applicationId: Application,
   id: string // Official Account username - Mapping with Partner OfficialAccount ID
+  publicId?: string // Public ID of Application Channel
   partnerId: PARTNER
 }
