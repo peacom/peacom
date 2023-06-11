@@ -1,4 +1,4 @@
-import {FileInfo, MESSAGE_TYPE, RawMessageSuggestion} from "../../model";
+import {ContactMessage, FileInfo, Message, MESSAGE_TYPE, RawMessage, RawMessageSuggestion} from "../../model";
 
 interface ImageMessage {
   imageUrl: string,
@@ -108,5 +108,11 @@ export const buildVideoMessage = (
   fileUrl,
   thumbnailUrl,
   message,
+  extra
+});
+
+export const buildContactMessage = (contactMessages: Array<ContactMessage>, extra = null): RawMessage => ({
+  type: MESSAGE_TYPE.SHARE_INFO,
+  contacts: contactMessages,
   extra
 });

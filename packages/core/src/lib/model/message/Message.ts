@@ -114,6 +114,14 @@ export interface PickListItem {
 type ReceivedMessage = PickListItem
 type ReplyMessage = PickListItem
 
+export interface ContactMessage {
+  name: string
+  phone: string
+  address: string
+
+  [key: string]: any
+}
+
 export interface RawMessage {
   type: MESSAGE_TYPE
   message?: string
@@ -136,6 +144,8 @@ export interface RawMessage {
   replyMessage?: ReplyMessage
   richLinkUrl?: string
   zaloZnsTemplateParam?: ZaloZnsTemmplateParam
+  contacts?: Array<ContactMessage>
+  extra?: any
 }
 
 export interface Message {
