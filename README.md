@@ -16,9 +16,8 @@ Run `npx nx connect-to-nx-cloud` to enable [remote caching](https://nx.app) and 
 
 Visit the [Nx Documentation](https://nx.dev) to learn more.
 
-
 ## Generate Library
- 
- - npx nx generate @nrwl/js:library core --publishable --importPath @peacom/core
- - npx nx build core
- - npx nx publish core --ver=0.0.40 --tag=latest
+
+- npx nx generate @nx/js:library core --publishable --importPath @peacom/core
+- npx nx build core
+- npx nx publish core --ver=0.0.40 --tag=latest

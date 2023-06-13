@@ -1,5 +1,6 @@
 import {FileInfo} from "../../model/";
-
+import * as path from "path";
+import * as fs from "fs";
 import mime = require("mime-types");
 
 export const isImage = (mimetype: string) => {
@@ -32,6 +33,27 @@ export const getFileInfoFromUrl = (
   rs.extension = rs.name.split(".").pop();
   if (rs.extension) {
     rs.type = mime.lookup(rs.extension) || defaultMimeType;
+  }
+
+  return rs;
+};
+
+export const getFileInfoFromLocalFile = (
+  filePath: string,
+): FileInfo => {
+  const rs = {
+    name: "",
+    type: '',
+    extension: "",
+    url: filePath
+  } as FileInfo;
+
+  const stat = fs.statSync(filePath)
+  rs.name = path.basename(filePath)
+  rs.extension = path.extname(filePath);
+  rs.size = stat.size
+  if (rs.extension) {
+    rs.type = mime.lookup(rs.extension) || "application/binary";
   }
 
   return rs;

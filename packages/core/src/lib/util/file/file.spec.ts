@@ -1,4 +1,5 @@
-import {getFileInfoFromUrl} from "./file.util";
+import {getFileInfoFromLocalFile, getFileInfoFromUrl} from "./file.util";
+import * as path from "path";
 
 describe('file.util', () => {
   it('getFileInfoFromUrl', () => {
@@ -14,8 +15,26 @@ describe('file.util', () => {
       name: 'birds_PNG9.png', type: 'image/png', extension: 'png'
     });
   });
-  it('getFileInfoFromUrl1', () => {
-    const rs = getFileInfoFromUrl('https://www.pixelstalk.net/wp-content/uploads/2016/07/Wallpapers-pexels-photo.jpg')
+  it('getFileInfoFromLocal', () => {
+    const localFile = path.resolve('./data/Chuyen-de-1.pdf');
+    console.log(localFile)
+    const rs = getFileInfoFromLocalFile(localFile)
+    expect(rs).toEqual({
+      name: 'Chuyen-de-1.pdf',
+      type: 'application/pdf',
+      extension: '.pdf',
+      url: '/Users/lecanh/Documents/Project/Vietnam/Peacom/peacom/packages/core/data/Chuyen-de-1.pdf',
+      size: 17004899
+    })
     console.log(rs)
+  });
+  it('getFileInfoFromLocalWrongFile', () => {
+    try {
+      const localFile = path.resolve('./data/Chuyen-de-2.pdf');
+      console.log(localFile)
+      getFileInfoFromLocalFile(localFile)
+    } catch (e: any) {
+      expect(e.code).toEqual('ENOENT')
+    }
   });
 });
