@@ -7,7 +7,6 @@ import {s3, S3_INFO, S3_OPTION, S3_FOLDERS} from "./constants";
 import {hasText, getFileInfoFromUrl, rightString, getFileInfoFromLocalFile} from "../../../util";
 import {FileInfo} from "../../../model";
 import {PutObjectRequest} from "@aws-sdk/client-s3/dist-types/models/models_0";
-import fetch from "node-fetch";
 
 export const getS3Url = (key: string | null | undefined) => `https://${S3_INFO.BUCKET}.s3.${S3_OPTION.region}.amazonaws.com/${key}`
 

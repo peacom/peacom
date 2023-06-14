@@ -2,7 +2,12 @@
 export default {
   displayName: 'core',
   preset: '../../jest.preset.js',
-  globals: {},
+  setupFiles: [
+    'dotenv/config'
+  ],
+  globals: {
+    fetch: global.fetch
+  },
   transform: {
     '^.+\\.[tj]s$': [
       'ts-jest',
