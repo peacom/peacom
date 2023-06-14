@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "build-core": "npx nx build core",
-    "deploy": "yarn run build-core && cd dist/packages/core && npm publish --access public --tag=latest"
+    "deploy-core-patch": "node tools/scripts/deploy.js core patch latest"
   },
   "private": false,
   "devDependencies": {
