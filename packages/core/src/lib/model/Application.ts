@@ -41,8 +41,7 @@ export enum PARTNER {
   DATALYTIS = 10,
   CM = 11,
   BRAND_SMS = 12,
-  VIET_GUY = 13,
-  MOBIFONE_GLOBAL = 14
+  VIET_GUY = 13
 }
 
 export const PartnerString = (id: PARTNER | null) => {
@@ -71,8 +70,6 @@ export const PartnerString = (id: PARTNER | null) => {
       return "BRAND SMS (VMG)"
     case PARTNER.VIET_GUY:
       return "VIET GUY"
-    case PARTNER.MOBIFONE_GLOBAL:
-      return "MOBIFONE GLOBAL"
     default:
       return ""
   }
