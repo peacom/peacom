@@ -13,7 +13,7 @@ export enum Application {
   GOOGLE_BUSINESS = 12
 }
 
-export const Application_Text = {
+export const ApplicationString = {
   [Application.VIBER]: "VIBER",
   [Application.RCS]: "RCS",
   [Application.SMS]: "SMS",
@@ -40,8 +40,39 @@ export enum PARTNER {
   TELEGRAM = 9,
   DATALYTIS = 10,
   CM = 11,
-  BRAND_SMS,
-  VIET_GUY
+  BRAND_SMS = 12,
+  VIET_GUY = 13
+}
+
+export const PartnerString = (id: PARTNER | null) => {
+  switch (id) {
+    case PARTNER.PEACOM:
+      return "PEACOM"
+    case PARTNER.GOOGLE:
+      return "GOOGLE"
+    case PARTNER.GMS:
+      return "GMS"
+    case PARTNER.VIBER:
+      return "VIBER"
+    case PARTNER.APPLE:
+      return "APPLE"
+    case PARTNER.SINCH:
+      return "SINCH"
+    case PARTNER.ZALO:
+      return "ZALO"
+    case PARTNER.FACEBOOK:
+      return "FACEBOOK"
+    case PARTNER.TELEGRAM:
+      return "TELEGRAM"
+    case PARTNER.CM:
+      return "CM"
+    case PARTNER.BRAND_SMS:
+      return "BRAND SMS (VMG)"
+    case PARTNER.VIET_GUY:
+      return "VIET GUY"
+    default:
+      return ""
+  }
 }
 
 export const isBotApplication = (appId: string | number) => {
