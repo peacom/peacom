@@ -18,6 +18,23 @@ export function markKey(keyStr: string) {
   return `**** ${keyStr.substring(keyStr.length - 4, keyStr.length)}`;
 }
 
+export function filterHtmlName(str: string) {
+  return str.replace(/&(quot|amp|lt|gt|acute);/g, "");
+}
+
+export function alphaNumericToString(str: string) {
+  if (!hasText(str)) {
+    return [];
+  }
+  return (
+    filterHtmlName(str)
+      .split(/[ _\-,./;]/)
+      .filter((t) => hasText(t))
+      .map((t) => filterNonAlphaNumeric(t))
+      .filter((t) => hasText(t))
+  );
+}
+
 const htmlEntities: Record<string, string> = {
   nbsp: " ",
   cent: "¢",
