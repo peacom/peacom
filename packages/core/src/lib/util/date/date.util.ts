@@ -37,8 +37,18 @@ export function startOfWeeks(date: DateType, tz = "") {
   return getDate(date, tz).startOf("week").toDate()
 }
 
+export const startOfWeek = startOfWeeks
+
 export function endOfWeek(date: DateType, tz = "") {
   return getDate(date, tz).endOf("week").toDate()
+}
+
+export function startOfMonth(date: DateType, tz = "") {
+  return getDate(date, tz).startOf("month").toDate()
+}
+
+export function endOfMonth  (date: DateType, tz = "") {
+  return getDate(date, tz).endOf("month").toDate()
 }
 
 export function lastWeek(date: DateType, tz = "") {
