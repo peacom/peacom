@@ -1,4 +1,4 @@
-import {uploadS3FromUrl} from "./s3.service";
+import {downloadS3Url, uploadS3FromUrl} from "./s3.service";
 
 describe('s3.service.specs.ts', () => {
   it('uploadS3FromUrl test env key', async () => {
@@ -10,4 +10,10 @@ describe('s3.service.specs.ts', () => {
       "url": "https://ap-southeast-1-dev-peacom.s3.ap-southeast-1.amazonaws.com/files/birds_PNG9.png"
     });
   }, 200000);
+  it('Download S3 Large file', async () => {
+    await downloadS3Url({
+      url: 'https://ap-southeast-1-dev-peacom.s3.ap-southeast-1.amazonaws.com/files/birds_PNG9.png',
+      outputFile: './test1.png', chunkSize: 1024
+    })
+  }, 200000)
 })
