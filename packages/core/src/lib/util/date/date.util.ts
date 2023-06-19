@@ -16,6 +16,14 @@ export const getDate = (date: DateType, tz = "") => {
   return moment(date).tz(tz)
 }
 
+export function endOfHour(date: DateType, tz = "") {
+  return getDate(date, tz).endOf("hours").toDate()
+}
+
+export function startOfHour(date: DateType, tz = "") {
+  return getDate(date, tz).startOf("hours").toDate();
+}
+
 export function endOfDate(date: DateType, tz = "") {
   return getDate(date, tz).endOf("date").toDate()
 }
@@ -26,6 +34,10 @@ export function startOfDate(date: DateType, tz = "") {
 
 export function addHours(date: DateType, hours: number, tz = "") {
   return getDate(date, tz).add(hours, "hours").toDate();
+}
+
+export function addDays(date: DateType, days: number, tz = "") {
+  return getDate(date, tz).add(days, "days").toDate();
 }
 
 /**
