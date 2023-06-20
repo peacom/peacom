@@ -1,3 +1,5 @@
+import {render} from "mustache";
+
 export function generateRandomCode(length: number) {
   let text = "";
   const possible =
@@ -132,4 +134,8 @@ export function alphaNumericToListString(str: string) {
     .split(/[ _\-,]/)
     .map((t) => filterNonAlphaNumeric(t))
     .filter((t) => hasText(t));
+}
+
+export function renderTemplate(string: string, context: any) {
+  return render(string, context);
 }

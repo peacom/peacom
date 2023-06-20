@@ -1,4 +1,4 @@
-import {alphaNumericToString, isNumberOnly, leftString} from "./";
+import {alphaNumericToString, isNumberOnly, leftString, renderTemplate} from "./";
 
 describe('string.util', () => {
   it('isNumber', () => {
@@ -39,5 +39,11 @@ describe('string.util', () => {
         "39s"
       )
     ).toEqual(["39s"]);
+  })
+  it('render template', ()=>{
+    expect(renderTemplate('{{abc}} {{def}}', {
+      abc: 'testing',
+      def: 'peacom'
+    })).toEqual("testing peacom")
   })
 });
