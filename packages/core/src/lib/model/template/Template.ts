@@ -5,6 +5,11 @@ export enum TemplateMessageStatus {
   ERROR,
 }
 
+export enum TEMPLATE_TYPE {
+  BROADCAST_ONLY = 1,
+  CONVERSATION
+}
+
 export enum TemplateMessageScriptOP {
   GREATER = 1,
   GREATER_EQ = 2,
