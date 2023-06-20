@@ -40,6 +40,10 @@ export function addDays(date: DateType, days: number, tz = "") {
   return getDate(date, tz).add(days, "days").toDate();
 }
 
+export function addMonths(date: DateType, months: number, tz = "") {
+  return getDate(date, tz).add(months, "months").toDate();
+}
+
 /**
  * Week start from sunday
  * @param date
@@ -59,8 +63,16 @@ export function startOfMonth(date: DateType, tz = "") {
   return getDate(date, tz).startOf("month").toDate()
 }
 
-export function endOfMonth  (date: DateType, tz = "") {
+export function endOfMonth(date: DateType, tz = "") {
   return getDate(date, tz).endOf("month").toDate()
+}
+
+export function startLastMonth(date: DateType, tz = "") {
+  return getDate(date, tz).subtract(1, "month").startOf("month").toDate()
+}
+
+export function endLastMonth(date: DateType, tz = "") {
+  return getDate(date, tz).subtract(1, "month").endOf("month").toDate()
 }
 
 export function lastWeek(date: DateType, tz = "") {
