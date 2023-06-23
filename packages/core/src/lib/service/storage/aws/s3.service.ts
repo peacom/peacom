@@ -47,7 +47,7 @@ interface FileProp {
   contentType: string
 }
 
-export const createPreSignedUrl = ({fileName, contentType}: FileProp) => {
+export const createPreSignedUrl = async ({fileName, contentType}: FileProp) => {
   const type = fileName.split(".").pop();
   const location = `${S3_FOLDERS.DEFAULT}/${fileName.replace(
     /[^a-zA-Z]/g,
@@ -58,7 +58,10 @@ export const createPreSignedUrl = ({fileName, contentType}: FileProp) => {
     Key: location,
     ContentType: contentType
   });
-  return getSignedUrl(s3, command, {expiresIn: 3600});
+  return {
+    urlUpload: await getSignedUrl(s3, command, {expiresIn: 3600}),
+    urlEndpoint: getS3Url(location)
+  }
 };
 
 export const getS3UrlKey = (url: string) => {
