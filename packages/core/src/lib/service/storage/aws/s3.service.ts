@@ -5,7 +5,7 @@ import {getSignedUrl} from "@aws-sdk/s3-request-presigner";
 import {v4 as uuidv4} from "uuid";
 import {s3, S3_FOLDERS, S3_INFO, S3_OPTION} from "./constants";
 import {getFileInfoFromLocalFile, getFileInfoFromUrl, hasText, rightString} from "../../../util";
-import {FileInfo} from "../../../model";
+import {AwsFileInfo, FileInfo} from "../../../model";
 
 export const getS3Url = (key: string | null | undefined) => `https://${S3_INFO.BUCKET}.s3.${S3_OPTION.region}.amazonaws.com/${key}`
 
@@ -69,7 +69,7 @@ export const getS3UrlKey = (url: string) => {
   )
 }
 
-export const getUrlInfo = async (str: string): Promise<FileInfo> => {
+export const getUrlInfo = async (str: string): Promise<AwsFileInfo> => {
   const fileInfo = getFileInfoFromUrl(str);
   const key = getS3UrlKey(str);
   const input = {
@@ -82,7 +82,9 @@ export const getUrlInfo = async (str: string): Promise<FileInfo> => {
   return {
     ...fileInfo,
     size: resp.ContentLength,
-    type: resp.ContentType || fileInfo.type
+    type: resp.ContentType || fileInfo.type,
+    key,
+    bucket: S3_INFO.BUCKET
   };
 };
 

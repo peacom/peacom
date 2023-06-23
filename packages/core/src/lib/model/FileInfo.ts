@@ -7,3 +7,8 @@ export interface FileInfo {
   uuid?: string
   preview?: string
 }
+
+export interface AwsFileInfo extends FileInfo {
+  key: string
+  bucket?: string
+}
