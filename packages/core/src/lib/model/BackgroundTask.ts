@@ -1,4 +1,4 @@
-export enum BackgroundTask {
+export enum BACKGROUND_TASK {
   CONTACT_IMPORT_FROM_DATALYTIC = 1,
   CONTACT_IMPORT_FROM_FILE = 2,
   BULK_CAMPAIGN_IMPORT = 3,
