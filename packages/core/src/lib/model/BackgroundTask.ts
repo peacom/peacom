@@ -4,3 +4,10 @@ export enum BackgroundTask {
   BULK_CAMPAIGN_IMPORT = 3,
   BULK_CAMPAIGN_OPTIMIZE
 }
+
+export enum BACKGROUND_TASK_STATUS {
+  PENDING = 1,
+  PROCESSING = 2,
+  DONE,
+  FAIL
+}
