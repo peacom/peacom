@@ -52,7 +52,7 @@ export const createPreSignedUrl = async ({fileName, contentType}: FileProp) => {
   const location = `${S3_FOLDERS.DEFAULT}/${fileName.replace(
     /[^a-zA-Z]/g,
     ""
-  )}_${uuidv4()}.${type}`;
+  )}.${type}`;
   const command = new PutObjectCommand({
     Bucket: S3_INFO.BUCKET,
     Key: location,
