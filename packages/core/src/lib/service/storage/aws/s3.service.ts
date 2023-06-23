@@ -69,7 +69,7 @@ export const getS3UrlKey = (url: string) => {
   )
 }
 
-export const getUrlInfo = async (str: string): Promise<AwsFileInfo> => {
+export const getAwsUrlInfo = async (str: string): Promise<AwsFileInfo> => {
   const fileInfo = getFileInfoFromUrl(str);
   const key = getS3UrlKey(str);
   const input = {
