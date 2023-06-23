@@ -13,19 +13,35 @@ export enum Application {
   GOOGLE_BUSINESS = 12
 }
 
-export const ApplicationString = {
-  [Application.VIBER]: "VIBER",
-  [Application.RCS]: "RCS",
-  [Application.SMS]: "SMS",
-  [Application.APPLE]: "APPLE",
-  [Application.TELEGRAM]: "TELEGRAM",
-  [Application.FACEBOOK]: "FACEBOOK",
-  [Application.ZALO]: "ZALO",
-  [Application.ZALO_ZNS]: "ZALO ZNS",
-  [Application.VIBER_BUSINESS]: "VIBER BUSINESS",
-  [Application.VIBER_BOT]: "VIBER BOT",
-  [Application.WHATSAPP]: "WHATSAPP",
-  [Application.GOOGLE_BUSINESS]: "GOOGLE BUSINESS",
+export const applicationStr = (id?: number) => {
+  switch (id) {
+    case Application.RCS:
+      return "RCS"
+    case Application.SMS:
+      return "SMS"
+    case Application.VIBER:
+      return "VIBER"
+    case Application.VIBER_BOT:
+      return "VIBER BOT"
+    case Application.VIBER_BUSINESS:
+      return "VIBER BUSINESS"
+    case Application.APPLE:
+      return "APPLE"
+    case Application.TELEGRAM:
+      return "TELEGRAM"
+    case Application.FACEBOOK:
+      return "FACEBOOK"
+    case Application.GOOGLE_BUSINESS:
+      return "Google Business Message"
+    case Application.ZALO:
+      return "Zalo Official Account"
+    case Application.ZALO_ZNS:
+      return "Zalo ZNS"
+    case Application.WHATSAPP:
+      return "WHATSAPP"
+    default:
+      return `${id || ""}`
+  }
 }
 
 export enum PARTNER {
@@ -44,7 +60,7 @@ export enum PARTNER {
   VIET_GUY = 13
 }
 
-export const PartnerString = (id: PARTNER | null) => {
+export const partnerStr = (id: PARTNER | null) => {
   switch (id) {
     case PARTNER.PEACOM:
       return "PEACOM"
