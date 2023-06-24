@@ -1,6 +1,7 @@
 import {Application} from "../Application";
 import {BILLING_STATUS} from "../Billing";
 import {FileInfo} from "../FileInfo";
+import { WhatsappTemplate } from "./sinch/SinchWhatsappTemplate";
 import {ZaloZnsTemmplateParam} from "./zalo/ZaloZNSTemplate";
 
 export enum MESSAGE_CONTENT_TYPE {
@@ -49,7 +50,8 @@ export enum MESSAGE_TYPE {
   TYPING_INDICATOR_STOP = "TYPING_INDICATOR_STOP",
   ZALO_ZNS_TEMPLATE = 'zalo_zns_template',
   SHARE_INFO = "share_info",
-  REACTION = "reaction"
+  REACTION = "reaction",
+  FB_WHATSAPP_TEMPLATE = 'fb_whatsapp_template'
 }
 
 export const GENERAL_MESSAGE = [MESSAGE_TYPE.TEXT, MESSAGE_TYPE.RICH_CARD, MESSAGE_TYPE.VIDEO, MESSAGE_TYPE.PICTURE, MESSAGE_TYPE.FILE]
@@ -144,6 +146,7 @@ export interface RawMessage {
   replyMessage?: ReplyMessage
   richLinkUrl?: string
   zaloZnsTemplateParam?: ZaloZnsTemmplateParam
+  whatsappTemplateParam?: WhatsappTemplate
   contacts?: Array<ContactMessage>
   extra?: any
 }
