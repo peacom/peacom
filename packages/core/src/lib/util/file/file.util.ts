@@ -39,9 +39,10 @@ export const getFileInfoFromUrl = (
 };
 
 export const getFileInfoFromLocalFile = (
-  filePath: string,
+  filePath: string, folder = ''
 ): FileInfo => {
   const rs = {
+    id: filePath,
     name: "",
     type: '',
     extension: "",
@@ -50,6 +51,10 @@ export const getFileInfoFromLocalFile = (
 
   const stat = fs.statSync(filePath)
   rs.name = path.basename(filePath)
+  if (folder) {
+    rs.id = path.relative(folder, filePath)
+  }
+
   rs.extension = path.extname(filePath);
   rs.size = stat.size
   if (rs.extension) {

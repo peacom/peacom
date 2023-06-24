@@ -1,4 +1,5 @@
 export interface FileInfo {
+  id?: string //File Path from Folder
   type: string
   name: string
   url: string

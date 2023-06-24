@@ -18,8 +18,10 @@ describe('file.util', () => {
   it('getFileInfoFromLocal', () => {
     const localFile = path.resolve('./data/Chuyen-de-1.pdf');
     console.log(localFile)
-    const rs = getFileInfoFromLocalFile(localFile)
+    const folder = '/Users/lecanh/Documents/Project/Vietnam/Peacom/peacom/packages/core'
+    const rs = getFileInfoFromLocalFile(localFile, folder)
     expect(rs).toEqual({
+      id: "data/Chuyen-de-1.pdf",
       name: 'Chuyen-de-1.pdf',
       type: 'application/pdf',
       extension: '.pdf',
