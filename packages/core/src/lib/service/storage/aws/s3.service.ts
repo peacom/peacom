@@ -151,6 +151,14 @@ interface DownloadLargeFileProps {
   onError?(err: Error): void
 }
 
+interface DownloadLargeFileKeyProps {
+  key: string
+  outputFile: string
+  chunkSize: number
+
+  onError?(err: Error): void
+}
+
 export const getObjectRange = ({bucket, key, start, end}: GetObjectRangeProp) => {
   const command = new GetObjectCommand({
     Bucket: bucket,
@@ -173,6 +181,10 @@ export const getRangeAndLength = (contentRange: string) => {
 
 export const downloadS3Url = async ({url, outputFile, onError, chunkSize}: DownloadLargeFileProps) => {
   const key = getS3UrlKey(url)
+  return downloadS3Key({key, outputFile, chunkSize, onError})
+}
+
+export const downloadS3Key = async ({key, outputFile, onError, chunkSize}: DownloadLargeFileKeyProps) => {
   const writeStream = fs.createWriteStream(
     outputFile
   ).on("error", (err) => {
@@ -191,7 +203,7 @@ export const downloadS3Url = async ({url, outputFile, onError, chunkSize}: Downl
 
       const {ContentRange, Body} = await getObjectRange({
         bucket: S3_INFO.BUCKET,
-        key,
+        key: key || '',
         ...nextRange,
       });
 

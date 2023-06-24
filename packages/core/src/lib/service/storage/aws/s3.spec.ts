@@ -1,4 +1,4 @@
-import {downloadS3Url, uploadLocalFileToS3, uploadS3FromUrl} from "./s3.service";
+import {createPreSignedUrl, downloadS3Url, uploadLocalFileToS3, uploadS3FromUrl} from "./s3.service";
 import * as path from "path";
 
 describe('s3.service.specs.ts', () => {
@@ -22,4 +22,7 @@ describe('s3.service.specs.ts', () => {
       outputFile: './test1.png', chunkSize: 1024
     })
   }, 200000)
+  it('createPreSignedUrl', async () => {
+    console.log(await createPreSignedUrl({fileName: 'test1234.xml', contentType: 'application/xml'}))
+  })
 })
