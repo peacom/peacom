@@ -15,6 +15,12 @@ describe('file.util', () => {
       name: 'birds_PNG9.png', type: 'image/png', extension: 'png'
     });
   });
+  it('test resolve', () => {
+    let localFile = path.resolve('a', 'data/Chuyen-de-1.pdf');
+    console.log(localFile)
+    localFile = path.resolve('data/Chuyen-de-1.pdf');
+    console.log(localFile)
+  })
   it('getFileInfoFromLocal', () => {
     const localFile = path.resolve('./data/Chuyen-de-1.pdf');
     console.log(localFile)
