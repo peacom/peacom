@@ -18,6 +18,22 @@ export const isAudio = (mimetype: string) => {
   return regex.test(mimetype)
 }
 
+export const isCSV = (mimetype: string) => mimetype === "text/csv";
+export const isExcel = (mimetype: string) =>
+  [
+    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    "application/vnd.ms-excel"
+  ].includes(mimetype);
+
+export const isDoc = (mimetype: string) => [
+  'application/msword',
+  'application/vnd.openxmlformats-officedocument.wordprocessingml.document'].includes(mimetype)
+
+export const isPPT = (mimetype: string) => [
+  'application/vnd.ms-powerpoint',
+  'application/vnd.openxmlformats-officedocument.presentationml.presentation'
+].includes(mimetype)
+
 export const getFileInfoFromUrl = (
   url: string,
   defaultMimeType = "application/binary"
