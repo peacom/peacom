@@ -2,7 +2,6 @@ import * as fs from "fs";
 import * as path from "path";
 import {GetObjectCommand, PutObjectCommand, PutObjectCommandInput, PutObjectRequest} from "@aws-sdk/client-s3";
 import {getSignedUrl} from "@aws-sdk/s3-request-presigner";
-import {v4 as uuidv4} from "uuid";
 import {s3, S3_FOLDERS, S3_INFO, S3_OPTION} from "./constants";
 import {getFileInfoFromLocalFile, getFileInfoFromUrl, hasText, rightString} from "../../../util";
 import {AwsFileInfo, FileInfo} from "../../../model";
@@ -12,14 +11,15 @@ export const getS3Url = (key: string | null | undefined) => `https://${S3_INFO.B
 export const uploadLocalFileToS3 = async (
   {filePath = ""},
   folder = S3_FOLDERS.DEFAULT
-): Promise<FileInfo> => {
+): Promise<AwsFileInfo> => {
   const rs = getFileInfoFromLocalFile(filePath)
   const fileStream = fs.createReadStream(filePath);
 
   // Setting up S3 upload parameters
+  const key = `${folder}/${path.basename(filePath)}`
   const params: PutObjectCommandInput = {
     Bucket: S3_INFO.BUCKET,
-    Key: `${folder}/${path.basename(filePath)}`,
+    Key: key,
     Body: fileStream,
     ContentType: rs.type,
     ContentLength: rs.size
@@ -37,6 +37,7 @@ export const uploadLocalFileToS3 = async (
 
   return {
     ...rs,
+    key,
     url: getS3Url(params.Key),
   }
 };
@@ -98,11 +99,12 @@ interface UploadS3BufferProp extends FileProp {
 const uploadS3Buffer = async (
   {fileName = "", contentType = "application/octet-stream", data}: UploadS3BufferProp,
   folder = S3_FOLDERS.TICKET
-): Promise<string> => {
+): Promise<AwsFileInfo> => {
   // Setting up S3 upload parameters
+  const key = `${folder}/${fileName}`
   const params: PutObjectCommandInput = {
     Bucket: S3_INFO.BUCKET,
-    Key: `${folder}/${fileName}`,
+    Key: key,
     Body: data
   };
   if (hasText(contentType)) {
@@ -111,16 +113,18 @@ const uploadS3Buffer = async (
 
   const command = new PutObjectCommand(params);
   await s3.send(command);
-  return getS3Url(params.Key);
+  return {
+    key, name: fileName, url: getS3Url(key), type: contentType
+  };
 };
 
 export const uploadS3FromUrl = async (
   {url = "", mimeType = "", name = ""},
   folder = S3_FOLDERS.DEFAULT
-): Promise<FileInfo> => {
+): Promise<AwsFileInfo> => {
   const data = await fetch(url).then(t => t.arrayBuffer())
   const fileInfo = getFileInfoFromUrl(url);
-  const uploadUrl = await uploadS3Buffer(
+  const uploadAwsInfo = await uploadS3Buffer(
     {
       fileName: name || fileInfo.name,
       contentType: mimeType || fileInfo.type,
@@ -129,8 +133,9 @@ export const uploadS3FromUrl = async (
     folder
   );
   return {
-    ...fileInfo,
-    url: uploadUrl
+    ...uploadAwsInfo,
+    extension: fileInfo.extension,
+    size: data.byteLength
   }
 };
 
