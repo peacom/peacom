@@ -1,6 +1,13 @@
 import * as fs from "fs";
 import * as path from "path";
-import {GetObjectCommand, PutObjectCommand, PutObjectCommandInput, PutObjectRequest} from "@aws-sdk/client-s3";
+import {
+  DeleteObjectCommand,
+  DeleteObjectCommandInput, DeleteObjectsCommand,
+  GetObjectCommand,
+  PutObjectCommand,
+  PutObjectCommandInput,
+  PutObjectRequest
+} from "@aws-sdk/client-s3";
 import {getSignedUrl} from "@aws-sdk/s3-request-presigner";
 import {s3, S3_FOLDERS, S3_INFO, S3_OPTION} from "./constants";
 import {getFileInfoFromLocalFile, getFileInfoFromUrl, hasText, rightString} from "../../../util";
@@ -87,6 +94,26 @@ export const getAwsUrlInfo = async (str: string): Promise<AwsFileInfo> => {
     ...fileInfo,
     size: resp.ContentLength,
     type: resp.ContentType || fileInfo.type,
+    key,
+    bucket: S3_INFO.BUCKET
+  };
+};
+
+export const getAwsKeyInfo = async (key: string): Promise<AwsFileInfo> => {
+  const input = {
+    // GetObjectRequest
+    Bucket: S3_INFO.BUCKET,
+    Key: key
+  };
+  const command = new GetObjectCommand(input);
+  const resp = await s3.send(command);
+  const url = getS3Url(key)
+  const remoteFileInfo = getFileInfoFromUrl(url)
+  return {
+    name: remoteFileInfo.name,
+    url: getS3Url(key),
+    size: resp.ContentLength,
+    type: resp.ContentType || 'application/binary',
     key,
     bucket: S3_INFO.BUCKET
   };
@@ -227,4 +254,22 @@ export const downloadS3Key = async ({key, outputFile, onError, chunkSize}: Downl
 
     throw e
   }
+}
+
+export async function s3RemoveFile({bucket = S3_INFO.BUCKET, key = ""}) {
+  const params: DeleteObjectCommandInput = {
+    Bucket: bucket,
+    Key: key
+  };
+  return s3.deleteObject(params);
+}
+
+export async function s3RemoveMultipleFile({bucket = S3_INFO.BUCKET, keys = [] as Array<string>}) {
+  const command: DeleteObjectsCommand = new DeleteObjectsCommand({
+    Bucket: bucket,
+    Delete: {
+      Objects: keys.map(t => ({Key: t}))
+    }
+  });
+  return s3.send(command);
 }

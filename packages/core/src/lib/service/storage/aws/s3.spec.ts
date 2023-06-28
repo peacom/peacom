@@ -1,4 +1,11 @@
-import {createPreSignedUrl, downloadS3Url, uploadLocalFileToS3, uploadS3FromUrl} from "./s3.service";
+import {
+  createPreSignedUrl,
+  downloadS3Url,
+  getAwsKeyInfo,
+  s3RemoveFile, s3RemoveMultipleFile,
+  uploadLocalFileToS3,
+  uploadS3FromUrl
+} from "./s3.service";
 import * as path from "path";
 
 describe('s3.service.specs.ts', () => {
@@ -8,12 +15,12 @@ describe('s3.service.specs.ts', () => {
     console.log(rs);
     expect(rs).toEqual({
       name: 'birds_PNG9.png', type: 'image/png', extension: 'png',
-      "key": "files/birds_PNG9.png","size": 827214,
+      "key": "files/birds_PNG9.png", "size": 827214,
       "url": "https://ap-southeast-1-dev-peacom.s3.ap-southeast-1.amazonaws.com/files/birds_PNG9.png"
     });
   }, 200000);
   it('uploadS3FromLocalFile xml', async () => {
-    const xmlFile = path.resolve( 'src', 'lib', 'service', 'storage', 'aws', 'RBM_7_10_data.xlsx')
+    const xmlFile = path.resolve('src', 'lib', 'service', 'storage', 'aws', 'RBM_7_10_data.xlsx')
     const rs = await uploadLocalFileToS3({filePath: xmlFile})
     console.log(rs);
   }, 200000);
@@ -25,5 +32,14 @@ describe('s3.service.specs.ts', () => {
   }, 200000)
   it('createPreSignedUrl', async () => {
     console.log(await createPreSignedUrl({fileName: 'test1234.xml', contentType: 'application/xml'}))
+  })
+  it('Get S3 File', async () => {
+    console.log(await getAwsKeyInfo('files/birds_PNG9.png'))
+  })
+  it('Delete S3 File', async () => {
+    console.log(await s3RemoveFile({key: 'files/RBM_7_10_data.xlsx'}))
+  })
+  it('Delete Multiple S3 File', async () => {
+    console.log(await s3RemoveMultipleFile({keys: ['files/birds_PNG9.png', '1234']}))
   })
 })
