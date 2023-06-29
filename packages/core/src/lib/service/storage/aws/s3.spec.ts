@@ -26,15 +26,15 @@ describe('s3.service.specs.ts', () => {
   }, 200000);
   it('Download S3 Large file', async () => {
     await downloadS3Url({
-      url: 'https://ap-southeast-1-dev-peacom.s3.ap-southeast-1.amazonaws.com/files/birds_PNG9.png',
-      outputFile: './test1.png', chunkSize: 1024
+      url: 'https://ap-southeast-1-dev-peacom.s3.ap-southeast-1.amazonaws.com/files/contactimportsamplefullxlsx.xlsx',
+      outputFile: './contactimportsamplefullxlsx.xlsx', chunkSize: 1024 * 1024
     })
   }, 200000)
   it('createPreSignedUrl', async () => {
     console.log(await createPreSignedUrl({fileName: 'test1234.xml', contentType: 'application/xml'}))
   })
   it('Get S3 File', async () => {
-    console.log(await getAwsKeyInfo('files/birds_PNG9.png'))
+    console.log(await getAwsKeyInfo('files/DaNangNHxlsx_e45afd6a-47c6-42ae-af7b-21f567a96a3c.xlsx'))
   })
   it('Delete S3 File', async () => {
     console.log(await s3RemoveFile({key: 'files/RBM_7_10_data.xlsx'}))

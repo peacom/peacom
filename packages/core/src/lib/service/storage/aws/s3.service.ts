@@ -58,7 +58,7 @@ interface FileProp {
 export const createPreSignedUrl = async ({fileName, contentType}: FileProp) => {
   const type = fileName.split(".").pop();
   const location = `${S3_FOLDERS.DEFAULT}/${fileName.replace(
-    /[^a-zA-Z]/g,
+    /[^a-zA-Z_-]/g,
     ""
   )}.${type}`;
   const command = new PutObjectCommand({
