@@ -4,7 +4,7 @@ import {
   endOfDate, endOfHour, endOfMonth,
   endOfWeek,
   formatDateTimeTZ,
-  getDate, startLastMonth, startOfHour,
+  getDate, getListHour, startLastMonth, startOfDate, startOfHour,
   startOfMonth,
   startOfWeek
 } from "./date.util";
@@ -18,13 +18,16 @@ describe('date.util', () => {
     expect(formatDateTimeTZ(dateStr)).toEqual(VN_DateStr);
   });
   it('endOfDate', () => {
-    console.log(getDate('2023-06-17T16:59:59.999Z', "GMT+0").toDate())
+    console.log(getDate('2023-06-17 16:59:59.999', "Asia/Tokyo").toString())
+    console.log(getDate('2023-06-17 16:59:59.999', DEFAULT_TIME_ZONE).toString())
     console.log(getDate('2023-06-17T23:59:59.999Z', DEFAULT_TIME_ZONE).toDate())
     console.log(endOfDate('2023-06-17T16:59:59.999Z', DEFAULT_TIME_ZONE))
     console.log(endOfDate('2023-06-17T23:59:59.999Z', "GMT+0"))
   });
   it('addHour', () => {
-    console.log(addHours(new Date(), -0.25))
+    console.log(addHours(new Date(), -1))
+    console.log(addHours(new Date(), -1, "Asia/Tokyo"))
+    console.log(addHours(new Date(), -1, DEFAULT_TIME_ZONE))
   });
   it('addDays', () => {
     console.log(addDays(new Date(), -1))
@@ -51,4 +54,8 @@ describe('date.util', () => {
     console.log(startLastMonth(new Date(), DEFAULT_TIME_ZONE).toString())
     console.log(endLastMonth(new Date(), DEFAULT_TIME_ZONE).toString())
   });
+  it('List hour', () => {
+    const startTime = startOfDate(addHours(new Date(), -25), DEFAULT_TIME_ZONE)
+    console.log(getListHour(startTime, new Date()))
+  })
 });

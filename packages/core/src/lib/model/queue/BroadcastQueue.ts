@@ -1,0 +1,34 @@
+import {Application, PARTNER} from "../Application";
+
+/**
+ * Define QUEUE by partner and service, for guarantee the limit rate
+ */
+export enum BROADCAST_QUEUE {
+  GOOGLE_RCS = "BROADCAST_GOOGLE_RCS",
+  GMS_VIBER = "BROADCAST_GMS_VIBER",
+  FACEBOOK_WHATSAPP = "BROADCAST_FACEBOOK_WHATSAPP",
+  SINCH_WHATSAPP = "BROADCAST_SINCH_WHATSAPP",
+  VIBER = "BROADCAST_VIBER",
+  ZALO = "BROADCAST_ZALO",
+}
+
+export type BROADCAST_APPLICATION = Extract<Application, Application.RCS | Application.VIBER | Application.ZALO | Application.WHATSAPP | Application.SMS>;
+export const QUEUE_BROADCAST_APPLICATION: Record<BROADCAST_APPLICATION, Record<number, BROADCAST_QUEUE>> = {
+  [Application.RCS]: {
+    [PARTNER.GOOGLE]: BROADCAST_QUEUE.GOOGLE_RCS
+  },
+  [Application.VIBER]: {
+    [PARTNER.VIBER]: BROADCAST_QUEUE.VIBER,
+    [PARTNER.GMS]: BROADCAST_QUEUE.GMS_VIBER
+  },
+  [Application.SMS]: {
+    [PARTNER.GOOGLE]: BROADCAST_QUEUE.GOOGLE_RCS
+  },
+  [Application.ZALO]: {
+    [PARTNER.ZALO]: BROADCAST_QUEUE.ZALO
+  },
+  [Application.WHATSAPP]: {
+    [PARTNER.FACEBOOK]: BROADCAST_QUEUE.FACEBOOK_WHATSAPP,
+    [PARTNER.SINCH]: BROADCAST_QUEUE.SINCH_WHATSAPP
+  }
+}

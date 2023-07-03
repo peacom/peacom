@@ -1,5 +1,6 @@
 import {DATE_TIME_FORMAT, DEFAULT_TIME_ZONE} from "./constant";
 import * as moment from "moment-timezone";
+import {hasText} from "../string.util";
 
 type DateType = Date | string
 
@@ -12,7 +13,7 @@ export function formatDateTimeTZ(
 }
 
 export const getDate = (date: DateType, tz = "") => {
-  if (!tz) return moment(date)
+  if (!hasText(tz)) return moment(date)
   return moment(date).tz(tz)
 }
 
@@ -96,3 +97,18 @@ export const parseDateTimeByFormat = (
     .tz(`${dateStr}`, DATE_TIME_FORMAT, timezone)
     .toDate();
 };
+
+export const getListHour = (fromTime: Date, toTime: Date, step = 1) => {
+  const rs = [fromTime]
+  let isContinue = true
+  let nextHour = fromTime
+  while (isContinue) {
+    nextHour = addHours(nextHour, 1)
+    if (nextHour.getTime() < toTime.getTime()) {
+      rs.push(nextHour)
+    } else {
+      isContinue = false
+    }
+  }
+  return rs;
+}
