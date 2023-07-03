@@ -1,6 +1,6 @@
 {
   "name": "@peacom/core",
-  "version": "0.0.120",
+  "version": "0.0.121",
   "type": "commonjs",
   "dependencies": {
     "@aws-sdk/client-s3": "^3.350.0",
