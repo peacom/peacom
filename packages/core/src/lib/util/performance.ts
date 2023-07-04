@@ -1,10 +1,21 @@
 const isEnableLogPerformance = process.env['disableLogPerformance'] === '1';
 
 export const startPerformance = (label: string) => {
-  console.time(label)
+  if (isEnableLogPerformance) {
+    console.time(label)
+  }
+
   return {
-    end: () => console.timeEnd(label),
-    log: (...data: any[]) => console.timeLog(label, data)
+    end: () => {
+      if (isEnableLogPerformance) {
+        console.timeEnd(label)
+      }
+    },
+    log: (...data: any[]) => {
+      if (isEnableLogPerformance) {
+        console.timeLog(label, data)
+      }
+    }
   }
 }
 
