@@ -1,6 +1,9 @@
 // AUTO (SUBSCRIBED) ==> REQUEST ==> JOINED  ==> AUTO
 // AUTO ==> UNSUBSCRIBED
 // REQUEST ==> UNSUBSCRIBED
+
+import { SuggestionActionType } from "../message"
+
 // JOINED ==> UNSUBSCRIBED
 export enum LIVE_AGENT_STATUS {
   REQUEST = 1,
@@ -31,4 +34,16 @@ export interface Conversation {
   partnerId?: string | null // Partner conversation ID
   status?: LIVE_AGENT_STATUS
   representative?: Representative
+}
+
+export const LIVE_AGENT_REQUEST_MESSAGES = {
+  [SuggestionActionType.LIVE_AGENT_REQUEST]: "Live Agent Request",
+  [SuggestionActionType.LIVE_AGENT_REQUEST_EN]: "Live Agent Request",
+  [SuggestionActionType.LIVE_AGENT_REQUEST_VN]: "Lien He Ho Tro",
+}
+
+export const LIVE_AGENT_REQUEST_POSTBACK_DATA = {
+  [SuggestionActionType.LIVE_AGENT_REQUEST]: "LIVE_AGENT_REQUEST",
+  [SuggestionActionType.LIVE_AGENT_REQUEST_EN]: "LIVE_AGENT_REQUEST",
+  [SuggestionActionType.LIVE_AGENT_REQUEST_VN]: "LIEN_HE_HO_TRO",
 }
