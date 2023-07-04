@@ -1,4 +1,4 @@
-const isEnableLogPerformance = process.env['disableLogPerformance'] === '1';
+const isEnableLogPerformance = process.env['disableLogPerformance'] !== '1';
 
 export const startPerformance = (label: string) => {
   if (isEnableLogPerformance) {
