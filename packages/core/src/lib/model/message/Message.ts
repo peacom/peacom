@@ -87,7 +87,20 @@ export enum SuggestionActionType {
   REPLY = "reply",
   DIAL = "dial",
   LIVE_AGENT_REQUEST = "liveAgent",
-  CALENDAR = "CalendarEventAction"
+  CALENDAR = "CalendarEventAction",
+  LIVE_AGENT_REQUEST_VN = "liveAgentVN",
+  LIVE_AGENT_REQUEST_EN = "liveAgentEN"
+}
+
+export const isLiveAgentRequestAction = (action?: SuggestionActionType | null) => {
+  if (!action) {
+    return false;
+  }
+  return [
+    SuggestionActionType.LIVE_AGENT_REQUEST,
+    SuggestionActionType.LIVE_AGENT_REQUEST_EN,
+    SuggestionActionType.LIVE_AGENT_REQUEST_VN,
+  ].includes(action)
 }
 
 export interface RawMessageSuggestion {
