@@ -9,7 +9,7 @@ export enum QueueMessageStatusSource {
 }
 
 export interface QueueMessageStatus {
-  messageId?: string;
+  messageId?: string; // message.publicId
   applicationMessageId?: string;
   applicationInfo: ApplicationInfo;
   status: MESSAGE_STATUS;

@@ -5,7 +5,7 @@ import {QueuePartnerEventParam} from "../../model/partner/PartnerEvent";
 import {PARTNER_MESSAGE_TYPE} from "../../model/partner";
 
 const toBullQueueMessage = (message: QueueMessageStatus) => {
-  const jobId = `${message.applicationInfo.applicationId}_${message.applicationMessageId || ''}_${message.status}_${message.sentTime}`
+  const jobId = `${message.applicationInfo.applicationId}_${message.applicationMessageId || message.messageId}_${message.status}_${message.sentTime}`
   return {
     name: jobId, data: message, opts: {
       ...(message.jobOpt || {}), jobId
