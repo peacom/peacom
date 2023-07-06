@@ -128,7 +128,7 @@ interface UploadS3BufferProp extends FileProp {
   data: PutObjectRequest["Body"] | string | Uint8Array | Buffer;
 }
 
-const uploadS3Buffer = async (
+export const uploadS3Buffer = async (
   {fileName = "", contentType = "application/octet-stream", data}: UploadS3BufferProp,
   folder = S3_FOLDERS.TICKET
 ): Promise<AwsFileInfo> => {
