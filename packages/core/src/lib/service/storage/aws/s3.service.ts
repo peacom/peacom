@@ -10,7 +10,7 @@ import {
 import {getSignedUrl} from "@aws-sdk/s3-request-presigner";
 import {s3, S3_FOLDERS, S3_INFO, S3_OPTION} from "./constants";
 import {
-  filterForInvalidCharacter, filterNonAlphaNumeric,
+  filterNonAlphaNumeric,
   getFileInfoFromLocalFile,
   getFileInfoFromUrl,
   hasText,
