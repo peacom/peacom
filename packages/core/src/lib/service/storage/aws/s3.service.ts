@@ -10,7 +10,13 @@ import {
 } from "@aws-sdk/client-s3";
 import {getSignedUrl} from "@aws-sdk/s3-request-presigner";
 import {s3, S3_FOLDERS, S3_INFO, S3_OPTION} from "./constants";
-import {getFileInfoFromLocalFile, getFileInfoFromUrl, hasText, rightString} from "../../../util";
+import {
+  filterForInvalidCharacter, filterNonAlphaNumeric,
+  getFileInfoFromLocalFile,
+  getFileInfoFromUrl,
+  hasText,
+  rightString
+} from "../../../util";
 import {AwsFileInfo, FileInfo} from "../../../model";
 
 export const getS3Url = (key: string | null | undefined) => `https://${S3_INFO.BUCKET}.s3.${S3_OPTION.region}.amazonaws.com/${key}`
@@ -56,11 +62,10 @@ interface FileProp {
 }
 
 export const createPreSignedUrl = async ({fileName, contentType}: FileProp) => {
-  const type = fileName.split(".").pop();
-  const location = `${S3_FOLDERS.DEFAULT}/${fileName.replace(
-    /[^a-zA-Z_-]/g,
-    ""
-  )}.${type}`;
+  const fileInfo = fileName.split(".")
+  const type = fileInfo.length > 1 ? fileInfo.pop() : '';
+
+  const location = `${S3_FOLDERS.DEFAULT}/${filterNonAlphaNumeric(fileInfo.join('.'))}${hasText(type || '') ? `.${type}` : ''}`;
   const command = new PutObjectCommand({
     Bucket: S3_INFO.BUCKET,
     Key: location,

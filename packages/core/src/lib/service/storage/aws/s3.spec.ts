@@ -31,7 +31,7 @@ describe('s3.service.specs.ts', () => {
     })
   }, 200000)
   it('createPreSignedUrl', async () => {
-    console.log(await createPreSignedUrl({fileName: 'test1234.xml', contentType: 'application/xml'}))
+    console.log(await createPreSignedUrl({fileName: 'test1234', contentType: 'application/xml'}))
   })
   it('Get S3 File', async () => {
     console.log(await getAwsKeyInfo('files/DaNangNHxlsx_e45afd6a-47c6-42ae-af7b-21f567a96a3c.xlsx'))
