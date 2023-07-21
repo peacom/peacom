@@ -4,7 +4,7 @@ import {JobsOptions} from "bullmq";
 import {Application} from "../Application";
 
 export interface PartnerEvent {
-  messageId: string // Peacom Message Public ID = Parnter Application Message ID
+  messageId: string // Peacom Message Public ID = Partner Application Message ID
   type: PARTNER_MESSAGE_TYPE
   timestamp: number
   cause: string
