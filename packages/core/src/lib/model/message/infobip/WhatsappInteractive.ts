@@ -6,7 +6,7 @@ import {FileInfo} from "@peacom/core";
 
 export enum WhatsappInteractiveType {
   list = 'list',
-  button = 'button',
+  button = 'button', // Use it for Reply Buttons
   product = 'product',
   product_list = 'product_list'
 }
@@ -32,12 +32,12 @@ export interface WhatsappInteractiveFooter {
   text: string // MAX 1024
 }
 
-export enum WhatsappInteractiveType {
+export enum WhatsappInteractiveReplyButtonType {
   REPLY = 'reply'
 }
 
 export interface WhatsappInteractiveReplyButton {
-  type: WhatsappInteractiveType,
+  type: WhatsappInteractiveReplyButtonType,
   title: string // 20 characters Unique,
   id: string,// Unique identifier for your button. This ID is returned in the webhook when the button is clicked by the user. Maximum length: 256 characters
 }
@@ -56,6 +56,7 @@ export interface WhatsappInteractiveSession {
 export interface WhatsappInteractiveAction {
   button?: string // Required for List Messages, Emojis are supported, markdown is not. Maximum length: 20 characters
   buttons?: WhatsappInteractiveReplyButton // Required for Reply Button Messages
+  sessions?: WhatsappInteractiveSession // Required for List Messages and Multi-Product Messages.
 }
 
 export interface WhatsappInteractive {
@@ -63,4 +64,5 @@ export interface WhatsappInteractive {
   header?: WhatsappInteractiveHeader | null // Required of WhatsappInteractiveType[product_list], NONE for [product], other optional
   body?: WhatsappInteractiveBody | null // Optional for type product. Required for other message types.
   footer?: WhatsappInteractiveFooter | null // Optional
+  action: WhatsappInteractiveAction
 }
