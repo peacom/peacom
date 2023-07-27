@@ -1,4 +1,5 @@
 export * from './TemplateMessage'
-export * from './sinch/SinchWhatsappTemplate'
+export * from './sinch'
 export * from './Message'
-export * from './zalo/ZaloZNSTemplate'
+export * from './zalo'
+export * from './infobip'

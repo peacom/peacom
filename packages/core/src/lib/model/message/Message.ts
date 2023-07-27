@@ -1,8 +1,10 @@
 import {Application} from "../Application";
 import {BILLING_STATUS} from "../Billing";
 import {FileInfo} from "../FileInfo";
-import { WhatsappTemplate } from "./sinch/SinchWhatsappTemplate";
+import {WhatsappTemplate} from "./sinch/SinchWhatsappTemplate";
 import {ZaloZnsTemmplateParam} from "./zalo/ZaloZNSTemplate";
+import {TemplateMessageSource} from "./TemplateMessage";
+import {WhatsappInteractive} from "./infobip/WhatsappInteractive";
 
 export enum MESSAGE_CONTENT_TYPE {
   EVENT = 1, // DELIVERY STATUS
@@ -51,7 +53,8 @@ export enum MESSAGE_TYPE {
   ZALO_ZNS_TEMPLATE = 'zalo_zns_template',
   SHARE_INFO = "share_info",
   REACTION = "reaction",
-  FB_WHATSAPP_TEMPLATE = 'fb_whatsapp_template'
+  FB_WHATSAPP_TEMPLATE = 'fb_whatsapp_template',
+  FB_WHATSAPP_INTERACTIVE = 'FB_WHATSAPP_INTERACTIVE'
 }
 
 export const GENERAL_MESSAGE = [MESSAGE_TYPE.TEXT, MESSAGE_TYPE.RICH_CARD, MESSAGE_TYPE.VIDEO, MESSAGE_TYPE.PICTURE, MESSAGE_TYPE.FILE]
@@ -67,7 +70,7 @@ export const APPLICATION_MESSAGE: Record<Application, Array<MESSAGE_TYPE>> = {
   [Application.ZALO]: [...GENERAL_MESSAGE, MESSAGE_TYPE.ZALO_LIST_PICKER],
   [Application.ZALO_ZNS]: [MESSAGE_TYPE.TEXT],
   [Application.VIBER_BOT]: GENERAL_MESSAGE,
-  [Application.WHATSAPP]: GENERAL_MESSAGE,
+  [Application.WHATSAPP]: [MESSAGE_TYPE.FB_WHATSAPP_TEMPLATE, MESSAGE_TYPE.TEXT, MESSAGE_TYPE.FILE, MESSAGE_TYPE.LOCATION, MESSAGE_TYPE.PICTURE, MESSAGE_TYPE.VIDEO, MESSAGE_TYPE.TEXT, MESSAGE_TYPE.FB_WHATSAPP_INTERACTIVE],
   [Application.GOOGLE_BUSINESS]: [MESSAGE_TYPE.TEXT, MESSAGE_TYPE.RICH_CARD, MESSAGE_TYPE.PICTURE],
 }
 
@@ -137,9 +140,22 @@ export interface ContactMessage {
   [key: string]: any
 }
 
+export enum PreviewUrlPosition {
+  BEFORE = 1,
+  AFTER = 2,
+}
+
+export interface PreviewUrl {
+  image: string
+  title: string
+  redirectUrl: string
+  position: PreviewUrlPosition
+}
+
 export interface RawMessage {
   type: MESSAGE_TYPE
   message?: string
+  previewUrl?: PreviewUrl
   file?: FileInfo
   fileUrl?: string
   fileName?: string
@@ -160,7 +176,9 @@ export interface RawMessage {
   richLinkUrl?: string
   zaloZnsTemplateParam?: ZaloZnsTemmplateParam
   whatsappTemplateParam?: WhatsappTemplate
+  whatsappInteractive?: WhatsappInteractive
   contacts?: Array<ContactMessage>
+  source?: TemplateMessageSource
   extra?: any
 }
 
