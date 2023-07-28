@@ -40,6 +40,7 @@ export interface WhatsappInteractiveReplyButton {
   type: WhatsappInteractiveReplyButtonType,
   title: string // 20 characters Unique,
   id: string,// Unique identifier for your button. This ID is returned in the webhook when the button is clicked by the user. Maximum length: 256 characters
+  [key: string]: any
 }
 
 export interface WhatsappInteractiveSessionRow {
@@ -53,12 +54,13 @@ export interface WhatsappInteractiveSession {
   title: string // 24 characters Unique,
   id: string,// Unique identifier for your button. This ID is returned in the webhook when the button is clicked by the user. Maximum length: 256 characters
   rows: Array<WhatsappInteractiveSessionRow>
+
   [key: string]: any
 }
 
 export interface WhatsappInteractiveAction {
   button?: string // Required for List Messages, Emojis are supported, markdown is not. Maximum length: 20 characters
-  buttons?: WhatsappInteractiveReplyButton // Required for Reply Button Messages
+  buttons?: Array<WhatsappInteractiveReplyButton> // Required for Reply Button Messages
   sessions?: Array<WhatsappInteractiveSession> // Required for List Messages and Multi-Product Messages.
 }
 
