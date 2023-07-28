@@ -47,6 +47,7 @@ export interface WhatsappInteractiveSessionRow {
   ID: string // Maximum length: 200 characters.
   description?: string // Optional 72 Characters
 }
+
 export interface WhatsappInteractiveSession {
   title: string // 24 characters Unique,
   id: string,// Unique identifier for your button. This ID is returned in the webhook when the button is clicked by the user. Maximum length: 256 characters
@@ -56,7 +57,7 @@ export interface WhatsappInteractiveSession {
 export interface WhatsappInteractiveAction {
   button?: string // Required for List Messages, Emojis are supported, markdown is not. Maximum length: 20 characters
   buttons?: WhatsappInteractiveReplyButton // Required for Reply Button Messages
-  sessions?: WhatsappInteractiveSession // Required for List Messages and Multi-Product Messages.
+  sessions?: Array<WhatsappInteractiveSession> // Required for List Messages and Multi-Product Messages.
 }
 
 export interface WhatsappInteractive {
