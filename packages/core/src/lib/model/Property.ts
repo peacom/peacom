@@ -1,4 +1,3 @@
-
 export enum PURPOSE_PROPERTY {
   CUSTOMER = 1,
 }
@@ -14,41 +13,41 @@ export enum TYPE_PROPERTY {
 export const typePropertyStr = (id: TYPE_PROPERTY | null) => {
   switch (id) {
     case TYPE_PROPERTY.NUMBER:
-      return "NUMBER"
+      return "NUMBER";
     case TYPE_PROPERTY.TEXT:
-      return "TEXT"
+      return "TEXT";
     case TYPE_PROPERTY.DATE:
-      return "DATE"
+      return "DATE";
     case TYPE_PROPERTY.SELECT:
-      return "SELECT"
+      return "SELECT";
     default:
-      return ""
+      return "";
   }
-}
+};
 
 export enum CONDITION {
-  AND = "1",
-  OR = "2",
+  AND = 1,
+  OR = 2,
 }
 
 export enum SegmentType {
-  GROUP,
-  FIELD,
+  GROUP = 1,
+  FIELD = 2,
 }
 
 export enum PROPERTY_OPERATION {
-  IS_EQUAL,
-  IS_NOT_EQUAL,
-  CONTAINS,
-  DOES_NOT_CONTAIN,
-  BEGINS_WITH,
-  DOES_NOT_BEGIN_WITH,
-  ENDS_WITH,
-  DOES_NOT_AND_WITH,
-  NO_VALUE_SET,
-  VALUE_IS_SET,
-  IS_LESS,
-  IS_LESS_OR_EQUAL,
-  IS_GREATER,
-  IS_GREATER_OR_EQUAL
+  IS_EQUAL = 1,
+  IS_NOT_EQUAL = 2,
+  CONTAINS = 3,
+  DOES_NOT_CONTAIN = 4,
+  BEGINS_WITH = 5,
+  DOES_NOT_BEGIN_WITH = 6,
+  ENDS_WITH = 7,
+  DOES_NOT_AND_WITH = 8,
+  NO_VALUE_SET = 9,
+  VALUE_IS_SET = 10,
+  IS_LESS = 11,
+  IS_LESS_OR_EQUAL = 12,
+  IS_GREATER = 13,
+  IS_GREATER_OR_EQUAL = 14
 }
