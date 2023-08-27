@@ -8,9 +8,7 @@ export enum TYPE_PROPERTY {
   NUMBER = 1,
   TEXT = 2,
   DATE = 3,
-  SELECT = 4,
-  AGE = 5,
-  GENDER = 6
+  SELECT = 4
 }
 
 export const typePropertyStr = (id: TYPE_PROPERTY | null) => {
@@ -23,10 +21,6 @@ export const typePropertyStr = (id: TYPE_PROPERTY | null) => {
       return "DATE"
     case TYPE_PROPERTY.SELECT:
       return "SELECT"
-    case TYPE_PROPERTY.AGE:
-      return "AGE"
-    case TYPE_PROPERTY.GENDER:
-      return "GENDER"
     default:
       return ""
   }
