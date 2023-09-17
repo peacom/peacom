@@ -3,6 +3,7 @@ import {
   ApiCoreHandleResponse,
   ApiCoreLiveAgentParams,
   ApiCoreLiveAgentResponse,
+  ApiReactionParams,
   LOG_FUNCTION
 } from "./api.constant";
 import {FormError} from "../error/FormError";
@@ -11,7 +12,8 @@ export enum CORE_API_PATH {
   MESSAGE = "/message",
   LIVE_AGENT = "/conversation/live-agent",
   UNSUBSCRIBE = "/unsubscribe",
-  SUBSCRIBE = "/subscribe"
+  SUBSCRIBE = "/subscribe",
+  REACTION = "/message/reaction"
 }
 
 export const handleCoreMessage = async (CORE_URL: string, params: ApiCoreHandleParams, log: LOG_FUNCTION = null): Promise<ApiCoreHandleResponse> => {
@@ -109,3 +111,31 @@ export const handleSubscribe = async (CORE_URL: string, params: ApiCoreLiveAgent
   }
   return JSON.parse(bodyStr)
 }
+
+export const handleReaction = async (
+  CORE_URL: string,
+  params: ApiReactionParams,
+  log: LOG_FUNCTION = null
+): Promise<ApiCoreHandleResponse> => {
+  const url = `${CORE_URL}${CORE_API_PATH.REACTION}`;
+  if (log) {
+    log(`CORE REQUEST: ${url} - ${JSON.stringify(params)}`);
+  }
+
+  const rs = await fetch(url, {
+    method: 'POST',
+    body: JSON.stringify(params),
+    headers: {
+      'content-type': 'application/json',
+    },
+  });
+  const bodyStr = await rs.text();
+  if (log) {
+    log(`CORE RESPONSE: ${url} - ${bodyStr}`);
+  }
+
+  if (!rs.ok) {
+    throw new FormError(JSON.parse(bodyStr));
+  }
+  return JSON.parse(bodyStr);
+};
