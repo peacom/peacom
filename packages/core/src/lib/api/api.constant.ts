@@ -80,3 +80,13 @@ export const MICROSERVICE_URL: Record<Application, string> = {
 }
 
 export const INTEGRATED_CHANNEL = [Application.APPLE, Application.ZALO, Application.ZALO_ZNS, Application.GOOGLE_BUSINESS]
+
+export interface ApiReactionParams {
+  applicationId: Application;
+  rawMessage: RawMessage;
+  replyToApplicationMessageId: string;
+  sentTime: number;
+  applicationMessageId: string;
+  extraData?: Record<string, unknown>;
+  conversation?: Conversation;
+}
