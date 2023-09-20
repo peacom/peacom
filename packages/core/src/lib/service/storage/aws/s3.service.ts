@@ -1,5 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
+// eslint-disable-next-line @nx/enforce-module-boundaries
 import {
   DeleteObjectCommandInput, DeleteObjectsCommand,
   GetObjectCommand,
@@ -7,6 +8,7 @@ import {
   PutObjectCommandInput,
   PutObjectRequest
 } from "@aws-sdk/client-s3";
+// eslint-disable-next-line @nx/enforce-module-boundaries
 import {getSignedUrl} from "@aws-sdk/s3-request-presigner";
 import {s3, S3_FOLDERS, S3_INFO, S3_OPTION} from "./constants";
 import {
@@ -16,9 +18,11 @@ import {
   hasText,
   rightString
 } from "../../../util";
-import {AwsFileInfo, FileInfo} from "../../../model";
+import {AwsFileInfo} from "../../../model";
 
-export const getS3Url = (key: string | null | undefined) => `https://${S3_INFO.BUCKET}.s3.${S3_OPTION.region}.amazonaws.com/${key}`
+export const getS3Url = (key: string | null | undefined) => hasText(S3_OPTION.domain) ?
+  `${S3_OPTION.domain}/${key}` :
+  `https://${S3_INFO.BUCKET}.s3.${S3_OPTION.region}.amazonaws.com/${key}`
 
 export const uploadLocalFileToS3 = async (
   {filePath = ""},

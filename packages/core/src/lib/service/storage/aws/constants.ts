@@ -1,10 +1,12 @@
+// eslint-disable-next-line @nx/enforce-module-boundaries
 import { S3 } from "@aws-sdk/client-s3"
 
 export const S3_OPTION = {
   accessKeyId: process.env['S3_ACCESS_KEY'] || 'AKIATVLTGO26C3NWH2HR',
   secretAccessKey: process.env['S3_SECRET_KEY'] || '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',
   endpoint: process.env['S3_ENDPOINT'] || 'https://s3.ap-southeast-1.amazonaws.com',
-  region: process.env['S3_REGION'] || 'ap-southeast-1'
+  region: process.env['S3_REGION'] || 'ap-southeast-1',
+  domain: process.env['S3_DOMAIN'] || ''
 };
 
 export const S3_INFO = {
