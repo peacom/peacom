@@ -1,7 +1,7 @@
 import {
   createPreSignedUrl,
   downloadS3Url,
-  getAwsKeyInfo,
+  getAwsKeyInfo, getS3UrlKey,
   s3RemoveFile, s3RemoveMultipleFile,
   uploadLocalFileToS3,
   uploadS3FromUrl
@@ -32,6 +32,9 @@ describe('s3.service.specs.ts', () => {
   }, 200000)
   it('createPreSignedUrl', async () => {
     console.log(await createPreSignedUrl({fileName: 'test1234', contentType: 'application/xml'}))
+  })
+  it('getS3UrlKey', async () => {
+    console.log(getS3UrlKey("https://dev-cdn.peacom.co/files/tes.png"))
   })
   it('Get S3 File', async () => {
     console.log(await getAwsKeyInfo('files/DaNangNHxlsx_e45afd6a-47c6-42ae-af7b-21f567a96a3c.xlsx'))
