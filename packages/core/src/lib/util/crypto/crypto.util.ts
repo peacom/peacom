@@ -2,7 +2,8 @@ import * as path from "path";
 import * as fs from "fs";
 import * as crypto from 'crypto'
 import * as process from "process";
-import {hasText} from "../string.util";
+import { hasText, leftString, rightString } from "../string.util";
+import { createCipheriv, createDecipheriv, randomBytes } from "crypto";
 
 let PUBLIC_KEY = ''
 const getPublicKey = () => {
@@ -35,4 +36,40 @@ export const decryptPrivate = (
   const buffer = Buffer.from(data, "base64");
   const decrypted = crypto.privateDecrypt(privateKey, buffer);
   return decrypted.toString("utf8");
+};
+
+
+
+const ALGORITHM = "aes-256-ctr";
+
+export const encryptAESStr = (text: string | number, key = null) => {
+  const iv = randomBytes(16);
+
+  const cipher = createCipheriv(
+    ALGORITHM,
+    key || "ENQudMWJ6AOKyWVTI28291WisR1Cluqb",
+    iv
+  );
+
+  const encrypted = Buffer.concat([cipher.update(`${text}`), cipher.final()]);
+  return `${iv.toString("hex")}${encrypted.toString("hex")}`;
+};
+
+export const decryptAESStr = (text: string, key = null) => {
+  if (text.length < 32) {
+    throw new Error(`Invalid encrypt string ${text}`);
+  }
+  const iv = leftString(text, 32);
+  const content = rightString(text, text.length - 32);
+  const decipher = createDecipheriv(
+    ALGORITHM,
+    key || "ENQudMWJ6AOKyWVTI28291WisR1Cluqb",
+    Buffer.from(iv, "hex")
+  );
+  const decrypted = Buffer.concat([
+    decipher.update(Buffer.from(content, "hex")),
+    decipher.final()
+  ]);
+
+  return decrypted.toString();
 };
