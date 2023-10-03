@@ -15,7 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@peacom/core": ["packages/core/src/index.ts"]
+      "@peacom/core": ["packages/core/src/index.ts"],
+      "@peacom/model": ["packages/model/src/index.ts"],
+      "@peacom/rn": ["rn/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

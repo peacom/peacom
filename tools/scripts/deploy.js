@@ -24,7 +24,7 @@ try {
   console.log(chalk.bold.green(`Save new version ${nextVersion}`))
   writeFileSync(packageJsonPath, JSON.stringify(json, null, 2));
   console.log(chalk.bold.green(`Build with new version ${nextVersion}`))
-  execSync('npx nx build core')
+  execSync(`npx nx build ${name}`)
   process.chdir(distFolder);
   execSync(`npm publish --access public --tag ${tag}`);
   console.log(chalk.bold.green(`Upload success ${name}-${nextVersion}`))
