@@ -46,4 +46,11 @@ describe('string.util', () => {
       def: 'peacom'
     })).toEqual("testing peacom")
   })
+
+  it('render template', ()=>{
+    console.log(renderTemplate('{{abc}} {{def}} {{uuid}}', {
+      abc: 'testing',
+      def: 'peacom'
+    }))
+  })
 });

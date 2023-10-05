@@ -1,4 +1,5 @@
 import {render} from "mustache";
+import {v4 as uuidv4} from "uuid";
 
 export function generateRandomCode(length: number) {
   let text = "";
@@ -136,8 +137,20 @@ export function alphaNumericToListString(str: string) {
     .filter((t) => hasText(t));
 }
 
+const RENDER_FUNCTION = {
+  uuid: () => uuidv4(),
+  url: () => {
+    return (text: string, render: any) => {
+      return encodeURIComponent(render(text));
+    };
+  }
+};
+
 export function renderTemplate(string: string, context: any) {
-  return render(string, context);
+  return render(string, {
+    ...context,
+    ...RENDER_FUNCTION
+  });
 }
 
 export function formatBytes(bytes: number, decimals: number = 2): string {
