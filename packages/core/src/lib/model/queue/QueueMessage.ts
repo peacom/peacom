@@ -1,4 +1,4 @@
-import {ApplicationInfo, Message, RawMessage} from "../";
+import {ApplicationInfo, Message} from "../";
 import {MESSAGE_STATUS} from "../";
 import {JobsOptions} from "bullmq";
 import {Conversation} from "../conversation";
