@@ -53,7 +53,7 @@ export const PERMISSION_COMPANY_LIST: Record<number, ActionDescription> = {
     listType: BoAdminTypeList,
   },
   [PERMISSION.COMPANY.TRANSACTION_HISTORY]: {
-    actionId: PERMISSION.COMPANY.EDIT_BILLING,
+    actionId: PERMISSION.COMPANY.TRANSACTION_HISTORY,
     name: "View company topup transaction",
     enableType: true,
     listType: BoAdminTypeList,
@@ -79,6 +79,7 @@ export const PERMISSION_OWN_COMPANY_LIST: Record<number, ActionDescription> = {
     enableType: false
   },
 }
+
 export const PERMISSION_CONTACT_LIST: Record<number, ActionDescription> = {
   [PERMISSION.CONTACT.CREATE]: {
     actionId: PERMISSION.CONTACT.CREATE,
@@ -596,6 +597,11 @@ export const PERMISSION_CUSTOMER_LIST: Record<number, ActionDescription> = {
     name: "Update",
     enableType: false
   },
+  [PERMISSION.CUSTOMER.SETTING]: {
+    actionId: PERMISSION.CUSTOMER.SETTING,
+    name: "Setting",
+    enableType: false
+  },
 }
 
 export const PERMISSION_TICKET_LIST: Record<number, ActionDescription> = {
@@ -918,6 +924,11 @@ export const PERMISSION_SLA_LIST: Record<number, ActionDescription> = {
   [PERMISSION.SLA.DELETE]: {
     actionId: PERMISSION.SLA.DELETE,
     name: "Delete",
+    enableType: false
+  },
+  [PERMISSION.SLA.SETTING]: {
+    actionId: PERMISSION.SLA.SETTING,
+    name: "Setting",
     enableType: false
   },
 }
