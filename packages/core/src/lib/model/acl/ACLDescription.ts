@@ -393,7 +393,7 @@ export const PERMISSION_LABEL_LIST: Record<number, ActionDescription> = {
     name: "Create",
     enableType: false
   },
-  [PERMISSION.BLACK_LIST.UPDATE]: {
+  [PERMISSION.LABEL.UPDATE]: {
     actionId: PERMISSION.LABEL.UPDATE,
     name: "Update",
     enableType: false
