@@ -8,12 +8,20 @@ const OwnerOrCompanyTypeList = [AclActionType.OWNER, AclActionType.FULL]
 
 /**
  * TODO: Note
+ * NOTE 1: 1 ACTION ONLY using for 1 business.
+ * NOTE 2: if 1 ACTION can using for 2 business, then read NOTE 1 again.
+ *
  * enableType: false ==> mean that action is not support for ACL (only where with user.companyId),
  * and we set it default is listType[0] or AclActionType.FULL
  * enableType: true ==> UNION of user permission type and (listType or ALL)
  */
 export const PERMISSION_COMPANY_LIST: Record<number, ActionDescription> = {
-  [PERMISSION.COMPANY.CREATE]: {actionId: PERMISSION.COMPANY.CREATE, name: "Create", enableType: false},
+  [PERMISSION.COMPANY.CREATE]: {
+    actionId: PERMISSION.COMPANY.CREATE,
+    name: "Create",
+    enableType: true,
+    listType: BoAdminTypeList
+  },
   [PERMISSION.COMPANY.READ]: {
     actionId: PERMISSION.COMPANY.READ,
     name: "Read",
@@ -64,6 +72,13 @@ export const PERMISSION_COMPANY_LIST: Record<number, ActionDescription> = {
   },
 }
 
+export const PERMISSION_OWN_COMPANY_LIST: Record<number, ActionDescription> = {
+  [PERMISSION.OWN_COMPANY.PROFILE]: {
+    actionId: PERMISSION.OWN_COMPANY.PROFILE,
+    name: "Profile View & Update",
+    enableType: false
+  },
+}
 export const PERMISSION_CONTACT_LIST: Record<number, ActionDescription> = {
   [PERMISSION.CONTACT.CREATE]: {
     actionId: PERMISSION.CONTACT.CREATE,
@@ -126,7 +141,7 @@ export const PERMISSION_BOT_LIST: Record<number, ActionDescription> = {
     actionId: PERMISSION.BOT.START_STOP,
     name: "Start, stop channel",
     enableType: true,
-    listType: BoAdminCompanyTypeList,
+    listType: BoAdminTypeList,
   },
 }
 
@@ -135,7 +150,7 @@ export const PERMISSION_OA_LIST: Record<number, ActionDescription> = {
     actionId: PERMISSION.OFFICIAL_ACCOUNT.CREATE,
     name: "Create",
     enableType: true,
-    listType: BoAdminCompanyTypeList
+    listType: BoAdminTypeList
   },
   [PERMISSION.OFFICIAL_ACCOUNT.READ]: {
     actionId: PERMISSION.OFFICIAL_ACCOUNT.READ,
@@ -147,13 +162,13 @@ export const PERMISSION_OA_LIST: Record<number, ActionDescription> = {
     actionId: PERMISSION.OFFICIAL_ACCOUNT.UPDATE,
     name: "Update",
     enableType: true,
-    listType: BoAdminCompanyTypeList,
+    listType: BoAdminTypeList,
   },
   [PERMISSION.OFFICIAL_ACCOUNT.DELETE]: {
     actionId: PERMISSION.OFFICIAL_ACCOUNT.DELETE,
     name: "Delete",
     enableType: true,
-    listType: BoAdminCompanyTypeList,
+    listType: BoAdminTypeList,
   },
   [PERMISSION.OFFICIAL_ACCOUNT.SETTING]: {
     actionId: PERMISSION.OFFICIAL_ACCOUNT.SETTING,
@@ -165,7 +180,7 @@ export const PERMISSION_OA_LIST: Record<number, ActionDescription> = {
     actionId: PERMISSION.OFFICIAL_ACCOUNT.START_STOP,
     name: "Start, stop channel",
     enableType: true,
-    listType: BoAdminCompanyTypeList,
+    listType: BoAdminTypeList,
   },
 }
 
@@ -268,35 +283,35 @@ export const PERMISSION_USER_MANAGEMENT: Record<number, ActionDescription> = {
     name: "Read",
     description: "View list users.",
     enableType: true,
-    listType: BoAdminCompanyTypeList
+    listType: BoAdminTypeList
   },
   [PERMISSION.USER_MANAGEMENT.CREATE]: {
     actionId: PERMISSION.USER_MANAGEMENT.CREATE,
     name: "Invite user",
     description: "Invite user join to company system",
     enableType: true,
-    listType: BoAdminCompanyTypeList
+    listType: BoAdminTypeList
   },
   [PERMISSION.USER_MANAGEMENT.UPDATE]: {
     actionId: PERMISSION.USER_MANAGEMENT.UPDATE,
     name: "Update",
     description: "Update user information",
     enableType: true,
-    listType: BoAdminCompanyTypeList
+    listType: BoAdminTypeList
   },
   [PERMISSION.USER_MANAGEMENT.DELETE]: {
     actionId: PERMISSION.USER_MANAGEMENT.DELETE,
     name: "Delete",
     description: "Delete user",
     enableType: true,
-    listType: BoAdminCompanyTypeList
+    listType: BoAdminTypeList
   },
   [PERMISSION.USER_MANAGEMENT.DISABLE]: {
     actionId: PERMISSION.USER_MANAGEMENT.DISABLE,
     name: "Active or disable User",
     description: "",
     enableType: true,
-    listType: BoAdminCompanyTypeList
+    listType: BoAdminTypeList
   },
 }
 

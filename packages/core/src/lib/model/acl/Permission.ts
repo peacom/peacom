@@ -18,6 +18,9 @@ export const PERMISSION = {
     VERIFY_KYC: 73,
     SETTING: 146
   },
+  OWN_COMPANY: {
+    PROFILE: 161
+  },
   CONTACT: {
     READ: 5,
     CREATE: 6,
@@ -235,7 +238,7 @@ export const PERMISSION = {
   }
 }
 
-// MAX= 160
+// MAX= 161
 
 export interface ActionDescription {
   actionId: number
