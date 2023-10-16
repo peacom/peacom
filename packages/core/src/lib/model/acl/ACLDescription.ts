@@ -880,6 +880,11 @@ export const PERMISSION_COMPANY_MEMBER_LIST: Record<number, ActionDescription> =
     name: "Delete",
     enableType: false
   },
+  [PERMISSION.COMPANY_MEMBER.SETTING]: {
+    actionId: PERMISSION.COMPANY_MEMBER.SETTING,
+    name: "Setting",
+    enableType: false
+  },
 }
 
 export const PERMISSION_CRM_PROFILE_LIST: Record<number, ActionDescription> = {
