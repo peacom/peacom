@@ -84,7 +84,8 @@ export enum SEND_MESSAGE_VIA {
 export enum MESSAGE_REACTION {
   REPLY = 1,
   LIKE = 2,
-  SUGGESTION_CLICK = 3
+  SUGGESTION_CLICK = 3,
+  DELETE = 4
 }
 
 export enum SuggestionActionType {
