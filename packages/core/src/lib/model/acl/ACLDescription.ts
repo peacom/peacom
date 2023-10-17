@@ -54,7 +54,7 @@ export const PERMISSION_COMPANY_LIST: Record<number, ActionDescription> = {
   },
   [PERMISSION.COMPANY.TRANSACTION_HISTORY]: {
     actionId: PERMISSION.COMPANY.TRANSACTION_HISTORY,
-    name: "View company topup transaction",
+    name: "Topup transaction",
     enableType: true,
     listType: BoAdminTypeList,
   },

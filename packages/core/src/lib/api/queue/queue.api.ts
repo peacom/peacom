@@ -3,6 +3,7 @@ import {Queue} from "bullmq";
 import {v4} from 'uuid'
 import {QueuePartnerEventParam} from "../../model/partner/PartnerEvent";
 import {PARTNER_MESSAGE_TYPE} from "../../model/partner";
+import {LiveAgentTask, liveAgentTaskStr} from "../../model/queue/crm/LiveAgentQueue";
 
 const toBullQueueMessage = (message: QueueMessageStatus) => {
   const jobId = `${message.applicationInfo.applicationId}_${message.applicationMessageId || message.messageId}_${message.status}_${message.sentTime}`
@@ -36,4 +37,9 @@ export const queueAddPartnerEvent = (queue: Queue, message: QueuePartnerEventPar
       jobId = message.event.messageId
   }
   return queue.add(jobId, message, {jobId, ...(message.jobOpt || {})})
+}
+
+export const queueAddLiveAgentTask = (queue: Queue, message: LiveAgentTask, delayTime: number) => {
+  const id = `Task_${message.conversationId}_${liveAgentTaskStr(message.task)}`
+  return queue.add(id, message, {...(message.jobOpt || {}), jobId: id, delay: delayTime * 60000})
 }
