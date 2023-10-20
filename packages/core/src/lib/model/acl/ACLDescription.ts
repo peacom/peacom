@@ -534,7 +534,7 @@ export const PERMISSION_BILLING_CDR_LIST: Record<number, ActionDescription> = {
   },
   [PERMISSION.BILLING_CDR.DELETE]: {
     actionId: PERMISSION.BILLING_CDR.DELETE,
-    name: "Read",
+    name: "Delete",
     enableType: true
   },
   [PERMISSION.BILLING_CDR.SETTING]: {
