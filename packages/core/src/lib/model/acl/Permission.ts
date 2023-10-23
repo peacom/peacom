@@ -235,6 +235,10 @@ export const PERMISSION = {
     UPDATE: 156,
     DELETE: 157,
     SETTING: 158
+  },
+  PAYMENT: {
+    READ: 162,
+    SETTING: 163
   }
 }
 
