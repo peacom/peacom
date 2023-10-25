@@ -1,0 +1,5 @@
+export enum BROADCAST_STATUS {
+  PENDING,
+  START,
+  DONE
+}

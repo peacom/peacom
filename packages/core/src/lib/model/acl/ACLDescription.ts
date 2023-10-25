@@ -937,3 +937,26 @@ export const PERMISSION_SLA_LIST: Record<number, ActionDescription> = {
     enableType: false
   },
 }
+
+export const PERMISSION_CRM_BROADCAST: Record<number, ActionDescription> = {
+  [PERMISSION.BROADCAST.CREATE]: {
+    actionId: PERMISSION.BROADCAST.CREATE,
+    name: "Create",
+    enableType: false
+  },
+  [PERMISSION.BROADCAST.READ]: {
+    actionId: PERMISSION.BROADCAST.READ,
+    name: "Read",
+    enableType: false
+  },
+  [PERMISSION.BROADCAST.UPDATE]: {
+    actionId: PERMISSION.BROADCAST.UPDATE,
+    name: "Update",
+    enableType: false
+  },
+  [PERMISSION.BROADCAST.DELETE]: {
+    actionId: PERMISSION.BROADCAST.DELETE,
+    name: "Delete",
+    enableType: false
+  },
+}

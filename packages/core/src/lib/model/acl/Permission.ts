@@ -239,11 +239,16 @@ export const PERMISSION = {
   PAYMENT: {
     READ: 162,
     SETTING: 163
+  },
+  BROADCAST: {
+    CREATE: 164,
+    UPDATE: 166,
+    DELETE: 167,
+    READ: 165
   }
 }
 
-// MAX= 161
-
+// MAX= 167
 export interface ActionDescription {
   actionId: number
   name: string
