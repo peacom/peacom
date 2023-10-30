@@ -248,10 +248,13 @@ export const PERMISSION = {
     UPDATE: 166,
     DELETE: 167,
     READ: 165
+  },
+  AUDIT: {
+    READ: 171
   }
 }
 
-// MAX= 170
+// MAX= 171
 export interface ActionDescription {
   actionId: number
   name: string
