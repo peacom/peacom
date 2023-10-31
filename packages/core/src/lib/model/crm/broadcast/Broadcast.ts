@@ -3,3 +3,9 @@ export enum BROADCAST_STATUS {
   START,
   DONE
 }
+
+export enum SCHEDULER_TYPE {
+  NOW,
+  SCHEDULE,
+  REPEAT,
+}
