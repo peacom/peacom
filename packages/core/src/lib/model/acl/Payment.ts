@@ -1,4 +1,4 @@
-import {ActionDescription, PERMISSION} from "@peacom/core";
+import {ActionDescription, PERMISSION} from "./Permission";
 
 export const PERMISSION_PAYMENT: Record<number, ActionDescription> = {
   [PERMISSION.PAYMENT.READ]: {

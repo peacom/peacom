@@ -1,4 +1,4 @@
-import {FileInfo} from "@peacom/core";
+import {FileInfo} from "../../../model/FileInfo"
 
 /**
  * Reference: https://developers.facebook.com/docs/whatsapp/on-premises/reference/messages#interactive-object
