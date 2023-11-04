@@ -68,7 +68,7 @@ export const MICROSERVICE_URL: Record<Application, string> = {
   [Application.APPLE]: process.env['APPLE_INTEGRATION'] || 'http://127.0.0.1:4005/eip/apple',
   [Application.ZALO]: process.env['ZALO_INTEGRATION'] || 'http://127.0.0.1:4003/eip/zalo/bot',
   [Application.ZALO_ZNS]: process.env['ZALO_ZNS_INTEGRATION'] || 'http://127.0.0.1:4003/eip/zalo/zns',
-  [Application.RCS]: process.env['RCS_INTEGRATION'] || 'http://127.0.0.1:4006',
+  [Application.RCS]: process.env['RCS_INTEGRATION'] || 'http://127.0.0.1:4006/eip/google/rcs',
   [Application.VIBER]: process.env['VIBER_BOT_INTEGRATION'] || 'http://127.0.0.1:4001/eip/viber/bot',
   [Application.VIBER_BUSINESS]: process.env['VIBER_BUSINESS_INTEGRATION'] || 'http://127.0.0.1:4001/eip/viber/business',
   [Application.TELEGRAM]: process.env['TELEGRAM_INTEGRATION'] || 'http://127.0.0.1:4009',
@@ -79,7 +79,7 @@ export const MICROSERVICE_URL: Record<Application, string> = {
   [Application.GOOGLE_BUSINESS]: process.env['GOOGLE_BUSINESS_INTEGRATION'] || 'http://127.0.0.1:4006/eip/google/business',
 }
 
-export const INTEGRATED_CHANNEL = [Application.APPLE, Application.ZALO, Application.ZALO_ZNS, Application.GOOGLE_BUSINESS]
+export const INTEGRATED_CHANNEL = [Application.APPLE, Application.ZALO, Application.ZALO_ZNS, Application.GOOGLE_BUSINESS, Application.RCS]
 
 export interface ApiReactionParams {
   applicationId: Application;
