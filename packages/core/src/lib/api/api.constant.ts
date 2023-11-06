@@ -44,6 +44,21 @@ export interface ApiCoreHandleResponse {
   conversation?: Conversation
 }
 
+export interface ApiCoreBulkCampaignMessageRequest {
+  uiMessageId: string
+  bulkContactId: number
+  params?: Record<string, unknown>
+  applicationId?: Application
+}
+
+export interface ApiCoreBulkCampaignMessageResponse {
+  id: number
+  status: number
+  createdDate: number
+
+  [key: string]: unknown
+}
+
 export interface ApiChannelMessageParams {
   applicationInfo?: ApplicationInfo
   message: Message

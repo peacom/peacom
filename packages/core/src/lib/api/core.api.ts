@@ -1,4 +1,5 @@
 import {
+  ApiCoreBulkCampaignMessageRequest, ApiCoreBulkCampaignMessageResponse,
   ApiCoreHandleParams,
   ApiCoreHandleResponse,
   ApiCoreLiveAgentParams,
@@ -13,7 +14,8 @@ export enum CORE_API_PATH {
   LIVE_AGENT = "/conversation/live-agent",
   UNSUBSCRIBE = "/unsubscribe",
   SUBSCRIBE = "/subscribe",
-  REACTION = "/message/reaction"
+  REACTION = "/message/reaction",
+  CONVERSATION_MESSAGE = "/bulk-campaign/message"
 }
 
 export const handleCoreMessage = async (CORE_URL: string, params: ApiCoreHandleParams, log: LOG_FUNCTION = null): Promise<ApiCoreHandleResponse> => {
@@ -139,3 +141,27 @@ export const handleReaction = async (
   }
   return JSON.parse(bodyStr);
 };
+
+export const sendBulkCampaignMessage = async (CORE_URL: string, param: ApiCoreBulkCampaignMessageRequest, log: LOG_FUNCTION = null): Promise<ApiCoreBulkCampaignMessageResponse> => {
+  const url = `${CORE_URL}${CORE_API_PATH.CONVERSATION_MESSAGE}`
+  if (log) {
+    log(`CORE BULK CAMPAIGN MESSAGE REQUEST: ${url} - ${JSON.stringify(param)}`)
+  }
+
+  const rs = await fetch(url, {
+    method: "POST",
+    body: JSON.stringify(param),
+    headers: {
+      "content-type": "application/json"
+    }
+  })
+  const bodyStr = await rs.text();
+  if (log) {
+    log(`CORE BULK CAMPAIGN MESSAGE RESPONSE: ${url} - ${bodyStr}`)
+  }
+
+  if (!rs.ok) {
+    throw new FormError(JSON.parse(bodyStr))
+  }
+  return JSON.parse(bodyStr)
+}
