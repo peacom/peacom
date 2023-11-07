@@ -640,7 +640,7 @@ export const PERMISSION_TICKET_LIST: Record<number, ActionDescription> = {
     actionId: PERMISSION.TICKET.TRANSFER,
     name: "Transfer",
     enableType: true,
-    listType: OwnerTypeList
+    listType: CompanyTypeList
   },
 }
 
