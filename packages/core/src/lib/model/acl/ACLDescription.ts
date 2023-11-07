@@ -960,3 +960,12 @@ export const PERMISSION_CRM_BROADCAST: Record<number, ActionDescription> = {
     enableType: false
   },
 }
+
+export const PERMISSION_AUDIT: Record<number, ActionDescription> = {
+  [PERMISSION.AUDIT.READ]: {
+    actionId: PERMISSION.AUDIT.READ,
+    name: "Audit",
+    enableType: true,
+    listType: [AclActionType.OWNER, AclActionType.FULL]
+  },
+}
