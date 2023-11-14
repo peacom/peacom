@@ -165,6 +165,11 @@ export interface RawMessage {
   fileSize?: string | number
   trackingData?: ""
   richCards?: RichCard[]
+  rcsRichCardsOpts?: {
+    type: 'STANDALONE' | 'CAROUSEL',
+    orientation?: string,
+    imageAlign?: string,
+  }
   viberRichCardRow?: number
   viberRichCardCol?: number
   fileResolution?: string
