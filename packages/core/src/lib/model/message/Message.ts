@@ -57,6 +57,7 @@ export enum MESSAGE_TYPE {
   FB_WHATSAPP_INTERACTIVE = 'FB_WHATSAPP_INTERACTIVE',
   ZALO_TRANSACTION_MESSAGE = 'ZALO_TRANSACTION_MESSAGE',
   ZALO_PROMOTION_MESSAGE = 'ZALO_PROMOTION_MESSAGE',
+  PRODUCT_LIST = 'PRODUCT_LIST'
 }
 
 export const GENERAL_MESSAGE = [MESSAGE_TYPE.TEXT, MESSAGE_TYPE.RICH_CARD, MESSAGE_TYPE.VIDEO, MESSAGE_TYPE.PICTURE, MESSAGE_TYPE.FILE]
@@ -165,6 +166,11 @@ export interface RawMessage {
   fileSize?: string | number
   trackingData?: ""
   richCards?: RichCard[]
+  rcsRichCardsOpts?: {
+    type: 'STANDALONE' | 'CAROUSEL',
+    orientation?: string,
+    imageAlign?: string,
+  }
   viberRichCardRow?: number
   viberRichCardCol?: number
   fileResolution?: string
