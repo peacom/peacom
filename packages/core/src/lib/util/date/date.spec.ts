@@ -3,7 +3,7 @@ import {
   addHours, addMonths, endLastMonth,
   endOfDate, endOfHour, endOfMonth,
   endOfWeek,
-  formatDateTimeTZ,
+  formatDateTimeTZ, formatTimeTZ,
   getDate, getListHour, startLastMonth, startOfDate, startOfHour,
   startOfMonth,
   startOfWeek
@@ -58,4 +58,8 @@ describe('date.util', () => {
     const startTime = startOfDate(addHours(new Date(), -25), DEFAULT_TIME_ZONE)
     console.log(getListHour(startTime, new Date()))
   })
+  it("formatTime", () => {
+    const departureDatetime = new Date("2023-03-23T08:00:00Z");
+    console.log(formatTimeTZ(departureDatetime, DEFAULT_TIME_ZONE, "HH:mm"));
+  });
 });
