@@ -19,6 +19,12 @@ export class FormError extends HttpError {
   }
 }
 
+const SYSTEM_ERROR = Object.freeze(["EACCES", "EPERM"]);
+
+export function isSystemError(err: any) {
+  return err && err.code && SYSTEM_ERROR.indexOf(err.code) >= 0;
+}
+
 export function badRequest(name: string, code: string, message: string) {
   return new FormError(new FieldError(name, code, message));
 }
