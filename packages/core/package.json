@@ -1,16 +1,16 @@
 {
   "name": "@peacom/core",
-  "version": "0.0.200",
+  "version": "0.0.201",
   "type": "commonjs",
   "dependencies": {
     "@aws-sdk/client-s3": "^3.441.0",
     "@aws-sdk/s3-request-presigner": "^3.441.0",
-    "bullmq": "^4.12.8",
+    "bullmq": "^4.14.2",
     "google-libphonenumber": "^3.2.33",
     "mime-types": "^2.1.35",
     "moment": "^2.29.4",
     "moment-timezone": "^0.5.43",
-    "uuid": "^9.0.0",
+    "uuid": "^9.0.1",
     "mustache": "^4.2.0",
     "chroma-js": "^2.4.2"
   },
