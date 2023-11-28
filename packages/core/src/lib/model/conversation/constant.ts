@@ -2,7 +2,7 @@
 // AUTO ==> UNSUBSCRIBED
 // REQUEST ==> UNSUBSCRIBED
 
-import { SuggestionActionType } from "../message"
+import {SuggestionActionType} from "../message"
 
 // JOINED ==> UNSUBSCRIBED
 export enum LIVE_AGENT_STATUS {
@@ -46,4 +46,9 @@ export const LIVE_AGENT_REQUEST_POSTBACK_DATA = {
   [SuggestionActionType.LIVE_AGENT_REQUEST]: "LIVE_AGENT_REQUEST",
   [SuggestionActionType.LIVE_AGENT_REQUEST_EN]: "LIVE_AGENT_REQUEST",
   [SuggestionActionType.LIVE_AGENT_REQUEST_VN]: "LIEN_HE_HO_TRO",
+}
+
+export enum CONVERSATION_BILLING_EVENT {
+  START,
+  EXTEND
 }
