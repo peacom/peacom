@@ -251,10 +251,16 @@ export const PERMISSION = {
   },
   AUDIT: {
     READ: 171
-  }
+  },
+  ORDER: {
+    READ: 172,
+    CREATE: 173,
+    UPDATE: 174,
+    DELETE: 175
+  },
 }
 
-// MAX= 171
+// MAX= 175
 export interface ActionDescription {
   actionId: number
   name: string
