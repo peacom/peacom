@@ -969,3 +969,26 @@ export const PERMISSION_AUDIT: Record<number, ActionDescription> = {
     listType: [AclActionType.OWNER, AclActionType.FULL]
   },
 }
+
+export const PERMISSION_CRM_ORDER: Record<number, ActionDescription> = {
+  [PERMISSION.ORDER.CREATE]: {
+    actionId: PERMISSION.ORDER.CREATE,
+    name: "Create",
+    enableType: false
+  },
+  [PERMISSION.ORDER.READ]: {
+    actionId: PERMISSION.ORDER.READ,
+    name: "Read",
+    enableType: false
+  },
+  [PERMISSION.ORDER.UPDATE]: {
+    actionId: PERMISSION.ORDER.UPDATE,
+    name: "Update",
+    enableType: false
+  },
+  [PERMISSION.ORDER.DELETE]: {
+    actionId: PERMISSION.ORDER.DELETE,
+    name: "Delete",
+    enableType: false
+  },
+}

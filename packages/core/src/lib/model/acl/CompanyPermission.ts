@@ -126,5 +126,10 @@ export const LIST_MASTER_COMPANY_PERMISSION = [
   {permission: PERMISSION.BROADCAST.READ, type: AclActionType.FULL},
   {permission: PERMISSION.BROADCAST.CREATE, type: AclActionType.FULL},
   {permission: PERMISSION.BROADCAST.UPDATE, type: AclActionType.FULL},
-  {permission: PERMISSION.BROADCAST.DELETE, type: AclActionType.FULL}
+  {permission: PERMISSION.BROADCAST.DELETE, type: AclActionType.FULL},
+  /* ORDER */
+  {permission: PERMISSION.ORDER.CREATE, type: AclActionType.FULL},
+  {permission: PERMISSION.ORDER.READ, type: AclActionType.FULL},
+  {permission: PERMISSION.ORDER.UPDATE, type: AclActionType.FULL},
+  {permission: PERMISSION.ORDER.DELETE, type: AclActionType.FULL},
 ];
