@@ -184,7 +184,8 @@ export const PERMISSION = {
     READ: 117,
     CREATE: 118,
     UPDATE: 119,
-    DELETE: 120
+    DELETE: 120,
+    SETTING: 176,
   },
   INVOICE: {
     READ: 121,
@@ -260,7 +261,7 @@ export const PERMISSION = {
   },
 }
 
-// MAX= 175
+// MAX= 176
 export interface ActionDescription {
   actionId: number
   name: string

@@ -734,6 +734,11 @@ export const PERMISSION_PRODUCT_LIST: Record<number, ActionDescription> = {
     name: "Delete",
     enableType: false
   },
+  [PERMISSION.PRODUCT.SETTING]: {
+    actionId: PERMISSION.PRODUCT.SETTING,
+    name: "Setting",
+    enableType: false
+  },
 }
 
 export const PERMISSION_PRODUCT_CATEGORY_LIST: Record<number, ActionDescription> = {
