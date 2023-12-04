@@ -16,7 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@peacom/core": ["packages/core/src/index.ts"],
-      "@peacom/mobx": ["mobx/src/index.ts"],
+      "@peacom/mobx": ["packages/mobx/src/index.ts"],
       "@peacom/model": ["packages/model/src/index.ts"],
       "@peacom/rn": ["rn/src/index.ts"]
     }

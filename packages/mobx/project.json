@@ -1,17 +1,17 @@
 {
   "name": "mobx",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "mobx/src",
+  "sourceRoot": "packages/mobx/src",
   "projectType": "library",
   "targets": {
     "build": {
       "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/mobx",
-        "main": "mobx/src/index.ts",
-        "tsConfig": "mobx/tsconfig.lib.json",
-        "assets": ["mobx/*.md"]
+        "outputPath": "dist/packages/mobx",
+        "main": "packages/mobx/src/index.ts",
+        "tsConfig": "packages/mobx/tsconfig.lib.json",
+        "assets": ["packages/mobx/*.md"]
       }
     },
     "publish": {
@@ -22,14 +22,14 @@
       "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["mobx/**/*.ts", "mobx/package.json"]
+        "lintFilePatterns": ["packages/mobx/**/*.ts", "packages/mobx/package.json"]
       }
     },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "mobx/jest.config.ts"
+        "jestConfig": "packages/mobx/jest.config.ts"
       }
     }
   },

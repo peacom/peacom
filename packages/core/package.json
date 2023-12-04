@@ -3,9 +3,9 @@
   "version": "0.0.205",
   "type": "commonjs",
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.441.0",
-    "@aws-sdk/s3-request-presigner": "^3.441.0",
-    "bullmq": "^4.14.2",
+    "@aws-sdk/client-s3": "^3.465.0",
+    "@aws-sdk/s3-request-presigner": "^3.465.0",
+    "bullmq": "^4.14.4",
     "google-libphonenumber": "^3.2.33",
     "mime-types": "^2.1.35",
     "moment": "^2.29.4",
@@ -15,12 +15,12 @@
     "chroma-js": "^2.4.2"
   },
   "devDependencies": {
-    "@types/google-libphonenumber": "^7.4.23",
-    "@types/mime-types": "^2.1.1",
-    "@types/node": "^20.3.1",
-    "@types/mustache": "^4.2.2",
-    "@types/uuid": "^9.0.1",
-    "dotenv": "^16.1.4",
-    "@types/chroma-js": "^2.4.2"
+    "@types/google-libphonenumber": "^7.4.30",
+    "@types/mime-types": "^2.1.4",
+    "@types/node": "^20.10.3",
+    "@types/mustache": "^4.2.5",
+    "@types/uuid": "^9.0.7",
+    "dotenv": "^16.3.1",
+    "@types/chroma-js": "^2.4.3"
   }
 }
