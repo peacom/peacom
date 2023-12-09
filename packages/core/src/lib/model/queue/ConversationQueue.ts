@@ -1,4 +1,4 @@
-import {Application, applicationStr} from "../Application";
+import {Application, applicationStr, PARTNER} from "../Application";
 
 /**
  * Define QUEUE by partner and service, for guarantee the limit rate
@@ -19,10 +19,15 @@ export enum CONVERSATION_QUEUE {
   WHATSAPP_IN = "WHATSAPP_IN",
   WHATSAPP_OUT = "WHATSAPP_OUT",
   GOOGLE_BUSINESS_IN = "GOOGLE_BUSINESS_IN",
-  GOOGLE_BUSINESS_OUT = "GOOGLE_BUSINESS_OUT"
+  GOOGLE_BUSINESS_OUT = "GOOGLE_BUSINESS_OUT",
+  PEACOM_IN = "PEACOM_IN",
+  PEACOM_OUT = "PEACOM_OUT"
 }
 
-export const getApplicationQueueOutName = (applicationId: Application) => {
+export const getApplicationConversationQueueOutName = (applicationId: Application, partnerId: PARTNER | null = null) => {
+  if (partnerId === PARTNER.PEACOM) {
+    return CONVERSATION_QUEUE.PEACOM_OUT
+  }
   switch (applicationId) {
     case Application.APPLE:
       return CONVERSATION_QUEUE.APPLE_OUT
