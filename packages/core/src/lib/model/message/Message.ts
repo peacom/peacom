@@ -96,7 +96,9 @@ export enum SuggestionActionType {
   LIVE_AGENT_REQUEST = "liveAgent",
   CALENDAR = "CalendarEventAction",
   LIVE_AGENT_REQUEST_VN = "liveAgentVN",
-  LIVE_AGENT_REQUEST_EN = "liveAgentEN"
+  LIVE_AGENT_REQUEST_EN = "liveAgentEN",
+  VIEW_LOCATION = 'VIEW_LOCATION',
+  SHARE_LOCATION = 'SHARE_LOCATION'
 }
 
 export const isLiveAgentRequestAction = (action?: SuggestionActionType | null) => {

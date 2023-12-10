@@ -1,0 +1,26 @@
+export const RCS_MAX_RICH_CARD = 10
+export const RCS_MIN_RICH_CARD = 2
+export const RCS_STANDALONE_RICH_CARD_LENGTH = 1
+
+export enum RcsRichCardType {
+  STANDALONE = "STANDALONE",
+  CAROUSEL = "CAROUSEL",
+}
+
+export enum RcsRichCardOrientation {
+  UNSPECIFIED = "CARD_ORIENTATION_UNSPECIFIED",
+  HORIZONTAL = "HORIZONTAL",
+  VERTICAL = "VERTICAL",
+}
+
+export enum RcsRichCardImageAlign {
+  UNSPECIFIED = "THUMBNAIL_IMAGE_ALIGNMENT_UNSPECIFIED",
+  LEFT = "LEFT",
+  RIGHT = "RIGHT",
+}
+
+export enum RcsCardWidth {
+  CARD_WIDTH_UNSPECIFIED = 'CARD_WIDTH_UNSPECIFIED',
+  SMALL = 'SMALL',
+  MEDIUM = 'MEDIUM'
+}
