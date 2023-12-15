@@ -14,8 +14,8 @@ export class FormError extends HttpError {
   errors: Array<FieldError>
 
   constructor(_errors: FieldError | Array<FieldError>) {
-    super(HTTP_ERROR.BAD_REQUEST, 'Bad request');
-    this.errors = Array.isArray(_errors) ? [..._errors] : [_errors];
+    super(HTTP_ERROR.BAD_REQUEST, (Array.isArray(_errors) ? _errors[0].message : _errors?.['message']) || 'Bad request');
+    this.errors = Array.isArray(_errors) ? _errors : [_errors];
   }
 }
 
