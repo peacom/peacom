@@ -1,5 +1,6 @@
 export enum PURPOSE_PROPERTY {
   CUSTOMER = 1,
+  PRODUCT = 2
 }
 
 
