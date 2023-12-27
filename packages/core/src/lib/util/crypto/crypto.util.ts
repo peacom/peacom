@@ -40,10 +40,12 @@ export const decryptPrivate = (
 
 
 
-const ALGORITHM = "aes-256-ctr";
+const ALGORITHM = "aes-256-cbc";
 
-export const encryptAESStr = (text: string | number, key = null) => {
-  const iv = randomBytes(16);
+export const encryptAESStr = (text: string | number, key: string | null = null) => {
+  // const iv = randomBytes(16);
+  // const iv = Buffer.from([1, 9, 8, 3, 0, 3, 0, 2, 1, 9, 8, 6, 0, 8, 0, 2])
+  const iv = Buffer.from('peacom1234567810')
 
   const cipher = createCipheriv(
     ALGORITHM,

@@ -1,4 +1,4 @@
-import { decryptAESStr, decryptPrivate, encryptAESStr, encryptPublic } from "./crypto.util";
+import {decryptAESStr, decryptPrivate, encryptAESStr, encryptPublic} from "./crypto.util";
 
 
 describe('string.util', () => {
@@ -12,12 +12,13 @@ describe('string.util', () => {
   })
 
   it("encryptAESStr", async () => {
-    console.log(encryptAESStr(99999999999));
+    console.log(encryptAESStr(434234, "12345678123456781234567812345678"));
+    console.log(encryptAESStr(434234, "23452345234523452345234523452345"));
   });
   it("decryptAESStr", async () => {
     console.log(
       decryptAESStr(
-        "17a0ac9bebc40fb3603f2422e3f594d752d781c976c2de3479906b"
+        "706561636f6d3132333435363738313060ec4bd06f28f85d41d361552184496c"
       )
     );
   });
