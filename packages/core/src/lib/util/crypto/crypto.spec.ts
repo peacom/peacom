@@ -18,7 +18,7 @@ describe('string.util', () => {
   it("decryptAESStr", async () => {
     console.log(
       decryptAESStr(
-        "706561636f6d3132333435363738313060ec4bd06f28f85d41d361552184496c"
+        "1083d962b43e06a7cd9db9e65ec1532b410ae4080594"
       )
     );
   });
