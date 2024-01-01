@@ -1,6 +1,6 @@
 import {Application, PARTNER} from "../Application";
 
-export const BULK_PROCESS_QUEUE = 'BULK_PROCESS_QUEUE'
+export const BULK_BROADCAST_JOB_QUEUE = 'BULK_BROADCAST_JOB_QUEUE'
 
 /**
  * Define QUEUE by partner and service, for guarantee the limit rate
