@@ -144,6 +144,12 @@ export const PERMISSION_BOT_LIST: Record<number, ActionDescription> = {
     enableType: true,
     listType: BoAdminTypeList,
   },
+  [PERMISSION.BOT.SYNC_CONVERSATION]: {
+    actionId: PERMISSION.BOT.SYNC_CONVERSATION,
+    name: "Sync bot conversation (messages, contacts)",
+    enableType: true,
+    listType: CompanyTypeList,
+  }
 }
 
 export const PERMISSION_OA_LIST: Record<number, ActionDescription> = {

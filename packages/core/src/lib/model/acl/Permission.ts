@@ -16,10 +16,10 @@ export const PERMISSION = {
     EDIT_BILLING: 24,
     TRANSACTION_HISTORY: 25,
     VERIFY_KYC: 73,
-    SETTING: 146
+    SETTING: 146,
   },
   OWN_COMPANY: {
-    PROFILE: 161
+    PROFILE: 161,
   },
   CONTACT: {
     READ: 5,
@@ -33,7 +33,8 @@ export const PERMISSION = {
     UPDATE: 17,
     DELETE: 18,
     START_STOP: 44,
-    SETTING: 159
+    SETTING: 159,
+    SYNC_CONVERSATION: 177,
   },
   OFFICIAL_ACCOUNT: {
     READ: 19,
@@ -41,7 +42,7 @@ export const PERMISSION = {
     UPDATE: 21,
     DELETE: 22,
     START_STOP: 39,
-    SETTING: 160
+    SETTING: 160,
   },
   EXTERNAL_AIRLINE: {
     READ: 26, // NOT USE NOW
@@ -117,7 +118,7 @@ export const PERMISSION = {
     READ: 78, // NOT USE, because everyone can show this page
     CREATE: 79,
     UPDATE: 80,
-    DELETE: 81
+    DELETE: 81,
   },
   DASHBOARD: {
     REPORT_BALANCE_CHANNEL: 49, // Show company balance, and detail cost of each channel
@@ -127,32 +128,32 @@ export const PERMISSION = {
   },
   SYSTEM_SETTING: {
     RESET: 84,
-    LADING_PAGE: 112
+    LADING_PAGE: 112,
   },
   ONBOARDING_MANAGEMENT: {
     // Not use now for onboarding
     READ: 85,
     BACK_OFFICE_REVIEW: 86,
-    BACK_OFFICE_APPROVE: 87
+    BACK_OFFICE_APPROVE: 87,
   },
   BILLING_CDR: {
     READ: 88,
     CREATE: 89,
     DELETE: 90,
-    SETTING: 145
+    SETTING: 145,
   },
   API_KEY: {
     READ: 91,
     CREATE: 92,
     UPDATE: 93,
-    DELETE: 94
+    DELETE: 94,
   },
   CUSTOMER: {
     READ: 95,
     CREATE: 96,
     UPDATE: 97,
     DELETE: 98,
-    SETTING: 111
+    SETTING: 111,
   },
   TICKET: {
     READ: 99,
@@ -160,25 +161,25 @@ export const PERMISSION = {
     UPDATE: 101,
     DELETE: 102,
     ASSIGN: 147,
-    TRANSFER: 148
+    TRANSFER: 148,
   },
   AGENT_GROUP: {
     READ: 103,
     CREATE: 104,
     UPDATE: 105,
-    DELETE: 106
+    DELETE: 106,
   },
   TICKET_CATEGORY: {
     READ: 107,
     CREATE: 108,
     UPDATE: 109,
-    DELETE: 110
+    DELETE: 110,
   },
   SEGMENT: {
     READ: 113,
     CREATE: 114,
     UPDATE: 115,
-    DELETE: 116
+    DELETE: 116,
   },
   PRODUCT: {
     READ: 117,
@@ -191,82 +192,82 @@ export const PERMISSION = {
     READ: 121,
     CREATE: 122,
     UPDATE: 123,
-    DELETE: 124
+    DELETE: 124,
   },
   BRANCH: {
     READ: 125,
     CREATE: 126,
     UPDATE: 127,
-    DELETE: 128
+    DELETE: 128,
   },
   REPLY_TEMPLATE: {
     READ: 129,
     CREATE: 130,
     UPDATE: 131,
-    DELETE: 132
+    DELETE: 132,
   },
   COMPANY_ROLE: {
     READ: 133,
     CREATE: 134,
     UPDATE: 135,
-    DELETE: 136
+    DELETE: 136,
   },
   PRODUCT_CATEGORY: {
     READ: 137,
     CREATE: 138,
     UPDATE: 139,
-    DELETE: 140
+    DELETE: 140,
   },
   COMPANY_MEMBER: {
     READ: 141,
     CREATE: 142,
     UPDATE: 143,
     DELETE: 144,
-    SETTING: 153
+    SETTING: 153,
   },
   CRM_PROFILE: {
     READ: 149,
     CREATE: 150,
     UPDATE: 151,
-    DELETE: 152
+    DELETE: 152,
   },
   SLA: {
     READ: 154,
     CREATE: 155,
     UPDATE: 156,
     DELETE: 157,
-    SETTING: 158
+    SETTING: 158,
   },
   PAYMENT: {
     READ: 162,
     SETTING: 163,
     CREATE: 168,
     UPDATE: 169,
-    DELETE: 170
+    DELETE: 170,
   },
   BROADCAST: {
     CREATE: 164,
     UPDATE: 166,
     DELETE: 167,
-    READ: 165
+    READ: 165,
   },
   AUDIT: {
-    READ: 171
+    READ: 171,
   },
   ORDER: {
     READ: 172,
     CREATE: 173,
     UPDATE: 174,
-    DELETE: 175
+    DELETE: 175,
   },
-}
+};
 
-// MAX= 176
+// MAX= 177
 export interface ActionDescription {
-  actionId: number
-  name: string
-  enableType: boolean
-  maxType?: number
-  listType?: Array<AclActionType>
-  description?: string
+  actionId: number;
+  name: string;
+  enableType: boolean;
+  maxType?: number;
+  listType?: Array<AclActionType>;
+  description?: string;
 }
