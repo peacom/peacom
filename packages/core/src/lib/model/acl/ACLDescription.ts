@@ -186,6 +186,12 @@ export const PERMISSION_OA_LIST: Record<number, ActionDescription> = {
 }
 
 export const PERMISSION_AIRLINE_LIST: Record<number, ActionDescription> = {
+  [PERMISSION.AIRLINE_DASHBOARD.GENERAL]: {
+    actionId: PERMISSION.AIRLINE_DASHBOARD.GENERAL,
+    name: "Dashboard General",
+    description: "View Dashboard General",
+    enableType: false
+  },
   [PERMISSION.INTERNAL_AIRLINE.READ]: {
     actionId: PERMISSION.INTERNAL_AIRLINE.READ,
     name: "Read",

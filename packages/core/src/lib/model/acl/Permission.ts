@@ -43,8 +43,8 @@ export const PERMISSION = {
     START_STOP: 39,
     SETTING: 160
   },
-  EXTERNAL_AIRLINE: {
-    READ: 26, // NOT USE NOW
+  AIRLINE_DASHBOARD: {
+    GENERAL: 26,
   },
   INTERNAL_AIRLINE: {
     READ: 27,
