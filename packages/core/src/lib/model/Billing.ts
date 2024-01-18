@@ -15,3 +15,10 @@ export enum TARIFF_TYPE {
   PER_CONVERSATION_MESSAGE,
   PER_CONVERSATION
 }
+
+
+export enum SETTING_TIME_TARIFF {
+  HOUR = 1,
+  DAY = 2,
+  MONTH = 3
+}
