@@ -21,7 +21,9 @@ export enum CONVERSATION_QUEUE {
   GOOGLE_BUSINESS_IN = "GOOGLE_BUSINESS_IN",
   GOOGLE_BUSINESS_OUT = "GOOGLE_BUSINESS_OUT",
   PEACOM_IN = "PEACOM_IN",
-  PEACOM_OUT = "PEACOM_OUT"
+  PEACOM_OUT = "PEACOM_OUT",
+  LIVE_CHAT_IN = "LIVE_CHAT_IN",
+  LIVE_CHAT_OUT = "LIVE_CHAT_OUT",
 }
 
 export const getApplicationConversationQueueOutName = (applicationId: Application, partnerId: PARTNER | null = null) => {
@@ -45,6 +47,8 @@ export const getApplicationConversationQueueOutName = (applicationId: Applicatio
       return CONVERSATION_QUEUE.TELEGRAM_OUT;
     case Application.ZALO:
       return CONVERSATION_QUEUE.ZALO_OA_OUT
+    case Application.LIVE_CHAT:
+      return CONVERSATION_QUEUE.LIVE_CHAT_OUT
     default:
       throw new Error(`Not support conversation for application ${applicationStr(applicationId)}`)
   }

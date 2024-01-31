@@ -10,7 +10,8 @@ export enum Application {
   VIBER_BUSINESS = 9, // Not use now
   VIBER_BOT = 10, // Not use now
   WHATSAPP = 11,
-  GOOGLE_BUSINESS = 12
+  GOOGLE_BUSINESS = 12,
+  LIVE_CHAT = 14
 }
 
 export const applicationStr = (id?: number) => {
@@ -39,6 +40,8 @@ export const applicationStr = (id?: number) => {
       return "Zalo ZNS"
     case Application.WHATSAPP:
       return "WHATSAPP"
+    case Application.LIVE_CHAT:
+      return "LIVE CHAT"
     default:
       return `${id || ""}`
   }
@@ -58,7 +61,8 @@ export enum PARTNER {
   CM = 11,
   BRAND_SMS = 12,
   VIET_GUY = 13,
-  INFO_BIP
+  INFO_BIP = 14,
+  CHATWOOT = 15
 }
 
 export const partnerStr = (id: PARTNER | null) => {
@@ -89,13 +93,15 @@ export const partnerStr = (id: PARTNER | null) => {
       return "VIET GUY"
     case PARTNER.INFO_BIP:
       return "INFOBIP"
+    case PARTNER.CHATWOOT:
+      return "CHATWOOT"
     default:
       return ""
   }
 }
 
 export const isBotApplication = (appId: string | number) => {
-  return [Application.VIBER_BOT, Application.APPLE, Application.TELEGRAM, Application.FACEBOOK, Application.ZALO, Application.GOOGLE_BUSINESS].includes(Number(appId))
+  return [Application.VIBER_BOT, Application.APPLE, Application.TELEGRAM, Application.FACEBOOK, Application.ZALO, Application.GOOGLE_BUSINESS, Application.LIVE_CHAT].includes(Number(appId))
 }
 
 export const isOAApplication = (appId: string | number) => {

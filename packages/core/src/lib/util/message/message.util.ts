@@ -1,4 +1,4 @@
-import {ContactMessage, FileInfo, Message, MESSAGE_TYPE, RawMessage, RawMessageSuggestion} from "../../model";
+import {ContactMessage, FileInfo, MESSAGE_TYPE, RawMessage, RawMessageSuggestion} from "../../model";
 
 interface ImageMessage {
   imageUrl: string,
