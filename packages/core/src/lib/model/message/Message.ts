@@ -280,4 +280,5 @@ export interface ArticlesMessageItem {
 export interface ChoiceMessageItem {
   title: string;
   value: unknown;
+  nextMessage?: unknown;
 }
