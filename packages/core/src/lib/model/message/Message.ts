@@ -279,5 +279,5 @@ export interface ArticlesMessageItem {
 
 export interface ChoiceMessageItem {
   title: string;
-  vale: unknown;
+  value: unknown;
 }
