@@ -260,9 +260,20 @@ export const PERMISSION = {
     UPDATE: 174,
     DELETE: 175,
   },
+  FUNCTION_TARIFF: {
+    READ: 178,
+    CREATE: 179,
+    DELETE: 180,
+  },
+  COMPANY_FUNCTION: {
+    READ: 181,
+    CREATE: 182,
+    UPDATE: 183,
+    DELETE: 184,
+  },
 };
 
-// MAX= 177
+// MAX= 184
 export interface ActionDescription {
   actionId: number;
   name: string;

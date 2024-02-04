@@ -132,4 +132,7 @@ export const LIST_MASTER_COMPANY_PERMISSION = [
   {permission: PERMISSION.ORDER.READ, type: AclActionType.FULL},
   {permission: PERMISSION.ORDER.UPDATE, type: AclActionType.FULL},
   {permission: PERMISSION.ORDER.DELETE, type: AclActionType.FULL},
+  /* COMPANY_FUNCTION */
+  {permission: PERMISSION.COMPANY_FUNCTION.READ, type: AclActionType.FULL},
+
 ];

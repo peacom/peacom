@@ -1009,3 +1009,44 @@ export const PERMISSION_CRM_ORDER: Record<number, ActionDescription> = {
     enableType: false
   },
 }
+
+export const PERMISSION_FUNCTION_TARIFF: Record<number, ActionDescription> = {
+  [PERMISSION.FUNCTION_TARIFF.CREATE]: {
+    actionId: PERMISSION.FUNCTION_TARIFF.CREATE,
+    name: "Create",
+    enableType: false
+  },
+  [PERMISSION.FUNCTION_TARIFF.READ]: {
+    actionId: PERMISSION.FUNCTION_TARIFF.READ,
+    name: "Read",
+    enableType: false
+  },
+  [PERMISSION.FUNCTION_TARIFF.DELETE]: {
+    actionId: PERMISSION.FUNCTION_TARIFF.DELETE,
+    name: "Delete",
+    enableType: false
+  },
+}
+
+export const PERMISSION_COMPANY_FUNCTION: Record<number, ActionDescription> = {
+  [PERMISSION.COMPANY_FUNCTION.CREATE]: {
+    actionId: PERMISSION.COMPANY_FUNCTION.CREATE,
+    name: "Create",
+    enableType: false
+  },
+  [PERMISSION.COMPANY_FUNCTION.READ]: {
+    actionId: PERMISSION.COMPANY_FUNCTION.READ,
+    name: "Read",
+    enableType: false
+  },
+  [PERMISSION.COMPANY_FUNCTION.UPDATE]: {
+    actionId: PERMISSION.COMPANY_FUNCTION.UPDATE,
+    name: "Update",
+    enableType: false
+  },
+  [PERMISSION.COMPANY_FUNCTION.DELETE]: {
+    actionId: PERMISSION.COMPANY_FUNCTION.DELETE,
+    name: "Delete",
+    enableType: false
+  },
+}
