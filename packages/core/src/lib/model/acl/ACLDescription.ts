@@ -429,6 +429,11 @@ export const PERMISSION_CHAT_LIST: Record<number, ActionDescription> = {
     name: "Join or Leave conversation",
     enableType: false
   },
+  [PERMISSION.CHAT.DASHBOARD]: {
+    actionId: PERMISSION.CHAT.DASHBOARD,
+    name: "View summary about conversation",
+    enableType: false
+  },
 }
 
 export const PERMISSION_COMPLIANCE_LIST: Record<number, ActionDescription> = {
@@ -653,6 +658,11 @@ export const PERMISSION_TICKET_LIST: Record<number, ActionDescription> = {
     name: "Transfer",
     enableType: true,
     listType: CompanyTypeList
+  },
+  [PERMISSION.TICKET.DASHBOARD]: {
+    actionId: PERMISSION.TICKET.DASHBOARD,
+    name: "Summary of ticket, and agent",
+    enableType: false
   },
 }
 

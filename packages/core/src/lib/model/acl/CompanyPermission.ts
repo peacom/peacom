@@ -80,6 +80,7 @@ export const LIST_MASTER_COMPANY_PERMISSION = [
   {permission: PERMISSION.TICKET.DELETE, type: AclActionType.FULL},
   {permission: PERMISSION.TICKET.ASSIGN, type: AclActionType.FULL},
   {permission: PERMISSION.TICKET.TRANSFER, type: AclActionType.FULL},
+  {permission: PERMISSION.TICKET.DASHBOARD, type: AclActionType.FULL},
   {permission: PERMISSION.AGENT_GROUP.CREATE, type: AclActionType.FULL},
   {permission: PERMISSION.AGENT_GROUP.READ, type: AclActionType.FULL},
   {permission: PERMISSION.AGENT_GROUP.UPDATE, type: AclActionType.FULL},
@@ -108,6 +109,7 @@ export const LIST_MASTER_COMPANY_PERMISSION = [
   {permission: PERMISSION.REPLY_TEMPLATE.READ, type: AclActionType.FULL},
   {permission: PERMISSION.REPLY_TEMPLATE.UPDATE, type: AclActionType.FULL},
   {permission: PERMISSION.REPLY_TEMPLATE.DELETE, type: AclActionType.FULL},
+  /* LEAD */
   {permission: PERMISSION.LEAD.CREATE, type: AclActionType.FULL},
   {permission: PERMISSION.LEAD.READ, type: AclActionType.FULL},
   {permission: PERMISSION.LEAD.UPDATE, type: AclActionType.FULL},
@@ -134,5 +136,8 @@ export const LIST_MASTER_COMPANY_PERMISSION = [
   {permission: PERMISSION.ORDER.DELETE, type: AclActionType.FULL},
   /* COMPANY_FUNCTION */
   {permission: PERMISSION.COMPANY_FUNCTION.READ, type: AclActionType.FULL},
-
+  /* CHAT */
+  {permission: PERMISSION.CHAT.READ, type: AclActionType.FULL},
+  {permission: PERMISSION.CHAT.LIVE_AGENT, type: AclActionType.FULL},
+  {permission: PERMISSION.CHAT.DASHBOARD, type: AclActionType.FULL},
 ];

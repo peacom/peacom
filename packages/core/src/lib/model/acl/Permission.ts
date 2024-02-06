@@ -6,6 +6,8 @@ export enum AclActionType {
   SYSTEM_ADMIN = 5,
 }
 
+// max=186
+
 export const PERMISSION = {
   COMPANY: {
     READ: 1,
@@ -100,7 +102,8 @@ export const PERMISSION = {
   },
   CHAT: {
     READ: 66,
-    LIVE_AGENT: 67, // Join and Leave
+    LIVE_AGENT: 67, // Join and Leave,
+    DASHBOARD: 186
   },
   COMPLIANCE: {
     READ: 68,
@@ -162,6 +165,7 @@ export const PERMISSION = {
     DELETE: 102,
     ASSIGN: 147,
     TRANSFER: 148,
+    DASHBOARD: 185
   },
   AGENT_GROUP: {
     READ: 103,

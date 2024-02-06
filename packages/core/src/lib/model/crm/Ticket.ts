@@ -8,7 +8,8 @@ export enum TICKET_PRIORITY {
 export enum TICKET_STATUS {
   PENDING = 1,
   OPEN = 2,
-  RESOLVE = 3
+  RESOLVE = 3,
+  CLOSE
 }
 
 export enum TICKET_REQUEST_TYPE {
