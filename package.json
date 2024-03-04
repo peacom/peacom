@@ -4,6 +4,7 @@
   "license": "MIT",
   "scripts": {
     "build-core": "npx nx build core",
+    "build-model": "npx nx build model",
     "deploy-core-patch": "node tools/scripts/deploy.js core patch latest",
     "deploy-model-patch": "node tools/scripts/deploy.js model patch latest",
     "deploy-mobx": "node tools/scripts/deploy.js mobx patch latest"

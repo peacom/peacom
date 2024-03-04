@@ -1,5 +1,21 @@
 {
   "name": "@peacom/model",
   "version": "0.0.2",
-  "type": "commonjs"
+  "type": "commonjs",
+  "dependencies": {
+    "google-libphonenumber": "^3.2.34",
+    "mime-types": "^2.1.35",
+    "moment": "^2.30.1",
+    "moment-timezone": "^0.5.45",
+    "uuid": "^9.0.1",
+    "mustache": "^4.2.0"
+  },
+  "devDependencies": {
+    "@types/google-libphonenumber": "^7.4.30",
+    "@types/mime-types": "^2.1.4",
+    "@types/node": "^20.11.24",
+    "@types/mustache": "^4.2.5",
+    "@types/uuid": "^9.0.8",
+    "dotenv": "^16.3.1"
+  }
 }
