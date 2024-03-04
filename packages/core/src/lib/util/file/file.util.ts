@@ -1,4 +1,4 @@
-import {FileInfo} from "../../model/";
+import {FileInfo} from "@peacom/model";
 import * as path from "path";
 import * as fs from "fs";
 import mime = require("mime-types");

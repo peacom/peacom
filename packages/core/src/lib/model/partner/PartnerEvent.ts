@@ -1,7 +1,6 @@
 import {PARTNER_MESSAGE_TYPE} from "./index";
-import {MESSAGE_STATUS, RawMessage} from "../message";
+import {MESSAGE_STATUS, RawMessage, Application} from "@peacom/model";
 import {JobsOptions} from "bullmq";
-import {Application} from "../Application";
 
 export interface PartnerEvent {
   messageId: string // Peacom Message Public ID = Partner Application Message ID

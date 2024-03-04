@@ -1,6 +1,0 @@
-export * from './TemplateMessage'
-export * from './sinch'
-export * from './Message'
-export * from './zalo'
-export * from './infobip'
-export * from './rcs'

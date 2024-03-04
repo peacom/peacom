@@ -7,7 +7,7 @@ import {
   ApiReactionParams,
   LOG_FUNCTION
 } from "./api.constant";
-import {FormError} from "../error/FormError";
+import {FormError} from "@peacom/model";
 
 export enum CORE_API_PATH {
   MESSAGE = "/message",

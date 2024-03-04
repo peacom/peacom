@@ -1,7 +1,5 @@
-import {ApplicationInfo, Message} from "../";
-import {MESSAGE_STATUS} from "../";
 import {JobsOptions} from "bullmq";
-import {Conversation} from "../conversation";
+import {Conversation, ApplicationInfo, Message, MESSAGE_STATUS} from "@peacom/model";
 
 export enum QueueMessageStatusSource {
   LOCAL = 1,

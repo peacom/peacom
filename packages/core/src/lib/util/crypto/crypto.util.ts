@@ -2,7 +2,7 @@ import * as path from "path";
 import * as fs from "fs";
 import * as crypto from 'crypto'
 import * as process from "process";
-import {hasText, leftString, rightString} from "../string.util";
+import {hasText, leftString, rightString} from "@peacom/model";
 import {createCipheriv, createDecipheriv} from "crypto";
 
 let PUBLIC_KEY = ''

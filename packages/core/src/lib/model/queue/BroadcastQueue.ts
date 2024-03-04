@@ -1,4 +1,4 @@
-import {Application, PARTNER} from "../Application";
+import {Application, PARTNER} from "@peacom/model";
 
 export const BULK_BROADCAST_JOB_QUEUE = 'BULK_BROADCAST_JOB_QUEUE'
 

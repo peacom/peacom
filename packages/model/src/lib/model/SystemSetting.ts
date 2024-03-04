@@ -1,6 +1,0 @@
-export enum SYSTEM_SETTING {
-  STORAGE = 'STORAGE',
-  PARTNER_PEACOM_ID = 'PEACOM_PARTNER_ID',
-  PARTNER_MOBIFONE_ID = 'PARTNER_MOBIFONE_ID'
-  // We define more setting here
-}

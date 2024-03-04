@@ -1,4 +1,4 @@
-import {formatDateTimeTZ, FormError} from "@peacom/core";
+import {FormError} from "./FormError";
 import {FieldError} from "./FieldError";
 
 describe('field.error', () => {

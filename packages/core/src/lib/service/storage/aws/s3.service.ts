@@ -9,16 +9,14 @@ import {
   PutObjectRequest
 } from "@aws-sdk/client-s3";
 // eslint-disable-next-line @nx/enforce-module-boundaries
-import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
-import { s3, S3_FOLDERS, S3_INFO, S3_OPTION } from "./constants";
+import {getSignedUrl} from "@aws-sdk/s3-request-presigner";
+import {s3, S3_FOLDERS, S3_INFO, S3_OPTION} from "./constants";
 import {
   filterNonAlphaNumeric,
-  getFileInfoFromLocalFile,
-  getFileInfoFromUrl,
   hasText,
-  rightString
-} from "../../../util";
-import { AwsFileInfo } from "../../../model";
+  rightString, AwsFileInfo
+} from "@peacom/model";
+import {getFileInfoFromLocalFile, getFileInfoFromUrl} from "../../../util";
 
 export const getS3EndPoint = () => {
   if (hasText(S3_OPTION.domain)) {
@@ -30,7 +28,7 @@ export const getS3EndPoint = () => {
 export const getS3Url = (key: string | null | undefined) => `${getS3EndPoint()}/${key}`;
 
 export const uploadLocalFileToS3 = async (
-  { filePath = "" },
+  {filePath = ""},
   folder = S3_FOLDERS.DEFAULT
 ): Promise<AwsFileInfo> => {
   const rs = getFileInfoFromLocalFile(filePath);
@@ -69,7 +67,7 @@ interface FileProp {
   contentType: string;
 }
 
-export const createPreSignedUrl = async ({ fileName, contentType }: FileProp) => {
+export const createPreSignedUrl = async ({fileName, contentType}: FileProp) => {
   const fileInfo = fileName.split(".");
   const type = fileInfo.length > 1 ? fileInfo.pop() : "";
 
@@ -80,13 +78,13 @@ export const createPreSignedUrl = async ({ fileName, contentType }: FileProp) =>
     ContentType: contentType
   });
   return {
-    urlUpload: await getSignedUrl(s3, command, { expiresIn: 3600 }),
+    urlUpload: await getSignedUrl(s3, command, {expiresIn: 3600}),
     urlEndpoint: getS3Url(location)
   };
 };
 
 export const getS3UrlKey = (url: string) => {
-  if(hasText(S3_OPTION.domain) && url.startsWith(S3_OPTION.domain)){
+  if (hasText(S3_OPTION.domain) && url.startsWith(S3_OPTION.domain)) {
     return rightString(
       url,
       url.length -
@@ -144,7 +142,7 @@ interface UploadS3BufferProp extends FileProp {
 }
 
 export const uploadS3Buffer = async (
-  { fileName = "", contentType = "application/octet-stream", data }: UploadS3BufferProp,
+  {fileName = "", contentType = "application/octet-stream", data}: UploadS3BufferProp,
   folder = S3_FOLDERS.TICKET
 ): Promise<AwsFileInfo> => {
   // Setting up S3 upload parameters
@@ -166,7 +164,7 @@ export const uploadS3Buffer = async (
 };
 
 export const uploadS3FromUrl = async (
-  { url = "", mimeType = "", name = "" },
+  {url = "", mimeType = "", name = ""},
   folder = S3_FOLDERS.DEFAULT
 ): Promise<AwsFileInfo> => {
   const data = await fetch(url).then(t => t.arrayBuffer());
@@ -186,7 +184,7 @@ export const uploadS3FromUrl = async (
   };
 };
 
-const isComplete = ({ end, length }: { end: number, length: number }) => end === length - 1;
+const isComplete = ({end, length}: { end: number, length: number }) => end === length - 1;
 
 interface GetObjectRangeProp {
   bucket: string;
@@ -211,7 +209,7 @@ interface DownloadLargeFileKeyProps {
   onError?(err: Error): void;
 }
 
-export const getObjectRange = ({ bucket, key, start, end }: GetObjectRangeProp) => {
+export const getObjectRange = ({bucket, key, start, end}: GetObjectRangeProp) => {
   const command = new GetObjectCommand({
     Bucket: bucket,
     Key: key,
@@ -231,12 +229,12 @@ export const getRangeAndLength = (contentRange: string) => {
   };
 };
 
-export const downloadS3Url = async ({ url, outputFile, onError, chunkSize }: DownloadLargeFileProps) => {
+export const downloadS3Url = async ({url, outputFile, onError, chunkSize}: DownloadLargeFileProps) => {
   const key = getS3UrlKey(url);
-  return downloadS3Key({ key, outputFile, chunkSize, onError });
+  return downloadS3Key({key, outputFile, chunkSize, onError});
 };
 
-export const downloadS3Key = async ({ key, outputFile, onError, chunkSize }: DownloadLargeFileKeyProps) => {
+export const downloadS3Key = async ({key, outputFile, onError, chunkSize}: DownloadLargeFileKeyProps) => {
   const writeStream = fs.createWriteStream(
     outputFile
   ).on("error", (err) => {
@@ -245,15 +243,15 @@ export const downloadS3Key = async ({ key, outputFile, onError, chunkSize }: Dow
     }
   });
 
-  let rangeAndLength = { start: -1, end: -1, length: -1 };
+  let rangeAndLength = {start: -1, end: -1, length: -1};
   try {
     while (!isComplete(rangeAndLength)) {
-      const { end } = rangeAndLength;
-      const nextRange = { start: end + 1, end: end + chunkSize };
+      const {end} = rangeAndLength;
+      const nextRange = {start: end + 1, end: end + chunkSize};
 
       console.log(`Downloading bytes ${nextRange.start} to ${nextRange.end}`);
 
-      const { ContentRange, Body } = await getObjectRange({
+      const {ContentRange, Body} = await getObjectRange({
         bucket: S3_INFO.BUCKET,
         key: key || "",
         ...nextRange
@@ -276,7 +274,7 @@ export const downloadS3Key = async ({ key, outputFile, onError, chunkSize }: Dow
   }
 };
 
-export async function s3RemoveFile({ bucket = S3_INFO.BUCKET, key = "" }) {
+export async function s3RemoveFile({bucket = S3_INFO.BUCKET, key = ""}) {
   const params: DeleteObjectCommandInput = {
     Bucket: bucket,
     Key: key
@@ -284,11 +282,11 @@ export async function s3RemoveFile({ bucket = S3_INFO.BUCKET, key = "" }) {
   return s3.deleteObject(params);
 }
 
-export async function s3RemoveMultipleFile({ bucket = S3_INFO.BUCKET, keys = [] as Array<string> }) {
+export async function s3RemoveMultipleFile({bucket = S3_INFO.BUCKET, keys = [] as Array<string>}) {
   const command: DeleteObjectsCommand = new DeleteObjectsCommand({
     Bucket: bucket,
     Delete: {
-      Objects: keys.map(t => ({ Key: t }))
+      Objects: keys.map(t => ({Key: t}))
     }
   });
   return s3.send(command);

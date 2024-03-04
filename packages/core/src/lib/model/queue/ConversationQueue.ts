@@ -1,4 +1,4 @@
-import {Application, applicationStr, PARTNER} from "../Application";
+import {Application, applicationStr, PARTNER} from "@peacom/model";
 
 /**
  * Define QUEUE by partner and service, for guarantee the limit rate
