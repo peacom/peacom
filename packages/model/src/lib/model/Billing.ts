@@ -1,0 +1,24 @@
+export enum BILLING_STATUS {
+  NONE = 0,
+  PENDING = 1,
+  BILLED = 2,
+  CANCEL = 3
+}
+
+export enum COMPANY_BILLING_TYPE {
+  POSTPAID = 1,
+  PREPAID = 2
+}
+
+export enum TARIFF_TYPE {
+  PER_BROADCAST_MESSAGE = 1,
+  PER_CONVERSATION_MESSAGE,
+  PER_CONVERSATION
+}
+
+
+export enum SETTING_TIME_TARIFF {
+  HOUR = 1,
+  DAY = 2,
+  MONTH = 3
+}
