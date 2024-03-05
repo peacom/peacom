@@ -663,6 +663,18 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
+"@peacom/model@2.0.6":
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/@peacom/model/-/model-2.0.6.tgz#5c86256a2447c3197cc3dd500f1c571debab6ed8"
+  integrity sha512-fXgiko4VYil8b5TA0Jo4xAWDrSvr10/QQhY8jgPHdDF/TnFTJ0NiwQ3TWiw2WEKO0UMorr4M6Vv3brEZg2YCMg==
+  dependencies:
+    google-libphonenumber "^3.2.34"
+    mime-types "^2.1.35"
+    moment "^2.30.1"
+    moment-timezone "^0.5.45"
+    mustache "^4.2.0"
+    uuid "^9.0.1"
+
 "@smithy/abort-controller@^2.0.15":
   version "2.0.15"
   resolved "https://registry.yarnpkg.com/@smithy/abort-controller/-/abort-controller-2.0.15.tgz#fcec9193da8b86eef1eedc3e71139a99c061db32"
@@ -1337,6 +1349,11 @@ glob-parent@^5.1.2:
   dependencies:
     is-glob "^4.0.1"
 
+google-libphonenumber@^3.2.34:
+  version "3.2.34"
+  resolved "https://registry.yarnpkg.com/google-libphonenumber/-/google-libphonenumber-3.2.34.tgz#ef29b53be0f9fb517aaa53d26a541150f86ec921"
+  integrity sha512-CLwkp0lZvMywh6dCh0T3Fm8XsfJhLAupc8AECwYkJNQBPW8wQPrv/tV0oFKCs8FMw+pTQyNPZoycgBzYjqtTZQ==
+
 ioredis@^5.3.2:
   version "5.3.2"
   resolved "https://registry.npmjs.org/ioredis/-/ioredis-5.3.2.tgz"
@@ -1428,6 +1445,18 @@ minimatch@^9.0.3:
   dependencies:
     brace-expansion "^2.0.1"
 
+moment-timezone@^0.5.45:
+  version "0.5.45"
+  resolved "https://registry.yarnpkg.com/moment-timezone/-/moment-timezone-0.5.45.tgz#cb685acd56bac10e69d93c536366eb65aa6bcf5c"
+  integrity sha512-HIWmqA86KcmCAhnMAN0wuDOARV/525R2+lOLotuGFzn4HO+FH+/645z2wx0Dt3iDv6/p61SIvKnDstISainhLQ==
+  dependencies:
+    moment "^2.29.4"
+
+moment@^2.29.4, moment@^2.30.1:
+  version "2.30.1"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.30.1.tgz#f8c91c07b7a786e30c59926df530b4eac96974ae"
+  integrity sha512-uEmtNhbDOrWPFS+hdjFCBfy9f2YoyzRpwcl+DqpC6taX21FzsTLQVbMV/W7PzNSX6x/bhC1zA3c2UQ5NzH6how==
+
 ms@2.1.2:
   version "2.1.2"
   resolved "https://registry.npmjs.org/ms/-/ms-2.1.2.tgz"
@@ -1453,6 +1482,11 @@ msgpackr@^1.10.1:
   integrity sha512-r5VRLv9qouXuLiIBrLpl2d5ZvPt8svdQTl5/vMvE4nzDMyEX4sgW5yWhuBBj5UmgwOTWj8CIdSXn5sAfsHAWIQ==
   optionalDependencies:
     msgpackr-extract "^3.0.2"
+
+mustache@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/mustache/-/mustache-4.2.0.tgz#e5892324d60a12ec9c2a73359edca52972bf6f64"
+  integrity sha512-71ippSywq5Yb7/tVYyGbkBggbU8H3u5Rz56fH60jGFgr8uHwxs+aSKeqmluIVzM0m0kB7xQjKS6qPfd0b2ZoqQ==
 
 node-abort-controller@^3.1.1:
   version "3.1.1"
