@@ -14,9 +14,9 @@ import {s3, S3_FOLDERS, S3_INFO, S3_OPTION} from "./constants";
 import {
   filterNonAlphaNumeric,
   hasText,
-  rightString, AwsFileInfo
-} from "@peacom/model";
-import {getFileInfoFromLocalFile, getFileInfoFromUrl} from "../../../util";
+  rightString, AwsFileInfo, getFileInfoFromUrl
+} from '@peacom/model';
+import {getFileInfoFromLocalFile} from "../../../util";
 
 export const getS3EndPoint = () => {
   if (hasText(S3_OPTION.domain)) {
