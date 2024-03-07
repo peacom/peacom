@@ -62,7 +62,8 @@ export enum PARTNER {
   BRAND_SMS = 12,
   VIET_GUY = 13,
   INFO_BIP = 14,
-  CHATWOOT = 15
+  CHATWOOT = 15,
+  TILEDESK = 16
 }
 
 export const partnerStr = (id: PARTNER | null) => {
@@ -95,6 +96,8 @@ export const partnerStr = (id: PARTNER | null) => {
       return "INFOBIP"
     case PARTNER.CHATWOOT:
       return "CHATWOOT"
+    case PARTNER.TILEDESK:
+      return "TILEDESK"
     default:
       return ""
   }
