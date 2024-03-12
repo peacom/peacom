@@ -81,6 +81,8 @@ export const LIST_MASTER_COMPANY_PERMISSION = [
   {permission: PERMISSION.TICKET.ASSIGN, type: AclActionType.FULL},
   {permission: PERMISSION.TICKET.TRANSFER, type: AclActionType.FULL},
   {permission: PERMISSION.TICKET.DASHBOARD, type: AclActionType.FULL},
+  {permission: PERMISSION.TICKET.CREATE_PIN, type: AclActionType.FULL},
+  {permission: PERMISSION.TICKET.DELETE_PIN, type: AclActionType.FULL},
   {permission: PERMISSION.AGENT_GROUP.CREATE, type: AclActionType.FULL},
   {permission: PERMISSION.AGENT_GROUP.READ, type: AclActionType.FULL},
   {permission: PERMISSION.AGENT_GROUP.UPDATE, type: AclActionType.FULL},

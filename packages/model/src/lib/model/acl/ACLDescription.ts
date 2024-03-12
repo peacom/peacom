@@ -664,6 +664,20 @@ export const PERMISSION_TICKET_LIST: Record<number, ActionDescription> = {
     name: "Summary of ticket, and agent",
     enableType: false
   },
+  [PERMISSION.TICKET.CREATE_PIN]: {
+    actionId: PERMISSION.TICKET.CREATE_PIN,
+    name: "Create Pin",
+    enableType: true,
+    description: 'Create ticket pin',
+    listType: CompanyTypeList
+  },
+  [PERMISSION.TICKET.DELETE_PIN]: {
+    actionId: PERMISSION.TICKET.DELETE_PIN,
+    name: "Delete Pin",
+    enableType: true,
+    description: 'Delete ticket pin',
+    listType: CompanyTypeList
+  },
 }
 
 export const PERMISSION_AGENT_GROUP_LIST: Record<number, ActionDescription> = {

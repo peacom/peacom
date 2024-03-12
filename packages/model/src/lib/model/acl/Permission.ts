@@ -165,7 +165,9 @@ export const PERMISSION = {
     DELETE: 102,
     ASSIGN: 147,
     TRANSFER: 148,
-    DASHBOARD: 185
+    DASHBOARD: 185,
+    CREATE_PIN: 187,
+    DELETE_PIN: 188,
   },
   AGENT_GROUP: {
     READ: 103,
@@ -277,7 +279,7 @@ export const PERMISSION = {
   },
 };
 
-// MAX= 184
+// MAX= 188
 export interface ActionDescription {
   actionId: number;
   name: string;

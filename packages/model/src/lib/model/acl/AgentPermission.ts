@@ -44,6 +44,8 @@ export const LIST_AGENT_PERMISSION = [
   {permission: PERMISSION.TICKET.READ, type: AclActionType.OWNER},
   {permission: PERMISSION.TICKET.UPDATE, type: AclActionType.OWNER},
   {permission: PERMISSION.TICKET.TRANSFER, type: AclActionType.OWNER},
+  {permission: PERMISSION.TICKET.DELETE_PIN, type: AclActionType.OWNER},
+  {permission: PERMISSION.TICKET.CREATE_PIN, type: AclActionType.OWNER},
   {permission: PERMISSION.TICKET_CATEGORY.READ, type: AclActionType.FULL},
   /* SEGMENT */
   {permission: PERMISSION.PRODUCT.READ, type: AclActionType.FULL},
