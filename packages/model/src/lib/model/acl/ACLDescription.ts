@@ -1074,3 +1074,11 @@ export const PERMISSION_COMPANY_FUNCTION: Record<number, ActionDescription> = {
     enableType: false
   },
 }
+
+export const PERMISSION_CHANNEL: Record<number, ActionDescription> = {
+  [PERMISSION.CHANNEL.REQUEST]: {
+    actionId: PERMISSION.CHANNEL.REQUEST,
+    name: "Request",
+    enableType: false
+  }
+}

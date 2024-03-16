@@ -63,4 +63,5 @@ export const LIST_AGENT_PERMISSION = [
   {permission: PERMISSION.BLACK_LIST.READ, type: AclActionType.FULL},
   /* Audit: Master can read all user audit, user normal can read their own audit */
   {permission: PERMISSION.AUDIT.READ, type: AclActionType.OWNER},
+  {permission: PERMISSION.CHANNEL.REQUEST, type: AclActionType.FULL},
 ];
