@@ -2,6 +2,13 @@ import {Application, PARTNER} from "@peacom/model";
 
 export const BULK_BROADCAST_JOB_QUEUE = 'BULK_BROADCAST_JOB_QUEUE'
 
+export const BULK_QUEUE = {
+  BROADCAST_DISTRIBUTE: 'BULK_BROADCAST_DISTRIBUTE',
+  BROADCAST_MESSAGE: 'BULK_BROADCAST_MESSAGE',
+  FALLBACK_DISTRIBUTE: 'BULK_FALLBACK_DISTRIBUTE',
+  FALLBACK_MESSAGE: 'BULK_FALLBACK_MESSAGE'
+}
+
 /**
  * Define QUEUE by partner and service, for guarantee the limit rate
  */

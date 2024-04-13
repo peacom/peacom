@@ -1,20 +1,20 @@
 {
   "name": "@peacom/core",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "type": "commonjs",
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.478.0",
-    "@aws-sdk/s3-request-presigner": "^3.478.0",
-    "bullmq": "^5.4.1",
+    "@aws-sdk/client-s3": "3.554.0",
+    "@aws-sdk/s3-request-presigner": "3.554.0",
+    "bullmq": "^5.7.1",
     "mime-types": "^2.1.35",
     "uuid": "^9.0.1"
   },
   "peerDependencies": {
-    "@peacom/model": "2.0.6"
+    "@peacom/model": "2.0.11"
   },
   "devDependencies": {
-    "@types/node": "^20.11.24",
-    "dotenv": "^16.3.1",
+    "@types/node": "^20.12.7",
+    "dotenv": "^16.4.5",
     "@types/mime-types": "^2.1.4",
     "@types/uuid": "^9.0.8"
   }
