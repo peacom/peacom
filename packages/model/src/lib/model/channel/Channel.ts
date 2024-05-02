@@ -3,7 +3,8 @@ export enum ChannelStatus {
   PROCESSING,
   LAUNCH,
   SUSPEND,
-  REJECT
+  REJECT,
+  ACCEPT = 6,
 }
 
 /**
