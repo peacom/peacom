@@ -45,6 +45,10 @@ export function addMonths(date: DateType, months: number, tz = "") {
   return getDate(date, tz).add(months, "months").toDate();
 }
 
+export function addMin(date: DateType, min: number, tz = "") {
+  return getDate(date, tz).add(min, "minutes").toDate();
+}
+
 /**
  * Week start from sunday
  * @param date
@@ -111,4 +115,20 @@ export const getListHour = (fromTime: Date, toTime: Date, step = 1) => {
     }
   }
   return rs;
+}
+
+export const getLastRangeMinute = (rangeMin: number, fromDate = new Date()) => {
+  if (rangeMin <= 0) {
+    throw Error('Invalid range minute')
+  }
+  if (60 % rangeMin > 0) {
+    throw Error('Range minute must be divide by 60')
+  }
+  const currentMin = fromDate.getMinutes();
+  const sub = currentMin % rangeMin;
+  const lastEnd = new Date(fromDate.getFullYear(), fromDate.getMonth(), fromDate.getDate(), fromDate.getHours(), fromDate.getMinutes() - sub, 0, 0)
+  return {
+    start: addMin(lastEnd, -1 * rangeMin),
+    end: lastEnd
+  }
 }

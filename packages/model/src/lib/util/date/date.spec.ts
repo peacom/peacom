@@ -4,7 +4,7 @@ import {
   endOfDate, endOfHour, endOfMonth,
   endOfWeek,
   formatDateTimeTZ, formatTimeTZ,
-  getDate, getListHour, startLastMonth, startOfDate, startOfHour,
+  getDate, getLastRangeMinute, getListHour, startLastMonth, startOfDate, startOfHour,
   startOfMonth,
   startOfWeek
 } from "./date.util";
@@ -62,4 +62,7 @@ describe('date.util', () => {
     const departureDatetime = new Date("2023-03-23T08:00:00Z");
     console.log(formatTimeTZ(departureDatetime, DEFAULT_TIME_ZONE, "HH:mm"));
   });
+  it("getLastRangeOfNumberMinuteFromDate", ()=>{
+    console.log(getLastRangeMinute(60, new Date()))
+  })
 });
