@@ -1,0 +1,3 @@
+export enum BILLING_QUEUE {
+  BILLING_CDR_AUTO = 'BILLING_CDR_AUTO'
+}
