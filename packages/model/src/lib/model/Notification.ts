@@ -10,4 +10,5 @@ export enum MessageEvent {
   COMPANY_KYC_REQUEST = 'company.kyc.request',
   COMPANY_KYC_REJECT = 'company.kyc.reject',
   COMPANY_KYC_APPROVE = 'company.kyc.approve',
+  COMPANY_SUSPEND = 'company.suspend',
 }

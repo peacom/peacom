@@ -103,7 +103,7 @@ export const PERMISSION = {
   CHAT: {
     READ: 66,
     LIVE_AGENT: 67, // Join and Leave,
-    DASHBOARD: 186
+    DASHBOARD: 186,
   },
   COMPLIANCE: {
     READ: 68,
@@ -230,6 +230,7 @@ export const PERMISSION = {
     UPDATE: 143,
     DELETE: 144,
     SETTING: 153,
+    DISABLE: 190,
   },
   CRM_PROFILE: {
     READ: 149,
@@ -278,11 +279,11 @@ export const PERMISSION = {
     DELETE: 184,
   },
   CHANNEL: {
-    REQUEST: 189
+    REQUEST: 189,
   },
 };
 
-// MAX= 189
+// MAX= 190
 export interface ActionDescription {
   actionId: number;
   name: string;

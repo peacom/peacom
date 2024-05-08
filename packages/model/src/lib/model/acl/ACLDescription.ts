@@ -334,7 +334,7 @@ export const PERMISSION_USER_MANAGEMENT: Record<number, ActionDescription> = {
     name: 'Active or disable User',
     description: '',
     enableType: true,
-    listType: BoAdminCompanyTypeList,
+    listType: BoAdminTypeList,
   },
 };
 
@@ -947,6 +947,11 @@ export const PERMISSION_COMPANY_MEMBER_LIST: Record<number, ActionDescription> =
     [PERMISSION.COMPANY_MEMBER.SETTING]: {
       actionId: PERMISSION.COMPANY_MEMBER.SETTING,
       name: 'Setting',
+      enableType: false,
+    },
+    [PERMISSION.COMPANY_MEMBER.DISABLE]: {
+      actionId: PERMISSION.COMPANY_MEMBER.DISABLE,
+      name: 'Disable',
       enableType: false,
     },
   };
