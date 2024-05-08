@@ -6,7 +6,7 @@ export enum AclActionType {
   SYSTEM_ADMIN = 5,
 }
 
-// max=186
+// max=191
 
 export const PERMISSION = {
   COMPANY: {
@@ -132,6 +132,7 @@ export const PERMISSION = {
   SYSTEM_SETTING: {
     RESET: 84,
     LADING_PAGE: 112,
+    CDR: 191
   },
   ONBOARDING_MANAGEMENT: {
     // Not use now for onboarding

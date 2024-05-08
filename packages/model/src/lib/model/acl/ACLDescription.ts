@@ -1,4 +1,4 @@
-import { AclActionType, ActionDescription, PERMISSION } from './Permission';
+import {AclActionType, ActionDescription, PERMISSION} from './Permission';
 
 const BoAdminTypeList = [AclActionType.BACK_OFFICE, AclActionType.SYSTEM_ADMIN];
 const BoAdminCompanyTypeList = [
@@ -1110,3 +1110,18 @@ export const PERMISSION_CHANNEL: Record<number, ActionDescription> = {
     enableType: false,
   },
 };
+
+export const PERMISSION_SYSTEM: Record<number, ActionDescription> = {
+  [PERMISSION.SYSTEM_SETTING.LADING_PAGE]: {
+    actionId: PERMISSION.SYSTEM_SETTING.LADING_PAGE,
+    name: 'Setting and update landing page',
+    enableType: true,
+    listType: [AclActionType.SYSTEM_ADMIN],
+  },
+  [PERMISSION.SYSTEM_SETTING.CDR]: {
+    actionId: PERMISSION.SYSTEM_SETTING.CDR,
+    name: 'View and download carrier CDR',
+    enableType: true,
+    listType: [AclActionType.SYSTEM_ADMIN],
+  }
+}
