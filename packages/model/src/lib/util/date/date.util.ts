@@ -9,7 +9,11 @@ export function formatDateTimeTZ(
   timezone = DEFAULT_TIME_ZONE,
   format = DATE_TIME_FORMAT
 ) {
-  return moment(date).tz(timezone).format(format);
+  console.log(timezone)
+  if (hasText(timezone)) {
+    return moment(date).tz(timezone).format(format);
+  }
+  return moment(date).format(format);
 }
 
 export const getDate = (date: DateType, tz = "") => {
