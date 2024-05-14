@@ -43,6 +43,7 @@ export function isPhoneValid(phone: string, country = DEFAULT_PHONE_COUNTRY) {
 
   return {
     countryCode: number.getCountryCode(),
+    type: phoneUtil.getNumberType(number),
     nationalNumber: `0${number.getNationalNumber()}`,
     e164: `${number.getCountryCode()}${number.getNationalNumber()}`,
     network: number.preferredDomesticCarrierCodeCount(),

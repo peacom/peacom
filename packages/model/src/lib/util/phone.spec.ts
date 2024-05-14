@@ -45,4 +45,8 @@ describe('phone.util', () => {
       region: 'CA'
     })
   });
+  it('Check tollfree', () => {
+    const vn = '+8419001800'
+    console.log(isPhoneValid(vn))
+  });
 });
