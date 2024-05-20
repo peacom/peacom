@@ -107,8 +107,8 @@ export function htmlEncode(rawStr: string) {
   });
 }
 
-export function filterNonAlphaNumeric(str: string) {
-  return str.replace(/\W/g, "");
+export function filterNonAlphaNumeric(str: string, replaceWith = "") {
+  return str.replace(/\W/g, replaceWith);
 }
 
 export const leftString = (string: string, count: number) => {
