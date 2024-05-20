@@ -281,10 +281,14 @@ export const PERMISSION = {
   },
   CHANNEL: {
     REQUEST: 189,
+    READ: 192,
+    CREATE: 193,
+    UPDATE: 194,
+    DELETE: 195
   },
 };
 
-// MAX= 190
+// MAX= 195
 export interface ActionDescription {
   actionId: number;
   name: string;
