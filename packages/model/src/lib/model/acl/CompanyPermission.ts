@@ -156,6 +156,5 @@ export const LIST_MASTER_COMPANY_PERMISSION = [
   /* CHAT */
   { permission: PERMISSION.CHAT.READ, type: AclActionType.FULL },
   { permission: PERMISSION.CHAT.LIVE_AGENT, type: AclActionType.FULL },
-  { permission: PERMISSION.CHAT.DASHBOARD, type: AclActionType.FULL },
-  { permission: PERMISSION.CHANNEL.REQUEST, type: AclActionType.FULL },
+  { permission: PERMISSION.CHAT.DASHBOARD, type: AclActionType.FULL }
 ];
