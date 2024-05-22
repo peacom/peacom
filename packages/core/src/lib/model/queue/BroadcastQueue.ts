@@ -23,6 +23,7 @@ export enum BULK_BROADCAST_QUEUE {
   ZALO = "BROADCAST_ZALO",
   SMS = "BROADCAST_SMS",
   SMS_GMS = "BROADCAST_SMS_GMS",
+  SMS_TSEL = "BROADCAST_SMS_TSEL",
   PEACOM = "BROADCAST_PEACOM",
   FALLBACK = "BROADCAST_FALL_BACK"
 }
@@ -51,6 +52,8 @@ export const getApplicationBroadcastQueueName = (applicationId: Application, par
       switch (partnerId) {
         case PARTNER.GMS:
           return BULK_BROADCAST_QUEUE.SMS_GMS;
+        case PARTNER.TSEL:
+          return BULK_BROADCAST_QUEUE.SMS_TSEL;
         default:
           return BULK_BROADCAST_QUEUE.SMS
       }
