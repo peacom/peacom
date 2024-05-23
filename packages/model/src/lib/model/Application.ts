@@ -99,6 +99,8 @@ export const partnerStr = (id: PARTNER | null) => {
       return "CHATWOOT"
     case PARTNER.TILEDESK:
       return "TILEDESK"
+    case PARTNER.TSEL:
+      return "TSEL"
     default:
       return ""
   }
