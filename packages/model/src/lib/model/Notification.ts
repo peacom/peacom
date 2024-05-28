@@ -21,7 +21,8 @@ export enum MessageEvent {
 
 export interface ReceiverPermission {
   permission: number,
-  aclType: AclActionType
+  aclType: AclActionType,
+  userId?: number // In case of owner, we will send to userId, no need to query from AclGroupAction
 }
 
 export interface NotificationMessage {
