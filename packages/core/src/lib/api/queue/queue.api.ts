@@ -4,6 +4,7 @@ import {v4} from 'uuid'
 import {QueuePartnerEventParam} from "../../model/partner/PartnerEvent";
 import {PARTNER_MESSAGE_TYPE} from "../../model/partner";
 import {LiveAgentTask, liveAgentTaskStr} from "../../model/queue/crm/LiveAgentQueue";
+import {NotificationMessage} from "@peacom/model";
 
 const toBullQueueMessage = (message: QueueMessageStatus) => {
   const jobId = `${message.applicationInfo.applicationId}_${message.applicationMessageId || message.messageId}_${message.status}_${message.sentTime}`
@@ -42,4 +43,8 @@ export const queueAddPartnerEvent = (queue: Queue, message: QueuePartnerEventPar
 export const queueAddLiveAgentTask = (queue: Queue, message: LiveAgentTask, delayTime: number) => {
   const id = `Task_${message.conversationId}_${liveAgentTaskStr(message.task)}`
   return queue.add(id, message, {...(message.jobOpt || {}), jobId: id, delay: delayTime * 60000})
+}
+
+export const queueAddNotification = (queue: Queue, message: NotificationMessage, opts = {}) => {
+  return queue.add(v4(), message, {...(opts || {})})
 }

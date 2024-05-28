@@ -1,3 +1,5 @@
+import {AclActionType} from "./acl";
+
 export enum NotificationPriority {
   HIGH = 1,
   NORMAL = 2,
@@ -15,4 +17,17 @@ export enum MessageEvent {
   COMPANY_SUSPEND = 'company.suspend',
   COMPANY_SUSPEND_BO_SA = 'company.suspend.BO_SA',
   BACKGROUND_TASK = 'background.task'
+}
+
+export interface ReceiverPermission {
+  permission: number,
+  aclType: AclActionType
+}
+
+export interface NotificationMessage {
+  message: MessageEvent,
+  priority: NotificationPriority,
+  excludeUser?: Array<number>,
+  params?: any,
+  receiver: Array<ReceiverPermission>
 }
