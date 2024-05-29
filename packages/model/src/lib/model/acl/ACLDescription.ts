@@ -1113,19 +1113,19 @@ export const PERMISSION_CHANNEL: Record<number, ActionDescription> = {
     actionId: PERMISSION.CHANNEL.READ,
     name: 'Channel READ',
     enableType: true,
-    listType: BoAdminTypeList
+    listType: BoAdminCompanyTypeList
   },
   [PERMISSION.CHANNEL.UPDATE]: {
     actionId: PERMISSION.CHANNEL.UPDATE,
     name: 'Channel READ',
     enableType: true,
-    listType: BoAdminTypeList
+    listType: BoAdminCompanyTypeList
   },
   [PERMISSION.CHANNEL.DELETE]: {
     actionId: PERMISSION.CHANNEL.UPDATE,
     name: 'Channel READ',
     enableType: true,
-    listType: BoAdminTypeList
+    listType: BoAdminCompanyTypeList
   },
 };
 
