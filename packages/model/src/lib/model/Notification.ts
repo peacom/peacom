@@ -23,7 +23,7 @@ export interface ReceiverPermission {
   permission: number,
   aclType: AclActionType,
   userId?: number // In case of owner, we will send to userId, no need to query from AclGroupAction
-  companyId?: number // In case of PARTIAL, MASTER, we will base on companyId
+  companyId?: number // In case of PARTIAL, MASTER, we will base on companyId, BO
 }
 
 export enum NotificationChannel {
