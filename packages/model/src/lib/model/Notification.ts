@@ -26,10 +26,17 @@ export interface ReceiverPermission {
   companyId?: number // In case of PARTIAL, MASTER, we will base on companyId
 }
 
+export enum NotificationChannel {
+  WEB = "WEB",
+  EMAIL = "EMAIL",
+  SMS = "SMS"
+}
+
 export interface NotificationMessage {
   message: MessageEvent,
   priority: NotificationPriority,
   excludeUser?: Array<number>,
   params?: any,
   receiver: Array<ReceiverPermission>
+  channels?: Array<NotificationChannel>
 }
