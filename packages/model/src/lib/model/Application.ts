@@ -102,6 +102,8 @@ export const partnerStr = (id: PARTNER | null) => {
       return "TILEDESK"
     case PARTNER.TSEL:
       return "TSEL"
+    case PARTNER.IRIS:
+      return "IRIS"
     default:
       return ""
   }
