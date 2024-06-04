@@ -64,7 +64,8 @@ export enum PARTNER {
   INFO_BIP = 14,
   CHATWOOT = 15,
   TILEDESK = 16,
-  TSEL = 17
+  TSEL = 17,
+  IRIS = 18,
 }
 
 export const partnerStr = (id: PARTNER | null) => {

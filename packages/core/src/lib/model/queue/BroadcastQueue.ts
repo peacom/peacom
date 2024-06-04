@@ -21,6 +21,7 @@ export enum BULK_BROADCAST_QUEUE {
   WHATSAPP_SINCH = "BROADCAST_WHATSAPP_SINCH",
   WHATSAPP_INFOBIP = "BROADCAST_WHATSAPP_INFOBIP",
   ZALO = "BROADCAST_ZALO",
+  ZALO_IRIS = "BROADCAST_ZALO_IRIS",
   SMS = "BROADCAST_SMS",
   SMS_GMS = "BROADCAST_SMS_GMS",
   SMS_TSEL = "BROADCAST_SMS_TSEL",
@@ -47,7 +48,13 @@ export const getApplicationBroadcastQueueName = (applicationId: Application, par
       throw new Error(`Not support for Application (${applicationId}) - Partner (${partnerId})`)
     }
     case Application.ZALO_ZNS:
-      return BULK_BROADCAST_QUEUE.ZALO
+      switch (partnerId) {
+        case PARTNER.ZALO:
+          return BULK_BROADCAST_QUEUE.ZALO
+        case PARTNER.IRIS :
+          return BULK_BROADCAST_QUEUE.ZALO_IRIS
+      }
+      throw new Error(`Not support for Application (${applicationId}) - Partner (${partnerId})`)
     case Application.SMS: {
       switch (partnerId) {
         case PARTNER.GMS:
