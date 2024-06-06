@@ -15,4 +15,5 @@ export * from './Language';
 export * from './channel';
 export * from './Storage';
 export * from './Notification';
-export * from './payment'
+export * from './payment';
+export * from './DomainIndex';
