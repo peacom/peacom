@@ -16,4 +16,4 @@ export * from './channel';
 export * from './Storage';
 export * from './Notification';
 export * from './payment';
-export * from './DomainIndex';
+export * from './search-engine'
