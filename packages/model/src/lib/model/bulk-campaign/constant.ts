@@ -4,7 +4,7 @@
  *  - only allow update bulk campaign when STATUS in (PENDING, OPTIMIZE, DONE)
  *    1. Any change relative to channel ==> Not allow
  *    2. Other change is ok.
- *  - only broadcast BULK CAMPAIGN WHEN STATUS OPTIMIZE
+ *  - only broadcast BULK CAMPAIGN WHEN STATUS OPTIMIZE, OR DONE
  * @type {{DONE: number, OPTIMIZE: number, STARTED: number, PROCESSING: number, PENDING: number}}
  */
 export enum BULK_CAMPAIGN_RUN_STATUS {
@@ -68,5 +68,11 @@ export const getBulkCampaignContactProcessStatus = (status: BULK_CAMPAIGN_CONTAC
     default:
       return 'UNKNOWN';
   }
-
 };
+
+export enum BulkBroadcastType {
+  SCHEDULER = 1,
+  SEND_NOW,
+}
+
+
