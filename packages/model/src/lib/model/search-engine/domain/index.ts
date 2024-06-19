@@ -11,3 +11,12 @@ export enum DomainIndexAction {
   DELETE = 'DELETE',
 }
 
+export enum FieldIndexType {
+  DATE = 'date',
+  DATE_ARRAY = 'date-array',
+  STRING = 'string',
+  STRING_ARRAY = 'string-array',
+  DOUBLE = 'double',
+  INTEGER = 'integer',
+  INTEGER_ARRAY = 'integer-array',
+}
