@@ -118,7 +118,7 @@ export const isBotApplication = (appId: string | number) => {
 
 export const isOAApplication = (appId: string | number) => {
   return [Application.RCS, Application.SMS, Application.ZALO_ZNS,
-    Application.WHATSAPP,
+    Application.WHATSAPP, Application.MMS,
     Application.VIBER_BUSINESS, Application.VIBER].includes(Number(appId))
 }
 
