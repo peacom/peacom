@@ -12,7 +12,7 @@ export enum Application {
   WHATSAPP = 11,
   GOOGLE_BUSINESS = 12,
   LIVE_CHAT = 14,
-  MMS = 14,
+  MMS = 15,
 }
 
 export const applicationStr = (id?: number) => {
