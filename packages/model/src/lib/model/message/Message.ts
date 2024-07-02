@@ -129,7 +129,6 @@ export const APPLICATION_MESSAGE: Record<Application, Array<MESSAGE_TYPE>> = {
     MESSAGE_TYPE.ARTICLES,
   ],
   [Application.MMS]: [
-    MESSAGE_TYPE.TEXT,
     MESSAGE_TYPE.PICTURE,
     MESSAGE_TYPE.VIDEO,
     MESSAGE_TYPE.FILE
