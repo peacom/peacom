@@ -28,6 +28,7 @@ export const PERMISSION = {
     CREATE: 6,
     UPDATE: 7,
     DELETE: 8,
+    VISIBLE_PHONE: 196
   },
   BOT: {
     READ: 15,
@@ -288,7 +289,7 @@ export const PERMISSION = {
   },
 };
 
-// MAX= 195
+// MAX= 196
 export interface ActionDescription {
   actionId: number;
   name: string;
