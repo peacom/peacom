@@ -11,7 +11,8 @@ export enum Application {
   VIBER_BOT = 10, // Not use now
   WHATSAPP = 11,
   GOOGLE_BUSINESS = 12,
-  LIVE_CHAT = 14
+  LIVE_CHAT = 14,
+  MMS = 15,
 }
 
 export const applicationStr = (id?: number) => {
@@ -42,6 +43,8 @@ export const applicationStr = (id?: number) => {
       return "WHATSAPP"
     case Application.LIVE_CHAT:
       return "LIVE CHAT"
+    case Application.MMS:
+      return "MMS"
     default:
       return `${id || ""}`
   }
@@ -115,7 +118,7 @@ export const isBotApplication = (appId: string | number) => {
 
 export const isOAApplication = (appId: string | number) => {
   return [Application.RCS, Application.SMS, Application.ZALO_ZNS,
-    Application.WHATSAPP,
+    Application.WHATSAPP, Application.MMS,
     Application.VIBER_BUSINESS, Application.VIBER].includes(Number(appId))
 }
 

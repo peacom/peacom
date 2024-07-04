@@ -3,6 +3,7 @@ export enum SearchOP {
   and = 'and',
   gt = 'gt',
   gte = 'gte',
+  not_gte = 'not_gte',
   lt = 'lt',
   lte = 'lte',
   range = 'range',

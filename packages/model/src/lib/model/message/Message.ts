@@ -128,6 +128,11 @@ export const APPLICATION_MESSAGE: Record<Application, Array<MESSAGE_TYPE>> = {
     MESSAGE_TYPE.FORM,
     MESSAGE_TYPE.ARTICLES,
   ],
+  [Application.MMS]: [
+    MESSAGE_TYPE.PICTURE,
+    MESSAGE_TYPE.VIDEO,
+    MESSAGE_TYPE.FILE
+  ],
 };
 
 export enum SEND_MESSAGE_VIA {

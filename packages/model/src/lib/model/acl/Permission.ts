@@ -28,6 +28,7 @@ export const PERMISSION = {
     CREATE: 6,
     UPDATE: 7,
     DELETE: 8,
+    VISIBLE_PHONE: 196
   },
   BOT: {
     READ: 15,

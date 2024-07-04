@@ -45,6 +45,7 @@ export const LIST_MASTER_COMPANY_PERMISSION = [
   { permission: PERMISSION.CONTACT.READ, type: AclActionType.FULL },
   { permission: PERMISSION.CONTACT.UPDATE, type: AclActionType.FULL },
   { permission: PERMISSION.CONTACT.DELETE, type: AclActionType.FULL },
+  { permission: PERMISSION.CONTACT.VISIBLE_PHONE, type: AclActionType.FULL },
   { permission: PERMISSION.OFFICIAL_ACCOUNT.READ, type: AclActionType.FULL },
   { permission: PERMISSION.CHANNEL.REQUEST, type: AclActionType.FULL },
   { permission: PERMISSION.CHANNEL.READ, type: AclActionType.FULL },
