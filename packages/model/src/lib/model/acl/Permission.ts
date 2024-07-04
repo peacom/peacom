@@ -284,11 +284,12 @@ export const PERMISSION = {
     READ: 192,
     CREATE: 193,
     UPDATE: 194,
-    DELETE: 195
+    DELETE: 195,
+    LIVE_MESSAGE: 196
   },
 };
 
-// MAX= 195
+// MAX= 196
 export interface ActionDescription {
   actionId: number;
   name: string;

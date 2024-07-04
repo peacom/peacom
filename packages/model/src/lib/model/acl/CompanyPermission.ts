@@ -48,6 +48,7 @@ export const LIST_MASTER_COMPANY_PERMISSION = [
   { permission: PERMISSION.OFFICIAL_ACCOUNT.READ, type: AclActionType.FULL },
   { permission: PERMISSION.CHANNEL.REQUEST, type: AclActionType.FULL },
   { permission: PERMISSION.CHANNEL.READ, type: AclActionType.FULL },
+  { permission: PERMISSION.CHANNEL.LIVE_MESSAGE, type: AclActionType.FULL },
   { permission: PERMISSION.OFFICIAL_ACCOUNT.SETTING, type: AclActionType.FULL },
   // OWN COMPANY
   { permission: PERMISSION.OWN_COMPANY.PROFILE, type: AclActionType.FULL },
