@@ -1133,7 +1133,7 @@ export const PERMISSION_CHANNEL: Record<number, ActionDescription> = {
     listType: BoAdminCompanyTypeList
   },
   [PERMISSION.CHANNEL.LIVE_MESSAGE]: {
-    actionId: PERMISSION.CHANNEL.UPDATE,
+    actionId: PERMISSION.CHANNEL.LIVE_MESSAGE,
     name: 'View live message',
     enableType: true,
     listType: BoAdminCompanyTypeList
