@@ -4,7 +4,7 @@ import {
   endOfDate, endOfHour, endOfMonth,
   endOfWeek,
   formatDateTimeTZ, formatTimeTZ,
-  getDate, getLastRangeMinute, getListHour, startLastMonth, startOfDate, startOfHour,
+  getDate, getLastRangeMinute, getListHour, getTimeZoneOffset, startLastMonth, startOfDate, startOfHour,
   startOfMonth,
   startOfWeek
 } from "./date.util";
@@ -67,5 +67,16 @@ describe('date.util', () => {
   });
   it("getLastRangeOfNumberMinuteFromDate", ()=>{
     console.log(getLastRangeMinute(60, new Date()))
+  })
+  it("GetOffset", ()=>{
+    expect(getTimeZoneOffset('Asia/Ho_Chi_Minh')).toEqual("+07:00")
+    expect(getTimeZoneOffset('Asia/Jakarta')).toEqual("+07:00")
+    expect(getTimeZoneOffset('Asia/Macau')).toEqual("+08:00")
+    expect(getTimeZoneOffset('Asia/Seoul')).toEqual("+09:00")
+    expect(getTimeZoneOffset('Asia/Singapore')).toEqual("+08:00")
+
+  })
+  it("GetOffset El_Salvador", ()=>{
+    expect(getTimeZoneOffset('America/El_Salvador')).toEqual("-06:00")
   })
 });

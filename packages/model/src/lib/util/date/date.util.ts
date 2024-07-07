@@ -135,3 +135,12 @@ export const getLastRangeMinute = (rangeMin: number, fromDate = new Date()) => {
     end: lastEnd
   }
 }
+
+export const getTimeZoneOffset = (timezone: string) => {
+  const tz = new Intl.DateTimeFormat('en-GB', {
+    timeZone: timezone,
+    timeZoneName: 'longOffset',
+  }).format(new Date());
+  const offset = tz.split('GMT')[1]
+  return offset || '+00:00'
+}
