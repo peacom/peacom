@@ -8,6 +8,7 @@ import {
   LOG_FUNCTION
 } from "./api.constant";
 import {FormError} from "@peacom/model";
+import {myFetch} from "./fetch";
 
 export enum CORE_API_PATH {
   MESSAGE = "/message",
@@ -24,7 +25,7 @@ export const handleCoreMessage = async (CORE_URL: string, params: ApiCoreHandleP
     log(`CORE REQUEST: ${url} - ${JSON.stringify(params)}`)
   }
 
-  const rs = await fetch(url, {
+  const rs = await myFetch(url, {
     method: "POST",
     body: JSON.stringify(params),
     headers: {
@@ -48,7 +49,7 @@ export const handleCoreLiveAgent = async (CORE_URL: string, params: ApiCoreLiveA
     log(`CORE LIVE AGENT REQUEST: ${url} - ${JSON.stringify(params)}`)
   }
 
-  const rs = await fetch(url, {
+  const rs = await myFetch(url, {
     method: "POST",
     body: JSON.stringify(params),
     headers: {
@@ -72,7 +73,7 @@ export const handleUnsubscribe = async (CORE_URL: string, params: ApiCoreLiveAge
     log(`CORE UNSUBSCRIBE REQUEST: ${url} - ${JSON.stringify(params)}`)
   }
 
-  const rs = await fetch(url, {
+  const rs = await myFetch(url, {
     method: "POST",
     body: JSON.stringify(params),
     headers: {
@@ -96,7 +97,7 @@ export const handleSubscribe = async (CORE_URL: string, params: ApiCoreLiveAgent
     log(`CORE SUBSCRIBE REQUEST: ${url} - ${JSON.stringify(params)}`)
   }
 
-  const rs = await fetch(url, {
+  const rs = await myFetch(url, {
     method: "POST",
     body: JSON.stringify(params),
     headers: {
@@ -121,10 +122,10 @@ export const handleReaction = async (
 ): Promise<ApiCoreHandleResponse> => {
   const url = `${CORE_URL}${CORE_API_PATH.REACTION}`;
   if (log) {
-    log(`CORE REQUEST: ${url} - ${JSON.stringify(params)}`);
+    log(`handleReaction REQUEST: ${url} - ${JSON.stringify(params)}`);
   }
 
-  const rs = await fetch(url, {
+  const rs = await myFetch(url, {
     method: 'POST',
     body: JSON.stringify(params),
     headers: {
@@ -133,7 +134,7 @@ export const handleReaction = async (
   });
   const bodyStr = await rs.text();
   if (log) {
-    log(`CORE RESPONSE: ${url} - ${bodyStr}`);
+    log(`handleReaction RESPONSE: ${url} - ${bodyStr}`);
   }
 
   if (!rs.ok) {
@@ -148,7 +149,7 @@ export const sendBulkCampaignMessage = async (CORE_URL: string, param: ApiCoreBu
     log(`CORE BULK CAMPAIGN MESSAGE REQUEST: ${url} - ${JSON.stringify(param)}`)
   }
 
-  const rs = await fetch(url, {
+  const rs = await myFetch(url, {
     method: "POST",
     body: JSON.stringify(param),
     headers: {

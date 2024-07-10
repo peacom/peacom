@@ -1,4 +1,5 @@
 import {ApiChannelMessageParams, ApiChannelMessageResponse, LOG_FUNCTION} from "./api.constant";
+import {myFetch} from "./fetch";
 
 export const sendChannelMessage = async (MICROSERVICE_URL: string, params: ApiChannelMessageParams, log: LOG_FUNCTION = null): Promise<ApiChannelMessageResponse> => {
   const url = `${MICROSERVICE_URL}/message`
@@ -6,7 +7,7 @@ export const sendChannelMessage = async (MICROSERVICE_URL: string, params: ApiCh
     log(`SERVICE REQUEST: ${url} - ${JSON.stringify(params)}`)
   }
 
-  const rs = await fetch(url, {
+  const rs = await myFetch(url, {
     method: "POST",
     body: JSON.stringify(params),
     headers: {
