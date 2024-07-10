@@ -17,3 +17,5 @@
    -extfile <(printf "subjectAltName=DNS:backend.local\
    ,DNS:service.local,DNS:*.peacom.co")`
  - Verify: `openssl verify -CAfile myCA.pem peacom.crt`
+
+ - To Java: openssl pkcs12 -export -out peacom.p12 -inkey peacom.key -in peacom.crt
