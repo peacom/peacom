@@ -17,3 +17,4 @@ export * from './Storage';
 export * from './Notification';
 export * from './payment';
 export * from './search-engine'
+export * from './partner-api'
