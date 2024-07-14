@@ -1,6 +1,6 @@
-import {sslAgent} from "./certificate/https-server";
+import {sslAgent} from '@peacom/core';
 
-export const myFetch = (url: any, opts: any) => {
+export const myFetch = (url: any, opts?: any) => {
   if (url.startsWith('https://')) {
     opts.dispatcher = sslAgent
   }
