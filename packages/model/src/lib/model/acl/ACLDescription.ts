@@ -92,26 +92,22 @@ export const PERMISSION_CONTACT_LIST: Record<number, ActionDescription> = {
   [PERMISSION.CONTACT.CREATE]: {
     actionId: PERMISSION.CONTACT.CREATE,
     name: 'Create',
-    enableType: true,
-    listType: OwnerTypeList,
+    enableType: false
   },
   [PERMISSION.CONTACT.READ]: {
     actionId: PERMISSION.CONTACT.READ,
     name: 'Read',
-    enableType: true,
-    listType: CompanyTypeList,
+    enableType: false
   },
   [PERMISSION.CONTACT.UPDATE]: {
     actionId: PERMISSION.CONTACT.UPDATE,
     name: 'Update',
-    enableType: true,
-    listType: CompanyTypeList,
+    enableType: false
   },
   [PERMISSION.CONTACT.DELETE]: {
     actionId: PERMISSION.CONTACT.DELETE,
     name: 'Delete',
-    enableType: true,
-    listType: CompanyTypeList,
+    enableType: false
   },
   [PERMISSION.CONTACT.VISIBLE_PHONE]: {
     actionId: PERMISSION.CONTACT.VISIBLE_PHONE,
@@ -262,7 +258,7 @@ export const PERMISSION_PHONE_BULK_CHECK: Record<number, ActionDescription> = {
     name: 'Create',
     description: 'Upload and check phone is valid for channel',
     enableType: true,
-    listType: OwnerTypeList,
+    listType: CompanyTypeList,
   },
 };
 
@@ -271,29 +267,25 @@ export const PERMISSION_TEMPLATE: Record<number, ActionDescription> = {
     actionId: PERMISSION.TEMPLATE.READ,
     name: 'Read',
     description: 'View list of template',
-    enableType: true,
-    listType: CompanyTypeList,
+    enableType: false
   },
   [PERMISSION.TEMPLATE.CREATE]: {
     actionId: PERMISSION.TEMPLATE.CREATE,
     name: 'Create',
     description: 'Create and request review template',
-    enableType: true,
-    listType: OwnerTypeList,
+    enableType: false
   },
   [PERMISSION.TEMPLATE.UPDATE]: {
     actionId: PERMISSION.TEMPLATE.UPDATE,
     name: 'Update',
     description: 'Update and request review template',
-    enableType: true,
-    listType: CompanyTypeList,
+    enableType: false
   },
   [PERMISSION.TEMPLATE.DELETE]: {
     actionId: PERMISSION.TEMPLATE.DELETE,
     name: 'Delete',
     description: 'Delete template',
-    enableType: true,
-    listType: CompanyTypeList,
+    enableType: false
   },
   [PERMISSION.TEMPLATE.BACK_OFFICE_REVIEW]: {
     actionId: PERMISSION.TEMPLATE.BACK_OFFICE_REVIEW,
@@ -349,32 +341,31 @@ export const PERMISSION_BULK_CAMPAIGN: Record<number, ActionDescription> = {
     name: 'Read',
     description:
       'View list bulk campaign, admin or BO can user all bulk campaign of other company for support.',
-    enableType: true,
+    enableType: false
   },
   [PERMISSION.BULK_CAMPAIGN.CREATE]: {
     actionId: PERMISSION.BULK_CAMPAIGN.CREATE,
     name: 'Create',
     description: 'Only owner can create their own bulk campaign',
-    enableType: true,
-    listType: OwnerTypeList,
+    enableType: false
   },
   [PERMISSION.BULK_CAMPAIGN.UPDATE]: {
     actionId: PERMISSION.BULK_CAMPAIGN.UPDATE,
     name: 'Update',
     description: 'Update bulk campaign',
-    enableType: true,
+    enableType: false
   },
   [PERMISSION.BULK_CAMPAIGN.DELETE]: {
     actionId: PERMISSION.BULK_CAMPAIGN.DELETE,
     name: 'Delete',
     description: 'Delete bulk campaign',
-    enableType: true,
+    enableType: false
   },
   [PERMISSION.BULK_CAMPAIGN.DELETE_CONTACT]: {
     actionId: PERMISSION.BULK_CAMPAIGN.DELETE_CONTACT,
     name: 'Delete Bulk Contact',
     description: 'Delete bulk contact with different condition',
-    enableType: true,
+    enableType: false
   },
 };
 
