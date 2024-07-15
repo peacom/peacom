@@ -16,7 +16,8 @@ export enum MessageEvent {
   COMPANY_KYC_APPROVE = 'company.kyc.approve',
   COMPANY_SUSPEND = 'company.suspend',
   COMPANY_SUSPEND_BO_SA = 'company.suspend.BO_SA',
-  BACKGROUND_TASK = 'background.task'
+  BACKGROUND_TASK = 'background.task',
+  BALANCE_ALERT = "balance.alert"
 }
 
 export interface ReceiverPermission {
