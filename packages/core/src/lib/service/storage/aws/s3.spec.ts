@@ -1,4 +1,5 @@
 import {
+  createPreSignedPostUrl,
   createPreSignedUrl,
   downloadS3Url,
   getAwsKeyInfo, getS3UrlKey,
@@ -32,6 +33,11 @@ describe('s3.service.specs.ts', () => {
   }, 200000)
   it('createPreSignedUrl', async () => {
     console.log(await createPreSignedUrl({fileName: 'test1234', contentType: 'application/xml'}))
+  })
+  it('createPreSignedPostUrl', async()=>{
+    console.log(await createPreSignedPostUrl({
+      fileName: 'test1234', contentType: 'application/xml'
+    }))
   })
   it('getS3UrlKey', async () => {
     console.log(getS3UrlKey("https://dev-cdn.peacom.co/files/tes.png"))

@@ -9,6 +9,7 @@ import {
   PutObjectRequest
 } from "@aws-sdk/client-s3";
 // eslint-disable-next-line @nx/enforce-module-boundaries
+import {createPresignedPost, PresignedPostOptions} from "@aws-sdk/s3-presigned-post"
 import {getSignedUrl} from "@aws-sdk/s3-request-presigner";
 import {s3, S3_FOLDERS, S3_INFO, S3_OPTION} from "./constants";
 import {
@@ -75,10 +76,31 @@ export const createPreSignedUrl = async ({fileName, contentType}: FileProp) => {
   const command = new PutObjectCommand({
     Bucket: S3_INFO.BUCKET,
     Key: location,
-    ContentType: contentType
+    ContentType: contentType,
   });
   return {
     urlUpload: await getSignedUrl(s3, command, {expiresIn: 3600}),
+    urlEndpoint: getS3Url(location)
+  };
+};
+
+export const createPreSignedPostUrl = async ({fileName, contentType}: FileProp) => {
+  const fileInfo = fileName.split(".");
+  const type = fileInfo.length > 1 ? fileInfo.pop() : "";
+
+  const location = `${S3_FOLDERS.DEFAULT}/${filterNonAlphaNumeric(fileInfo.join("."))}${hasText(type || "") ? `.${type}` : ""}`;
+  const Conditions: Array<any> = [
+    {key: location},
+    ['content-length-range', 0, 104857600],
+    {'content-type': contentType},
+  ]
+  const command = {
+    Bucket: S3_INFO.BUCKET,
+    Key: location,
+    Conditions, Expires: 3600
+  }
+  return {
+    urlUpload: await createPresignedPost(s3, command),
     urlEndpoint: getS3Url(location)
   };
 };
