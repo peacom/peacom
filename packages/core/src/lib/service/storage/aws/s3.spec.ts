@@ -1,5 +1,4 @@
 import {
-  createPreSignedPostUrl,
   createPreSignedUrl,
   downloadS3Url,
   getAwsKeyInfo, getS3UrlKey,
@@ -27,17 +26,12 @@ describe('s3.service.specs.ts', () => {
   }, 200000);
   it('Download S3 Large file', async () => {
     await downloadS3Url({
-      url: 'https://ap-southeast-1-dev-peacom.s3.ap-southeast-1.amazonaws.com/files/contactimportsamplefullxlsx.xlsx',
-      outputFile: './contactimportsamplefullxlsx.xlsx', chunkSize: 1024 * 1024
+      url: 'https://dev-cdn.peacom.co/privates/avatar.jpeg',
+      outputFile: './avatar.jpeg', chunkSize: 1024 * 1024
     })
   }, 200000)
   it('createPreSignedUrl', async () => {
     console.log(await createPreSignedUrl({fileName: 'test1234', contentType: 'application/xml'}))
-  })
-  it('createPreSignedPostUrl', async()=>{
-    console.log(await createPreSignedPostUrl({
-      fileName: 'test1234', contentType: 'application/xml'
-    }))
   })
   it('getS3UrlKey', async () => {
     console.log(getS3UrlKey("https://dev-cdn.peacom.co/files/tes.png"))

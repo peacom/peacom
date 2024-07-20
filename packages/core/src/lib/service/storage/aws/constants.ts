@@ -15,7 +15,8 @@ export const S3_INFO = {
 
 export const S3_FOLDERS = {
   DEFAULT: "files",
-  TICKET: "files"
+  TICKET: "files",
+  PRIVATES: "privates",
 };
 
 export const s3 = new S3({
