@@ -67,16 +67,17 @@ interface FileProp {
   fileName: string;
   contentType: string;
   folder?: string;
+  maxSize?: number;
 }
 
-export const createPreSignedUrl = async ({fileName, contentType, folder = S3_FOLDERS.DEFAULT}: FileProp) => {
+export const createPreSignedUrl = async ({fileName, contentType, folder = S3_FOLDERS.DEFAULT, maxSize = 104857600}: FileProp) => {
   const fileInfo = fileName.split(".");
   const type = fileInfo.length > 1 ? fileInfo.pop() : "";
 
   const location = `${folder}/${filterNonAlphaNumeric(fileInfo.join("."))}${hasText(type || "") ? `.${type}` : ""}`;
   const Conditions: Array<any> = [
     {key: location},
-    ['content-length-range', 0, 104857600]
+    ['content-length-range', 0, maxSize]
   ]
   const command = {
     Bucket: S3_INFO.BUCKET,
