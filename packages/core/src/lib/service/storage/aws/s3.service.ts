@@ -76,13 +76,14 @@ export const createPreSignedUrl = async ({fileName, contentType, folder = S3_FOL
   const location = `${folder}/${filterNonAlphaNumeric(fileInfo.join("."))}${hasText(type || "") ? `.${type}` : ""}`;
   const Conditions: Array<any> = [
     {key: location},
-    ['content-length-range', 0, 104857600],
-    {'content-type': contentType},
+    ['content-length-range', 0, 104857600]
   ]
   const command = {
     Bucket: S3_INFO.BUCKET,
     Key: location,
-    Conditions, Expires: 3600
+    Conditions,
+    Expires: 3600,
+    Fields: {'content-type': contentType},
   }
   return {
     urlUpload: await createPresignedPost(s3, command),
