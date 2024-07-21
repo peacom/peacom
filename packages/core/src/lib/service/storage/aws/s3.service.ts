@@ -70,6 +70,14 @@ interface FileProp {
   maxSize?: number;
 }
 
+export const getPreSignedUrl = async (key: string) => {
+  const command = new GetObjectCommand({
+    Bucket: S3_INFO.BUCKET,
+    Key: key,
+  });
+  return getSignedUrl(s3, command, {expiresIn: 3600})
+};
+
 export const createPreSignedUrl = async ({fileName, contentType, folder = S3_FOLDERS.DEFAULT, maxSize = 104857600}: FileProp) => {
   const fileInfo = fileName.split(".");
   const type = fileInfo.length > 1 ? fileInfo.pop() : "";

@@ -1,11 +1,11 @@
 import {
   createPreSignedUrl,
   downloadS3Url,
-  getAwsKeyInfo, getS3UrlKey,
+  getAwsKeyInfo, getPreSignedUrl, getS3UrlKey,
   s3RemoveFile, s3RemoveMultipleFile,
   uploadLocalFileToS3,
   uploadS3FromUrl
-} from "./s3.service";
+} from './s3.service';
 import * as path from "path";
 
 describe('s3.service.specs.ts', () => {
@@ -27,6 +27,9 @@ describe('s3.service.specs.ts', () => {
   }, 200000)
   it('createPreSignedUrl', async () => {
     console.log(await createPreSignedUrl({fileName: 'test1234', contentType: 'application/xml'}))
+  })
+  it('getPreSignedUrl', async () => {
+    console.log(await getPreSignedUrl("privates/testphone_1938493c73a64fe5a207eea4e0f4ecf1.xlsx"))
   })
   it('getS3UrlKey', async () => {
     console.log(getS3UrlKey("https://dev-cdn.peacom.co/files/tes.png"))
