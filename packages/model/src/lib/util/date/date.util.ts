@@ -24,6 +24,14 @@ export function endOfHour(date: DateType, tz = "") {
   return getDate(date, tz).endOf("hours").toDate()
 }
 
+export function startOfMin(date: DateType, tz = "") {
+  return getDate(date, tz).startOf("minutes").toDate();
+}
+
+export function endOfMin(date: DateType, tz = "") {
+  return getDate(date, tz).endOf("minutes").toDate();
+}
+
 export function startOfHour(date: DateType, tz = "") {
   return getDate(date, tz).startOf("hours").toDate();
 }

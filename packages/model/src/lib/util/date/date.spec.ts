@@ -1,10 +1,10 @@
 import {
   addDays,
   addHours, addMonths, endLastMonth,
-  endOfDate, endOfHour, endOfMonth,
+  endOfDate, endOfHour, endOfMin, endOfMonth,
   endOfWeek,
   formatDateTimeTZ, formatTimeTZ,
-  getDate, getLastRangeMinute, getListHour, getTimeZoneOffset, startLastMonth, startOfDate, startOfHour,
+  getDate, getLastRangeMinute, getListHour, getTimeZoneOffset, startLastMonth, startOfDate, startOfHour, startOfMin,
   startOfMonth,
   startOfWeek
 } from "./date.util";
@@ -52,6 +52,11 @@ describe('date.util', () => {
     const dateStr = '2022-12-20T10:23:55Z'
     console.log(startOfHour(new Date(dateStr), DEFAULT_TIME_ZONE))
     console.log(endOfHour(new Date(dateStr), DEFAULT_TIME_ZONE))
+  });
+  it('rangeOfMin', () => {
+    const dateStr = '2022-12-20T10:23:55Z'
+    console.log(startOfMin(new Date(dateStr), DEFAULT_TIME_ZONE))
+    console.log(endOfMin(new Date(dateStr), DEFAULT_TIME_ZONE))
   });
   it('lastMonth', () => {
     console.log(startLastMonth(new Date(), DEFAULT_TIME_ZONE).toString())
