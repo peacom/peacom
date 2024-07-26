@@ -85,7 +85,8 @@ export const createPreSignedUrl = async ({fileName, contentType, folder = S3_FOL
   const location = `${folder}/${filterNonAlphaNumeric(fileInfo.join("."))}${hasText(type || "") ? `.${type}` : ""}`;
   const Conditions: Array<any> = [
     {key: location},
-    ['content-length-range', 0, maxSize]
+    ['content-length-range', 0, maxSize],
+    ['eq', "$Content-Type", contentType]
   ]
   const command = {
     Bucket: S3_INFO.BUCKET,
