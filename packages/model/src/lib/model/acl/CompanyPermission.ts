@@ -128,6 +128,10 @@ export const LIST_MASTER_COMPANY_PERMISSION = [
   { permission: PERMISSION.REPLY_TEMPLATE.READ, type: AclActionType.FULL },
   { permission: PERMISSION.REPLY_TEMPLATE.UPDATE, type: AclActionType.FULL },
   { permission: PERMISSION.REPLY_TEMPLATE.DELETE, type: AclActionType.FULL },
+  { permission: PERMISSION.PRODUCT_PARTNER.CREATE, type: AclActionType.FULL },
+  { permission: PERMISSION.PRODUCT_PARTNER.READ, type: AclActionType.FULL },
+  { permission: PERMISSION.PRODUCT_PARTNER.UPDATE, type: AclActionType.FULL },
+  { permission: PERMISSION.PRODUCT_PARTNER.DELETE, type: AclActionType.FULL },
   /* LEAD */
   { permission: PERMISSION.LEAD.CREATE, type: AclActionType.FULL },
   { permission: PERMISSION.LEAD.READ, type: AclActionType.FULL },

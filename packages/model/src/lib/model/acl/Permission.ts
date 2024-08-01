@@ -288,9 +288,15 @@ export const PERMISSION = {
     DELETE: 195,
     LIVE_MESSAGE: 197
   },
+  PRODUCT_PARTNER: {
+    READ: 198,
+    CREATE: 199,
+    UPDATE: 200,
+    DELETE: 201,
+  },
 };
 
-// MAX= 197
+// MAX= 201
 export interface ActionDescription {
   actionId: number;
   name: string;

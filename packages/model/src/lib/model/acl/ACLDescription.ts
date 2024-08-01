@@ -1145,3 +1145,29 @@ export const PERMISSION_SYSTEM: Record<number, ActionDescription> = {
     listType: [AclActionType.SYSTEM_ADMIN],
   }
 }
+
+export const PERMISSION_PRODUCT_PARTNER_LIST: Record<
+  number,
+  ActionDescription
+> = {
+  [PERMISSION.PRODUCT_PARTNER.CREATE]: {
+    actionId: PERMISSION.PRODUCT_PARTNER.CREATE,
+    name: 'Create',
+    enableType: false,
+  },
+  [PERMISSION.PRODUCT_PARTNER.READ]: {
+    actionId: PERMISSION.PRODUCT_PARTNER.READ,
+    name: 'Read',
+    enableType: false,
+  },
+  [PERMISSION.PRODUCT_PARTNER.UPDATE]: {
+    actionId: PERMISSION.PRODUCT_PARTNER.UPDATE,
+    name: 'Update',
+    enableType: false,
+  },
+  [PERMISSION.PRODUCT_PARTNER.DELETE]: {
+    actionId: PERMISSION.PRODUCT_PARTNER.DELETE,
+    name: 'Delete',
+    enableType: false,
+  },
+};
