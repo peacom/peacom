@@ -1,9 +1,9 @@
-export const COMPANY_TRANSACTION_TYPE = {
-  CASH_IN: 1,
-  CASH_OUT: 2
-};
+export enum COMPANY_TRANSACTION_TYPE {
+  CASH_IN = 1,
+  CASH_OUT = 2
+}
 
-export const COMPANY_TRANSACTION_PURPOSE_TYPE = {
-  BILLING: 1,
-  TOPUP: 2
-};
+export enum COMPANY_TRANSACTION_PURPOSE_TYPE {
+  BILLING = 1,
+  TOPUP = 2
+}
