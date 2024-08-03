@@ -114,6 +114,11 @@ export const PERMISSION_CONTACT_LIST: Record<number, ActionDescription> = {
     name: 'Visible Phone',
     enableType: false
   },
+  [PERMISSION.CONTACT.SECURE]: {
+    actionId: PERMISSION.CONTACT.SECURE,
+    name: 'Secure',
+    enableType: false
+  },
 };
 
 export const PERMISSION_BOT_LIST: Record<number, ActionDescription> = {
