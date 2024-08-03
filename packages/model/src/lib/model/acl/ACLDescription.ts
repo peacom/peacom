@@ -117,7 +117,8 @@ export const PERMISSION_CONTACT_LIST: Record<number, ActionDescription> = {
   [PERMISSION.CONTACT.SECURE]: {
     actionId: PERMISSION.CONTACT.SECURE,
     name: 'Secure',
-    enableType: false
+    enableType: true,
+    listType: BoAdminTypeList,
   },
 };
 
