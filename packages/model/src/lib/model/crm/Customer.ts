@@ -9,3 +9,14 @@ export enum CUSTOMER_SOURCE_TYPE {
   WEB = 2,
   IMPORT = 3
 }
+
+export enum CUSTOMER_ATTRIBUTE_PROPERTY_ID {
+  AGE = -1,
+  GENDER = -2,
+  BIRTHDAY = -3,
+  EMAIL = -4,
+  PHONE = -5,
+  COUNTRY = -6,
+  LABEL = -7,
+  NAME = -8
+}
