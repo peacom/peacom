@@ -19,4 +19,4 @@ export * from './payment';
 export * from './search-engine';
 export * from './partner-api';
 export * from './transaction';
-export * from './contact';
+export * from './Contact';
