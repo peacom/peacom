@@ -1,0 +1,4 @@
+export enum CONTACT_SYSTEM_TYPE {
+  USER_MANAGE = 1,
+  SYSTEM_MANAGE = 2
+}
