@@ -18,6 +18,7 @@ export enum MessageEvent {
   COMPANY_SUSPEND_BO_SA = 'company.suspend.BO_SA',
   BACKGROUND_TASK = 'background.task',
   BALANCE_ALERT = "balance.alert",
+  BULK_DONE = "bulk.done",
   BULK_FINISHED = "bulk.finished",
 }
 
