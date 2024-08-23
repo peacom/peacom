@@ -70,6 +70,7 @@ export enum PARTNER {
   TSEL = 17,
   IRIS = 18,
   IC = 19,
+  EUTOPIA = 20
 }
 
 export const partnerStr = (id: PARTNER | null) => {
@@ -110,6 +111,8 @@ export const partnerStr = (id: PARTNER | null) => {
       return "IRIS"
     case PARTNER.IC:
       return "INTER CONNECTION"
+    case PARTNER.EUTOPIA:
+      return "EUTOPIA"
     default:
       return ""
   }

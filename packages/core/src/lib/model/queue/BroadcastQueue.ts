@@ -28,6 +28,7 @@ export enum BULK_BROADCAST_QUEUE {
   MMS_TSEL = "BROADCAST_MMS_TSEL",
   SMS_IRIS = "BROADCAST_SMS_IRIS",
   SMS_IC = "BROADCAST_SMS_IC",
+  SMS_EUTOPIA = "BROADCAST_SMS_EUTOPIA",
   PEACOM = "BROADCAST_PEACOM",
   FALLBACK = "BROADCAST_FALL_BACK"
 }
@@ -68,6 +69,8 @@ export const getApplicationBroadcastQueueName = (applicationId: Application, par
           return BULK_BROADCAST_QUEUE.SMS_IRIS;
         case PARTNER.IC:
           return BULK_BROADCAST_QUEUE.SMS_IC;
+        case PARTNER.EUTOPIA:
+          return BULK_BROADCAST_QUEUE.SMS_EUTOPIA;
         default:
           return BULK_BROADCAST_QUEUE.SMS
       }
