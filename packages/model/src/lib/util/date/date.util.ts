@@ -109,7 +109,7 @@ export const parseDateTimeByFormat = (
   timezone = DEFAULT_TIME_ZONE
 ) => {
   return moment
-    .tz(`${dateStr}`, DATE_TIME_FORMAT, timezone)
+    .tz(`${dateStr}`, format, timezone)
     .toDate();
 };
 

@@ -1,16 +1,33 @@
 import {
   addDays,
-  addHours, addMonths, endLastMonth,
-  endOfDate, endOfHour, endOfMin, endOfMonth,
+  addHours,
+  addMonths,
+  endLastMonth,
+  endOfDate,
+  endOfHour,
+  endOfMin,
+  endOfMonth,
   endOfWeek,
-  formatDateTimeTZ, formatTimeTZ,
-  getDate, getLastRangeMinute, getListHour, getTimeZoneOffset, startLastMonth, startOfDate, startOfHour, startOfMin,
+  formatDateTimeTZ,
+  formatTimeTZ,
+  getDate,
+  getLastRangeMinute,
+  getListHour,
+  getTimeZoneOffset,
+  parseDateTimeByFormat,
+  startLastMonth,
+  startOfDate,
+  startOfHour,
+  startOfMin,
   startOfMonth,
   startOfWeek
-} from "./date.util";
+} from './date.util';
 import {DEFAULT_TIME_ZONE} from "./constant";
 
 describe('date.util', () => {
+  it('parse Date', ()=>{
+    console.log(parseDateTimeByFormat('240829082217', 'YYMMDDHHmmss'))
+  })
   it('should work', () => {
     const dateStr = '2022-12-20T10:23:55Z'
     const VN_DateStr = '2022-12-20 17:23:55'
