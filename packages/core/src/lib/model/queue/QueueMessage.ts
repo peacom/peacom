@@ -1,5 +1,5 @@
 import {JobsOptions} from "bullmq";
-import {Conversation, ApplicationInfo, Message, MESSAGE_STATUS} from "@peacom/model";
+import {Conversation, ApplicationInfo, Message, MESSAGE_STATUS, BILLING_STATUS} from "@peacom/model";
 
 export enum QueueMessageStatusSource {
   LOCAL = 1,
@@ -15,7 +15,8 @@ export interface QueueMessageStatus {
   extraData?: Record<string, unknown>;
   deliveryStatus?: string,
   jobOpt?: JobsOptions,
-  source: QueueMessageStatusSource
+  source: QueueMessageStatusSource,
+  billing?: BILLING_STATUS // In some case, we need to add Bill when message it not delivery or read. Ex: When submit (SENT) success, we accept message bill
 }
 
 export interface QueueOutgoingMessage {

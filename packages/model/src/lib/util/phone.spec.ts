@@ -46,7 +46,7 @@ describe('phone.util', () => {
     })
   });
   it('Check tollfree', () => {
-    const vn = '+8419001800'
+    const vn = '+84938130683'
     console.log(isPhoneValid(vn))
   });
 });
