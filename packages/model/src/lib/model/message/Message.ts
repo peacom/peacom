@@ -1,10 +1,10 @@
-import { Application } from '../Application';
-import { BILLING_STATUS } from '../Billing';
-import { FileInfo } from '../FileInfo';
-import { WhatsappTemplate } from './sinch/SinchWhatsappTemplate';
-import { ZaloZnsTemmplateParam } from './zalo/ZaloZNSTemplate';
-import { TemplateMessageSource } from './TemplateMessage';
-import { WhatsappInteractive } from './infobip/WhatsappInteractive';
+import {Application} from '../Application';
+import {BILLING_STATUS} from '../Billing';
+import {FileInfo} from '../FileInfo';
+import {WhatsappTemplate} from './sinch/SinchWhatsappTemplate';
+import {ZaloZnsTemmplateParam} from './zalo/ZaloZNSTemplate';
+import {TemplateMessageSource} from './TemplateMessage';
+import {WhatsappInteractive} from './infobip/WhatsappInteractive';
 
 export enum MESSAGE_CONTENT_TYPE {
   EVENT = 1, // DELIVERY STATUS
@@ -219,6 +219,18 @@ export interface PreviewUrl {
   position: PreviewUrlPosition;
 }
 
+export enum ExpireType {
+  NONE = "NONE",
+  TTL = "TTL",
+  EXPIRE_TIME = "EXPIRE_TIME",
+}
+
+interface Expire {
+  type: ExpireType
+  ttl: string
+  expireTime: string
+}
+
 export interface RawMessage {
   type: MESSAGE_TYPE;
   message?: string;
@@ -229,6 +241,7 @@ export interface RawMessage {
   fileSize?: string | number;
   trackingData?: '';
   richCards?: RichCard[];
+  rcsExpireOpts?: Expire;
   rcsRichCardsOpts?: {
     type: 'STANDALONE' | 'CAROUSEL';
     orientation?: string;
