@@ -88,6 +88,7 @@ export const PERMISSION = {
     UPDATE: 47,
     DELETE: 48,
     DELETE_CONTACT: 83,
+    IMPORT_PARTNER_CONTACT: 203
   },
   BLACK_LIST: {
     READ: 52,
@@ -297,7 +298,7 @@ export const PERMISSION = {
   },
 };
 
-// MAX= 202
+// MAX= 203
 export interface ActionDescription {
   actionId: number;
   name: string;

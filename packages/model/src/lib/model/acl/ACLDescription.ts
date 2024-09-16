@@ -373,6 +373,12 @@ export const PERMISSION_BULK_CAMPAIGN: Record<number, ActionDescription> = {
     description: 'Delete bulk contact with different condition',
     enableType: false
   },
+  [PERMISSION.BULK_CAMPAIGN.IMPORT_PARTNER_CONTACT]: {
+    actionId: PERMISSION.BULK_CAMPAIGN.IMPORT_PARTNER_CONTACT,
+    name: 'Import Partner Contact',
+    description: 'Import partner contact',
+    enableType: false
+  },
 };
 
 export const PERMISSION_BLACK_LIST: Record<number, ActionDescription> = {
