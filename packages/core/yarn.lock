@@ -1186,10 +1186,10 @@ bowser@^2.11.0:
   resolved "https://registry.npmjs.org/bowser/-/bowser-2.11.0.tgz"
   integrity sha512-AlcaJBi/pqqJBIQ8U9Mcpc9i8Aqxn88Skv5d+xBX006BY5u8N3mGLHa5Lgppa7L/HfwgwLgZ6NYs+Ag6uUmJRA==
 
-bullmq@^5.10.1:
-  version "5.10.1"
-  resolved "https://registry.yarnpkg.com/bullmq/-/bullmq-5.10.1.tgz#66ff8d5835906bb608a440919e2d0956e5f9499f"
-  integrity sha512-YSRRua/Heol8++QB1HVovJxKZ/+RXziG+1XW3c0k1TwKRG4E4oqYB8uI6D/7tbEvivTRcpixPJ3+IhsvvnHgxA==
+bullmq@^5.13.1:
+  version "5.13.1"
+  resolved "https://registry.yarnpkg.com/bullmq/-/bullmq-5.13.1.tgz#dbe35fcf3e3eede4f4c41523c09851df7e59b080"
+  integrity sha512-9Ss2GzV+VVA2Q/+qUxQ7zxAwfLWBwc7DIUNboq0EdXGRf2Ia+Qi7BwT51rnxglu4b/0SRsSElevRT8IZc7HvtQ==
   dependencies:
     cron-parser "^4.6.0"
     ioredis "^5.4.1"

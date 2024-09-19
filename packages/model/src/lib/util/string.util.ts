@@ -143,7 +143,8 @@ const RENDER_FUNCTION = {
     return (text: string, render: any) => {
       return encodeURIComponent(render(text));
     };
-  }
+  },
+  now: () => new Date().getTime()
 };
 
 export function renderTemplate(string: string, context: any) {

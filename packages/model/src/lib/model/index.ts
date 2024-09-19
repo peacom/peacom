@@ -21,3 +21,4 @@ export * from './partner-api';
 export * from './transaction';
 export * from './Contact';
 export * from './partner-request'
+export * from "./smpp"
