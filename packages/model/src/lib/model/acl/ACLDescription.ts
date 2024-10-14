@@ -347,7 +347,7 @@ export const PERMISSION_BULK_CAMPAIGN: Record<number, ActionDescription> = {
     name: 'Read',
     description:
       'View list bulk campaign, admin or BO can user all bulk campaign of other company for support.',
-    enableType: false
+    enableType: true
   },
   [PERMISSION.BULK_CAMPAIGN.CREATE]: {
     actionId: PERMISSION.BULK_CAMPAIGN.CREATE,
