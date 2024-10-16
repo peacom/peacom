@@ -13,6 +13,7 @@ export enum Application {
   GOOGLE_BUSINESS = 12,
   LIVE_CHAT = 14,
   MMS = 15,
+  TELEGRAM_GATEWAY = 16,
 }
 
 export const applicationStr = (id?: number) => {
@@ -45,6 +46,8 @@ export const applicationStr = (id?: number) => {
       return "LIVE CHAT"
     case Application.MMS:
       return "MMS"
+    case Application.TELEGRAM_GATEWAY:
+      return "TELEGRAM GATEWAY"
     default:
       return `${id || ""}`
   }

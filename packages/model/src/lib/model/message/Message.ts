@@ -133,6 +133,7 @@ export const APPLICATION_MESSAGE: Record<Application, Array<MESSAGE_TYPE>> = {
     MESSAGE_TYPE.VIDEO,
     MESSAGE_TYPE.FILE
   ],
+  [Application.TELEGRAM_GATEWAY]: [MESSAGE_TYPE.TEXT],
 };
 
 export enum SEND_MESSAGE_VIA {
