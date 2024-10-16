@@ -86,6 +86,7 @@ export const MICROSERVICE_URL: Record<Application, string> = {
   [Application.VIBER]: process.env['VIBER_BUSINESS_INTEGRATION'] || 'http://127.0.0.1:4001/eip/viber',
   [Application.VIBER_BUSINESS]: process.env['VIBER_BUSINESS_INTEGRATION'] || 'http://127.0.0.1:4001/eip/viber',
   [Application.TELEGRAM]: process.env['TELEGRAM_INTEGRATION'] || 'http://127.0.0.1:4012',
+  [Application.TELEGRAM_GATEWAY]: process.env['TELEGRAM_GATEWAY_INTEGRATION'] || 'http://127.0.0.1:4012/eip/telegram-gateway',
   [Application.FACEBOOK]: process.env['FACEBOOK_INTEGRATION'] || 'http://127.0.0.1:4011',
   [Application.SMS]: process.env['SMS_INTEGRATION'] || 'http://127.0.0.1:4010',
   [Application.VIBER_BOT]: process.env['VIBER_BOT_INTEGRATION'] || 'http://127.0.0.1:4001/eip/viber/bot',
