@@ -19,39 +19,39 @@ export enum Application {
 export const applicationStr = (id?: number) => {
   switch (id) {
     case Application.RCS:
-      return "RCS"
+      return 'RCS';
     case Application.SMS:
-      return "SMS"
+      return 'SMS';
     case Application.VIBER:
-      return "VIBER"
+      return 'VIBER';
     case Application.VIBER_BOT:
-      return "VIBER BOT"
+      return 'VIBER BOT';
     case Application.VIBER_BUSINESS:
-      return "VIBER BUSINESS"
+      return 'VIBER BUSINESS';
     case Application.APPLE:
-      return "APPLE"
+      return 'APPLE';
     case Application.TELEGRAM:
-      return "TELEGRAM"
+      return 'TELEGRAM';
     case Application.FACEBOOK:
-      return "FACEBOOK"
+      return 'FACEBOOK';
     case Application.GOOGLE_BUSINESS:
-      return "Google Business Message"
+      return 'Google Business Message';
     case Application.ZALO:
-      return "Zalo Official Account"
+      return 'Zalo Official Account';
     case Application.ZALO_ZNS:
-      return "Zalo ZNS"
+      return 'Zalo ZNS';
     case Application.WHATSAPP:
-      return "WHATSAPP"
+      return 'WHATSAPP';
     case Application.LIVE_CHAT:
-      return "LIVE CHAT"
+      return 'LIVE CHAT';
     case Application.MMS:
-      return "MMS"
+      return 'MMS';
     case Application.TELEGRAM_GATEWAY:
-      return "TELEGRAM GATEWAY"
+      return 'TELEGRAM GATEWAY';
     default:
-      return `${id || ""}`
+      return `${id || ''}`;
   }
-}
+};
 
 export enum PARTNER {
   PEACOM = 1,
@@ -73,68 +73,83 @@ export enum PARTNER {
   TSEL = 17,
   IRIS = 18,
   IC = 19,
-  EUTOPIA = 20
+  EUTOPIA = 20,
 }
 
 export const partnerStr = (id: PARTNER | null) => {
   switch (id) {
     case PARTNER.PEACOM:
-      return "PEACOM"
+      return 'PEACOM';
     case PARTNER.GOOGLE:
-      return "GOOGLE"
+      return 'GOOGLE';
     case PARTNER.GMS:
-      return "GMS"
+      return 'GMS';
     case PARTNER.VIBER:
-      return "VIBER"
+      return 'VIBER';
     case PARTNER.APPLE:
-      return "APPLE"
+      return 'APPLE';
     case PARTNER.SINCH:
-      return "SINCH"
+      return 'SINCH';
     case PARTNER.ZALO:
-      return "ZALO"
+      return 'ZALO';
     case PARTNER.FACEBOOK:
-      return "FACEBOOK"
+      return 'FACEBOOK';
     case PARTNER.TELEGRAM:
-      return "TELEGRAM"
+      return 'TELEGRAM';
     case PARTNER.CM:
-      return "CM"
+      return 'CM';
     case PARTNER.BRAND_SMS:
-      return "BRAND SMS (VMG)"
+      return 'BRAND SMS (VMG)';
     case PARTNER.VIET_GUY:
-      return "VIET GUY"
+      return 'VIET GUY';
     case PARTNER.INFO_BIP:
-      return "INFOBIP"
+      return 'INFOBIP';
     case PARTNER.CHATWOOT:
-      return "CHATWOOT"
+      return 'CHATWOOT';
     case PARTNER.TILEDESK:
-      return "TILEDESK"
+      return 'TILEDESK';
     case PARTNER.TSEL:
-      return "TSEL"
+      return 'TSEL';
     case PARTNER.IRIS:
-      return "IRIS"
+      return 'IRIS';
     case PARTNER.IC:
-      return "INTER CONNECTION"
+      return 'INTER CONNECTION';
     case PARTNER.EUTOPIA:
-      return "EUTOPIA"
+      return 'EUTOPIA';
     default:
-      return ""
+      return '';
   }
-}
+};
 
 export const isBotApplication = (appId: string | number) => {
-  return [Application.VIBER_BOT, Application.APPLE, Application.TELEGRAM, Application.FACEBOOK, Application.ZALO, Application.GOOGLE_BUSINESS, Application.LIVE_CHAT].includes(Number(appId))
-}
+  return [
+    Application.VIBER_BOT,
+    Application.APPLE,
+    Application.TELEGRAM,
+    Application.FACEBOOK,
+    Application.ZALO,
+    Application.GOOGLE_BUSINESS,
+    Application.LIVE_CHAT,
+  ].includes(Number(appId));
+};
 
 export const isOAApplication = (appId: string | number) => {
-  return [Application.RCS, Application.SMS, Application.ZALO_ZNS,
-    Application.WHATSAPP, Application.MMS,
-    Application.VIBER_BUSINESS, Application.VIBER].includes(Number(appId))
-}
+  return [
+    Application.RCS,
+    Application.SMS,
+    Application.ZALO_ZNS,
+    Application.WHATSAPP,
+    Application.MMS,
+    Application.VIBER_BUSINESS,
+    Application.VIBER,
+    Application.TELEGRAM_GATEWAY,
+  ].includes(Number(appId));
+};
 
 export interface ApplicationInfo {
-  setting?: Record<string, unknown>,
-  applicationId: Application,
-  id: string // Official Account username - Mapping with Partner OfficialAccount ID, or bot uri
-  publicId?: string // Public ID of Application Channel
-  partnerId: PARTNER
+  setting?: Record<string, unknown>;
+  applicationId: Application;
+  id: string; // Official Account username - Mapping with Partner OfficialAccount ID, or bot uri
+  publicId?: string; // Public ID of Application Channel
+  partnerId: PARTNER;
 }
