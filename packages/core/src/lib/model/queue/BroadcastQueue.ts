@@ -30,7 +30,8 @@ export enum BULK_BROADCAST_QUEUE {
   SMS_IC = "BROADCAST_SMS_IC",
   SMS_EUTOPIA = "BROADCAST_SMS_EUTOPIA",
   PEACOM = "BROADCAST_PEACOM",
-  FALLBACK = "BROADCAST_FALL_BACK"
+  FALLBACK = "BROADCAST_FALL_BACK",
+  TELEGRAM_GATEWAY = "BROADCAST_TELEGRAM_GATEWAY"
 }
 
 export const getApplicationBroadcastQueueName = (applicationId: Application, partnerId: PARTNER | null = null) => {
@@ -92,6 +93,9 @@ export const getApplicationBroadcastQueueName = (applicationId: Application, par
         default:
           return BULK_BROADCAST_QUEUE.WHATSAPP_FACEBOOK;
       }
+    }
+    case Application.TELEGRAM_GATEWAY: {
+      return BULK_BROADCAST_QUEUE.TELEGRAM_GATEWAY
     }
     default:
       throw new Error(`Not support for Application (${applicationId}) - Partner (${partnerId})`)
