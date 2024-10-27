@@ -27,6 +27,7 @@ import {DEFAULT_TIME_ZONE} from "./constant";
 describe('date.util', () => {
   it('parse Date', ()=>{
     console.log(parseDateTimeByFormat('240829082217', 'YYMMDDHHmmss'))
+    console.log(parseDateTimeByFormat('240829082217', 'YYMMDDHHmmss', "UTC"))
   })
   it('should work', () => {
     const dateStr = '2022-12-20T10:23:55Z'
