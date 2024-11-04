@@ -10,3 +10,9 @@ export enum PRODUCT_TYPE {
 export enum PRODUCT_PARTNER {
   AIRALO = 1
 }
+
+export enum SERIAL_STATUS {
+  PENDING = 0,
+  REDEEMED = 1,
+  REDEEMED_FAIL = 2,
+}
