@@ -23,3 +23,4 @@ Visit the [Nx Documentation](https://nx.dev) to learn more.
 - npx nx g @nx/react-native:library rn --publishable --importPath @peacom/rn
 - npx nx build core
 - npx nx publish core --ver=0.0.40 --tag=latest
+- npx nx publish model --ver=2.0.96 --tag=latest
