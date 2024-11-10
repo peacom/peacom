@@ -74,6 +74,7 @@ export enum PARTNER {
   IRIS = 18,
   IC = 19,
   EUTOPIA = 20,
+  ALIBABA
 }
 
 export const partnerStr = (id: PARTNER | null) => {

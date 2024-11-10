@@ -5,6 +5,18 @@ export enum TemplateMessageStatus {
   ERROR,
 }
 
+export enum TEMPLATE_STATUS {
+  DRAFT = 1,
+  REQUEST,
+  REJECT,
+  APPROVED
+}
+
+export enum TEMPLATE_ACTIVE {
+  BLOCKED = 0,
+  ACTIVE
+}
+
 export enum TEMPLATE_TYPE {
   BROADCAST_ONLY = 1,
   CONVERSATION
