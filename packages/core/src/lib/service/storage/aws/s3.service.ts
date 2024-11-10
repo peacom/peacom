@@ -282,6 +282,10 @@ export const downloadS3Key = async ({key, outputFile, onError, chunkSize}: Downl
       rangeAndLength = getRangeAndLength(ContentRange || "");
     }
   } catch (e) {
+    console.error(e)
+    if (onError) {
+      onError(e);
+    }
     try {
       fs.unlinkSync(outputFile);
     } catch (e2: any) {
