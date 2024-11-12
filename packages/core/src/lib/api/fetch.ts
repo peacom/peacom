@@ -1,8 +1,9 @@
-import {sslAgent} from '@peacom/core';
+import { sslAgent } from '@peacom/core';
 
 export const myFetch = (url: any, opts?: any) => {
+  let options = opts || {};
   if (url.startsWith('https://')) {
-    opts.dispatcher = sslAgent
+    options.dispatcher = sslAgent;
   }
-  return fetch(url, opts)
-}
+  return fetch(url, options);
+};
