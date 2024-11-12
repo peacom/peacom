@@ -1,0 +1,5 @@
+export enum WEB_HOOK_STATUS {
+  ACTIVATED = 1,
+  FAILED,
+  BLOCKED
+}

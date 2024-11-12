@@ -7,12 +7,13 @@ export interface TemplateEvent {
   partnerTemplateId?: string
   status: TEMPLATE_STATUS
   cause?: string
+  extraData?: Record<string, any>
 }
 
 export interface PartnerEvent {
-  messageId: string // Peacom Message Public ID = Partner Application Message ID
   type: PARTNER_MESSAGE_TYPE
   timestamp: number
+  messageId: string // Peacom Message Public ID = Partner Application Message ID
   cause: string
   status: MESSAGE_STATUS
   message?: RawMessage
@@ -27,5 +28,11 @@ export interface QueuePartnerEventParam {
   webHookUrl: string
   event: PartnerEvent
   companyId: number
+  jobOpt?: JobsOptions,
+}
+
+export interface QueuePartnerEvent {
+  webHookId: number
+  event: PartnerEvent
   jobOpt?: JobsOptions,
 }
