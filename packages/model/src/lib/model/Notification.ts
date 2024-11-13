@@ -20,6 +20,7 @@ export enum MessageEvent {
   BALANCE_ALERT = "balance.alert",
   BULK_DONE = "bulk.done",
   BULK_FINISHED = "bulk.finished",
+  WEBHOOK = "webhook"
 }
 
 export interface ReceiverPermission {
