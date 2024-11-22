@@ -84,7 +84,9 @@ export enum BulkBroadcastType {
 
 export enum BulkCampaignProcessStatus {
   PENDING = 1,
-  PROCESSING,
-  DONE,
+  BILLING,
+  BILLED,
+  DISTRIBUTING,
+  DISTRIBUTED,
   FAILED,
 }
