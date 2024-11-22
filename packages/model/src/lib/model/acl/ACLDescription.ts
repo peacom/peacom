@@ -712,17 +712,20 @@ export const PERMISSION_AGENT_GROUP_LIST: Record<number, ActionDescription> = {
   [PERMISSION.AGENT_GROUP.READ]: {
     actionId: PERMISSION.AGENT_GROUP.READ,
     name: 'Read',
-    enableType: false,
+    enableType: true,
+    listType: CompanyTypeList
   },
   [PERMISSION.AGENT_GROUP.UPDATE]: {
     actionId: PERMISSION.AGENT_GROUP.UPDATE,
     name: 'Update',
-    enableType: false,
+    enableType: true,
+    listType: CompanyTypeList
   },
   [PERMISSION.AGENT_GROUP.DELETE]: {
     actionId: PERMISSION.AGENT_GROUP.DELETE,
     name: 'Delete',
-    enableType: false,
+    enableType: true,
+    listType: CompanyTypeList
   },
 };
 
