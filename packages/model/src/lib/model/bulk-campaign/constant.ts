@@ -88,5 +88,6 @@ export enum BulkCampaignProcessStatus {
   BILLED,
   DISTRIBUTING,
   DISTRIBUTED,
+  DONE,
   FAILED,
 }
