@@ -5,9 +5,6 @@ export default {
   setupFiles: [
     'dotenv/config'
   ],
-  globals: {
-    fetch: global.fetch
-  },
   transform: {
     '^.+\\.[tj]s$': [
       'ts-jest',
@@ -18,4 +15,5 @@ export default {
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
   coverageDirectory: '../../coverage/packages/core',
+  testEnvironment: 'node'
 };
