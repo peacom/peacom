@@ -2,15 +2,15 @@
 import { S3 } from "@aws-sdk/client-s3"
 
 export const S3_OPTION = {
-  accessKeyId: process.env['S3_ACCESS_KEY'],
-  secretAccessKey: process.env['S3_SECRET_KEY'],
-  endpoint: process.env['S3_ENDPOINT'],
-  region: process.env['S3_REGION'],
+  accessKeyId: process.env['S3_ACCESS_KEY'] || '',
+  secretAccessKey: process.env['S3_SECRET_KEY'] || '',
+  endpoint: process.env['S3_ENDPOINT'] || '',
+  region: process.env['S3_REGION'] || '',
   domain: process.env['S3_DOMAIN'] || ''
 };
 
 export const S3_INFO = {
-  BUCKET: process.env['S3_BUCKET']
+  BUCKET: process.env['S3_BUCKET'] || ''
 }
 
 export const S3_FOLDERS = {
