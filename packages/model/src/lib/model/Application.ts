@@ -119,6 +119,14 @@ export const partnerStr = (id: PARTNER | null) => {
       return 'INTER CONNECTION';
     case PARTNER.EUTOPIA:
       return 'EUTOPIA';
+    case PARTNER.ALIBABA:
+      return 'ALIBABA';
+    case PARTNER.VFIRST:
+      return 'VFIRST';
+    case PARTNER.TELIN:
+      return 'TELIN';
+    case PARTNER.DATALYTIS:
+      return 'DATALYTIS';
     default:
       return '';
   }
