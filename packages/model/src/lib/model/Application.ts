@@ -74,7 +74,9 @@ export enum PARTNER {
   IRIS = 18,
   IC = 19,
   EUTOPIA = 20,
-  ALIBABA
+  ALIBABA = 21,
+  TELIN = 22,
+  VFIRST = 23,
 }
 
 export const partnerStr = (id: PARTNER | null) => {
@@ -117,6 +119,14 @@ export const partnerStr = (id: PARTNER | null) => {
       return 'INTER CONNECTION';
     case PARTNER.EUTOPIA:
       return 'EUTOPIA';
+    case PARTNER.ALIBABA:
+      return 'ALIBABA';
+    case PARTNER.VFIRST:
+      return 'VFIRST';
+    case PARTNER.TELIN:
+      return 'TELIN';
+    case PARTNER.DATALYTIS:
+      return 'DATALYTIS';
     default:
       return '';
   }

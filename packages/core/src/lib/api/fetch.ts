@@ -1,4 +1,5 @@
-import { sslAgent } from '@peacom/core';
+import {sslAgent} from "./certificate/https-server";
+
 
 export const myFetch = (url: any, opts?: any) => {
   let options = opts || {};
