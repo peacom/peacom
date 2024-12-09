@@ -9,11 +9,15 @@ export enum WhatsappTemplateType {
 export enum WhatsappTemplateButtonType {
   quick_reply = 'quick_reply',
   url = 'url',
+  phone_number = 'phone_number',
+  copy_code = 'copy_code',
+  marketing_opt_out = 'marketing_opt_out',
 }
 
 export interface WhatsappTemplateButton {
   type: WhatsappTemplateButtonType;
   data: string;
+  [x: string]: any;
 }
 
 export interface WhatsappTemplateParam {
