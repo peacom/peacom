@@ -23,3 +23,4 @@ export * from './Contact';
 export * from './partner-request'
 export * from "./smpp"
 export * from './webhook'
+export * from './background'
