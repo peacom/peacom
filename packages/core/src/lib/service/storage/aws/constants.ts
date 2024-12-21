@@ -6,7 +6,8 @@ export const S3_OPTION = {
   secretAccessKey: process.env['S3_SECRET_KEY'] || '',
   endpoint: process.env['S3_ENDPOINT'] || '',
   region: process.env['S3_REGION'] || '',
-  domain: process.env['S3_DOMAIN'] || ''
+  domain: process.env['S3_DOMAIN'] || '',
+  auth: process.env['S3_AUTH'] || ""
 };
 
 export const S3_INFO = {
@@ -19,7 +20,25 @@ export const S3_FOLDERS = {
   PRIVATES: "privates",
 };
 
-export const s3 = new S3({
-  credentials: {accessKeyId: S3_OPTION.accessKeyId, secretAccessKey: S3_OPTION.secretAccessKey},
-  region: S3_OPTION.region, endpoint: S3_OPTION.endpoint
-});
+interface S3Config {
+  region: string,
+  endpoint: string,
+  credentials?: {
+    accessKeyId: string,
+    secretAccessKey: string
+  }
+}
+
+const getS3ByOption = () => {
+  const s3Options = {
+      region: S3_OPTION.region,
+      endpoint: S3_OPTION.endpoint
+  } as S3Config
+
+  if (S3_OPTION.accessKeyId && S3_OPTION.secretAccessKey) {
+    s3Options.credentials = {accessKeyId: S3_OPTION.accessKeyId, secretAccessKey: S3_OPTION.secretAccessKey}
+  }
+  return new S3(s3Options)
+}
+
+export const s3 = getS3ByOption()
