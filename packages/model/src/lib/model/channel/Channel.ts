@@ -15,3 +15,8 @@ export enum ChannelType {
   OA = 1,
   BOT
 }
+
+export enum ChannelSummaryType {
+  HOUR = 1,
+  MINUTE_15
+}
