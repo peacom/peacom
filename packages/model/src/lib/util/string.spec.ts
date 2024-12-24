@@ -63,6 +63,6 @@ describe('string.util', () => {
     }))
   })
   it("filterNonAlphaNumeric", ()=>{
-    console.log(filterNonAlphaNumeric("harmoney 003", "_"))
+    console.log(filterNonAlphaNumeric("harmony 003", "_"))
   })
 });
