@@ -8,11 +8,13 @@ export enum PRODUCT_TYPE {
 }
 
 export enum PRODUCT_PARTNER {
-  AIRALO = 1
+  AIRALO = 1,
+  ESIM_ACCESS = 2
 }
 
 export enum SERIAL_STATUS {
   PENDING = 0,
   REDEEMED = 1,
   REDEEMED_FAIL = 2,
+  CANCEL = 3
 }
