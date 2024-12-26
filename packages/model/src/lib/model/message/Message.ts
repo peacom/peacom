@@ -30,6 +30,23 @@ export enum MESSAGE_STATUS {
   READ = 5,
 }
 
+export const messageStatusStr = (status: MESSAGE_STATUS) => {
+  switch (status) {
+    case MESSAGE_STATUS.PENDING:
+      return 'PENDING';
+    case MESSAGE_STATUS.SUCCESS:
+      return 'SUCCESS';
+    case MESSAGE_STATUS.FAIL:
+      return 'FAIL';
+    case MESSAGE_STATUS.DELIVERED:
+      return 'DELIVERED';
+    case MESSAGE_STATUS.READ:
+      return 'READ'
+    default:
+      return `UNKNOWN (${status})`
+  }
+}
+
 export enum DIRECTION_TYPE {
   SEND = 1,
   RECEIVE,
