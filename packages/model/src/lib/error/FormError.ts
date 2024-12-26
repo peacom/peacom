@@ -1,5 +1,6 @@
 import {HttpError} from "./HttpError";
 import {FieldError} from "./FieldError";
+import {hasText} from "../util";
 
 export enum HTTP_ERROR {
   ACCESS_DENIED = 403,
@@ -30,3 +31,30 @@ export function isSystemError(err: any) {
 export function badRequest(name: string, code: string, message: string) {
   return new FormError(new FieldError(name, code, message));
 }
+
+export const errorToTraceText = (error: any) => {
+  const rs = [];
+  if (hasText(error.name)) {
+    rs.push(error.name);
+  }
+
+  if (hasText(error.original?.code)) {
+    rs.push(`Code: <strong>${error.original?.code}</strong>`);
+  }
+  if (hasText(error.original?.sqlMessage)) {
+    rs.push(`Message: <strong>${error.original?.sqlMessage}</strong>`);
+  }
+  if (error instanceof FormError) {
+    const {
+      errors: [err]
+    } = error;
+    if (err) {
+      rs.push(`Form Error: ${err.name}`);
+      rs.push(`Message: <strong>${err.message}</strong>`);
+    }
+  } else {
+    rs.push(`Message: <strong>${error.message}</strong>`);
+  }
+  rs.push(error.stack);
+  return rs.join("\n");
+};
