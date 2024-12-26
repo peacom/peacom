@@ -1,5 +1,7 @@
 /**
  * This is store on DB with tinyint (1byte), so the value must below 255
+ * 10000010 => 130
+ * 10000011 => 131
  */
 export enum BILLING_STATUS {
   NONE = 0,
