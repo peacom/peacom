@@ -1,15 +1,15 @@
 /**
  * This is store on DB with tinyint (1byte), so the value must below 255
- * 10000010 => 130
- * 10000011 => 131
+ * 01000010 => 66
+ * 01000011 => 67
  */
 export enum BILLING_STATUS {
   NONE = 0,
   PENDING = 1,
   BILLED = 2,
   CANCEL = 3,
-  BILLED_CONFIRM = 130, /* Confirm escrow for success */
-  CANCEL_CONFIRM = 131 /* Confirm escrow for cancel */
+  BILLED_CONFIRM = 66, /* Confirm escrow for success */
+  CANCEL_CONFIRM = 67 /* Confirm escrow for cancel */
 }
 
 export enum COMPANY_BILLING_TYPE {
