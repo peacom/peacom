@@ -5,5 +5,6 @@ export enum COMPANY_TRANSACTION_TYPE {
 
 export enum COMPANY_TRANSACTION_PURPOSE_TYPE {
   BILLING = 1,
-  TOPUP = 2
+  TOPUP = 2,
+  REFUND= 3
 }
