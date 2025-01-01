@@ -1,4 +1,4 @@
-import {AgentUseCase, BillingCategory, HostingRegion} from "@peacom/model";
+import {AgentUseCase, BillingCategory, HostingRegion} from "./constant";
 
 export interface Agent {
   name: string
