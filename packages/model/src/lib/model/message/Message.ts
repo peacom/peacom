@@ -1,10 +1,10 @@
 import {Application} from '../Application';
 import {BILLING_STATUS} from '../Billing';
 import {FileInfo} from '../FileInfo';
-import {WhatsappTemplate} from './sinch/SinchWhatsappTemplate';
-import {ZaloZnsTemmplateParam} from './zalo/ZaloZNSTemplate';
+import {WhatsappTemplate} from './sinch';
+import {ZaloZnsTemmplateParam} from './zalo';
 import {TemplateMessageSource} from './TemplateMessage';
-import {WhatsappInteractive} from './infobip/WhatsappInteractive';
+import {WhatsappInteractive} from './infobip';
 
 export enum MESSAGE_CONTENT_TYPE {
   EVENT = 1, // DELIVERY STATUS
@@ -17,9 +17,7 @@ export enum MESSAGE_CONTENT_TYPE {
 export enum SEND_TYPE {
   VIA_BROADCAST = 1,
   VIA_BOT = 2,
-  VIA_TEMPLATE_TEST = 3,
-  VIA_CONVERSATION = 4,
-  VIA_PARTNER = 5,
+  RECEIVE = 3,
 }
 
 export enum MESSAGE_STATUS {
