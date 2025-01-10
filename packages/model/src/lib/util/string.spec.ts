@@ -2,7 +2,7 @@ import {
   alphaNumericToString,
   filterNonAlphaNumeric,
   isNumberOnly,
-  leftString,
+  leftString, parseTemplate,
   renderTemplate
 } from "./";
 
@@ -64,5 +64,9 @@ describe('string.util', () => {
   })
   it("filterNonAlphaNumeric", ()=>{
     console.log(filterNonAlphaNumeric("harmony 003", "_"))
+  })
+  it("parseMessage",()=>{
+    const message = "{{v1}} this is testing for template engine parse {{{v2}}} and {v3}"
+    console.log([...parseTemplate(message)])
   })
 });

@@ -165,3 +165,15 @@ export function formatBytes(bytes: number, decimals: number = 2): string {
 
   return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + " " + sizes[i]
 }
+
+export const parseTemplate = (str: string) => {
+  const regex = /{{(\w+)}}|{{{(\w+)}}}/g
+  const rs = []
+  for (const i of str.matchAll(regex)) {
+    rs.push({
+      template: i[0],
+      variable: i[1] || i[2] || i[3]
+    })
+  }
+  return rs;
+}

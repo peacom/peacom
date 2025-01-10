@@ -20,6 +20,9 @@ export interface WhatsappTemplateButton {
   [x: string]: any;
 }
 
+/**
+ * INTERNAL Facebook Format
+ */
 export interface WhatsappTemplateParam {
   templateId: string;
   language?: string;
@@ -57,6 +60,9 @@ export type Component = {
   }[];
 };
 
+/**
+ * Facebook Whatsapp Template Format
+ */
 export interface FacebookWhatsappTemplate {
   id: string;
   name: string;
