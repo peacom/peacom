@@ -1,5 +1,5 @@
 import {sendChannelMessage} from "./micro-service.api";
-import {Application, MESSAGE_TYPE, PARTNER} from "../model";
+import {Application, MESSAGE_TYPE, PARTNER} from "@peacom/model";
 
 require('isomorphic-fetch');
 
@@ -14,7 +14,8 @@ describe('micro-service.spec', () => {
           },
           id: 1,
           publicId: '1234'
-        }, receiverId: "84938130683",
+        },
+        receiverId: "84938130683",
         applicationInfo: {
           applicationId: Application.VIBER_BUSINESS,
           setting: {},
