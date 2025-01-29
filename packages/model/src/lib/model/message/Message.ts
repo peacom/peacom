@@ -316,3 +316,14 @@ export interface ChoiceMessageItem {
   value: any;
   nextMessage?: any;
 }
+
+export enum OPEN_URL_APPLICATION {
+  WEBVIEW = 'WEBVIEW',
+  BROWSER = 'BROWSER'
+}
+
+export enum WEBVIEW_TYPE {
+  FULL = 'FULL',
+  HALF = 'HALF',
+  TALL = 'TALL'
+}
