@@ -20,6 +20,19 @@ export enum SEND_TYPE {
   RECEIVE = 3,
 }
 
+export const sendTypeStr = (sendType: SEND_TYPE | null) => {
+  switch (sendType) {
+    case SEND_TYPE.VIA_BROADCAST:
+      return "BROADCAST";
+    case SEND_TYPE.RECEIVE:
+      return "RECEIVE";
+    case SEND_TYPE.VIA_BOT:
+      return "CONVERSATION"
+    default:
+      return "UNKNOWN"
+  }
+}
+
 export enum MESSAGE_STATUS {
   PENDING = 1,
   SUCCESS = 2,
