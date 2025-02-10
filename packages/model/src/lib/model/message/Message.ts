@@ -180,27 +180,12 @@ export enum SuggestionActionType {
   OPEN_URL = 'open-url',
   REPLY = 'reply',
   DIAL = 'dial',
-  LIVE_AGENT_REQUEST = 'liveAgent',
   CALENDAR = 'CalendarEventAction',
-  LIVE_AGENT_REQUEST_VN = 'liveAgentVN',
-  LIVE_AGENT_REQUEST_EN = 'liveAgentEN',
   VIEW_LOCATION = 'VIEW_LOCATION',
   SHARE_LOCATION = 'SHARE_LOCATION',
   SHARE_INFO = 'SHARE_INFO',
 }
 
-export const isLiveAgentRequestAction = (
-  action?: SuggestionActionType | null
-) => {
-  if (!action) {
-    return false;
-  }
-  return [
-    SuggestionActionType.LIVE_AGENT_REQUEST,
-    SuggestionActionType.LIVE_AGENT_REQUEST_EN,
-    SuggestionActionType.LIVE_AGENT_REQUEST_VN,
-  ].includes(action);
-};
 
 export interface RawMessageSuggestion {
   action: SuggestionActionType;

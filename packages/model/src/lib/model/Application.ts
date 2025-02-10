@@ -82,7 +82,7 @@ export enum PARTNER {
 export const partnerStr = (id: PARTNER | null) => {
   switch (id) {
     case PARTNER.PEACOM:
-      return 'PEACOM';
+      return 'MMP';
     case PARTNER.GOOGLE:
       return 'GOOGLE';
     case PARTNER.GMS:
