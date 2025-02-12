@@ -43,6 +43,8 @@ export const tariffTypeStr = (tariffType: TARIFF_TYPE) => {
       return 'CONVERSATION'
     case TARIFF_TYPE.PER_CONVERSATION_BROADCAST_INITIAL:
       return 'CONVERSATION INITIAL BY BROADCAST'
+    default:
+      return `UNKNOWN ${tariffType}`
   }
 }
 
