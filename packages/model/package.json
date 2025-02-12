@@ -1,14 +1,14 @@
 {
   "name": "@peacom/model",
-  "version": "2.0.132",
+  "version": "2.0.134",
   "type": "commonjs",
   "dependencies": {
-    "google-libphonenumber": "^3.2.38",
+    "google-libphonenumber": "^3.2.40",
     "mime-types": "^2.1.35",
     "moment": "^2.30.1",
-    "moment-timezone": "^0.5.46",
+    "moment-timezone": "^0.5.47",
     "mustache": "^4.2.0",
-    "uuid": "^11.0.3"
+    "uuid": "^11.0.5"
   },
   "devDependencies": {
     "@types/google-libphonenumber": "^7.4.30",
