@@ -90,4 +90,5 @@ export enum BulkCampaignProcessStatus {
   DISTRIBUTED,
   DONE,
   FAILED,
+  ENFORCE,
 }
