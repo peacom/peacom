@@ -81,6 +81,11 @@ export enum BulkBroadcastType {
   SEND_NOW,
 }
 
+export enum BulkBroadcastCategory {
+  MASS = 1,
+  ENFORCE,
+  LBA,
+}
 
 export enum BulkCampaignProcessStatus {
   PENDING = 1,
