@@ -9,7 +9,8 @@ export enum PRODUCT_TYPE {
 
 export enum PRODUCT_PARTNER {
   AIRALO = 1,
-  ESIM_ACCESS = 2
+  ESIM_ACCESS = 2,
+  JOYTEL = 3
 }
 
 export enum SERIAL_STATUS {
