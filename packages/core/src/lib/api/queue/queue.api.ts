@@ -1,9 +1,9 @@
 import {QueueMessageStatus, QueueOutgoingMessage} from "../../model";
 import {Queue} from "bullmq";
 import {v4} from 'uuid'
-import {QueuePartnerEventParam} from "../../model/partner/PartnerEvent";
-import {PARTNER_MESSAGE_TYPE} from "../../model/partner";
-import {LiveAgentTask, liveAgentTaskStr} from "../../model/queue/crm/LiveAgentQueue";
+import {QueuePartnerEventParam} from '../../model';
+import {PARTNER_MESSAGE_TYPE} from '../../model';
+import {LiveAgentTask, liveAgentTaskStr} from '../../model';
 import {NotificationMessage} from "@peacom/model";
 
 const toBullQueueMessage = (message: QueueMessageStatus) => {
