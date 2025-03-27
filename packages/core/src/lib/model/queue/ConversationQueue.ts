@@ -10,6 +10,8 @@ export enum CONVERSATION_QUEUE {
   VIBER_OUT = "VIBER_OUT",
   RCS_IN = "RCS_IN",
   RCS_OUT = "RCS_OUT",
+  RCS_DOTGO_IN = "RCS_DOTGO_IN",
+  RCS_DOTGO_OUT = "RCS_DOTGO_OUT",
   APPLE_IN = "APPLE_IN",
   APPLE_OUT = "APPLE_OUT",
   FACEBOOK_IN = "FACEBOOK_IN",
@@ -34,6 +36,9 @@ export const getApplicationConversationQueueOutName = (applicationId: Applicatio
     case Application.APPLE:
       return CONVERSATION_QUEUE.APPLE_OUT
     case Application.RCS:
+      if (PARTNER.DOTGO === Number(partnerId)) {
+        return CONVERSATION_QUEUE.RCS_DOTGO_OUT
+      }
       return CONVERSATION_QUEUE.RCS_OUT
     case Application.WHATSAPP:
       return CONVERSATION_QUEUE.WHATSAPP_OUT
