@@ -1,10 +1,10 @@
-import {Application} from '../Application';
-import {BILLING_STATUS} from '../Billing';
-import {FileInfo} from '../FileInfo';
-import {WhatsappTemplate} from './sinch';
-import {ZaloZnsTemmplateParam} from './zalo';
-import {TemplateMessageSource} from './TemplateMessage';
-import {WhatsappInteractive} from './infobip';
+import { Application } from '../Application';
+import { BILLING_STATUS } from '../Billing';
+import { FileInfo } from '../FileInfo';
+import { WhatsappTemplate } from './sinch';
+import { ZaloZnsTemmplateParam } from './zalo';
+import { TemplateMessageSource } from './TemplateMessage';
+import { WhatsappInteractive } from './infobip';
 
 export enum MESSAGE_CONTENT_TYPE {
   EVENT = 1, // DELIVERY STATUS
@@ -23,15 +23,15 @@ export enum SEND_TYPE {
 export const sendTypeStr = (sendType: SEND_TYPE | null) => {
   switch (sendType) {
     case SEND_TYPE.VIA_BROADCAST:
-      return "BROADCAST";
+      return 'BROADCAST';
     case SEND_TYPE.RECEIVE:
-      return "RECEIVE";
+      return 'RECEIVE';
     case SEND_TYPE.VIA_BOT:
-      return "CONVERSATION"
+      return 'CONVERSATION';
     default:
-      return "UNKNOWN"
+      return 'UNKNOWN';
   }
-}
+};
 
 export enum MESSAGE_STATUS {
   PENDING = 1,
@@ -52,11 +52,11 @@ export const messageStatusStr = (status: MESSAGE_STATUS) => {
     case MESSAGE_STATUS.DELIVERED:
       return 'DELIVERED';
     case MESSAGE_STATUS.READ:
-      return 'READ'
+      return 'READ';
     default:
-      return `UNKNOWN (${status})`
+      return `UNKNOWN (${status})`;
   }
-}
+};
 
 export enum DIRECTION_TYPE {
   SEND = 1,
@@ -159,9 +159,17 @@ export const APPLICATION_MESSAGE: Record<Application, Array<MESSAGE_TYPE>> = {
   [Application.MMS]: [
     MESSAGE_TYPE.PICTURE,
     MESSAGE_TYPE.VIDEO,
-    MESSAGE_TYPE.FILE
+    MESSAGE_TYPE.FILE,
   ],
   [Application.TELEGRAM_GATEWAY]: [MESSAGE_TYPE.TEXT],
+  [Application.INSTAGRAM]: [
+    MESSAGE_TYPE.TEXT,
+    MESSAGE_TYPE.VIDEO,
+    MESSAGE_TYPE.PICTURE,
+    MESSAGE_TYPE.FILE,
+    MESSAGE_TYPE.QUICK_REPLY,
+    MESSAGE_TYPE.RICH_CARD,
+  ],
 };
 
 export enum SEND_MESSAGE_VIA {
@@ -185,7 +193,6 @@ export enum SuggestionActionType {
   SHARE_LOCATION = 'SHARE_LOCATION',
   SHARE_INFO = 'SHARE_INFO',
 }
-
 
 export interface RawMessageSuggestion {
   action: SuggestionActionType;
@@ -234,15 +241,15 @@ export interface PreviewUrl {
 }
 
 export enum ExpireType {
-  NONE = "NONE",
-  TTL = "TTL",
-  EXPIRE_TIME = "EXPIRE_TIME",
+  NONE = 'NONE',
+  TTL = 'TTL',
+  EXPIRE_TIME = 'EXPIRE_TIME',
 }
 
 interface Expire {
-  type: ExpireType
-  ttl: string
-  expireTime: string
+  type: ExpireType;
+  ttl: string;
+  expireTime: string;
 }
 
 export interface RawMessage {
@@ -317,11 +324,11 @@ export interface ChoiceMessageItem {
 
 export enum OPEN_URL_APPLICATION {
   WEBVIEW = 'WEBVIEW',
-  BROWSER = 'BROWSER'
+  BROWSER = 'BROWSER',
 }
 
 export enum WEBVIEW_TYPE {
   FULL = 'FULL',
   HALF = 'HALF',
-  TALL = 'TALL'
+  TALL = 'TALL',
 }

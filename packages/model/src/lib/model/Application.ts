@@ -14,6 +14,7 @@ export enum Application {
   LIVE_CHAT = 14,
   MMS = 15,
   TELEGRAM_GATEWAY = 16,
+  INSTAGRAM = 17,
 }
 
 export const applicationStr = (id?: number) => {
@@ -48,6 +49,8 @@ export const applicationStr = (id?: number) => {
       return 'MMS';
     case Application.TELEGRAM_GATEWAY:
       return 'TELEGRAM GATEWAY';
+    case Application.INSTAGRAM:
+      return 'INSTAGRAM';
     default:
       return `${id || ''}`;
   }
@@ -144,6 +147,7 @@ export const isBotApplication = (appId: string | number) => {
     Application.ZALO,
     Application.GOOGLE_BUSINESS,
     Application.LIVE_CHAT,
+    Application.INSTAGRAM,
   ].includes(Number(appId));
 };
 
