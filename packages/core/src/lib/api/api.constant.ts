@@ -94,7 +94,7 @@ export const MICROSERVICE_URL: Record<Application, string> = {
   [Application.GOOGLE_BUSINESS]: process.env['GOOGLE_BUSINESS_INTEGRATION'] || 'http://127.0.0.1:4006/eip/google/business',
   [Application.LIVE_CHAT]: process.env['LIVE_CHAT_INTEGRATION'] || 'http://127.0.0.1:4020/eip/live-chat',
   [Application.MMS]: process.env['MMS_INTEGRATION'] || 'http://127.0.0.1:4010',
-  [Application.INSTAGRAM]:  process.env['INSTAGRAM_INTEGRATION'] || 'http://127.0.0.1:4017/eip/instagram',
+  [Application.INSTAGRAM]:  process.env['INSTAGRAM_INTEGRATION'] || 'http://127.0.0.1:4011/eip/instagram',
 }
 
 export const INTEGRATED_CHANNEL = [Application.APPLE, Application.ZALO, Application.ZALO_ZNS, Application.GOOGLE_BUSINESS, Application.RCS]
