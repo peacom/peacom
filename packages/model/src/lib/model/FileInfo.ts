@@ -1,4 +1,4 @@
-import mime = require("mime-types");
+const mime = require('mime-types')
 
 export interface FileInfo {
   id?: string //File Path from Folder
