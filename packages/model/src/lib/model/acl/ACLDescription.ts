@@ -1055,21 +1055,25 @@ export const PERMISSION_CRM_ORDER: Record<number, ActionDescription> = {
     actionId: PERMISSION.ORDER.CREATE,
     name: 'Create',
     enableType: false,
+    listType: OwnerTypeList
   },
   [PERMISSION.ORDER.READ]: {
     actionId: PERMISSION.ORDER.READ,
     name: 'Read',
     enableType: false,
+    listType: CompanyTypeList
   },
   [PERMISSION.ORDER.UPDATE]: {
     actionId: PERMISSION.ORDER.UPDATE,
     name: 'Update',
     enableType: false,
+    listType: CompanyTypeList
   },
   [PERMISSION.ORDER.DELETE]: {
     actionId: PERMISSION.ORDER.DELETE,
     name: 'Delete',
     enableType: false,
+    listType: CompanyTypeList
   },
 };
 
