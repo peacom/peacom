@@ -9,7 +9,8 @@ export enum BILLING_STATUS {
   BILLED = 2,
   CANCEL = 3,
   BILLED_CONFIRM = 66, /* Confirm escrow for success */
-  CANCEL_CONFIRM = 67 /* Confirm escrow for cancel */
+  CANCEL_CONFIRM = 67, /* Confirm escrow for cancel */
+  FAIL_CONFIRM = 68 /* In case can not confirm the message (can not confirm cancel or confirm bill), we mark it fail or manual update again */
 }
 
 export enum COMPANY_BILLING_TYPE {
