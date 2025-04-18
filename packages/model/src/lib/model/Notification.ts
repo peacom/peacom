@@ -67,8 +67,10 @@ export enum NotificationChannel {
 
 export interface NotificationMessage {
   message: MessageEvent;
+  type?: NotificationType
   priority: NotificationPriority;
   excludeUser?: Array<number>;
+  includeUser?: Array<number>;
   params?: any;
   receiver: Array<ReceiverPermission>;
   channels?: Array<NotificationChannel>;
