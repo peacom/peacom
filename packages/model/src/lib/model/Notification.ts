@@ -23,6 +23,33 @@ export enum MessageEvent {
   BULK_FINISHED = 'bulk.finished',
   WEBHOOK = 'webhook',
   VNA_SUMMARY_CHECK_IN_REPORT = 'VNA_SUMMARY_CHECK_IN_REPORT',
+  CONVERSATION_MESSAGE = 'conversation.message',
+  CONVERSATION_LIVE_AGENT = 'conversation.live_agent',
+  TICKET_ASSIGN = 'ticket.assign'
+}
+
+// We're migrating using MessageEvent to NotificationType (number) for faster index
+export enum NotificationType {
+  CHANNEL_OA_STATUS = 1,
+  CHANNEL_REQUEST,
+  TEMPLATE_REQUEST,
+  TEMPLATE_APPROVE,
+  TEMPLATE_REJECT,
+  TEMPLATE_DELETE,
+  COMPANY_KYC_REQUEST,
+  COMPANY_KYC_REJECT,
+  COMPANY_KYC_APPROVE,
+  COMPANY_SUSPEND,
+  COMPANY_SUSPEND_BO_SA,
+  BACKGROUND_TASK,
+  BALANCE_ALERT,
+  BULK_DONE ,
+  BULK_FINISHED,
+  WEBHOOK,
+  VNA_SUMMARY_CHECK_IN_REPORT,
+  CONVERSATION_MESSAGE,
+  CONVERSATION_LIVE_AGENT,
+  TICKET_ASSIGN
 }
 
 export interface ReceiverPermission {
