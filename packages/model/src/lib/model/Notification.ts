@@ -110,6 +110,12 @@ export enum NotificationChannel {
   SMS = 'SMS',
 }
 
+export enum NotificationConversationStatus {
+  PENDING,
+  SUCCESS,
+  FAIL
+}
+
 export interface NotificationMessage {
   message: MessageEvent;
   type?: NotificationType
