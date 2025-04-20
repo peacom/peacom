@@ -17,7 +17,7 @@ import {
   hasText,
   rightString, AwsFileInfo, getFileInfoFromUrl
 } from '@peacom/model';
-import {getFileInfoFromLocalFile} from "../../../util";
+import {getFileInfoFromLocalFile, writeFileStream} from "../../../util";
 
 export const getS3EndPoint = () => {
   if (hasText(S3_OPTION.domain)) {
@@ -281,7 +281,7 @@ export const downloadS3Key = async ({key, outputFile, onError, chunkSize}: Downl
       });
 
       if (Body) {
-        writeStream.write(await Body.transformToByteArray());
+        await writeFileStream(writeStream, await Body.transformToByteArray());
       }
 
       rangeAndLength = getRangeAndLength(ContentRange || "");

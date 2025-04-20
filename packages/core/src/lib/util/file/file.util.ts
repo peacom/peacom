@@ -28,3 +28,11 @@ export const getFileInfoFromLocalFile = (
 
   return rs;
 };
+
+export const writeFileStream = async (stream: any, data: any) => {
+  if (!stream.write(data)) {
+    await new Promise((resolve) => {
+      stream.once("drain", resolve);
+    });
+  }
+}

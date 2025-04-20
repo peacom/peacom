@@ -21,7 +21,7 @@ describe('s3.service.specs.ts', () => {
   }, 200000);
   it('Download S3 Large file', async () => {
     await downloadS3Url({
-      url: 'https://dev-cdn.peacom.co/privates/avatar.jpeg',
+      url: 'https://storage.googleapis.com/telin-mmp/files/birds_PNG9.png',
       outputFile: './avatar.jpeg', chunkSize: 1024 * 1024
     })
   }, 200000)
