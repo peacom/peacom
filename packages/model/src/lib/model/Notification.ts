@@ -100,6 +100,7 @@ export const mappingNotificationMessageToType = (messageEvent: MessageEvent): No
 export interface ReceiverPermission {
   permission: number;
   aclType: AclActionType;
+  isInclude?: boolean
   userId?: number; // In case of owner, we will send to userId, no need to query from AclGroupAction
   companyId?: number; // In case of PARTIAL, MASTER, we will base on companyId, BO
 }
@@ -121,7 +122,7 @@ export interface NotificationMessage {
   type?: NotificationType
   priority: NotificationPriority;
   excludeUser?: Array<number>;
-  includeUser?: Array<number>;
+  companyId: number // Notification belong to which company
   params?: any;
   receiver: Array<ReceiverPermission>;
   channels?: Array<NotificationChannel>;
