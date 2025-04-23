@@ -25,7 +25,8 @@ export enum MessageEvent {
   VNA_SUMMARY_CHECK_IN_REPORT = 'VNA_SUMMARY_CHECK_IN_REPORT',
   CONVERSATION_MESSAGE = 'conversation.message',
   CONVERSATION_LIVE_AGENT = 'conversation.live_agent',
-  TICKET_ASSIGN = 'ticket.assign'
+  TICKET_ASSIGN = 'ticket.assign',
+  USER_INVITE = 'user.invite'
 }
 
 // We're migrating using MessageEvent to NotificationType (number) for faster index
@@ -49,11 +50,14 @@ export enum NotificationType {
   VNA_SUMMARY_CHECK_IN_REPORT,
   CONVERSATION_MESSAGE,
   CONVERSATION_LIVE_AGENT,
-  TICKET_ASSIGN
+  TICKET_ASSIGN,
+  USER_INVITE
 }
 
 export const mappingNotificationMessageToType = (messageEvent: MessageEvent): NotificationType => {
   switch (messageEvent) {
+    case MessageEvent.USER_INVITE:
+      return NotificationType.USER_INVITE;
     case MessageEvent.BACKGROUND_TASK:
       return NotificationType.BACKGROUND_TASK;
     case MessageEvent.BALANCE_ALERT:
