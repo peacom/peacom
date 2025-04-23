@@ -122,6 +122,8 @@ export interface NotificationMessage {
   type?: NotificationType
   priority: NotificationPriority;
   excludeUser?: Array<number>;
+  includeEmail?: Array<string>;
+  includePhone?: Array<string>;
   companyId: number // Notification belong to which company
   params?: any;
   receiver: Array<ReceiverPermission>;
