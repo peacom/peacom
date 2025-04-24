@@ -81,6 +81,7 @@ export enum PARTNER {
   TELIN = 22,
   VFIRST = 23,
   DOTGO = 24,
+  AURA = 25,
 }
 
 export const partnerStr = (id: PARTNER | null) => {
@@ -133,6 +134,8 @@ export const partnerStr = (id: PARTNER | null) => {
       return 'DOTGO';
     case PARTNER.DATALYTIS:
       return 'DATALYTIS';
+    case PARTNER.AURA:
+      return 'AURA';
     default:
       return '';
   }
