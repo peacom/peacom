@@ -37,6 +37,7 @@ export enum BULK_BROADCAST_QUEUE {
   FALLBACK = 'BROADCAST_FALL_BACK',
   TELEGRAM_GATEWAY = 'BROADCAST_TELEGRAM_GATEWAY',
   SMS_AURA = 'BROADCAST_SMS_AURA',
+  SMS_GAPIT = 'BROADCAST_SMS_GAPIT',
 }
 
 export const getApplicationBroadcastQueueName = (applicationId: Application, partnerId: PARTNER | null = null) => {
@@ -85,6 +86,8 @@ export const getApplicationBroadcastQueueName = (applicationId: Application, par
           return BULK_BROADCAST_QUEUE.SMS_EUTOPIA;
         case PARTNER.AURA:
           return BULK_BROADCAST_QUEUE.SMS_AURA;
+        case PARTNER.GAPIT:
+          return BULK_BROADCAST_QUEUE.SMS_GAPIT;
         default:
           return BULK_BROADCAST_QUEUE.SMS;
       }

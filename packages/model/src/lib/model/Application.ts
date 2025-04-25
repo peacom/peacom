@@ -82,6 +82,7 @@ export enum PARTNER {
   VFIRST = 23,
   DOTGO = 24,
   AURA = 25,
+  GAPIT = 26,
 }
 
 export const partnerStr = (id: PARTNER | null) => {
@@ -136,6 +137,8 @@ export const partnerStr = (id: PARTNER | null) => {
       return 'DATALYTIS';
     case PARTNER.AURA:
       return 'AURA';
+    case PARTNER.GAPIT:
+      return 'GAPIT';
     default:
       return '';
   }
