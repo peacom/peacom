@@ -121,13 +121,18 @@ export enum NotificationConversationStatus {
   FAIL
 }
 
+export interface Receiver {
+  fullName: string
+  email: string
+  phone: string
+}
+
 export interface NotificationMessage {
   message: MessageEvent;
   type?: NotificationType
   priority: NotificationPriority;
   excludeUser?: Array<number>;
-  includeEmail?: Array<string>;
-  includePhone?: Array<string>;
+  includeReceiver?: Array<Receiver>;
   companyId: number // Notification belong to which company
   params?: any;
   receiver: Array<ReceiverPermission>;
