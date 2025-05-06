@@ -63,6 +63,11 @@ export interface WhatsappInteractiveAction {
   button?: string; // Required for List Messages, Emojis are supported, markdown is not. Maximum length: 20 characters
   buttons?: Array<WhatsappInteractiveReplyButton>; // Required for Reply Button Messages
   sessions?: Array<WhatsappInteractiveSession>; // Required for List Messages and Multi-Product Messages.
+  // product catalog
+  name?: string; // catalog_message
+  parameters?: {
+    thumbnail_product_retailer_id: string;
+  };
 }
 
 export interface WhatsappInteractive {
