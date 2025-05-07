@@ -383,8 +383,7 @@ export const PERMISSION_BULK_CAMPAIGN: Record<number, ActionDescription> = {
     actionId: PERMISSION.MONITOR.BULK,
     name: 'Monitor Bulk Campaign',
     description: 'Monitor Bulk Campaign',
-    enableType: true,
-    listType: [...BoAdminTypeList, ...CompanyTypeList],
+    enableType: false
   },
 };
 
