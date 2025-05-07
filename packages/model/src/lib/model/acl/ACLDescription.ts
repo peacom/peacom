@@ -379,6 +379,12 @@ export const PERMISSION_BULK_CAMPAIGN: Record<number, ActionDescription> = {
     description: 'Import partner contact',
     enableType: false
   },
+  [PERMISSION.MONITOR.BULK]: {
+    actionId: PERMISSION.MONITOR.BULK,
+    name: 'Monitor Bulk Campaign',
+    description: 'Monitor Bulk Campaign',
+    enableType: false
+  },
 };
 
 export const PERMISSION_BLACK_LIST: Record<number, ActionDescription> = {
