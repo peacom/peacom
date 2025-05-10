@@ -1,6 +1,7 @@
 import {DATE_TIME_FORMAT, DEFAULT_TIME_ZONE} from "./constant";
 import * as moment from "moment-timezone";
 import {hasText} from "../string.util";
+import {RangeDate} from "../../model/time";
 
 type DateType = Date | string
 
@@ -113,12 +114,12 @@ export const parseDateTimeByFormat = (
     .toDate();
 };
 
-export const getListHour = (fromTime: Date, toTime: Date, step = 1) => {
+export const getListHour = (fromTime: Date, toTime: Date, hourStep = 1) => {
   const rs = [fromTime]
   let isContinue = true
   let nextHour = fromTime
   while (isContinue) {
-    nextHour = addHours(nextHour, 1)
+    nextHour = addHours(nextHour, hourStep)
     if (nextHour.getTime() < toTime.getTime()) {
       rs.push(nextHour)
     } else {
@@ -151,4 +152,29 @@ export const getTimeZoneOffset = (timezone: string) => {
   }).format(new Date());
   const offset = tz.split('GMT')[1]
   return offset || '+00:00'
+}
+
+export const getTimeOfDate = (date: Date) => {
+  const today = new Date()
+  return Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate(),
+    date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds(), date.getUTCMilliseconds())
+}
+
+export const isRangeTimeOverlap = (range1: RangeDate, range2: RangeDate) => {
+  if (!range1 || !range1.endDate || !range1.startDate) {
+    throw new Error("Invalid range date (range1)")
+  }
+  if (!range2 || !range2.endDate || !range2.startDate) {
+    throw new Error("Invalid range date (range1)")
+  }
+  const range1From = getTimeOfDate(new Date(range1.startDate))
+  const range1To = getTimeOfDate(new Date(range1.endDate))
+  const range2From = getTimeOfDate(new Date(range2.startDate))
+  const range2To = getTimeOfDate(new Date(range2.endDate))
+  // console.log(`${range1From} - ${range1To} - ${range2From} - ${range2To}`)
+  return (
+    (range1From <= range2To && range1To >= range2From) ||
+    (range1To <= range2From && range1From >= range2From) ||
+    (range1From >= range2To && range1To <= range2To)
+  )
 }

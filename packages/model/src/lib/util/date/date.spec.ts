@@ -12,8 +12,8 @@ import {
   formatTimeTZ,
   getDate,
   getLastRangeMinute,
-  getListHour,
-  getTimeZoneOffset,
+  getListHour, getTimeOfDate,
+  getTimeZoneOffset, isRangeTimeOverlap,
   parseDateTimeByFormat,
   startLastMonth,
   startOfDate,
@@ -23,15 +23,15 @@ import {
   startOfWeek
 } from './date.util';
 import {DEFAULT_TIME_ZONE} from "./constant";
+import {RangeDate} from "../../model/time";
 
 describe('date.util', () => {
-  it('parse Date', ()=>{
+  it('parse Date', () => {
     console.log(parseDateTimeByFormat('240829082217', 'YYMMDDHHmmss'))
     console.log(parseDateTimeByFormat('240829082217', 'YYMMDDHHmmss', "UTC"))
   })
   it('should work', () => {
     const dateStr = '2022-12-20T10:23:55Z'
-    const VN_DateStr = '2022-12-20 17:23:55'
     console.log(new Date(dateStr), new Date(dateStr).toISOString())
     console.log(formatDateTimeTZ(new Date(dateStr), DEFAULT_TIME_ZONE))
     console.log(formatDateTimeTZ(dateStr, 'UTC'))
@@ -88,10 +88,10 @@ describe('date.util', () => {
     const departureDatetime = new Date("2023-03-23T08:00:00Z");
     console.log(formatTimeTZ(departureDatetime, DEFAULT_TIME_ZONE, "HH:mm"));
   });
-  it("getLastRangeOfNumberMinuteFromDate", ()=>{
+  it("getLastRangeOfNumberMinuteFromDate", () => {
     console.log(getLastRangeMinute(60, new Date()))
   })
-  it("GetOffset", ()=>{
+  it("GetOffset", () => {
     expect(getTimeZoneOffset('Asia/Ho_Chi_Minh')).toEqual("+07:00")
     expect(getTimeZoneOffset('Asia/Jakarta')).toEqual("+07:00")
     expect(getTimeZoneOffset('Asia/Macau')).toEqual("+08:00")
@@ -99,7 +99,45 @@ describe('date.util', () => {
     expect(getTimeZoneOffset('Asia/Singapore')).toEqual("+08:00")
 
   })
-  it("GetOffset El_Salvador", ()=>{
+  it("GetOffset El_Salvador", () => {
     expect(getTimeZoneOffset('America/El_Salvador')).toEqual("-06:00")
+  })
+  it('getTimeOfDate', ()=>{
+    console.log(new Date())
+    console.log(getTimeOfDate(new Date('2024-05-05T20:00:00Z')))
+    console.log(getTimeOfDate(new Date('2024-05-16T16:00:00Z')));
+  })
+  it('isRangeDateOverlap', () => {
+    const range1: RangeDate = {
+      endDate: '2024-05-05T20:00:00Z',
+      startDate: '2024-05-16T16:00:00Z',
+    };
+    const range2: RangeDate = {
+      endDate: '2025-05-05T15:00:00Z',
+      startDate: '2025-05-16T13:00:00Z',
+    }
+    expect(isRangeTimeOverlap(range1, range2)).toBeFalsy()
+  })
+  it('isRangeDateOverlap1', () => {
+    const range1: RangeDate = {
+      endDate: new Date('2024-05-05T20:00:00Z'),
+      startDate: new Date('2024-05-16T16:00:00Z'),
+    };
+    const range2: RangeDate = {
+      endDate: new Date('2025-05-05T15:00:00Z'),
+      startDate: '2025-05-16T13:00:00Z',
+    }
+    expect(isRangeTimeOverlap(range1, range2)).toBeFalsy()
+  })
+  it('isRangeDateOverlap1', () => {
+    const range1: RangeDate = {
+      endDate: new Date('2024-05-05T20:00:00Z'),
+      startDate: new Date('2024-05-16T16:00:00Z'),
+    };
+    const range2: RangeDate = {
+      endDate: new Date('2025-05-05T15:00:00Z'),
+      startDate: '2025-05-16T13:00:00Z',
+    }
+    expect(isRangeTimeOverlap(range1, range2)).toBeFalsy()
   })
 });
