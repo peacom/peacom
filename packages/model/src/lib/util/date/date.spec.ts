@@ -13,7 +13,7 @@ import {
   getDate,
   getLastRangeMinute,
   getListHour, getTimeOfDate,
-  getTimeZoneOffset, isRangeTimeOverlap,
+  getTimeZoneOffset, isInWorkingHour, isRangeTimeOverlap,
   parseDateTimeByFormat,
   startLastMonth,
   startOfDate,
@@ -23,7 +23,7 @@ import {
   startOfWeek
 } from './date.util';
 import {DEFAULT_TIME_ZONE} from "./constant";
-import {RangeDate} from "../../model/time";
+import {RangeDate, WorkingTime} from "../../model/time";
 
 describe('date.util', () => {
   it('parse Date', () => {
@@ -102,7 +102,7 @@ describe('date.util', () => {
   it("GetOffset El_Salvador", () => {
     expect(getTimeZoneOffset('America/El_Salvador')).toEqual("-06:00")
   })
-  it('getTimeOfDate', ()=>{
+  it('getTimeOfDate', () => {
     console.log(new Date())
     console.log(getTimeOfDate(new Date('2024-05-05T20:00:00Z')))
     console.log(getTimeOfDate(new Date('2024-05-16T16:00:00Z')));
@@ -139,5 +139,89 @@ describe('date.util', () => {
       startDate: '2025-05-16T13:00:00Z',
     }
     expect(isRangeTimeOverlap(range1, range2)).toBeFalsy()
+  })
+  const workingHour: WorkingTime = {
+    "friday": [
+      {
+        "endDate": "2025-05-09T21:00:00.993Z",
+        "startDate": "2025-05-09T17:00:00.601Z"
+      },
+      {
+        "endDate": "2025-05-10T13:00:00.526Z",
+        "startDate": "2025-05-10T12:00:00.035Z"
+      }
+    ],
+    "monday": [
+      {
+        "endDate": "2025-05-09T21:00:00.993Z",
+        "startDate": "2025-05-09T17:00:00.601Z"
+      },
+      {
+        "endDate": "2025-05-10T13:00:00.526Z",
+        "startDate": "2025-05-10T12:00:00.035Z"
+      }
+    ],
+    "sunday": [
+      {
+        "endDate": "2025-05-09T21:00:00.993Z",
+        "startDate": "2025-05-09T17:00:00.601Z"
+      },
+      {
+        "endDate": "2025-05-10T13:00:00.526Z",
+        "startDate": "2025-05-10T12:00:00.035Z"
+      }
+    ],
+    "tuesday": [
+      {
+        "endDate": "2025-05-09T21:00:00.993Z",
+        "startDate": "2025-05-09T17:00:00.601Z"
+      },
+      {
+        "endDate": "2025-05-10T13:00:00.526Z",
+        "startDate": "2025-05-10T12:00:00.035Z"
+      }
+    ],
+    "saturday": [
+      {
+        "endDate": "2025-05-09T21:00:00.993Z",
+        "startDate": "2025-05-09T17:00:00.601Z"
+      },
+      {
+        "endDate": "2025-05-10T13:00:00.526Z",
+        "startDate": "2025-05-10T12:00:00.035Z"
+      }
+    ],
+    "thursday": [
+      {
+        "endDate": "2025-05-09T21:00:00.993Z",
+        "startDate": "2025-05-09T17:00:00.601Z"
+      },
+      {
+        "endDate": "2025-05-10T13:00:00.526Z",
+        "startDate": "2025-05-10T12:00:00.035Z"
+      }
+    ],
+    "wednesday": [
+      {
+        "endDate": "2025-05-09T21:00:00.993Z",
+        "startDate": "2025-05-09T17:00:00.601Z"
+      },
+      {
+        "endDate": "2025-05-10T13:00:00.526Z",
+        "startDate": "2025-05-10T12:00:00.035Z"
+      }
+    ]
+  }
+  it('isWorkingHour with Default Timezone UTC+7', () => {
+    const da = new Date(Date.UTC(2025, 4, 10, 17, 37, 0, 0))
+    // const da = new Date()
+    console.log(da)
+    expect(isInWorkingHour(workingHour, da)).toBeTruthy();
+  })
+  it('isWorkingHour with Default Timezone UTC+0', () => {
+    const da = new Date(2025, 4, 10, 4, 37, 0, 0)
+    // const da = new Date()
+    console.log(da)
+    expect(isInWorkingHour(workingHour, da, "UTC")).toBeTruthy();
   })
 });

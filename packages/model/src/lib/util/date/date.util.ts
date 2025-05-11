@@ -1,7 +1,7 @@
 import {DATE_TIME_FORMAT, DEFAULT_TIME_ZONE} from "./constant";
 import * as moment from "moment-timezone";
 import {hasText} from "../string.util";
-import {RangeDate} from "../../model/time";
+import {DAY_OF_WEEK, RangeDate, WorkingTime} from "../../model/time";
 
 type DateType = Date | string
 
@@ -177,4 +177,52 @@ export const isRangeTimeOverlap = (range1: RangeDate, range2: RangeDate) => {
     (range1To <= range2From && range1From >= range2From) ||
     (range1From >= range2To && range1To <= range2To)
   )
+}
+
+const getWeekDay = (isoWeekDay: number) => {
+  switch (isoWeekDay){
+    case 7:
+      return DAY_OF_WEEK.SUNDAY;
+    case 1:
+      return DAY_OF_WEEK.MONDAY;
+    case 2:
+      return DAY_OF_WEEK.TUESDAY;
+    case 3:
+      return DAY_OF_WEEK.WEDNESDAY;
+    case 4:
+      return DAY_OF_WEEK.THURSDAY;
+    case 5:
+      return DAY_OF_WEEK.FRIDAY;
+    case 6:
+      return DAY_OF_WEEK.SATURDAY;
+    default:
+      throw new Error('Invalid date')
+  }
+}
+
+
+export const isInWorkingHour = (workingHours: WorkingTime, date = new Date(), tz = DEFAULT_TIME_ZONE) => {
+  const momentDate = getDate(date, tz);
+  const weekDay = getWeekDay(momentDate.isoWeekday())
+  // console.log(`Day: ${weekDay} - ${momentDate} Hour: ${momentDate.hours()} - min: ${momentDate.minutes()} - sec: ${momentDate.seconds()}`)
+  const dayHours = workingHours[weekDay]
+  let rs = true;
+  const currentTime = momentDate.hours() * 60 + momentDate.minutes();
+  if(dayHours && dayHours.length){
+    rs = false
+    for (let i = 0; i < dayHours.length; i+=1){
+      const hour = dayHours[i]
+      const fromDate = moment(hour.startDate).tz(tz);
+      const toDate = moment(hour.endDate).tz(tz);
+
+      const fromTime = fromDate.hours() * 60 + fromDate.minutes()
+      const toTime = toDate.hours() * 60 + toDate.minutes()
+      rs = currentTime >= fromTime && currentTime <= toTime;
+      // console.log(`Is WorkingHour ${fromDate.hours()}:${fromDate.minutes()} - to: ${toDate.hours()}:${toDate.minutes()}`, rs)
+      if(rs){
+        break;
+      }
+    }
+  }
+  return rs
 }
