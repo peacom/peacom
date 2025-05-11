@@ -15,6 +15,8 @@ export enum Application {
   MMS = 15,
   TELEGRAM_GATEWAY = 16,
   INSTAGRAM = 17,
+  WECOM_CUSTOMER,
+  WECOM_CUSTOMER_GROUP
 }
 
 export const applicationStr = (id?: number) => {
@@ -51,6 +53,10 @@ export const applicationStr = (id?: number) => {
       return 'TELEGRAM GATEWAY';
     case Application.INSTAGRAM:
       return 'INSTAGRAM';
+    case Application.WECOM_CUSTOMER:
+      return 'WECOM CUSTOMER';
+    case Application.WECOM_CUSTOMER_GROUP:
+      return 'WECOM CUSTOMER GROUP'
     default:
       return `${id || ''}`;
   }
@@ -83,6 +89,7 @@ export enum PARTNER {
   DOTGO = 24,
   AURA = 25,
   GAPIT = 26,
+  WECOM
 }
 
 export const partnerStr = (id: PARTNER | null) => {
@@ -139,6 +146,8 @@ export const partnerStr = (id: PARTNER | null) => {
       return 'AURA';
     case PARTNER.GAPIT:
       return 'GAPIT';
+    case PARTNER.WECOM:
+      return 'WECOM'
     default:
       return '';
   }
@@ -154,6 +163,8 @@ export const isBotApplication = (appId: string | number) => {
     Application.GOOGLE_BUSINESS,
     Application.LIVE_CHAT,
     Application.INSTAGRAM,
+    Application.WECOM_CUSTOMER,
+    Application.WECOM_CUSTOMER_GROUP
   ].includes(Number(appId));
 };
 
