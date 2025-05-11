@@ -180,7 +180,7 @@ export const isRangeTimeOverlap = (range1: RangeDate, range2: RangeDate) => {
 }
 
 const getWeekDay = (isoWeekDay: number) => {
-  switch (isoWeekDay){
+  switch (isoWeekDay) {
     case 7:
       return DAY_OF_WEEK.SUNDAY;
     case 1:
@@ -208,21 +208,26 @@ export const isInWorkingHour = (workingHours: WorkingTime, date = new Date(), tz
   const dayHours = workingHours[weekDay]
   let rs = true;
   const currentTime = momentDate.hours() * 60 + momentDate.minutes();
-  if(dayHours && dayHours.length){
+  if (dayHours && dayHours.length) {
     rs = false
-    for (let i = 0; i < dayHours.length; i+=1){
-      const hour = dayHours[i]
-      const fromDate = moment(hour.startDate).tz(tz);
-      const toDate = moment(hour.endDate).tz(tz);
+    try {
+      for (let i = 0; i < dayHours.length; i += 1) {
+        const hour = dayHours[i]
+        const fromDate = moment(hour.startDate).tz(tz);
+        const toDate = moment(hour.endDate).tz(tz);
 
-      const fromTime = fromDate.hours() * 60 + fromDate.minutes()
-      const toTime = toDate.hours() * 60 + toDate.minutes()
-      rs = currentTime >= fromTime && currentTime <= toTime;
-      // console.log(`Is WorkingHour ${fromDate.hours()}:${fromDate.minutes()} - to: ${toDate.hours()}:${toDate.minutes()}`, rs)
-      if(rs){
-        break;
+        const fromTime = fromDate.hours() * 60 + fromDate.minutes()
+        const toTime = toDate.hours() * 60 + toDate.minutes()
+        rs = currentTime >= fromTime && currentTime <= toTime;
+        // console.log(`Is WorkingHour ${fromDate.hours()}:${fromDate.minutes()} - to: ${toDate.hours()}:${toDate.minutes()}`, rs)
+        if (rs) {
+          break;
+        }
       }
+    } catch (e) {
+      console.warn(e)
     }
+
   }
   return rs
 }
