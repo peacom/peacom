@@ -1,4 +1,4 @@
-import { Application, applicationStr, PARTNER } from '@peacom/model';
+import {Application, applicationStr, PARTNER} from '@peacom/model';
 
 /**
  * Define QUEUE by partner and service, for guarantee the limit rate
@@ -63,6 +63,10 @@ export const getApplicationConversationQueueOutName = (
       return CONVERSATION_QUEUE.LIVE_CHAT_OUT;
     case Application.INSTAGRAM:
       return CONVERSATION_QUEUE.INSTAGRAM_OUT;
+    case Application.WECOM_CUSTOMER_GROUP:
+      return CONVERSATION_QUEUE.WECOM_CUSTOMER_GROUP;
+    case Application.WECOM_CUSTOMER:
+      return CONVERSATION_QUEUE.WECOM_CUSTOMER;
     default:
       throw new Error(
         `Not support conversation for application ${applicationStr(
