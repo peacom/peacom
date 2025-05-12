@@ -163,4 +163,14 @@ export const LIST_MASTER_COMPANY_PERMISSION = [
   { permission: PERMISSION.CHAT.READ, type: AclActionType.FULL },
   { permission: PERMISSION.CHAT.LIVE_AGENT, type: AclActionType.FULL },
   { permission: PERMISSION.CHAT.DASHBOARD, type: AclActionType.FULL },
+  /* INVENTORY */
+  { permission: PERMISSION.INVENTORY.READ, type: AclActionType.FULL },
+  { permission: PERMISSION.INVENTORY.CREATE, type: AclActionType.FULL },
+  { permission: PERMISSION.INVENTORY.UPDATE, type: AclActionType.FULL },
+  { permission: PERMISSION.INVENTORY.DELETE, type: AclActionType.FULL },
+  /* LANDING PAGE */
+  { permission: PERMISSION.LANDING_PAGE.READ, type: AclActionType.FULL },
+  { permission: PERMISSION.LANDING_PAGE.CREATE, type: AclActionType.FULL },
+  { permission: PERMISSION.LANDING_PAGE.UPDATE, type: AclActionType.FULL },
+  { permission: PERMISSION.LANDING_PAGE.DELETE, type: AclActionType.FULL },
 ];

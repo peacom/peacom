@@ -299,9 +299,21 @@ export const PERMISSION = {
   MONITOR: {
     BULK: 204
   },
+  LANDING_PAGE: {
+    READ: 205,
+    CREATE: 206,
+    UPDATE: 207,
+    DELETE: 208
+  },
+  INVENTORY: {
+    READ: 209,
+    CREATE: 210,
+    UPDATE: 211,
+    DELETE: 212
+  }
 };
 
-// MAX= 204
+// MAX= 212
 export interface ActionDescription {
   actionId: number;
   name: string;

@@ -1196,3 +1196,47 @@ export const PERMISSION_PRODUCT_PARTNER_LIST: Record<
     enableType: false,
   },
 };
+
+export const PERMISSION_LANDING_PAGE: Record<number, ActionDescription> = {
+  [PERMISSION.LANDING_PAGE.READ]: {
+    actionId: PERMISSION.LANDING_PAGE.READ,
+    name: 'Read company landing page',
+    enableType: false
+  },
+  [PERMISSION.LANDING_PAGE.CREATE]: {
+    actionId: PERMISSION.LANDING_PAGE.CREATE,
+    name: 'Create landing page',
+    enableType: false
+  },
+  [PERMISSION.LANDING_PAGE.UPDATE]: {
+    actionId: PERMISSION.LANDING_PAGE.UPDATE,
+    name: 'Update landing page',
+    enableType: false
+  }, [PERMISSION.LANDING_PAGE.DELETE]: {
+    actionId: PERMISSION.LANDING_PAGE.DELETE,
+    name: 'Delete landing page',
+    enableType: false
+  },
+}
+
+export const PERMISSION_INVENTORY: Record<number, ActionDescription> = {
+  [PERMISSION.INVENTORY.READ]: {
+    actionId: PERMISSION.INVENTORY.READ,
+    name: 'Read inventory',
+    enableType: false
+  },
+  [PERMISSION.INVENTORY.CREATE]: {
+    actionId: PERMISSION.INVENTORY.CREATE,
+    name: 'Create inventory',
+    enableType: false
+  },
+  [PERMISSION.INVENTORY.UPDATE]: {
+    actionId: PERMISSION.INVENTORY.UPDATE,
+    name: 'Update inventory',
+    enableType: false
+  }, [PERMISSION.INVENTORY.DELETE]: {
+    actionId: PERMISSION.INVENTORY.DELETE,
+    name: 'Delete inventory',
+    enableType: false
+  },
+}
