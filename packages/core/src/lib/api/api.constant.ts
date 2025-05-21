@@ -95,6 +95,9 @@ export const MICROSERVICE_URL: Record<Application, string> = {
   [Application.LIVE_CHAT]: process.env['LIVE_CHAT_INTEGRATION'] || 'http://127.0.0.1:4020/eip/live-chat',
   [Application.MMS]: process.env['MMS_INTEGRATION'] || 'http://127.0.0.1:4010',
   [Application.INSTAGRAM]:  process.env['INSTAGRAM_INTEGRATION'] || 'http://127.0.0.1:4011/eip/instagram',
+  [Application.WECOM_CUSTOMER]: process.env['WECOM_CUSTOMER'] || 'http://127.0.0.1:4033',
+  [Application.WECOM_CUSTOMER_GROUP]: process.env['WECOM_CUSTOMER_GROUP'] || 'http://127.0.0.1:4033',
+
 }
 
 export const INTEGRATED_CHANNEL = [Application.APPLE, Application.ZALO, Application.ZALO_ZNS, Application.GOOGLE_BUSINESS, Application.RCS]
