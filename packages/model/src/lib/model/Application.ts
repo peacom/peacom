@@ -89,7 +89,8 @@ export enum PARTNER {
   DOTGO = 24,
   AURA = 25,
   GAPIT = 26,
-  WECOM
+  WECOM,
+  MMP_MULTI_ROUTE
 }
 
 export const partnerStr = (id: PARTNER | null) => {
@@ -148,6 +149,8 @@ export const partnerStr = (id: PARTNER | null) => {
       return 'GAPIT';
     case PARTNER.WECOM:
       return 'WECOM'
+    case PARTNER.MMP_MULTI_ROUTE:
+      return 'MMP Multi Route'
     default:
       return '';
   }
