@@ -63,7 +63,7 @@ export const applicationStr = (id?: number) => {
 };
 
 export enum PARTNER {
-  PEACOM = 1,
+  MMP = 1,
   GOOGLE = 2,
   GMS = 3,
   VIBER = 4,
@@ -95,7 +95,7 @@ export enum PARTNER {
 
 export const partnerStr = (id: PARTNER | null) => {
   switch (id) {
-    case PARTNER.PEACOM:
+    case PARTNER.MMP:
       return 'MMP';
     case PARTNER.GOOGLE:
       return 'GOOGLE';

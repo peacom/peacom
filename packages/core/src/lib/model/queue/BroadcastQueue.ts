@@ -33,7 +33,7 @@ export enum BULK_BROADCAST_QUEUE {
   SMS_IRIS = 'BROADCAST_SMS_IRIS',
   SMS_IC = 'BROADCAST_SMS_IC',
   SMS_EUTOPIA = 'BROADCAST_SMS_EUTOPIA',
-  PEACOM = 'BROADCAST_PEACOM',
+  BROADCAST_MMP = 'BROADCAST_MMP',
   FALLBACK = 'BROADCAST_FALL_BACK',
   TELEGRAM_GATEWAY = 'BROADCAST_TELEGRAM_GATEWAY',
   SMS_AURA = 'BROADCAST_SMS_AURA',
@@ -42,8 +42,8 @@ export enum BULK_BROADCAST_QUEUE {
 }
 
 export const getApplicationBroadcastQueueName = (applicationId: Application, partnerId: PARTNER | null = null) => {
-  if (partnerId === PARTNER.PEACOM) {
-    return BULK_BROADCAST_QUEUE.PEACOM;
+  if (partnerId === PARTNER.MMP) {
+    return BULK_BROADCAST_QUEUE.BROADCAST_MMP;
   }
   switch (applicationId) {
     case Application.RCS:

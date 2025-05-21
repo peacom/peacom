@@ -1,6 +1,10 @@
 export enum API_PARTNER {
-  PEACOM = 1,
-  VNA, K_PLUS, OpenAI, GeminiAI, GoogleGeocoding
+  MMP = 1,
+  VNA,
+  K_PLUS,
+  OpenAI,
+  GeminiAI,
+  GoogleGeocoding
 }
 
 export enum API {

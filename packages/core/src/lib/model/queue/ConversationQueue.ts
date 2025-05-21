@@ -20,10 +20,8 @@ export enum CONVERSATION_QUEUE {
   ZALO_OA_OUT = 'ZALO_OA_OUT',
   WHATSAPP_IN = 'WHATSAPP_IN',
   WHATSAPP_OUT = 'WHATSAPP_OUT',
-  GOOGLE_BUSINESS_IN = 'GOOGLE_BUSINESS_IN',
-  GOOGLE_BUSINESS_OUT = 'GOOGLE_BUSINESS_OUT',
-  PEACOM_IN = 'PEACOM_IN',
-  PEACOM_OUT = 'PEACOM_OUT',
+  MMP_IN = 'MMP_IN',
+  MMP_OUT = 'MMP_OUT',
   LIVE_CHAT_IN = 'LIVE_CHAT_IN',
   LIVE_CHAT_OUT = 'LIVE_CHAT_OUT',
   INSTAGRAM_IN = 'INSTAGRAM_IN',
@@ -36,8 +34,8 @@ export const getApplicationConversationQueueOutName = (
   applicationId: Application,
   partnerId: PARTNER | null = null
 ) => {
-  if (partnerId === PARTNER.PEACOM) {
-    return CONVERSATION_QUEUE.PEACOM_OUT;
+  if (partnerId === PARTNER.MMP) {
+    return CONVERSATION_QUEUE.MMP_OUT;
   }
   switch (applicationId) {
     case Application.APPLE:
@@ -53,8 +51,6 @@ export const getApplicationConversationQueueOutName = (
       return CONVERSATION_QUEUE.VIBER_OUT;
     case Application.FACEBOOK:
       return CONVERSATION_QUEUE.FACEBOOK_OUT;
-    case Application.GOOGLE_BUSINESS:
-      return CONVERSATION_QUEUE.GOOGLE_BUSINESS_OUT;
     case Application.TELEGRAM:
       return CONVERSATION_QUEUE.TELEGRAM_OUT;
     case Application.ZALO:
