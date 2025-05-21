@@ -1,5 +1,5 @@
 export enum API_PARTNER {
-  MMP = 1,
+  PEACOM = 1,
   VNA,
   K_PLUS,
   OpenAI,

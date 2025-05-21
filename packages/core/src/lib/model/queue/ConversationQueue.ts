@@ -20,8 +20,8 @@ export enum CONVERSATION_QUEUE {
   ZALO_OA_OUT = 'ZALO_OA_OUT',
   WHATSAPP_IN = 'WHATSAPP_IN',
   WHATSAPP_OUT = 'WHATSAPP_OUT',
-  MMP_IN = 'MMP_IN',
-  MMP_OUT = 'MMP_OUT',
+  PEACOM_IN = 'MMP_IN',
+  PEACOM_OUT = 'MMP_OUT',
   LIVE_CHAT_IN = 'LIVE_CHAT_IN',
   LIVE_CHAT_OUT = 'LIVE_CHAT_OUT',
   INSTAGRAM_IN = 'INSTAGRAM_IN',
@@ -34,8 +34,8 @@ export const getApplicationConversationQueueOutName = (
   applicationId: Application,
   partnerId: PARTNER | null = null
 ) => {
-  if (partnerId === PARTNER.MMP) {
-    return CONVERSATION_QUEUE.MMP_OUT;
+  if (partnerId === PARTNER.PEACOM) {
+    return CONVERSATION_QUEUE.PEACOM_OUT;
   }
   switch (applicationId) {
     case Application.APPLE:
