@@ -16,9 +16,7 @@ export * from './channel';
 export * from './Storage';
 export * from './Notification';
 export * from './payment';
-export * from './search-engine';
 export * from './partner-api';
-export * from './transaction';
 export * from './Contact';
 export * from './partner-request'
 export * from "./smpp"

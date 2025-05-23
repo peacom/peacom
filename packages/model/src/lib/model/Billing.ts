@@ -56,12 +56,55 @@ export enum SETTING_TIME_TARIFF {
   MONTH = 3
 }
 
-export enum TRANSACTION_PURPOSE {
-  BILLING= 1,
-  TOPUP= 2,
+export enum COMPANY_TRANSACTION_TYPE {
+  CASH_IN = 1,
+  CASH_OUT = 2
+}
+
+export const companyTransactionTypeStr = (type: COMPANY_TRANSACTION_TYPE) => {
+  switch (type){
+    case COMPANY_TRANSACTION_TYPE.CASH_IN:
+      return 'Cash In'
+    case COMPANY_TRANSACTION_TYPE.CASH_OUT:
+      return 'Cash Out'
+    default:
+      return `UNKNOWN ${type}`
+  }
+}
+
+export enum COMPANY_TRANSACTION_PURPOSE {
+  BILLING = 1,
+  TOPUP = 2,
   ESCROW_BULK_BROADCAST,
   ESCROW_CONVERSATION,
   ESCROW_API_BROADCAST,
   ESCROW_API_CONVERSATION,
   ESCROW_CONFIRM
+}
+
+export const companyTransactionPurposeStr = (purpose: COMPANY_TRANSACTION_PURPOSE) => {
+  switch (purpose){
+    case COMPANY_TRANSACTION_PURPOSE.BILLING:
+      return 'Billing'
+    case COMPANY_TRANSACTION_PURPOSE.TOPUP:
+      return 'Top Up'
+    case COMPANY_TRANSACTION_PURPOSE.ESCROW_BULK_BROADCAST:
+      return 'Escrow Bulk Broadcast'
+    case COMPANY_TRANSACTION_PURPOSE.ESCROW_CONVERSATION:
+      return 'Escrow Conversation'
+    case COMPANY_TRANSACTION_PURPOSE.ESCROW_API_BROADCAST:
+      return 'Escrow API Broadcast'
+    case COMPANY_TRANSACTION_PURPOSE.ESCROW_API_CONVERSATION:
+      return 'Escrow API Conversation'
+    case COMPANY_TRANSACTION_PURPOSE.ESCROW_CONFIRM:
+      return 'Escrow Confirm'
+    default:
+      return `UNKNOWN ${purpose}`
+  }
+}
+
+
+export enum TRANSACTION_ESCROW_TYPE {
+  ACCEPT = 1,
+  RETURN = 2
 }
