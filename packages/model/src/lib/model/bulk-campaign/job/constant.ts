@@ -3,3 +3,9 @@ export enum BulkBroadcastJobStatus {
   PROCESSING,
   DONE
 }
+
+export enum BullJobType {
+  BROADCAST = 1,
+  FALLBACK = 2,
+  FALLBACK_DISTRIBUTE = 3
+}
