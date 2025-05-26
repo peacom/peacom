@@ -26,7 +26,9 @@ export enum MessageEvent {
   CONVERSATION_MESSAGE = 'conversation.message',
   CONVERSATION_LIVE_AGENT = 'conversation.live_agent',
   TICKET_ASSIGN = 'ticket.assign',
-  USER_INVITE = 'user.invite'
+  USER_INVITE = 'user.invite',
+  ORDER_CREATE = 'order.create',
+  ORDER_STATUS = 'order.status'
 }
 
 // We're migrating using MessageEvent to NotificationType (number) for faster index
@@ -51,11 +53,17 @@ export enum NotificationType {
   CONVERSATION_MESSAGE,
   CONVERSATION_LIVE_AGENT,
   TICKET_ASSIGN,
-  USER_INVITE
+  USER_INVITE,
+  ORDER_CREATE,
+  ORDER_STATUS
 }
 
 export const mappingNotificationMessageToType = (messageEvent: MessageEvent): NotificationType => {
   switch (messageEvent) {
+    case MessageEvent.ORDER_CREATE:
+      return NotificationType.ORDER_CREATE;
+    case MessageEvent.ORDER_STATUS:
+      return NotificationType.ORDER_STATUS;
     case MessageEvent.USER_INVITE:
       return NotificationType.USER_INVITE;
     case MessageEvent.BACKGROUND_TASK:
