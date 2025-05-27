@@ -38,7 +38,8 @@ export enum BULK_BROADCAST_QUEUE {
   TELEGRAM_GATEWAY = 'BROADCAST_TELEGRAM_GATEWAY',
   SMS_AURA = 'BROADCAST_SMS_AURA',
   SMS_GAPIT = 'BROADCAST_SMS_GAPIT',
-  MMP_MULTI_ROUTE = 'MMP_MULTI_ROUTE'
+  MMP_MULTI_ROUTE = 'BROADCAST_SMS_MMP_MULTI_ROUTE',
+  SMS_YULORE = 'BROADCAST_SMS_YULORE'
 }
 
 export const getApplicationBroadcastQueueName = (applicationId: Application, partnerId: PARTNER | null = null) => {
@@ -89,6 +90,10 @@ export const getApplicationBroadcastQueueName = (applicationId: Application, par
           return BULK_BROADCAST_QUEUE.SMS_AURA;
         case PARTNER.GAPIT:
           return BULK_BROADCAST_QUEUE.SMS_GAPIT;
+        case PARTNER.MMP_MULTI_ROUTE:
+          return BULK_BROADCAST_QUEUE.MMP_MULTI_ROUTE;
+        case PARTNER.YULORE:
+          return BULK_BROADCAST_QUEUE.SMS_YULORE;
         default:
           return BULK_BROADCAST_QUEUE.SMS;
       }
