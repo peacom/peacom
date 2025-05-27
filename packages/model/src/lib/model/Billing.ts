@@ -75,11 +75,12 @@ export const companyTransactionTypeStr = (type: COMPANY_TRANSACTION_TYPE) => {
 export enum COMPANY_TRANSACTION_PURPOSE {
   BILLING = 1,
   TOPUP = 2,
-  ESCROW_BULK_BROADCAST,
-  ESCROW_CONVERSATION,
-  ESCROW_API_BROADCAST,
-  ESCROW_API_CONVERSATION,
-  ESCROW_CONFIRM
+  ESCROW_BULK_BROADCAST = 3,
+  ESCROW_CONVERSATION = 4,
+  ESCROW_API_BROADCAST = 5,
+  ESCROW_API_CONVERSATION = 6,
+  ESCROW_CONFIRM = 7,
+  FALLBACK = 8
 }
 
 export const companyTransactionPurposeStr = (purpose: COMPANY_TRANSACTION_PURPOSE) => {
@@ -98,6 +99,8 @@ export const companyTransactionPurposeStr = (purpose: COMPANY_TRANSACTION_PURPOS
       return 'Escrow API Conversation'
     case COMPANY_TRANSACTION_PURPOSE.ESCROW_CONFIRM:
       return 'Escrow Confirm'
+    case COMPANY_TRANSACTION_PURPOSE.FALLBACK:
+      return 'Fallback'
     default:
       return `UNKNOWN ${purpose}`
   }
