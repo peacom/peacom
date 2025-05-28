@@ -295,6 +295,7 @@ export const PERMISSION = {
     CREATE: 199,
     UPDATE: 200,
     DELETE: 201,
+    DASHBOARD_ESIM: 213
   },
   MONITOR: {
     BULK: 204
@@ -313,7 +314,7 @@ export const PERMISSION = {
   }
 };
 
-// MAX= 212
+// MAX= 213
 export interface ActionDescription {
   actionId: number;
   name: string;
