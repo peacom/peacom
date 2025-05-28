@@ -1195,6 +1195,11 @@ export const PERMISSION_PRODUCT_PARTNER_LIST: Record<
     name: 'Delete',
     enableType: false,
   },
+  [PERMISSION.PRODUCT_PARTNER.DASHBOARD_ESIM]: {
+    actionId: PERMISSION.PRODUCT_PARTNER.DASHBOARD_ESIM,
+    name: "Summary of eSims",
+    enableType: false,
+  }
 };
 
 export const PERMISSION_LANDING_PAGE: Record<number, ActionDescription> = {
