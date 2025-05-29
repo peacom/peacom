@@ -381,8 +381,8 @@ export const PERMISSION_BULK_CAMPAIGN: Record<number, ActionDescription> = {
   },
   [PERMISSION.MONITOR.BULK]: {
     actionId: PERMISSION.MONITOR.BULK,
-    name: 'Monitor Bulk Campaign',
-    description: 'Monitor Bulk Campaign',
+    name: 'Monitor Bulk',
+    description: 'Monitor Bulk',
     enableType: false
   },
 };
@@ -1205,21 +1205,21 @@ export const PERMISSION_PRODUCT_PARTNER_LIST: Record<
 export const PERMISSION_LANDING_PAGE: Record<number, ActionDescription> = {
   [PERMISSION.LANDING_PAGE.READ]: {
     actionId: PERMISSION.LANDING_PAGE.READ,
-    name: 'Read company landing page',
+    name: 'Read',
     enableType: false
   },
   [PERMISSION.LANDING_PAGE.CREATE]: {
     actionId: PERMISSION.LANDING_PAGE.CREATE,
-    name: 'Create landing page',
+    name: 'Create',
     enableType: false
   },
   [PERMISSION.LANDING_PAGE.UPDATE]: {
     actionId: PERMISSION.LANDING_PAGE.UPDATE,
-    name: 'Update landing page',
+    name: 'Update',
     enableType: false
   }, [PERMISSION.LANDING_PAGE.DELETE]: {
     actionId: PERMISSION.LANDING_PAGE.DELETE,
-    name: 'Delete landing page',
+    name: 'Delete',
     enableType: false
   },
 }
@@ -1227,21 +1227,21 @@ export const PERMISSION_LANDING_PAGE: Record<number, ActionDescription> = {
 export const PERMISSION_INVENTORY: Record<number, ActionDescription> = {
   [PERMISSION.INVENTORY.READ]: {
     actionId: PERMISSION.INVENTORY.READ,
-    name: 'Read inventory',
+    name: 'Read',
     enableType: false
   },
   [PERMISSION.INVENTORY.CREATE]: {
     actionId: PERMISSION.INVENTORY.CREATE,
-    name: 'Create inventory',
+    name: 'Create',
     enableType: false
   },
   [PERMISSION.INVENTORY.UPDATE]: {
     actionId: PERMISSION.INVENTORY.UPDATE,
-    name: 'Update inventory',
+    name: 'Update',
     enableType: false
   }, [PERMISSION.INVENTORY.DELETE]: {
     actionId: PERMISSION.INVENTORY.DELETE,
-    name: 'Delete inventory',
+    name: 'Delete',
     enableType: false
   },
 }
