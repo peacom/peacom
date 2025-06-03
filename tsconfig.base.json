@@ -16,7 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@peacom/core": ["packages/core/src/index.ts"],
-      "@peacom/model": ["packages/model/src/index.ts"],
+      "@peacom/image": ["packages/image/src/index.ts"],
+      "@peacom/model": ["packages/model/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

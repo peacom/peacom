@@ -1,0 +1,40 @@
+{
+  "name": "image",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/image/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/image",
+        "main": "packages/image/src/index.ts",
+        "tsConfig": "packages/image/tsconfig.lib.json",
+        "assets": ["packages/image/*.md"]
+      }
+    },
+    "publish": {
+      "command": "node tools/scripts/publish.mjs image {args.ver} {args.tag}",
+      "dependsOn": ["build"]
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "packages/image/**/*.ts",
+          "packages/image/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "packages/image/jest.config.ts"
+      }
+    }
+  },
+  "tags": []
+}
