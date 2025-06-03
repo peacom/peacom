@@ -24,6 +24,7 @@ export enum WHATSAPP_TEMPLATE_BUTTON_TYPE {
   MPM = 'MPM',
   SPM = 'SPM',
   CATALOG = 'CATALOG',
+  FLOW = 'FLOW',
   NONE = 'NONE',
 }
 

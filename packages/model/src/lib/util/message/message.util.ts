@@ -116,3 +116,9 @@ export const buildContactMessage = (contactMessages: Array<ContactMessage>, extr
   contacts: contactMessages,
   extra
 });
+
+export const buildFormResultMessage = (message: string, extra = null): RawMessage => ({
+  type: MESSAGE_TYPE.FORM_RESULT,
+  message,
+  extra
+});
