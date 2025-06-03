@@ -1,0 +1,24 @@
+export enum COUPON_USAGE_TYPE {
+  SINGLE = 1,
+  MULTIPLE
+}
+
+export enum COUPON_EXPIRE_TYPE {
+  DATE = 1,
+  TIME = 2
+}
+
+export enum COUPON_DISCOUNT_TYPE {
+  AMOUNT = 1,
+  PERCENT = 2
+}
+
+export enum COUPON_ORIGIN {
+  WEB = 1,
+  FILE = 2
+}
+
+export enum COUPON_STATUS {
+  ACTIVE = 1,
+  DISABLE = 2
+}
