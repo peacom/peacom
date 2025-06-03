@@ -18,7 +18,7 @@ Visit the [Nx Documentation](https://nx.dev) to learn more.
 
 ## Generate Library
 
-- npx nx generate @nx/js:library core --publishable --importPath @peacom/core
+- npx nx generate @nx/js:library core --publishable --directory packages/core --importPath @peacom/core
 - npx nx generate @nx/js:library mobx --publishable --importPath @peacom/mobx
 - npx nx g @nx/react-native:library rn --publishable --importPath @peacom/rn
 - npx nx build core
