@@ -86,6 +86,11 @@ export const PERMISSION_OWN_COMPANY_LIST: Record<number, ActionDescription> = {
     name: 'Profile View & Update',
     enableType: false,
   },
+  [PERMISSION.OWN_COMPANY.RESET_PASSWORD]: {
+    actionId: PERMISSION.OWN_COMPANY.RESET_PASSWORD,
+    name: 'Reset Password',
+    enableType: false,
+  },
 };
 
 export const PERMISSION_CONTACT_LIST: Record<number, ActionDescription> = {
