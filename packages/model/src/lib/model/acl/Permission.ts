@@ -22,6 +22,7 @@ export const PERMISSION = {
   },
   OWN_COMPANY: {
     PROFILE: 161,
+    RESET_PASSWORD: 214
   },
   CONTACT: {
     READ: 5,
@@ -314,7 +315,7 @@ export const PERMISSION = {
   }
 };
 
-// MAX= 213
+// MAX= 214
 export interface ActionDescription {
   actionId: number;
   name: string;
