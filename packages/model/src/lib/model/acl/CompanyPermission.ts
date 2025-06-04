@@ -53,6 +53,7 @@ export const LIST_MASTER_COMPANY_PERMISSION = [
   { permission: PERMISSION.OFFICIAL_ACCOUNT.SETTING, type: AclActionType.FULL },
   // OWN COMPANY
   { permission: PERMISSION.OWN_COMPANY.PROFILE, type: AclActionType.FULL },
+  { permission: PERMISSION.OWN_COMPANY.RESET_PASSWORD, type: AclActionType.FULL },
   // BOT
   { permission: PERMISSION.BOT.CREATE, type: AclActionType.FULL },
   { permission: PERMISSION.BOT.READ, type: AclActionType.FULL },
