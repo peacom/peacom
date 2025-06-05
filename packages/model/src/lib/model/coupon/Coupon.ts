@@ -20,7 +20,8 @@ export enum COUPON_ORIGIN {
 
 export enum COUPON_STATUS {
   ACTIVE = 1,
-  DISABLE = 2
+  READY = 2,
+  DISABLED = 3,
 }
 
 export enum COUPON_CODE_ORIGIN {
