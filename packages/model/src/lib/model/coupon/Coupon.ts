@@ -26,3 +26,16 @@ export enum COUPON_STATUS {
 export enum COUPON_CODE_ORIGIN {
   BULK = 1, CONVERSATION, OTHER
 }
+
+export enum COUPON_CODE_STATUS {
+  AVAILABLE = 1,
+  DISTRIBUTED,
+  VIEWED,
+  CLAIMED
+}
+
+export enum COUPON_CODE_ACTION {
+  DISTRIBUTE = 1,
+  VIEW,
+  CLAIM
+}
