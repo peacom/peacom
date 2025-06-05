@@ -22,3 +22,7 @@ export enum COUPON_STATUS {
   ACTIVE = 1,
   DISABLE = 2
 }
+
+export enum COUPON_CODE_ORIGIN {
+  BULK = 1, CONVERSATION, OTHER
+}
