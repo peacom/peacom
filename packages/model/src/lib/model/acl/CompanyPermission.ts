@@ -175,4 +175,9 @@ export const LIST_MASTER_COMPANY_PERMISSION = [
   { permission: PERMISSION.LANDING_PAGE.CREATE, type: AclActionType.FULL },
   { permission: PERMISSION.LANDING_PAGE.UPDATE, type: AclActionType.FULL },
   { permission: PERMISSION.LANDING_PAGE.DELETE, type: AclActionType.FULL },
+  /* COUPON */
+  { permission: PERMISSION.COUPON.READ, type: AclActionType.FULL },
+  { permission: PERMISSION.COUPON.CREATE, type: AclActionType.FULL },
+  { permission: PERMISSION.COUPON.UPDATE, type: AclActionType.FULL },
+  { permission: PERMISSION.COUPON.DELETE, type: AclActionType.FULL },
 ];
