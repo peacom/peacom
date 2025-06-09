@@ -67,7 +67,11 @@ export interface WhatsappInteractiveAction {
   // product catalog
   name?: string; // catalog_message
   parameters?: {
-    thumbnail_product_retailer_id: string;
+    thumbnail_product_retailer_id?: string;
+    flow_id?: string;
+    flow_cta?: string; // button flow label
+    flow_message_version?: string;
+    [key: string]: any;
   };
 }
 
