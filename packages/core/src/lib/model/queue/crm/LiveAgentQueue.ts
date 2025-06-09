@@ -7,7 +7,8 @@ export const LIVE_AGENT_QUEUE = "LIVE_AGENT_QUEUE"
  */
 export enum LIVE_AGENT_TASK {
   RESPONSE_TIMEOUT,
-  AUTO_LEAVE
+  AUTO_LEAVE,
+  WAIT_TIMEOUT
 }
 
 export const liveAgentTaskStr = (task: LIVE_AGENT_TASK) => {
@@ -16,6 +17,8 @@ export const liveAgentTaskStr = (task: LIVE_AGENT_TASK) => {
       return 'AutoLeave'
     case LIVE_AGENT_TASK.RESPONSE_TIMEOUT:
       return 'ResponseTimeout'
+    case LIVE_AGENT_TASK.WAIT_TIMEOUT:
+      return 'WaitTimeOut'
     default:
       return 'Unknown'
   }
