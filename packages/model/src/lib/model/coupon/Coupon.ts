@@ -19,6 +19,24 @@ export enum COUPON_ORIGIN {
 }
 
 export enum COUPON_STATUS {
-  ACTIVE = 1,
-  DISABLE = 2
+  ACCEPT = 1,
+  READY = 2,
+  DISABLED = 3,
+}
+
+export enum COUPON_CODE_ORIGIN {
+  BULK = 1, CONVERSATION, OTHER
+}
+
+export enum COUPON_CODE_STATUS {
+  AVAILABLE = 1,
+  DISTRIBUTED,
+  VIEWED,
+  CLAIMED
+}
+
+export enum COUPON_CODE_ACTION {
+  DISTRIBUTE = 1,
+  VIEW,
+  CLAIM
 }

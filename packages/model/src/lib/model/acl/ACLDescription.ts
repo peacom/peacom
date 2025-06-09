@@ -1250,3 +1250,25 @@ export const PERMISSION_INVENTORY: Record<number, ActionDescription> = {
     enableType: false
   },
 }
+
+export const PERMISSION_COUPON: Record<number, ActionDescription> = {
+  [PERMISSION.COUPON.READ]: {
+    actionId: PERMISSION.COUPON.READ,
+    name: 'Read',
+    enableType: false
+  },
+  [PERMISSION.COUPON.CREATE]: {
+    actionId: PERMISSION.COUPON.CREATE,
+    name: 'Create',
+    enableType: false
+  },
+  [PERMISSION.COUPON.UPDATE]: {
+    actionId: PERMISSION.COUPON.UPDATE,
+    name: 'Update',
+    enableType: false
+  }, [PERMISSION.COUPON.DELETE]: {
+    actionId: PERMISSION.COUPON.DELETE,
+    name: 'Delete',
+    enableType: false
+  },
+}
