@@ -1,31 +1,42 @@
-import {MESSAGE_TYPE, SuggestionActionType, WHATSAPP_BUTTON_URL_TYPE, WhatsappTemplateButton} from '../../model/message'
-import {hasText, renderTemplate} from "../string.util";
-import {Url, URL_GENERATE_TYPE, URL_TYPE} from "../../model/url/Url";
-import {objectDeepClone} from "../general.util";
-import {DATE_TIME_FORMAT, parseDateTimeByFormat} from "../date";
+import {
+  MESSAGE_TYPE,
+  SuggestionActionType,
+  WHATSAPP_BUTTON_URL_TYPE,
+  WhatsappTemplateButton,
+} from '../../model/message';
+import { hasText, renderTemplate } from '../string.util';
+import { Url, URL_GENERATE_TYPE, URL_TYPE } from '../../model/url/Url';
+import { objectDeepClone } from '../general.util';
+import { DATE_TIME_FORMAT, parseDateTimeByFormat } from '../date';
 
 export interface GenerateUrlInput {
-  redirectUrl: string
-  content?: any
-  type: URL_TYPE
-  generateType: URL_GENERATE_TYPE
-  urlOrigin?: string
-  landingPageId?: number
+  redirectUrl: string;
+  content?: any;
+  type: URL_TYPE;
+  generateType: URL_GENERATE_TYPE;
+  urlOrigin?: string;
+  landingPageId?: number;
 }
-
 
 export interface GenerateUrlOutput {
-  url: Url
-  link: string
+  url: Url;
+  link: string;
 }
 
-export type generateUrlFunction = (input: GenerateUrlInput) => Promise<GenerateUrlOutput>
+export type generateUrlFunction = (
+  input: GenerateUrlInput
+) => Promise<GenerateUrlOutput>;
 
-async function renderWhatsappButton(button: WhatsappTemplateButton, answerKeys: any, urlIds: Array<Url>, generateUrl: generateUrlFunction) {
+async function renderWhatsappButton(
+  button: WhatsappTemplateButton,
+  answerKeys: any,
+  urls: Array<Url>,
+  generateUrl: generateUrlFunction
+) {
   if (!button['isTracking']) {
     return {
       ...button,
-      data: renderTemplate(button.data, answerKeys)
+      data: renderTemplate(button.data || '', answerKeys),
     };
   }
 
@@ -41,20 +52,30 @@ async function renderWhatsappButton(button: WhatsappTemplateButton, answerKeys: 
       "isTracking": true
     }
   */
-  const {url, data, urlType} = button;
-  let redirectUrl = url;
-  if (urlType === WHATSAPP_BUTTON_URL_TYPE.DYNAMIC) {
-    redirectUrl = renderTemplate(`${url}${data}`, answerKeys);
+  const { url, data, redirectUrlType, landingPage } = button;
+  let generateResult = null;
+  if (redirectUrlType === URL_TYPE.LANDING_PAGE) {
+    generateResult = await generateUrl({
+      generateType: URL_GENERATE_TYPE.REDIRECT,
+      type: redirectUrlType,
+      landingPageId: landingPage.id,
+      redirectUrl: '',
+    });
+  } else {
+    let redirectUrl = button['redirectUrl'] || url;
+    redirectUrl = renderTemplate(`${redirectUrl}${data}`, answerKeys);
+    generateResult = await generateUrl({
+      generateType: URL_GENERATE_TYPE.REDIRECT,
+      type: redirectUrlType,
+      urlOrigin: button['redirectUrl'] || url,
+      redirectUrl: redirectUrl,
+    });
   }
-  const {url: internalUrl} = await generateUrl({
-    redirectUrl,
-    generateType: URL_GENERATE_TYPE.REDIRECT,
-    urlOrigin: url, type: URL_TYPE.ORIGIN, content: null
-  });
 
-  button.data = internalUrl.code;
+  // code will be appended to end of the url
+  button.data = generateResult.url.code;
 
-  urlIds.push(internalUrl);
+  urls.push(generateResult.url);
 
   return button;
 }
@@ -78,34 +99,39 @@ async function renderWhatsappButton(button: WhatsappTemplateButton, answerKeys: 
       }
     }>} alibabaParams
  * @param answerKeys
- * @param urlIds
+ * @param urls
  * @param generateUrl
  */
-async function renderWhatsappAlibabaParams(alibabaParams: any, answerKeys: any, urlIds: Array<Url>, generateUrl: generateUrlFunction) {
+async function renderWhatsappAlibabaParams(
+  alibabaParams: any,
+  answerKeys: any,
+  urls: Array<Url>,
+  generateUrl: generateUrlFunction
+) {
   const renderParams: Record<string, any> = {};
   for (const k of Object.keys(alibabaParams)) {
     const params = alibabaParams[k];
-    if (typeof params === "string") {
+    if (typeof params === 'string') {
       renderParams[k] = renderTemplate(params, answerKeys);
     }
-    if (typeof params === "object") {
-      if (params.type === "URL" && params.isTracking) {
-        const {url, data} = params;
+    if (typeof params === 'object') {
+      if (params.type === 'URL' && params.isTracking) {
+        const { url, data } = params;
         let redirectUrl = `${url}`;
         if (params.urlType === WHATSAPP_BUTTON_URL_TYPE.DYNAMIC) {
           redirectUrl = renderTemplate(`${url}${data}`, answerKeys);
         }
 
         const {
-          url: {id, code}
+          url: { id, code },
         } = await generateUrl({
           redirectUrl,
           type: URL_TYPE.ORIGIN,
           urlOrigin: url,
-          generateType: URL_GENERATE_TYPE.REDIRECT
+          generateType: URL_GENERATE_TYPE.REDIRECT,
         });
 
-        urlIds.push(id);
+        urls.push(id);
 
         renderParams[k] = code;
       }
@@ -124,65 +150,70 @@ async function renderWhatsappAlibabaParams(alibabaParams: any, answerKeys: any, 
  * @return {Promise<{urls: *[], content: null}>}
  */
 export interface RenderTemplateMessageProp {
-  content: any
-  answerKeys: any,
-  timezone: string,
-  generateUrl: generateUrlFunction
+  content: any;
+  answerKeys: any;
+  timezone: string;
+  generateUrl: generateUrlFunction;
 }
 
 export interface RenderTemplateMessageResult {
-  content: any
-  urls: Array<Url>
+  content: any;
+  urls: Array<Url>;
 }
 
 export async function renderTemplateMessage({
-                                              content: _content,
-                                              answerKeys,
-                                              timezone,
-                                              generateUrl
-                                            }: RenderTemplateMessageProp) {
+  content: _content,
+  answerKeys,
+  timezone,
+  generateUrl,
+}: RenderTemplateMessageProp) {
   const content = objectDeepClone(_content);
-  const rs = {content: null, urls: []} as RenderTemplateMessageResult;
+  const rs = { content: null, urls: [] } as RenderTemplateMessageResult;
   if (content) {
     if (content.peacomTemplateMessage) {
       content.peacomTemplateMessage.params = answerKeys;
     } else if (content.whatsappTemplateParam) {
       // WHATSAPP
-      const {header, body, buttons, media, alibabaParams, carousel} =
+      const { header, body, buttons, media, alibabaParams, carousel } =
         content.whatsappTemplateParam;
       // only Alibaba
       if (alibabaParams) {
         content.whatsappTemplateParam.alibabaParams =
-          await renderWhatsappAlibabaParams(alibabaParams, answerKeys, rs.urls, generateUrl);
+          await renderWhatsappAlibabaParams(
+            alibabaParams,
+            answerKeys,
+            rs.urls,
+            generateUrl
+          );
       } else {
         if (Array.isArray(header) && header.length) {
           content.whatsappTemplateParam.header = header.map((value) => {
-            if (typeof value === "string") {
+            if (typeof value === 'string') {
               return renderTemplate(value, answerKeys);
             }
             // new version
-            if (value.type === "TEXT") {
+            if (value.type === 'TEXT') {
               return {
                 type: value.type,
-                data: renderTemplate(value.data, answerKeys)
+                data: renderTemplate(value.data, answerKeys),
               };
             }
             return {
               type: value.media.format || value.media.type,
               format: value.media.format || value.media.type,
-              url: renderTemplate(value.media.url, answerKeys)
+              url: renderTemplate(value.media.url, answerKeys),
             };
           });
         }
         if (Array.isArray(body) && body.length) {
           content.whatsappTemplateParam.body = body.map((value) => {
-            if (typeof value === "string") {
+            if (typeof value === 'string') {
               return renderTemplate(value, answerKeys);
             }
             // new version
             return {
               type: value.type,
-              data: renderTemplate(value.data, answerKeys)
+              data: renderTemplate(value.data, answerKeys),
             };
           });
         }
@@ -206,7 +237,7 @@ export async function renderTemplateMessage({
             if (card.body && card.body.length) {
               card.body = card.body.map((i: any) => ({
                 type: i.type,
-                data: renderTemplate(i.data, answerKeys)
+                data: renderTemplate(i.data, answerKeys),
               }));
             }
             if (card.header && card.header.length) {
@@ -217,7 +248,7 @@ export async function renderTemplateMessage({
                   format: i.media.format,
                   contentType: i.media.contentType,
                   url: renderTemplate(i.media.url, answerKeys),
-                  data: renderTemplate(i.media.data, answerKeys)
+                  data: renderTemplate(i.media.data, answerKeys),
                 };
               });
             }
@@ -233,12 +264,12 @@ export async function renderTemplateMessage({
       }
     } else if (content.zaloZnsTemplateParam) {
       // Zalo ZNS
-      const {templateData} = content.zaloZnsTemplateParam;
+      const { templateData } = content.zaloZnsTemplateParam;
       if (Array.isArray(templateData)) {
         content.zaloZnsTemplateParam.templateData = templateData.map(
           (item) => ({
             ...item,
-            value: renderTemplate(item.value, answerKeys)
+            value: renderTemplate(item.value, answerKeys),
           })
         );
       }
@@ -246,20 +277,18 @@ export async function renderTemplateMessage({
       MESSAGE_TYPE.TEXT === content.type ||
       MESSAGE_TYPE.QUICK_REPLY === content.type
     ) {
-      const {previewUrl, message} = content;
+      const { previewUrl, message } = content;
       content.message = renderTemplate(message, answerKeys);
       // TODO: Implement insert link to content message after generate link
       if (previewUrl) {
-        const {image, title, redirectUrl, position} = previewUrl;
-        const generateUrlRs = await generateUrl(
-          {
-            redirectUrl,
-            content: {image, title},
-            type: URL_TYPE.ORIGIN,
-            generateType: URL_GENERATE_TYPE.PREVIEW_URL,
-            urlOrigin: redirectUrl
-          }
-        );
+        const { image, title, redirectUrl, position } = previewUrl;
+        const generateUrlRs = await generateUrl({
+          redirectUrl,
+          content: { image, title },
+          type: URL_TYPE.ORIGIN,
+          generateType: URL_GENERATE_TYPE.PREVIEW_URL,
+          urlOrigin: redirectUrl,
+        });
         if (position === 1) {
           content.message = `${generateUrlRs.link}\n${content.message}`;
         } else {
@@ -300,7 +329,7 @@ export async function renderTemplateMessage({
                     content: null,
                     type: URL_TYPE.ORIGIN,
                     generateType: URL_GENERATE_TYPE.REDIRECT,
-                    urlOrigin: suggestion.postbackData
+                    urlOrigin: suggestion.postbackData,
                   });
                   rs.urls.push(newUrl.url);
                   suggestion.postbackData = newUrl.link;
@@ -324,10 +353,10 @@ export async function renderTemplateMessage({
                     answerKeys
                   );
                 }
-                let formatStartDate = "";
-                let formatStartTime = "";
-                let formatEndDate = "";
-                let formatEndTime = "";
+                let formatStartDate = '';
+                let formatStartTime = '';
+                let formatEndDate = '';
+                let formatEndTime = '';
                 if (hasText(suggestion.startDate)) {
                   formatStartDate = renderTemplate(
                     suggestion.startDate,
@@ -357,7 +386,7 @@ export async function renderTemplateMessage({
                   DATE_TIME_FORMAT,
                   timezone
                 ).toString();
-                if (parseStartTime === "Invalid Date") {
+                if (parseStartTime === 'Invalid Date') {
                   suggestion.startTime = new Date().toString();
                 } else {
                   suggestion.startTime = parseStartTime;
@@ -367,7 +396,7 @@ export async function renderTemplateMessage({
                   DATE_TIME_FORMAT,
                   timezone
                 ).toString();
-                if (parseEndTime === "Invalid Date") {
+                if (parseEndTime === 'Invalid Date') {
                   suggestion.endTime = new Date().toString();
                 } else {
                   suggestion.endTime = parseEndTime;
@@ -438,13 +467,13 @@ export async function renderTemplateMessage({
     } else if (
       [
         MESSAGE_TYPE.ZALO_TRANSACTION_MESSAGE,
-        MESSAGE_TYPE.ZALO_PROMOTION_MESSAGE
+        MESSAGE_TYPE.ZALO_PROMOTION_MESSAGE,
       ].includes(content.type)
     ) {
       if (content.zaloTemplateMessage) {
-        const {elements, buttons} = content.zaloTemplateMessage;
+        const { elements, buttons } = content.zaloTemplateMessage;
         if (elements) {
-          const {header, text, table} = elements;
+          const { header, text, table } = elements;
           if (header && hasText(header.content)) {
             header.content = renderTemplate(header.content, answerKeys);
           }
@@ -460,7 +489,7 @@ export async function renderTemplateMessage({
             for (let it = 0; it < table.length; it += 1) {
               const t = table[it];
               // only render for custom field
-              if (`${t.keyType}` === "3") {
+              if (`${t.keyType}` === '3') {
                 t.key = renderTemplate(t.key, answerKeys);
               }
               if (hasText(t.value)) {
@@ -522,7 +551,7 @@ export async function renderTemplateMessage({
               content: null,
               type: URL_TYPE.ORIGIN,
               generateType: URL_GENERATE_TYPE.REDIRECT,
-              urlOrigin: suggestionTemplate.postbackData
+              urlOrigin: suggestionTemplate.postbackData,
             });
             rs.urls.push(newUrl.url);
             suggestionTemplate.postbackData = newUrl.link;
@@ -549,10 +578,10 @@ export async function renderTemplateMessage({
               answerKeys
             );
           }
-          let formatStartDate = "";
-          let formatStartTime = "";
-          let formatEndDate = "";
-          let formatEndTime = "";
+          let formatStartDate = '';
+          let formatStartTime = '';
+          let formatEndDate = '';
+          let formatEndTime = '';
           if (hasText(suggestionTemplate.startDate)) {
             formatStartDate = renderTemplate(
               suggestionTemplate.startDate,
@@ -582,7 +611,7 @@ export async function renderTemplateMessage({
             DATE_TIME_FORMAT,
             timezone
           ).toString();
-          if (parseStartTime === "Invalid Date") {
+          if (parseStartTime === 'Invalid Date') {
             suggestionTemplate.startTime = new Date().toString();
           } else {
             suggestionTemplate.startTime = parseStartTime;
@@ -592,7 +621,7 @@ export async function renderTemplateMessage({
             DATE_TIME_FORMAT,
             timezone
           ).toString();
-          if (parseEndTime === "Invalid Date") {
+          if (parseEndTime === 'Invalid Date') {
             suggestionTemplate.endTime = new Date().toString();
           } else {
             suggestionTemplate.endTime = parseEndTime;
@@ -605,7 +634,7 @@ export async function renderTemplateMessage({
      * Render for expire date
      */
     // TODO: We should define common expired for using in other CHANNEL, not only RCS
-    if (content.rcsExpireOpts && content.rcsExpireOpts.type === "EXPIRE_TIME") {
+    if (content.rcsExpireOpts && content.rcsExpireOpts.type === 'EXPIRE_TIME') {
       content.rcsExpireOpts.expireTime = renderTemplate(
         content.rcsExpireOpts.expireTime,
         answerKeys
