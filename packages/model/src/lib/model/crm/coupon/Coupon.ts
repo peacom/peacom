@@ -48,3 +48,10 @@ export enum COUPON_ITEM_TYPE {
   QRCODE,
   BARCODE
 }
+
+export enum COUPON_DISTRIBUTE_ORIGIN {
+  BULK = 1,
+  CONVERSATION = 2,
+  API = 3,
+  OTHER = 4
+}
