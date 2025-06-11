@@ -1,3 +1,5 @@
+import { COMPANY_STATUS } from '../../Company';
+
 export enum COUPON_USAGE_TYPE {
   SINGLE = 1,
   MULTIPLE
@@ -39,4 +41,10 @@ export enum COUPON_CODE_ACTION {
   DISTRIBUTE = 1,
   VIEW,
   CLAIM
+}
+
+export enum COUPON_ITEM_TYPE {
+  TEXT = 1,
+  QRCODE,
+  BARCODE
 }

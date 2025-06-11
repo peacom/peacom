@@ -82,7 +82,7 @@ export interface GenerateImageProp {
 
 /**
  * Generates a new image based on a base image and overlays of text or image items.
- * 
+ *
  * @param props.baseImage Path to the base image to draw on.
  * @param props.fileName Name of image (defaults uuid).
  * @param props.width Optional canvas width (defaults to base image width).
