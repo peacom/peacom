@@ -43,16 +43,22 @@ async function renderWhatsappButton(
   /*
   Sample
     {
-      "url": "https://tvhay.bz/phim_id=",
+      "url": "https://www.localhost:2001",
       "data": "{{{mmp_url_code}}}",
       "text": "Visit Website Dynamic",
-      "type": "URL",
+      "type": "URL" | "DYNAMIC_URL",
       "index": 0,
       "urlType": "dynamic",
-      "isTracking": true
+      "isTracking": true,
+      "redirectUrlType": 1 | 2,
+      "redirectUrl": "https://tvhay.bz/phim_id=",
+      "landingPage": {
+        "id": 1,
+        "name": "Test Landing Page"
+      }
     }
   */
-  const { url, data, redirectUrlType, landingPage } = button;
+  const { url, redirectUrlType, landingPage } = button;
   let generateResult = null;
   if (redirectUrlType === URL_TYPE.LANDING_PAGE) {
     generateResult = await generateUrl({
@@ -62,13 +68,14 @@ async function renderWhatsappButton(
       redirectUrl: '',
     });
   } else {
-    let redirectUrl = button['redirectUrl'] || url;
-    redirectUrl = renderTemplate(`${redirectUrl}${data}`, answerKeys);
     generateResult = await generateUrl({
       generateType: URL_GENERATE_TYPE.REDIRECT,
       type: redirectUrlType,
       urlOrigin: button['redirectUrl'] || url,
-      redirectUrl: redirectUrl,
+      redirectUrl: renderTemplate(
+        `${button['redirectUrl'] || url}`,
+        answerKeys
+      ),
     });
   }
 
@@ -115,25 +122,26 @@ async function renderWhatsappAlibabaParams(
       renderParams[k] = renderTemplate(params, answerKeys);
     }
     if (typeof params === 'object') {
-      if (params.type === 'URL' && params.isTracking) {
+      if (
+        (params.type === 'URL' || params.type === 'DYNAMIC_URL') &&
+        params.isTracking
+      ) {
         const { url, data } = params;
         let redirectUrl = `${url}`;
         if (params.urlType === WHATSAPP_BUTTON_URL_TYPE.DYNAMIC) {
           redirectUrl = renderTemplate(`${url}${data}`, answerKeys);
         }
 
-        const {
-          url: { id, code },
-        } = await generateUrl({
+        const generateResult = await generateUrl({
           redirectUrl,
           type: URL_TYPE.ORIGIN,
           urlOrigin: url,
           generateType: URL_GENERATE_TYPE.REDIRECT,
         });
 
-        urls.push(id);
+        urls.push(generateResult.url);
 
-        renderParams[k] = code;
+        renderParams[k] = generateResult.url.code;
       }
     }
   }
