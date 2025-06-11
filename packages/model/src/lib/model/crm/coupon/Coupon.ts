@@ -1,4 +1,3 @@
-import { COMPANY_STATUS } from '../../Company';
 
 export enum COUPON_USAGE_TYPE {
   SINGLE = 1,
@@ -47,11 +46,4 @@ export enum COUPON_ITEM_TYPE {
   TEXT = 1,
   QRCODE,
   BARCODE
-}
-
-export enum COUPON_DISTRIBUTE_ORIGIN {
-  BULK = 1,
-  CONVERSATION = 2,
-  API = 3,
-  OTHER = 4
 }
