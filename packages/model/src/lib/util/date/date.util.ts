@@ -104,6 +104,10 @@ export function formatTimeTZ(date: DateType, timezone = DEFAULT_TIME_ZONE, forma
   return moment(date).tz(timezone).format(format);
 }
 
+export function formatDateTime(date: DateType, format = "LT") {
+  return moment(date).format(format);
+}
+
 export const parseDateTimeByFormat = (
   dateStr: string,
   format = DATE_TIME_FORMAT,

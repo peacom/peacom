@@ -1,5 +1,6 @@
 import {render} from "mustache";
 import {v4 as uuidv4} from "uuid";
+import {formatDateTimeTZ} from "./date";
 
 export function generateRandomCode(length: number) {
   let text = "";
@@ -144,7 +145,15 @@ const RENDER_FUNCTION = {
       return encodeURIComponent(render(text));
     };
   },
-  now: () => new Date().getTime()
+  now: () => new Date().getTime(),
+  date: () => {
+    return (text: string) => {
+      const infos = text.split("=")
+      const dateFormat = infos[0] || "YYYY-MM-DD HH:mm"
+      const timezone = infos[1] || "UTC"
+      return formatDateTimeTZ(new Date(), timezone, dateFormat);
+    };
+  },
 };
 
 export function renderTemplate(string: string, context: any) {
