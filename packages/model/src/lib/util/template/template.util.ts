@@ -647,6 +647,9 @@ export async function renderTemplateMessage({
         content.rcsExpireOpts.expireTime,
         answerKeys
       );
+      if (!content.rcsExpireOpts.expireTime) {
+        delete content.rcsExpireOpts;
+      }
     }
   }
   rs.content = content;
