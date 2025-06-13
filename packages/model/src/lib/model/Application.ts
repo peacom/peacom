@@ -159,7 +159,7 @@ export const partnerStr = (id: PARTNER | null) => {
     case PARTNER.VIET_GUY_SMPP:
       return 'VIET GUY SMPP'
     case PARTNER.VIET_GUY_SMS:
-      return 'VIET GUY SMP'
+      return 'VIET GUY SMS'
     default:
       return '';
   }
