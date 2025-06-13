@@ -91,7 +91,8 @@ export enum PARTNER {
   GAPIT = 26,
   WECOM,
   MMP_MULTI_ROUTE,
-  YULORE
+  YULORE,
+  VIET_GUY_SMPP
 }
 
 export const partnerStr = (id: PARTNER | null) => {
@@ -154,6 +155,8 @@ export const partnerStr = (id: PARTNER | null) => {
       return 'MMP Multi Route'
     case PARTNER.YULORE:
       return 'YULORE'
+    case PARTNER.VIET_GUY_SMPP:
+      return 'VIET GUY SMPP'
     default:
       return '';
   }
