@@ -173,7 +173,8 @@ export const uploadS3Buffer = async (
   const params: PutObjectCommandInput = {
     Bucket: S3_INFO.BUCKET,
     Key: key,
-    Body: data
+    Body: data,
+    ACL: 'public-read'
   };
   if (hasText(contentType)) {
     params.ContentType = contentType;
@@ -196,7 +197,7 @@ export const uploadS3FromUrl = async (
     {
       fileName: name || fileInfo.name,
       contentType: mimeType || fileInfo.type,
-      data: data as Uint8Array
+      data: data as Uint8Array,
     },
     folder
   );
