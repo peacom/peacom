@@ -40,8 +40,8 @@ export enum BULK_BROADCAST_QUEUE {
   SMS_GAPIT = 'BROADCAST_SMS_GAPIT',
   MMP_MULTI_ROUTE = 'BROADCAST_SMS_MMP_MULTI_ROUTE',
   SMS_YULORE = 'BROADCAST_SMS_YULORE',
-  SMS_VIET_GUY_SMPP = 'BROADCAST_SMS_VIET_GUY_SMPP',
-  SMS_VIET_GUY_SMS = 'BROADCAST_SMS_VIET_GUY_SMS'
+  SMPP_VIET_GUY = 'BROADCAST_SMPP_VIET_GUY',
+  SMS_VIET_GUY = 'BROADCAST_SMS_VIET_GUY'
 }
 
 export const getApplicationBroadcastQueueName = (applicationId: Application, partnerId: PARTNER | null = null) => {
@@ -97,9 +97,9 @@ export const getApplicationBroadcastQueueName = (applicationId: Application, par
         case PARTNER.YULORE:
           return BULK_BROADCAST_QUEUE.SMS_YULORE;
         case PARTNER.VIET_GUY_SMPP:
-          return BULK_BROADCAST_QUEUE.SMS_VIET_GUY_SMPP;
-        case PARTNER.VIET_GUY_SMS:
-          return BULK_BROADCAST_QUEUE.SMS_VIET_GUY_SMS;
+          return BULK_BROADCAST_QUEUE.SMPP_VIET_GUY;
+        case PARTNER.VIET_GUY:
+          return BULK_BROADCAST_QUEUE.SMS_VIET_GUY;
         default:
           return BULK_BROADCAST_QUEUE.SMS;
       }
