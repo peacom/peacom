@@ -108,5 +108,5 @@ yarn-error.log
 # testing
 /coverage
 
-
+.env
 .nx/cache
