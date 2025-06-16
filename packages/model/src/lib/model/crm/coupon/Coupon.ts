@@ -47,3 +47,8 @@ export enum COUPON_ITEM_TYPE {
   QRCODE,
   BARCODE
 }
+
+export enum COUPON_CHARACTER_LIST {
+  AUTO = 1,
+  FIX
+}

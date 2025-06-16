@@ -17,7 +17,7 @@ describe('s3.service.specs.ts', () => {
 
   it.only('uploadS3FromUrl Viettel test env key', async () => {
     console.log(process.env['S3_SECRET_KEY'])
-    const rs = await uploadS3FromUrl({ url: 'https://pngimg.com/uploads/birds/birds_PNG9.png' }, 'files', 'public-read');
+    const rs = await uploadS3FromUrl({ url: 'https://pngimg.com/uploads/birds/birds_PNG9.png' }, 'files');
     console.log(rs);
   }, 200000);
 

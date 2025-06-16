@@ -4,7 +4,6 @@ import * as path from "path";
 import {
   DeleteObjectCommandInput, DeleteObjectsCommand,
   GetObjectCommand,
-  ObjectCannedACL,
   PutObjectCommand,
   PutObjectCommandInput,
   PutObjectRequest
@@ -31,8 +30,7 @@ export const getS3Url = (key: string | null | undefined) => `${getS3EndPoint()}/
 
 export const uploadLocalFileToS3 = async (
   {filePath = ""},
-  folder = S3_FOLDERS.DEFAULT,
-  alc?: ObjectCannedACL,
+  folder = S3_FOLDERS.DEFAULT
 ): Promise<AwsFileInfo> => {
   const rs = getFileInfoFromLocalFile(filePath);
   const fileStream = fs.createReadStream(filePath);
@@ -46,8 +44,6 @@ export const uploadLocalFileToS3 = async (
     ContentType: rs.type,
     ContentLength: rs.size
   };
-
-  if (alc) params.ACL = alc;
 
   const command = new PutObjectCommand(params);
   /*
@@ -171,11 +167,10 @@ interface UploadS3BufferProp extends FileProp {
 export const uploadS3Buffer = async (
   {fileName = "", contentType = "application/octet-stream", data}: UploadS3BufferProp,
   folder = S3_FOLDERS.TICKET,
-  acl?: ObjectCannedACL
 ): Promise<AwsFileInfo> => {
   // Setting up S3 upload parameters
   const key = `${folder}/${fileName}`;
-  const params: PutObjectCommandInput = { 
+  const params: PutObjectCommandInput = {
     Bucket: S3_INFO.BUCKET,
     Key: key,
     Body: data,
@@ -184,8 +179,7 @@ export const uploadS3Buffer = async (
   if (hasText(contentType)) {
     params.ContentType = contentType;
   }
-  if (acl) params.ACL = acl;
-  
+
   const command = new PutObjectCommand(params);
   await s3.send(command);
   return {
@@ -196,7 +190,6 @@ export const uploadS3Buffer = async (
 export const uploadS3FromUrl = async (
   {url = "", mimeType = "", name = ""},
   folder = S3_FOLDERS.DEFAULT,
-  acl?: ObjectCannedACL
 ): Promise<AwsFileInfo> => {
   const data = await fetch(url).then(t => t.arrayBuffer());
   const fileInfo = getFileInfoFromUrl(url);
@@ -207,7 +200,6 @@ export const uploadS3FromUrl = async (
       data: data as Uint8Array,
     },
     folder,
-    acl
   );
   return {
     ...uploadAwsInfo,
@@ -229,7 +221,6 @@ interface DownloadLargeFileProps {
   url: string;
   outputFile: string;
   chunkSize: number;
-
   onError?(err: Error): void;
 }
 
@@ -292,7 +283,6 @@ export const downloadS3Key = async ({key, outputFile, onError, chunkSize}: Downl
       if (Body) {
         await writeFileStream(writeStream, await Body.transformToByteArray());
       }
-
       rangeAndLength = getRangeAndLength(ContentRange || "");
     }
   } catch (e: any) {
