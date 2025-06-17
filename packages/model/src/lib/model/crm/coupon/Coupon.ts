@@ -48,7 +48,7 @@ export enum COUPON_ITEM_TYPE {
   BARCODE
 }
 
-export enum COUPON_CHARACTER_TYPE {
+export enum COUPON_GENERATE_TYPE {
   AUTO = 1,
   FIX
 }
