@@ -976,6 +976,11 @@ export const PERMISSION_COMPANY_MEMBER_LIST: Record<number, ActionDescription> =
       name: 'Disable',
       enableType: false,
     },
+    [PERMISSION.COMPANY_MEMBER.INVITE]: {
+      actionId: PERMISSION.COMPANY_MEMBER.INVITE,
+      name: 'Disable',
+      enableType: false,
+    },
   };
 
 export const PERMISSION_CRM_PROFILE_LIST: Record<number, ActionDescription> = {

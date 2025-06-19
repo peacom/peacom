@@ -20,6 +20,9 @@ export const LIST_MASTER_COMPANY_PERMISSION = [
   { permission: PERMISSION.COMPANY_MEMBER.UPDATE, type: AclActionType.FULL },
   { permission: PERMISSION.COMPANY_MEMBER.DELETE, type: AclActionType.FULL },
   { permission: PERMISSION.COMPANY_MEMBER.DISABLE, type: AclActionType.FULL },
+  { permission: PERMISSION.COMPANY_MEMBER.SETTING, type: AclActionType.FULL },
+  { permission: PERMISSION.COMPANY_MEMBER.INVITE, type: AclActionType.FULL },
+
   // Company ROLE
   { permission: PERMISSION.COMPANY_ROLE.READ, type: AclActionType.FULL },
   { permission: PERMISSION.COMPANY_ROLE.CREATE, type: AclActionType.FULL },
