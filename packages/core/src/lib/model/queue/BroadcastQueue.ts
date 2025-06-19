@@ -17,6 +17,7 @@ export const BULK_QUEUE = {
 export enum BULK_BROADCAST_QUEUE {
   RCS_GOOGLE = 'BROADCAST_RCS_GOOGLE',
   RCS_DOTGO = 'BROADCAST_RCS_DOTGO',
+  RCS_TANLA = 'BROADCAST_RCS_TANLA',
   VIBER_GMS = 'BROADCAST_VIBER_GMS',
   VIBER_VIETGUY = 'BROADCAST_VIBER_VIETGUY',
   VIBER = 'BROADCAST_VIBER',
@@ -55,6 +56,8 @@ export const getApplicationBroadcastQueueName = (applicationId: Application, par
           return BULK_BROADCAST_QUEUE.RCS_GOOGLE;
         case PARTNER.DOTGO:
           return BULK_BROADCAST_QUEUE.RCS_DOTGO;
+        case PARTNER.TANLA:
+          return BULK_BROADCAST_QUEUE.RCS_TANLA;
       }
       throw new Error(`Not support for Application (${applicationId}) - Partner (${partnerId})`);
     case Application.VIBER: {

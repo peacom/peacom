@@ -93,7 +93,7 @@ export enum PARTNER {
   MMP_MULTI_ROUTE,
   YULORE,
   VIET_GUY_SMPP,
-  TELKOMSEL
+  TANLA
 }
 
 export const partnerStr = (id: PARTNER | null) => {
@@ -158,6 +158,8 @@ export const partnerStr = (id: PARTNER | null) => {
       return 'YULORE'
     case PARTNER.VIET_GUY_SMPP:
       return 'VIET GUY SMPP'
+    case PARTNER.TANLA:
+      return 'TANLA'
     default:
       return '';
   }
