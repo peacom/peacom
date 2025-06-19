@@ -978,7 +978,7 @@ export const PERMISSION_COMPANY_MEMBER_LIST: Record<number, ActionDescription> =
     },
     [PERMISSION.COMPANY_MEMBER.INVITE]: {
       actionId: PERMISSION.COMPANY_MEMBER.INVITE,
-      name: 'Disable',
+      name: 'Invite',
       enableType: false,
     },
   };
