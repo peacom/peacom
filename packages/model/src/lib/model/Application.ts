@@ -92,7 +92,8 @@ export enum PARTNER {
   WECOM,
   MMP_MULTI_ROUTE,
   YULORE,
-  VIET_GUY_SMPP
+  VIET_GUY_SMPP,
+  TELKOMSEL
 }
 
 export const partnerStr = (id: PARTNER | null) => {
