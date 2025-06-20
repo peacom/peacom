@@ -181,6 +181,11 @@ export const APPLICATION_MESSAGE: Record<Application, Array<MESSAGE_TYPE>> = {
     MESSAGE_TYPE.PICTURE,
     MESSAGE_TYPE.FILE,
   ],
+  [Application.WECOM_INTERNAL]: [
+    MESSAGE_TYPE.TEXT,
+    MESSAGE_TYPE.PICTURE,
+    MESSAGE_TYPE.FILE,
+  ],
 };
 
 export enum SEND_MESSAGE_VIA {

@@ -16,7 +16,8 @@ export enum Application {
   TELEGRAM_GATEWAY = 16,
   INSTAGRAM = 17,
   WECOM_CUSTOMER,
-  WECOM_CUSTOMER_GROUP
+  WECOM_CUSTOMER_GROUP,
+  WECOM_INTERNAL
 }
 
 export const applicationStr = (id?: number) => {
@@ -57,6 +58,8 @@ export const applicationStr = (id?: number) => {
       return 'WECOM CUSTOMER';
     case Application.WECOM_CUSTOMER_GROUP:
       return 'WECOM CUSTOMER GROUP'
+    case Application.WECOM_INTERNAL:
+      return 'WECOM INTERNAL'
     default:
       return `${id || ''}`;
   }
