@@ -179,7 +179,8 @@ export const isBotApplication = (appId: string | number) => {
     Application.LIVE_CHAT,
     Application.INSTAGRAM,
     Application.WECOM_CUSTOMER,
-    Application.WECOM_CUSTOMER_GROUP
+    Application.WECOM_CUSTOMER_GROUP,
+    Application.WECOM_INTERNAL,
   ].includes(Number(appId));
 };
 
