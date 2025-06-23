@@ -73,6 +73,7 @@ export const getApplicationBroadcastQueueName = (applicationId: Application, par
     }
     case Application.ZALO_ZNS:
       switch (partnerId) {
+        case PARTNER.VIET_GUY:
         case PARTNER.ZALO:
           return BULK_BROADCAST_QUEUE.ZALO;
         case PARTNER.IRIS :
