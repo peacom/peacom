@@ -68,6 +68,7 @@ interface FileProp {
   contentType: string;
   folder?: string;
   maxSize?: number;
+  acl?: string
 }
 
 export const getPreSignedUrl = async (key: string) => {
@@ -82,7 +83,8 @@ export const createPreSignedUrl = async ({
                                            fileName,
                                            contentType,
                                            folder = S3_FOLDERS.DEFAULT,
-                                           maxSize = 104857600
+                                           maxSize = 104857600,
+                                           acl
                                          }: FileProp) => {
   const fileInfo = fileName.split(".");
   const type = fileInfo.length > 1 ? fileInfo.pop() : "";
@@ -102,7 +104,6 @@ export const createPreSignedUrl = async ({
       'content-type': contentType,
     } as any,
   }
-  const acl = S3_OPTION.acl
   if(acl) {
     command.Fields['x-amz-acl'] = acl
   }
