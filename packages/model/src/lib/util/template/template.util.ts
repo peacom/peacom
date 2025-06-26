@@ -207,6 +207,7 @@ export async function renderTemplateMessage({
               };
             }
             return {
+              ...value, // filename
               type: value.media.format || value.media.type,
               format: value.media.format || value.media.type,
               url: renderTemplate(value.media.url, answerKeys),
