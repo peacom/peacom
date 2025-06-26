@@ -10,7 +10,8 @@ export const S3_OPTION = {
   region: process.env['S3_REGION'] || '',
   domain: process.env['S3_DOMAIN'] || '',
   auth: process.env['S3_AUTH'] || "",
-  forcePathStyle: process.env['S3_PATH_STYLE'] !== '1'
+  forcePathStyle: process.env['S3_PATH_STYLE'] !== '1',
+  acl: process.env['S3_ACL'] || '',
 };
 
 export const S3_INFO = {

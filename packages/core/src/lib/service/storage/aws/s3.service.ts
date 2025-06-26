@@ -91,14 +91,20 @@ export const createPreSignedUrl = async ({
   const Conditions: Array<any> = [
     {key: location},
     ['content-length-range', 0, maxSize],
-    ['eq', "$Content-Type", contentType]
+    ['eq', "$Content-Type", contentType],
   ]
   const command = {
     Bucket: S3_INFO.BUCKET,
     Key: location,
     Conditions,
     Expires: 3600,
-    Fields: {'content-type': contentType},
+    Fields: {
+      'content-type': contentType,
+    } as any,
+  }
+  const acl = S3_OPTION.acl
+  if(acl) {
+    command.Fields['x-amz-acl'] = acl
   }
   return {
     urlUpload: await createPresignedPost(s3, command),

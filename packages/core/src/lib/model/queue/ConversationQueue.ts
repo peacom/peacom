@@ -30,6 +30,8 @@ export enum CONVERSATION_QUEUE {
   INSTAGRAM_OUT = 'INSTAGRAM_OUT',
   WECOM_CUSTOMER = 'WECOM_CUSTOMER',
   WECOM_CUSTOMER_GROUP = 'WECOM_CUSTOMER_GROUP',
+  WECOM_INTERNAL_IN = 'WECOM_INTERNAL_IN',
+  WECOM_INTERNAL_OUT = 'WECOM_INTERNAL_OUT',
 }
 
 export const getApplicationConversationQueueOutName = (
@@ -68,6 +70,8 @@ export const getApplicationConversationQueueOutName = (
       return CONVERSATION_QUEUE.WECOM_CUSTOMER_GROUP;
     case Application.WECOM_CUSTOMER:
       return CONVERSATION_QUEUE.WECOM_CUSTOMER;
+    case Application.WECOM_INTERNAL:
+      return CONVERSATION_QUEUE.WECOM_INTERNAL_OUT;
     default:
       throw new Error(
         `Not support conversation for application ${applicationStr(
