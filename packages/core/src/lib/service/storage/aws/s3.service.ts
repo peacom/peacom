@@ -11,7 +11,7 @@ import {
 // eslint-disable-next-line @nx/enforce-module-boundaries
 import {createPresignedPost} from "@aws-sdk/s3-presigned-post"
 import {getSignedUrl} from "@aws-sdk/s3-request-presigner";
-import {s3, S3_FOLDERS, S3_INFO, S3_OPTION} from "./constants";
+import { s3, S3_ACL_OPTIONS, S3_FOLDERS, S3_INFO, S3_OPTION } from './constants';
 import {
   filterNonAlphaNumeric,
   hasText,
@@ -68,7 +68,6 @@ interface FileProp {
   contentType: string;
   folder?: string;
   maxSize?: number;
-  acl?: string
 }
 
 export const getPreSignedUrl = async (key: string) => {
@@ -83,8 +82,7 @@ export const createPreSignedUrl = async ({
                                            fileName,
                                            contentType,
                                            folder = S3_FOLDERS.DEFAULT,
-                                           maxSize = 104857600,
-                                           acl
+                                           maxSize = 104857600
                                          }: FileProp) => {
   const fileInfo = fileName.split(".");
   const type = fileInfo.length > 1 ? fileInfo.pop() : "";
@@ -104,8 +102,11 @@ export const createPreSignedUrl = async ({
       'content-type': contentType,
     } as any,
   }
-  if(acl) {
-    command.Fields['x-amz-acl'] = acl
+  if(S3_OPTION.acl) {
+    const acl = S3_ACL_OPTIONS[folder]
+    if(acl) {
+      command.Fields['x-amz-acl'] = acl
+    }
   }
   return {
     urlUpload: await createPresignedPost(s3, command),

@@ -11,7 +11,7 @@ export const S3_OPTION = {
   domain: process.env['S3_DOMAIN'] || '',
   auth: process.env['S3_AUTH'] || "",
   forcePathStyle: process.env['S3_PATH_STYLE'] !== '1',
-  acl: process.env['S3_ACL'] || '',
+  acl: process.env['S3_ACL'] || 0,
 };
 
 export const S3_INFO = {
@@ -22,6 +22,11 @@ export const S3_FOLDERS = {
   DEFAULT: "files",
   TICKET: "files",
   PRIVATES: "privates",
+};
+
+export const S3_ACL_OPTIONS = {
+  [S3_FOLDERS.PRIVATES]: "",
+  [S3_FOLDERS.DEFAULT]: 'public-read',
 };
 
 interface S3Config {
