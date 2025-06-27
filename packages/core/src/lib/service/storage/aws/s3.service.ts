@@ -102,7 +102,7 @@ export const createPreSignedUrl = async ({
       'content-type': contentType,
     } as any,
   }
-  if(S3_OPTION.acl) {
+  if(Number(S3_OPTION.acl)) {
     const acl = S3_ACL_OPTIONS[folder]
     if(acl) {
       command.Fields['x-amz-acl'] = acl
