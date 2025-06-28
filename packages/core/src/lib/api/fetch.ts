@@ -1,4 +1,5 @@
 import {sslAgent} from "./certificate/https-server";
+import {FormError} from "@peacom/model";
 
 
 export const myFetch = (url: any, opts?: any) => {
@@ -20,13 +21,7 @@ export const parseResponse = async (resp: Response, log?: (message: string) => v
   }
 
   if (!resp.ok) {
-    const error = responseBody[0];
-    let errorMessage = resp.statusText;
-    if (error) {
-      errorMessage = `${error.code} - ${error.message}`;
-    }
-
-    throw new Error(errorMessage);
+    throw new FormError(responseBody);
   }
 
   return responseBody;
