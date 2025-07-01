@@ -815,6 +815,11 @@ export const PERMISSION_PRODUCT_LIST: Record<number, ActionDescription> = {
     name: 'Setting',
     enableType: false,
   },
+  [PERMISSION.PRODUCT.IMPORT_SYSTEM]: {
+    actionId: PERMISSION.PRODUCT.IMPORT_SYSTEM,
+    name: 'System Import',
+    enableType: false,
+  },
 };
 
 export const PERMISSION_PRODUCT_CATEGORY_LIST: Record<
