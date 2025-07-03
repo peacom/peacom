@@ -1,3 +1,5 @@
+import { Application } from './Application';
+
 /**
  * This is store on DB with tinyint (1byte), so the value must below 255
  * 01000010 => 66
@@ -25,13 +27,16 @@ export enum TARIFF_TYPE {
   PER_CONVERSATION_BROADCAST_INITIAL,
   PER_BROADCAST_MARKETING,
   PER_BROADCAST_UTILITY,
-  PER_BROADCAST_AUTHENTICATION
+  PER_BROADCAST_AUTHENTICATION,
+  PER_BROADCAST_BASIC_MESSAGE
 }
 
 export const tariffTypeStr = (tariffType: TARIFF_TYPE) => {
   switch (tariffType){
     case TARIFF_TYPE.PER_BROADCAST_MESSAGE:
       return 'BROADCAST MESSAGE'
+    case TARIFF_TYPE.PER_BROADCAST_BASIC_MESSAGE:
+      return 'BROADCAST BASIC MESSAGE'
     case TARIFF_TYPE.PER_BROADCAST_MARKETING:
       return 'BROADCAST MARKETING MESSAGE'
     case TARIFF_TYPE.PER_BROADCAST_UTILITY:
@@ -114,3 +119,7 @@ export enum TRANSACTION_ESCROW_TYPE {
   ACCEPT = 1,
   RETURN = 2
 }
+
+export const isChannelSupportTemplateTariff = (applicationId: number) => {
+  return [Application.WHATSAPP, Application.RCS].includes(applicationId);
+};

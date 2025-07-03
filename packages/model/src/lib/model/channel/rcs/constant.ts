@@ -45,3 +45,8 @@ export enum IntegrationStatus{
   ENABLED = 'ENABLED',
   DISABLED = 'DISABLED'
 }
+
+export enum RCS_MESSAGE_TRAFFIC_TYPE {
+  BASIC_MESSAGE = "basic_message",
+  SINGLE_MESSAGE = "single_message",
+}
