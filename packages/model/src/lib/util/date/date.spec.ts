@@ -62,8 +62,9 @@ describe('date.util', () => {
     console.log(endOfWeek(new Date(dateStr), DEFAULT_TIME_ZONE))
   });
   it('startOfMonth', () => {
-    const dateStr = '2022-12-20T10:23:55Z'
-    console.log(startOfMonth(new Date(dateStr), DEFAULT_TIME_ZONE))
+    const dateStr = '2022-06-30T17:00:00Z'
+    console.log(startOfMonth(new Date(dateStr), "America/Chicago"))
+    console.log(startOfMonth(parseDateTimeByFormat("2022-07", "YYYY-MM", "America/Chicago"), "America/Chicago"))
     console.log(endOfMonth(new Date(dateStr), DEFAULT_TIME_ZONE))
   });
   it('startEndOfHour', () => {
