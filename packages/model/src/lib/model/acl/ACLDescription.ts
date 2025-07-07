@@ -1282,3 +1282,25 @@ export const PERMISSION_COUPON: Record<number, ActionDescription> = {
     enableType: false
   },
 }
+
+export const PERMISSION_MULTI_ROUTE: Record<number, ActionDescription> = {
+  [PERMISSION.MULTI_ROUTE.READ]: {
+    actionId: PERMISSION.MULTI_ROUTE.READ,
+    name: 'Read',
+    enableType: false
+  },
+  [PERMISSION.MULTI_ROUTE.CREATE]: {
+    actionId: PERMISSION.MULTI_ROUTE.CREATE,
+    name: 'Create',
+    enableType: false
+  },
+  [PERMISSION.MULTI_ROUTE.UPDATE]: {
+    actionId: PERMISSION.MULTI_ROUTE.UPDATE,
+    name: 'Update',
+    enableType: false
+  }, [PERMISSION.MULTI_ROUTE.DELETE]: {
+    actionId: PERMISSION.MULTI_ROUTE.DELETE,
+    name: 'Delete',
+    enableType: false
+  },
+}
