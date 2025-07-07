@@ -6,7 +6,7 @@ export enum AclActionType {
   SYSTEM_ADMIN = 5,
 }
 
-// max=219
+// max=224
 
 export const PERMISSION = {
   COMPANY: {
@@ -320,6 +320,12 @@ export const PERMISSION = {
     CREATE: 216,
     UPDATE: 217,
     DELETE: 218
+  },
+  MULTI_ROUTE: {
+    READ: 221,
+    CREATE: 222,
+    UPDATE: 223,
+    DELETE: 224
   }
 };
 
