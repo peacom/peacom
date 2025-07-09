@@ -326,10 +326,13 @@ export const PERMISSION = {
     CREATE: 222,
     UPDATE: 223,
     DELETE: 224
+  },
+  CARRIER: {
+    REPORT: 225
   }
 };
 
-// MAX= 220
+// MAX= 225
 export interface ActionDescription {
   actionId: number;
   name: string;
