@@ -187,6 +187,21 @@ export const parseTemplate = (str: string) => {
   return rs;
 }
 
+export const parseTemplatePartner = (str: string) => {
+  const regex = /{{(\w+)}}|{{{(\w+)}}}/g
+  let rs = []
+  for (const i of str.matchAll(regex)) {
+    const found = rs.find((element: any) => element.variable === i[1]);
+    if (!found) {
+      rs.push({
+        template: i[0],
+        variable: i[1] || i[2] || i[3]
+      })
+    }
+  }
+  return rs;
+}
+
 // This function converts the string to lowercase, then perform the conversion
 export function toLowerCaseNonAccentVietnamese(str: any) {
   str = str.toLowerCase();
