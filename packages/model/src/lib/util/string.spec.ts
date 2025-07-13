@@ -2,8 +2,8 @@ import {
   alphaNumericToString,
   filterNonAlphaNumeric,
   isNumberOnly,
-  leftString, parseTemplate, parseTemplatePartner,
-  renderTemplate
+  leftString, parseTemplate,
+  renderTemplate, templateMessageParamsReplace
 } from './';
 
 describe('string.util', () => {
@@ -75,17 +75,14 @@ describe('string.util', () => {
   it("filterNonAlphaNumeric", ()=>{
     console.log(filterNonAlphaNumeric("harmony 003", "_"))
   })
+
   it("parseMessage",()=>{
     const message = "{{v1}} this is testing for template engine parse {{{v2}}} and {v3} and {{v1}}"
     console.log([...parseTemplate(message)])
   });
   it("parseMessagePartner",()=>{
-    const message = "{{extraData.name1}} this is testing for template engine parse {{{extraData.name}}} and {v3} and {{v1}} and {{{v4}}} and {{{v5}}}"
-    const rs = parseTemplatePartner(message);
-    console.log(rs)
-    // for (let i = 0; i < rs.length; i +=1 ) {
-    //   const {variable} = rs[i];
-    //   console.log(`[${variable}]`)
-    // }
+    const message = "{{extraData.name_0}} this is testing for template engine parse {{{extraData.name_1}}}, {{{extraData.name_1}}}"
+    const newMessage = templateMessageParamsReplace(message, (i: number) => `[v${i}]`)
+    console.log(newMessage )
   })
 });

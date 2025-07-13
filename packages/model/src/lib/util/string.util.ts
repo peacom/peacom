@@ -188,7 +188,7 @@ export const parseTemplate = (str: string) => {
 }
 
 export const parseTemplatePartner = (str: string) => {
-  const regex = /{{(\w+)}}|{{{(\w+)}}}/g
+  const regex = /{{([a-zA-Z0-9._]+)}}|{{{([a-zA-Z0-9._]+)}}}/g
   let rs = []
   for (const i of str.matchAll(regex)) {
     const found = rs.find((element: any) => element.variable === i[1]);
@@ -200,6 +200,18 @@ export const parseTemplatePartner = (str: string) => {
     }
   }
   return rs;
+}
+
+export function templateMessageParamsReplace(message: string, replaceFunc: Function){
+  const templatePars = parseTemplatePartner(message);
+  let newMessage = message;
+  for(let i = 0; i < templatePars.length; i+=1){
+    newMessage = newMessage.replace(new RegExp(templatePars[i].template, "g"), replaceFunc(i, templatePars[i]));
+  }
+  return {
+    params: templatePars,
+    message: newMessage
+  }
 }
 
 // This function converts the string to lowercase, then perform the conversion
