@@ -1,6 +1,6 @@
 {
   "name": "@peacom/model",
-  "version": "2.0.238",
+  "version": "2.0.239",
   "type": "commonjs",
   "dependencies": {
     "google-libphonenumber": "^3.2.41",
