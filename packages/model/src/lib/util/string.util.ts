@@ -1,11 +1,15 @@
-import {render} from "mustache";
-import {v4 as uuidv4} from "uuid";
-import {formatDateTimeTZ} from "./date";
+import * as _ from 'lodash'
+import { render } from 'mustache';
+import { v4 as uuidv4 } from 'uuid';
+import { formatDateTimeTZ } from './date';
+import { MESSAGE_TYPE, SuggestionActionType } from '../model';
+import { objectDeepClone } from './general.util';
+
 
 export function generateRandomCode(length: number) {
-  let text = "";
+  let text = '';
   const possible =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
   for (let i = 0; i < length; i += 1)
     text += possible.charAt(Math.floor(Math.random() * possible.length));
@@ -14,7 +18,7 @@ export function generateRandomCode(length: number) {
 }
 
 export const hasText = (str: string) => {
-  const testStr = `${str || ""}`;
+  const testStr = `${str || ''}`;
   return !!str && testStr.length > 0;
 };
 
@@ -23,7 +27,7 @@ export function markKey(keyStr: string) {
 }
 
 export function filterHtmlName(str: string) {
-  return str.replace(/&(quot|amp|lt|gt|acute);/g, "");
+  return str.replace(/&(quot|amp|lt|gt|acute);/g, '');
 }
 
 export function alphaNumericToString(str: string) {
@@ -40,18 +44,18 @@ export function alphaNumericToString(str: string) {
 }
 
 const htmlEntities: Record<string, string> = {
-  nbsp: " ",
-  cent: "¢",
-  pound: "£",
-  yen: "¥",
-  euro: "€",
-  copy: "©",
-  reg: "®",
-  lt: "<",
-  gt: ">",
+  nbsp: ' ',
+  cent: '¢',
+  pound: '£',
+  yen: '¥',
+  euro: '€',
+  copy: '©',
+  reg: '®',
+  lt: '<',
+  gt: '>',
   quot: '"',
-  amp: "&",
-  apos: "'"
+  amp: '&',
+  apos: '\''
 };
 
 export function unescapeHTML(str: string) {
@@ -74,24 +78,24 @@ export function unescapeHTML(str: string) {
   });
 }
 
-export const filterForNumberOnly = (str: string) => str.replace(/\D+/g, "");
+export const filterForNumberOnly = (str: string) => str.replace(/\D+/g, '');
 
 export function isNumberOnly(str: string) {
   const pattern = /^\d+$/;
   return pattern.test(str);
 }
 
-export function filterForInvalidCharacter(str: string, replaceCharacter = "_") {
-  let rs = str.replace(/[^\p{L}\s]/giu, " ");
+export function filterForInvalidCharacter(str: string, replaceCharacter = '_') {
+  let rs = str.replace(/[^\p{L}\s]/giu, ' ');
   rs = rs.trim();
   rs = rs.replace(/ +/g, replaceCharacter);
   return rs;
 }
 
 export function filterNotNumberAndDivideChar(str: string) {
-  let rs = str.replace(/\D+/g, " ");
+  let rs = str.replace(/\D+/g, ' ');
   rs = rs.trim();
-  rs = rs.replace(/ +/g, ",");
+  rs = rs.replace(/ +/g, ',');
   return rs;
 }
 
@@ -108,12 +112,12 @@ export function htmlEncode(rawStr: string) {
   });
 }
 
-export function filterNonAlphaNumeric(str: string, replaceWith = "") {
+export function filterNonAlphaNumeric(str: string, replaceWith = '') {
   return str.replace(/\W/g, replaceWith);
 }
 
 export const leftString = (string: string, count: number) => {
-  const str = `${string || ""}`;
+  const str = `${string || ''}`;
   if (str.length > count) {
     return str.substring(0, count);
   }
@@ -121,7 +125,7 @@ export const leftString = (string: string, count: number) => {
 };
 
 export const rightString = (string: string, count: number) => {
-  const str = `${string || ""}`;
+  const str = `${string || ''}`;
   if (str.length > count) {
     return str.substring(str.length - count);
   }
@@ -148,12 +152,12 @@ const RENDER_FUNCTION = {
   now: () => new Date().getTime(),
   date: () => {
     return (text: string) => {
-      const infos = text.split("=")
-      const dateFormat = infos[0] || "YYYY-MM-DD HH:mm"
-      const timezone = infos[1] || "UTC"
+      const infos = text.split('=');
+      const dateFormat = infos[0] || 'YYYY-MM-DD HH:mm';
+      const timezone = infos[1] || 'UTC';
       return formatDateTimeTZ(new Date(), timezone, dateFormat);
     };
-  },
+  }
 };
 
 export function renderTemplate(string: string, context: any) {
@@ -164,54 +168,244 @@ export function renderTemplate(string: string, context: any) {
 }
 
 export function formatBytes(bytes: number, decimals: number = 2): string {
-  if (bytes === 0) return "0 Bytes"
+  if (bytes === 0) return '0 Bytes';
 
-  const k = 1024
-  const dm = decimals < 0 ? 0 : decimals
-  const sizes = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"]
+  const k = 1024;
+  const dm = decimals < 0 ? 0 : decimals;
+  const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
 
-  const i = Math.floor(Math.log(bytes) / Math.log(k))
+  const i = Math.floor(Math.log(bytes) / Math.log(k));
 
-  return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + " " + sizes[i]
+  return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
 }
 
 export const parseTemplate = (str: string) => {
-  const regex = /{{(\w+)}}|{{{(\w+)}}}/g
-  const rs = []
+  const regex = /{{(\w+)}}|{{{(\w+)}}}/g;
+  const rs = [];
   for (const i of str.matchAll(regex)) {
     rs.push({
       template: i[0],
       variable: i[1] || i[2] || i[3]
-    })
+    });
   }
   return rs;
-}
+};
 
 export const parseTemplatePartner = (str: string) => {
-  const regex = /{{([a-zA-Z0-9._]+)}}|{{{([a-zA-Z0-9._]+)}}}/g
-  let rs = []
+  const regex = /{{([a-zA-Z0-9._]+)}}|{{{([a-zA-Z0-9._]+)}}}/g;
+  let rs = [];
   for (const i of str.matchAll(regex)) {
     const found = rs.find((element: any) => element.variable === i[1]);
     if (!found) {
       rs.push({
         template: i[0],
         variable: i[1] || i[2] || i[3]
-      })
+      });
     }
   }
   return rs;
-}
+};
 
-export function templateMessageParamsReplace(message: string, replaceFunc: Function){
+export function stringParamsReplace(message: string, replaceFunc: Function) {
   const templatePars = parseTemplatePartner(message);
   let newMessage = message;
-  for(let i = 0; i < templatePars.length; i+=1){
-    newMessage = newMessage.replace(new RegExp(templatePars[i].template, "g"), replaceFunc(i, templatePars[i]));
+  for (let i = 0; i < templatePars.length; i += 1) {
+    newMessage = newMessage.replace(new RegExp(templatePars[i].template, 'g'), replaceFunc(i, templatePars[i]));
   }
   return {
     params: templatePars,
     message: newMessage
+  };
+}
+
+export function templateMessageParamsReplace(rawMessage: any, replaceFunc: Function) {
+  let newRawMessage = objectDeepClone(rawMessage);
+  const { type } = rawMessage;
+  const templateParams = [] as any;
+  const addParams = (params: Array<any>) => {
+    params.forEach(t => {
+      const exist = templateParams.find((item: any) => item.variable === t.variable);
+      if (!exist) {
+        templateParams.push(t);
+      }
+    });
+
+  };
+
+  const scanSuggestions = (suggestions: Array<any>) => {
+    for (let s = 0; s < suggestions.length; s += 1) {
+      const sg = suggestions[s];
+      if (hasText(sg.text)) {
+        const sgTextParams = parseTemplatePartner(sg.text);
+        addParams(sgTextParams);
+      }
+      if (hasText(sg.postbackData)) {
+        const sgPostDataParams = parseTemplatePartner(sg.postbackData);
+        addParams(sgPostDataParams);
+      }
+      if (SuggestionActionType.CALENDAR === sg.action) {
+        if (hasText(sg.startTime)) {
+          const sgCalendarStartTimeParams = parseTemplatePartner(sg.startTime);
+          addParams(sgCalendarStartTimeParams);
+        }
+        if (hasText(sg.endTime)) {
+          const sgCalendarEndTimeParams = parseTemplatePartner(sg.endTime);
+          addParams(sgCalendarEndTimeParams);
+        }
+        if (hasText(sg.startDate)) {
+          const sgCalendarStartDateParams = parseTemplatePartner(sg.startDate);
+          addParams(sgCalendarStartDateParams);
+        }
+        if (hasText(sg.endDate)) {
+          const sgCalendarEndDateParams = parseTemplatePartner(sg.endDate);
+          addParams(sgCalendarEndDateParams);
+        }
+        if (hasText(sg.title)) {
+          const sgCalendarTitleParams = parseTemplatePartner(sg.title);
+          addParams(sgCalendarTitleParams);
+        }
+        if (hasText(sg.description)) {
+          const sgCalendarDescriptionParams = parseTemplatePartner(sg.description);
+          addParams(sgCalendarDescriptionParams);
+        }
+      }
+    }
+  };
+  switch (type) {
+    case MESSAGE_TYPE.TEXT:
+      const textParams = parseTemplatePartner(rawMessage.message);
+      addParams(textParams);
+      break;
+    case MESSAGE_TYPE.PICTURE:
+    case MESSAGE_TYPE.FILE:
+    case MESSAGE_TYPE.VIDEO:
+      const fileUrlParams = parseTemplatePartner(rawMessage.fileUrl);
+      addParams(fileUrlParams);
+      if (rawMessage.thumbnailUrl) {
+        const thumbnailUrlParams = parseTemplatePartner(rawMessage.thumbnailUrl);
+        addParams(thumbnailUrlParams);
+      }
+      break;
+    case MESSAGE_TYPE.RICH_CARD:
+      const { richCards = [] } = rawMessage;
+      for (let r = 0; r < richCards.length; r += 1) {
+        const rc = richCards[r];
+        if (hasText(rc.title)) {
+          const rcTitleParams = parseTemplatePartner(rc.title);
+          addParams(rcTitleParams);
+        }
+        if (hasText(rc.description)) {
+          const rcDescriptionParams = parseTemplatePartner(rc.description);
+          addParams(rcDescriptionParams);
+        }
+        if (rc.image) {
+          const rcImageParams = parseTemplatePartner(rc.image);
+          addParams(rcImageParams);
+        }
+        if (rc.suggestions && rc.suggestions.length) {
+          scanSuggestions(rc.suggestions);
+        }
+      }
   }
+  if (
+    (rawMessage.suggestions && rawMessage.suggestions.length) ||
+    (rawMessage.templateMessageSuggestions &&
+      rawMessage.templateMessageSuggestions.length)
+  ) {
+    scanSuggestions(
+      rawMessage.suggestions || rawMessage.templateMessageSuggestions
+    );
+  }
+
+  const replaceString = (strMessage: string) => {
+    let newStringMessage = strMessage;
+    for (let t = 0; t < templateParams.length; t += 1) {
+      newStringMessage = newStringMessage.replace(new RegExp(templateParams[t].template, 'g'), replaceFunc(t, templateParams[t]));
+    }
+    return newStringMessage;
+  };
+
+  const replaceSuggestions = (suggestions: Array<any>) => {
+    for (let s = 0; s < suggestions.length; s += 1) {
+      const suggestion = suggestions[s];
+      if (hasText(suggestion.text)) {
+        suggestion.text = replaceString(suggestion.text);
+      }
+      if (hasText(suggestion.postbackData)) {
+        suggestion.postbackData = replaceString(suggestion.postbackData);
+      }
+      if (SuggestionActionType.CALENDAR === suggestion.action) {
+        if (hasText(suggestion.startTime)) {
+          suggestion.startTime = replaceString(suggestion.startTime);
+        }
+        if (hasText(suggestion.endTime)) {
+          suggestion.endTime = replaceString(suggestion.endTime);
+        }
+        if (hasText(suggestion.startDate)) {
+          suggestion.startDate = replaceString(suggestion.startDate);
+        }
+        if (hasText(suggestion.endDate)) {
+          suggestion.endDate = replaceString(suggestion.endDate);
+        }
+        if (hasText(suggestion.title)) {
+          suggestion.title = replaceString(suggestion.title);
+        }
+        if (hasText(suggestion.description)) {
+          suggestion.description = replaceString(suggestion.description);
+        }
+      }
+    }
+  };
+  switch (type) {
+    case MESSAGE_TYPE.TEXT:
+      newRawMessage.message = replaceString(newRawMessage.message);
+      break;
+    case MESSAGE_TYPE.PICTURE:
+    case MESSAGE_TYPE.FILE:
+    case MESSAGE_TYPE.VIDEO:
+      newRawMessage.fileUrl = replaceString(newRawMessage.fileUrl);
+      if (newRawMessage.thumbnailUrl) {
+        newRawMessage.thumbnailUrl = replaceString(newRawMessage.thumbnailUrl);
+      }
+      break;
+    case MESSAGE_TYPE.RICH_CARD:
+      const { richCards = [] } = newRawMessage;
+      for (let r = 0; r < richCards.length; r += 1) {
+        const richCard = richCards[r];
+        if (hasText(richCard.title)) {
+          richCard.title = replaceString(richCard.title);
+        }
+        if (hasText(richCard.description)) {
+          richCard.description = replaceString(richCard.description);
+        }
+        if (hasText(richCard.image)) {
+          richCard.image = replaceString(richCard.image);
+        }
+        if (richCard.suggestions && richCard.suggestions.length) {
+          replaceSuggestions(richCard.suggestions);
+        }
+      }
+  }
+  if (
+    (newRawMessage.suggestions && newRawMessage.suggestions?.length) ||
+    (newRawMessage.templateMessageSuggestions &&
+      newRawMessage.templateMessageSuggestions.length)
+  ) {
+    replaceSuggestions(newRawMessage.suggestions || newRawMessage.templateMessageSuggestions);
+  }
+  return {
+    rawMessage: newRawMessage,
+    params: templateParams
+  };
+}
+
+export function valueParamsReplace(context: any, params: Array<any>, replaceFunc: Function ) {
+  const newParams = {} as any;
+  for (let i = 0; i < params.length; i += 1) {
+    const key = replaceFunc(i, newParams[i]);
+    newParams[key] = _.get(context, params[i].variable,'');
+  }
+  return newParams;
 }
 
 // This function converts the string to lowercase, then perform the conversion
@@ -225,36 +419,36 @@ export function toLowerCaseNonAccentVietnamese(str: any) {
 //     str = str.replace(/\u00F9|\u00FA|\u1EE5|\u1EE7|\u0169|\u01B0|\u1EEB|\u1EE9|\u1EF1|\u1EED|\u1EEF/g, "u");
 //     str = str.replace(/\u1EF3|\u00FD|\u1EF5|\u1EF7|\u1EF9/g, "y");
 //     str = str.replace(/\u0111/g, "d");
-  str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
-  str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");
-  str = str.replace(/ì|í|ị|ỉ|ĩ/g, "i");
-  str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, "o");
-  str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u");
-  str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y");
-  str = str.replace(/đ/g, "d");
+  str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, 'a');
+  str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, 'e');
+  str = str.replace(/ì|í|ị|ỉ|ĩ/g, 'i');
+  str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, 'o');
+  str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, 'u');
+  str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, 'y');
+  str = str.replace(/đ/g, 'd');
   // Some system encode vietnamese combining accent as individual utf-8 characters
-  str = str.replace(/\u0300|\u0301|\u0303|\u0309|\u0323/g, ""); // Huyền sắc hỏi ngã nặng
-  str = str.replace(/\u02C6|\u0306|\u031B/g, ""); // Â, Ê, Ă, Ơ, Ư
+  str = str.replace(/\u0300|\u0301|\u0303|\u0309|\u0323/g, ''); // Huyền sắc hỏi ngã nặng
+  str = str.replace(/\u02C6|\u0306|\u031B/g, ''); // Â, Ê, Ă, Ơ, Ư
   return str;
 }
 
 export function toNonAccentVietnamese(str: any) {
-  str = str.replace(/A|Á|À|Ã|Ạ|Â|Ấ|Ầ|Ẫ|Ậ|Ă|Ắ|Ằ|Ẵ|Ặ/g, "A");
-  str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
-  str = str.replace(/E|É|È|Ẽ|Ẹ|Ê|Ế|Ề|Ễ|Ệ/, "E");
-  str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");
-  str = str.replace(/I|Í|Ì|Ĩ|Ị/g, "I");
-  str = str.replace(/ì|í|ị|ỉ|ĩ/g, "i");
-  str = str.replace(/O|Ó|Ò|Õ|Ọ|Ô|Ố|Ồ|Ỗ|Ộ|Ơ|Ớ|Ờ|Ỡ|Ợ/g, "O");
-  str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, "o");
-  str = str.replace(/U|Ú|Ù|Ũ|Ụ|Ư|Ứ|Ừ|Ữ|Ự/g, "U");
-  str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u");
-  str = str.replace(/Y|Ý|Ỳ|Ỹ|Ỵ/g, "Y");
-  str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y");
-  str = str.replace(/Đ/g, "D");
-  str = str.replace(/đ/g, "d");
+  str = str.replace(/A|Á|À|Ã|Ạ|Â|Ấ|Ầ|Ẫ|Ậ|Ă|Ắ|Ằ|Ẵ|Ặ/g, 'A');
+  str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, 'a');
+  str = str.replace(/E|É|È|Ẽ|Ẹ|Ê|Ế|Ề|Ễ|Ệ/, 'E');
+  str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, 'e');
+  str = str.replace(/I|Í|Ì|Ĩ|Ị/g, 'I');
+  str = str.replace(/ì|í|ị|ỉ|ĩ/g, 'i');
+  str = str.replace(/O|Ó|Ò|Õ|Ọ|Ô|Ố|Ồ|Ỗ|Ộ|Ơ|Ớ|Ờ|Ỡ|Ợ/g, 'O');
+  str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, 'o');
+  str = str.replace(/U|Ú|Ù|Ũ|Ụ|Ư|Ứ|Ừ|Ữ|Ự/g, 'U');
+  str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, 'u');
+  str = str.replace(/Y|Ý|Ỳ|Ỹ|Ỵ/g, 'Y');
+  str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, 'y');
+  str = str.replace(/Đ/g, 'D');
+  str = str.replace(/đ/g, 'd');
   // Some system encode vietnamese combining accent as individual utf-8 characters
-  str = str.replace(/\u0300|\u0301|\u0303|\u0309|\u0323/g, ""); // Huyền sắc hỏi ngã nặng
-  str = str.replace(/\u02C6|\u0306|\u031B/g, ""); // Â, Ê, Ă, Ơ, Ư
+  str = str.replace(/\u0300|\u0301|\u0303|\u0309|\u0323/g, ''); // Huyền sắc hỏi ngã nặng
+  str = str.replace(/\u02C6|\u0306|\u031B/g, ''); // Â, Ê, Ă, Ơ, Ư
   return str;
 }
