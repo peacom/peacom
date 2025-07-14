@@ -162,7 +162,7 @@ describe('string.util', () => {
       'telegramGatewayOpts': {}
     };
     const test = templateMessageParamsReplace(rawMessageRichcard, (i: number) => `[v${i}]`);
-    console.log('test', JSON.stringify(test.params));
+    console.log('test', JSON.stringify(test));
   });
 
   it('user context', () => {
