@@ -97,7 +97,8 @@ export enum PARTNER {
   YULORE,
   VIET_GUY_SMPP,
   TANLA,
-  CAKRA
+  CAKRA,
+  SMS_INTERNATIONAL_VIETGUY
 }
 
 export const partnerStr = (id: PARTNER | null) => {
@@ -166,6 +167,8 @@ export const partnerStr = (id: PARTNER | null) => {
       return 'TANLA'
     case PARTNER.CAKRA:
       return 'CAKRA'
+    case PARTNER.SMS_INTERNATIONAL_VIETGUY:
+      return 'SMS_INTERNATIONAL_VIETGUY'
     default:
       return '';
   }
