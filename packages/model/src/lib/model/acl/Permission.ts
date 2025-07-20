@@ -6,7 +6,7 @@ export enum AclActionType {
   SYSTEM_ADMIN = 5,
 }
 
-// max=235
+// max=236
 
 export const PERMISSION = {
   COMPANY: {
@@ -330,7 +330,8 @@ export const PERMISSION = {
   },
   CARRIER: {
     REPORT: 225,
-    REPORT_SMS: 226
+    REPORT_SMS: 226,
+    CDR: 236
   },
   MONITOR_PROFILE: {
     READ: 228,
