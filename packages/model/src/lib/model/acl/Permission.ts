@@ -6,7 +6,7 @@ export enum AclActionType {
   SYSTEM_ADMIN = 5,
 }
 
-// max=219
+// max=236
 
 export const PERMISSION = {
   COMPANY: {
@@ -149,6 +149,7 @@ export const PERMISSION = {
     CREATE: 89,
     DELETE: 90,
     SETTING: 145,
+    CREATE_SMS: 227,
   },
   API_KEY: {
     READ: 91,
@@ -320,10 +321,33 @@ export const PERMISSION = {
     CREATE: 216,
     UPDATE: 217,
     DELETE: 218
-  }
+  },
+  MULTI_ROUTE: {
+    READ: 221,
+    CREATE: 222,
+    UPDATE: 223,
+    DELETE: 224
+  },
+  CARRIER: {
+    REPORT: 225,
+    REPORT_SMS: 226,
+    CDR: 236
+  },
+  MONITOR_PROFILE: {
+    READ: 228,
+    CREATE: 229,
+    UPDATE: 230,
+    DELETE: 231
+  },
+  MONITOR_ALERT: {
+    READ: 232,
+    CREATE: 233,
+    UPDATE: 234,
+    DELETE: 235
+  },
 };
 
-// MAX= 220
+// MAX= 235
 export interface ActionDescription {
   actionId: number;
   name: string;

@@ -1,6 +1,7 @@
 export const RCS_MAX_RICH_CARD = 10
 export const RCS_MIN_RICH_CARD = 2
 export const RCS_STANDALONE_RICH_CARD_LENGTH = 1
+export const SUGGESTION_TEXT_MAX_LENGTH = 25;
 
 export enum RcsRichCardType {
   STANDALONE = "STANDALONE",
@@ -23,4 +24,11 @@ export enum RcsCardWidth {
   CARD_WIDTH_UNSPECIFIED = 'CARD_WIDTH_UNSPECIFIED',
   SMALL = 'SMALL',
   MEDIUM = 'MEDIUM'
+}
+
+export enum RcsCardHeight {
+  HEIGHT_UNSPECIFIED = 'HEIGHT_UNSPECIFIED',
+  SHORT = 'SHORT',
+  MEDIUM = 'MEDIUM',
+  TALL = 'TALL'
 }

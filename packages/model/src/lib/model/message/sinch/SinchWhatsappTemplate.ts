@@ -1,4 +1,5 @@
-import {FileInfo} from '../../FileInfo';
+import { FileInfo } from '../../FileInfo';
+import { WHATSAPP_TEMPLATE_BUTTON_TYPE } from '../whatsapp';
 
 export enum WhatsappTemplateType {
   TEXT = 1,
@@ -15,7 +16,7 @@ export enum WhatsappTemplateButtonType {
 }
 
 export interface WhatsappTemplateButton {
-  type: WhatsappTemplateButtonType;
+  type: WHATSAPP_TEMPLATE_BUTTON_TYPE;
   data: string;
 
   [x: string]: any;

@@ -2,6 +2,7 @@ import {
   MESSAGE_TYPE,
   SuggestionActionType,
   WHATSAPP_BUTTON_URL_TYPE,
+  WHATSAPP_TEMPLATE_BUTTON_TYPE,
   WhatsappTemplateButton,
 } from '../../model/message';
 import { hasText, renderTemplate } from '../string.util';
@@ -33,7 +34,32 @@ async function renderWhatsappButton(
   urls: Array<Url>,
   generateUrl: generateUrlFunction
 ) {
+  console.log(
+    `renderWhatsappButton: button ~> ${JSON.stringify(
+      button
+    )}, answerKeys ~> ${JSON.stringify(button)}`
+  );
   if (!button['isTracking']) {
+    if (button.type === WHATSAPP_TEMPLATE_BUTTON_TYPE.FLOW) {
+      const flow_action_data = button['flow_action_data'];
+      if (flow_action_data && typeof flow_action_data === 'object') {
+        Object.keys(flow_action_data).forEach((fk) => {
+          flow_action_data[fk] = renderTemplate(
+            flow_action_data[fk],
+            answerKeys
+          );
+        });
+        button['flow_action_data'] = {
+          ...flow_action_data,
+          ...(answerKeys?.contact || {}),
+        };
+      } else {
+        button['flow_action_data'] = {
+          ...(answerKeys?.contact || {}),
+        };
+      }
+    }
+
     return {
       ...button,
       data: renderTemplate(button.data || '', answerKeys),
@@ -202,6 +228,7 @@ export async function renderTemplateMessage({
             // new version
             if (value.type === 'TEXT') {
               return {
+                ...value,
                 type: value.type,
                 data: renderTemplate(value.data, answerKeys),
               };
@@ -221,6 +248,7 @@ export async function renderTemplateMessage({
             }
             // new version
             return {
+              ...value,
               type: value.type,
               data: renderTemplate(value.data, answerKeys),
             };

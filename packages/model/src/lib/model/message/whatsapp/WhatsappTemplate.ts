@@ -49,3 +49,8 @@ export enum WHATSAPP_BUTTON_URL_TYPE {
   DYNAMIC = 'dynamic',
   STATIC = 'static',
 }
+
+export enum WhatsappVariableTypeEnum {
+  NAMED = 'NAMED',
+  NUMBER = 'NUMBER',
+}
