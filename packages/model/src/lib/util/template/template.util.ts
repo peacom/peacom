@@ -273,6 +273,7 @@ export async function renderTemplateMessage({
           for (const card of carousel) {
             if (card.body && card.body.length) {
               card.body = card.body.map((i: any) => ({
+                ...i,
                 type: i.type,
                 data: renderTemplate(i.data, answerKeys),
               }));
