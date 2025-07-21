@@ -228,6 +228,7 @@ export async function renderTemplateMessage({
             // new version
             if (value.type === 'TEXT') {
               return {
+                ...value,
                 type: value.type,
                 data: renderTemplate(value.data, answerKeys),
               };
@@ -247,6 +248,7 @@ export async function renderTemplateMessage({
             }
             // new version
             return {
+              ...value,
               type: value.type,
               data: renderTemplate(value.data, answerKeys),
             };
