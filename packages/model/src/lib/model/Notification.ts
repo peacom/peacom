@@ -7,6 +7,7 @@ export enum NotificationPriority {
 
 export enum MessageEvent {
   CHANNEL_OA_STATUS = 'channel.oa.status',
+  CHANNEL_INFO = 'channel.info',
   CHANNEL_REQUEST = 'channel.request',
   TEMPLATE_REQUEST = 'template.request',
   TEMPLATE_APPROVE = 'template.approve',
@@ -58,6 +59,7 @@ export enum NotificationType {
   ORDER_CREATE,
   ORDER_STATUS,
   MONITOR_ALERT,
+  CHANNEL_INFO
 }
 
 export const mappingNotificationMessageToType = (messageEvent: MessageEvent): NotificationType => {
@@ -110,6 +112,8 @@ export const mappingNotificationMessageToType = (messageEvent: MessageEvent): No
       return NotificationType.COMPANY_KYC_REJECT;
     case MessageEvent.COMPANY_SUSPEND_BO_SA:
       return NotificationType.COMPANY_SUSPEND_BO_SA
+    case MessageEvent.CHANNEL_INFO:
+      return NotificationType.CHANNEL_INFO
   }
 }
 

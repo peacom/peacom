@@ -86,7 +86,8 @@ export enum COMPANY_TRANSACTION_PURPOSE {
   ESCROW_API_CONVERSATION = 6,
   ESCROW_CONFIRM = 7,
   FALLBACK = 8,
-  ORDER = 9
+  ORDER = 9,
+  ESCROW_CONVERSATION_MESSAGE
 }
 
 export const companyTransactionPurposeStr = (purpose: COMPANY_TRANSACTION_PURPOSE) => {
@@ -99,6 +100,8 @@ export const companyTransactionPurposeStr = (purpose: COMPANY_TRANSACTION_PURPOS
       return 'Escrow Bulk Broadcast'
     case COMPANY_TRANSACTION_PURPOSE.ESCROW_CONVERSATION:
       return 'Escrow Conversation'
+    case COMPANY_TRANSACTION_PURPOSE.ESCROW_CONVERSATION_MESSAGE:
+      return 'Escrow Conversation Message'
     case COMPANY_TRANSACTION_PURPOSE.ESCROW_API_BROADCAST:
       return 'Escrow API Broadcast'
     case COMPANY_TRANSACTION_PURPOSE.ESCROW_API_CONVERSATION:
