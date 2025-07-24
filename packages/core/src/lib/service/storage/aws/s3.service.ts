@@ -11,7 +11,7 @@ import {
 // eslint-disable-next-line @nx/enforce-module-boundaries
 import {createPresignedPost} from "@aws-sdk/s3-presigned-post"
 import {getSignedUrl} from "@aws-sdk/s3-request-presigner";
-import { s3, S3_ACL_OPTIONS, S3_FOLDERS, S3_INFO, S3_OPTION } from './constants';
+import {s3, S3_ACL_OPTIONS, S3_FOLDERS, S3_INFO, S3_OPTION} from './constants';
 import {
   filterNonAlphaNumeric,
   hasText,
@@ -102,9 +102,9 @@ export const createPreSignedUrl = async ({
       'content-type': contentType,
     } as any,
   }
-  if(Number(S3_OPTION.acl)) {
+  if (Number(S3_OPTION.acl)) {
     const acl = S3_ACL_OPTIONS[folder]
-    if(acl) {
+    if (acl) {
       command.Fields['x-amz-acl'] = acl
     }
   }
@@ -182,7 +182,7 @@ export const uploadS3Buffer = async (
     Bucket: S3_INFO.BUCKET,
     Key: key,
     Body: data,
-};
+  };
 
   if (hasText(contentType)) {
     params.ContentType = contentType;
@@ -229,6 +229,9 @@ interface DownloadLargeFileProps {
   url: string;
   outputFile: string;
   chunkSize: number;
+
+  log?(message: string): void
+
   onError?(err: Error): void;
 }
 
@@ -236,6 +239,8 @@ interface DownloadLargeFileKeyProps {
   key: string;
   outputFile: string;
   chunkSize: number;
+
+  log?(message: string): void
 
   onError?(err: Error): void;
 }
@@ -260,19 +265,27 @@ export const getRangeAndLength = (contentRange: string) => {
   };
 };
 
-export const downloadS3Url = async ({url, outputFile, onError, chunkSize}: DownloadLargeFileProps) => {
+export const downloadS3Url = async ({url, outputFile, onError, chunkSize, log}: DownloadLargeFileProps) => {
   const key = getS3UrlKey(url);
-  return downloadS3Key({key, outputFile, chunkSize, onError});
+  return downloadS3Key({key, outputFile, chunkSize, onError, log});
 };
 
-export const downloadS3Key = async ({key, outputFile, onError, chunkSize}: DownloadLargeFileKeyProps) => {
+export const downloadS3Key = async ({
+                                      key,
+                                      outputFile,
+                                      onError,
+                                      chunkSize, log
+                                    }: DownloadLargeFileKeyProps) => new Promise(async (res, rej) => {
   const writeStream = fs.createWriteStream(
     outputFile
   ).on("error", (err) => {
     if (onError) {
       onError(err);
     }
+    rej(err)
   });
+
+  const _log = log || console.log
 
   let rangeAndLength = {start: -1, end: -1, length: -1};
   try {
@@ -280,7 +293,7 @@ export const downloadS3Key = async ({key, outputFile, onError, chunkSize}: Downl
       const {end} = rangeAndLength;
       const nextRange = {start: end + 1, end: end + chunkSize};
 
-      console.log(`Downloading bytes ${nextRange.start} to ${nextRange.end}`);
+      _log(`Downloading bytes ${nextRange.start} to ${nextRange.end}`);
 
       const {ContentRange, Body} = await getObjectRange({
         bucket: S3_INFO.BUCKET,
@@ -289,24 +302,26 @@ export const downloadS3Key = async ({key, outputFile, onError, chunkSize}: Downl
       });
 
       if (Body) {
+        _log(`Write Stream: ${JSON.stringify(ContentRange)}`)
         await writeFileStream(writeStream, await Body.transformToByteArray());
+        _log(`Write Stream Finish`)
       }
       rangeAndLength = getRangeAndLength(ContentRange || "");
     }
+    res(outputFile)
   } catch (e: any) {
-    console.error(e)
     if (onError) {
       onError(e);
     }
     try {
       fs.unlinkSync(outputFile);
     } catch (e2: any) {
-      console.log(e2.message);
+      _log(e2.message);
     }
 
-    throw e;
+    return rej(e);
   }
-};
+});
 
 export async function s3RemoveFile({bucket = S3_INFO.BUCKET, key = ""}) {
   const params: DeleteObjectCommandInput = {

@@ -7,6 +7,7 @@ import {
   uploadS3FromUrl
 } from './s3.service';
 import * as path from "path";
+import * as fs from "fs";
 
 describe('s3.service.specs.ts', () => {
   it.skip('uploadS3FromUrl test env key', async () => {
@@ -47,10 +48,17 @@ describe('s3.service.specs.ts', () => {
 
   it.only('Download S3 Viettel Large file', async () => {
     const fileName = "birds_PNG9";
+    const folder = path.join(__dirname, 'output');
+    if(!fs.existsSync(folder)){
+      fs.mkdirSync(folder)
+    }
     await downloadS3Url({
-      url: `https://s3-north1.viettelidc.com.vn/mshvna/files/${fileName}.png`,
+      url: `https://dev-cdn.peacom.co/files/LOGOBRIBIRU224x224_dba95bd1185142d993d42ec6d072a727_65aeefc2329b4d3bbc42cc3c740755e2.jpg`,
       outputFile: path.join(__dirname, 'output', `./${fileName}.viettel.jpeg`),
       chunkSize: 1024 * 1024,
+      onError(err: Error) {
+        console.error(err)
+      }
     });
   }, 200000)
 
