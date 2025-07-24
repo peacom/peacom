@@ -90,7 +90,7 @@ async function renderWhatsappButton(
     generateResult = await generateUrl({
       generateType: URL_GENERATE_TYPE.REDIRECT,
       type: redirectUrlType,
-      landingPageId: landingPage.id,
+      landingPageId: landingPage?.id,
       redirectUrl: '',
     });
   } else {
@@ -175,6 +175,191 @@ async function renderWhatsappAlibabaParams(
   return renderParams;
 }
 
+async function renderAlibabaButton(
+  button: WhatsappTemplateButton,
+  answerKeys: any,
+  urls: Array<Url>,
+  generateUrl: generateUrlFunction
+) {
+  const extraData: any = {};
+  if (!button['isTracking']) {
+    if (button.type === WHATSAPP_TEMPLATE_BUTTON_TYPE.FLOW) {
+      const flow_action_data = button['flow_action_data'];
+      if (flow_action_data && typeof flow_action_data === 'object') {
+        Object.keys(flow_action_data).forEach((fk) => {
+          flow_action_data[fk] = renderTemplate(
+            flow_action_data[fk],
+            answerKeys
+          );
+        });
+        button['flow_action_data'] = {
+          ...flow_action_data,
+          ...(answerKeys?.contact || {}),
+        };
+      } else {
+        button['flow_action_data'] = {
+          ...(answerKeys?.contact || {}),
+        };
+      }
+
+      extraData['flow_action_data'] = structuredClone(
+        button['flow_action_data']
+      );
+    }
+    return {
+      data: renderTemplate(button.data || '', answerKeys),
+      extraData,
+    };
+  }
+
+  const { url, redirectUrlType, landingPage } = button;
+  let generateResult = null;
+  if (redirectUrlType === URL_TYPE.LANDING_PAGE) {
+    generateResult = await generateUrl({
+      generateType: URL_GENERATE_TYPE.REDIRECT,
+      type: redirectUrlType,
+      landingPageId: landingPage.id,
+      redirectUrl: '',
+    });
+  } else {
+    generateResult = await generateUrl({
+      generateType: URL_GENERATE_TYPE.REDIRECT,
+      type: redirectUrlType,
+      urlOrigin: button['redirectUrl'] || url,
+      redirectUrl: renderTemplate(
+        `${button['redirectUrl'] || url}`,
+        answerKeys
+      ),
+    });
+  }
+
+  // code will be appended to end of the url
+  button.data = generateResult.url.code;
+
+  urls.push(generateResult.url);
+
+  return {
+    data: button.data,
+    extraData,
+  };
+}
+
+async function renderWhatsappAlibabaParamsV2(
+  waParams: any,
+  answerKeys: any,
+  urls: Array<Url>,
+  generateUrl: generateUrlFunction
+) {
+  console.log(
+    `Render alibaba V2 template params ~> `,
+    JSON.stringify(waParams)
+  );
+  console.log(`Render alibaba V2 answerKeys ~> `, JSON.stringify(answerKeys));
+  const result: any = {};
+  const { header, body, buttons, carousel } = waParams;
+
+  if (Array.isArray(header) && header.length) {
+    for (const value of header) {
+      const { alibaba_param_name } = value;
+      // header text
+      if (value.type === 'TEXT') {
+        result[alibaba_param_name] = renderTemplate(value.data, answerKeys);
+      } else if (value.type === 'MEDIA') {
+        // media
+        result[alibaba_param_name] = renderTemplate(
+          value.media.url,
+          answerKeys
+        );
+        result['____extraData'] = {
+          ...result['____extraData'],
+          [alibaba_param_name]: {
+            ...value.media,
+          },
+        };
+      } else {
+        result[alibaba_param_name] = renderTemplate(value.data, answerKeys);
+      }
+    }
+  }
+
+  // body
+  if (Array.isArray(body) && body.length) {
+    for (const value of body) {
+      const { alibaba_param_name } = value;
+      result[alibaba_param_name] = renderTemplate(value.data, answerKeys);
+    }
+  }
+
+  // buttons
+  if (Array.isArray(buttons) && buttons.length) {
+    for (const button of buttons) {
+      const { alibaba_param_name } = button;
+      const { data, extraData } = await renderAlibabaButton(
+        button,
+        answerKeys,
+        urls,
+        generateUrl
+      );
+      if (alibaba_param_name) {
+        result['__extraData'] = {
+          ...result['__extraData'],
+          ...extraData,
+        };
+        result[alibaba_param_name] = data;
+      }
+    }
+  }
+
+  // carousel
+  if (Array.isArray(carousel) && carousel.length) {
+    for (const card of carousel) {
+      if (Array.isArray(card.header) && card.header.length) {
+        for (const ch of card.header) {
+          // not support text params
+          // current support only media
+          // result[ch.alibaba_param_name] = renderTemplate(ch.data, answerKeys);
+        }
+      }
+      if (Array.isArray(card.body) && card.body.length) {
+        for (const cb of card.body) {
+          if (cb.type === 'TEXT') {
+            result[cb.alibaba_param_name] = renderTemplate(cb.data, answerKeys);
+          }
+          if (cb.type === 'MEDIA') {
+            result[cb.alibaba_param_name] = renderTemplate(
+              cb.media.url,
+              answerKeys
+            );
+          }
+        }
+      }
+      if (Array.isArray(card.buttons) && card.buttons.length) {
+        for (const button of card.buttons) {
+          const { alibaba_param_name } = button;
+          const { data, extraData } = await renderAlibabaButton(
+            button,
+            answerKeys,
+            urls,
+            generateUrl
+          );
+          if (alibaba_param_name) {
+            result['__extraData'] = {
+              ...result['__extraData'],
+              ...extraData,
+            };
+
+            result[alibaba_param_name] = data;
+          }
+        }
+      }
+    }
+  }
+
+  console.log(`Rendered alibaba V2  result ~> `, JSON.stringify(result));
+
+  return result;
+}
+
 /**
  * Render template message and format url
  * @param content
@@ -212,13 +397,24 @@ export async function renderTemplateMessage({
         content.whatsappTemplateParam;
       // only Alibaba
       if (alibabaParams) {
-        content.whatsappTemplateParam.alibabaParams =
-          await renderWhatsappAlibabaParams(
-            alibabaParams,
-            answerKeys,
-            rs.urls,
-            generateUrl
-          );
+        if (content.version === '2.0') {
+          console.log('Render template message for Alibaba version 2.0');
+          content.whatsappTemplateParam.alibabaParams =
+            await renderWhatsappAlibabaParamsV2(
+              content.whatsappTemplateParam,
+              answerKeys,
+              rs.urls,
+              generateUrl
+            );
+        } else {
+          content.whatsappTemplateParam.alibabaParams =
+            await renderWhatsappAlibabaParams(
+              alibabaParams,
+              answerKeys,
+              rs.urls,
+              generateUrl
+            );
+        }
       } else {
         if (Array.isArray(header) && header.length) {
           content.whatsappTemplateParam.header = header.map((value) => {
@@ -227,10 +423,11 @@ export async function renderTemplateMessage({
             }
             // new version
             if (value.type === 'TEXT') {
+              const renderedValue = renderTemplate(value.data, answerKeys);
               return {
                 ...value,
                 type: value.type,
-                data: renderTemplate(value.data, answerKeys),
+                data: renderedValue,
               };
             }
             return {
@@ -247,10 +444,11 @@ export async function renderTemplateMessage({
               return renderTemplate(value, answerKeys);
             }
             // new version
+            const renderedValue = renderTemplate(value.data, answerKeys);
             return {
               ...value,
               type: value.type,
-              data: renderTemplate(value.data, answerKeys),
+              data: renderedValue,
             };
           });
         }
@@ -519,7 +717,7 @@ export async function renderTemplateMessage({
             for (let it = 0; it < text.length; it += 1) {
               const t = text[it];
               if (hasText(t.content)) {
-                t.content = renderTemplate(header.content, answerKeys);
+                t.content = renderTemplate(t.content, answerKeys);
               }
             }
           }
