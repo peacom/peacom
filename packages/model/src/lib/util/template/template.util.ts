@@ -270,10 +270,11 @@ async function renderWhatsappAlibabaParamsV2(
           value.media.url,
           answerKeys
         );
-        result['____extraData'] = {
-          ...result['____extraData'],
-          [alibaba_param_name]: {
+        result['__extraData'] = {
+          ...result['__extraData'],
+          media: {
             ...value.media,
+            alibaba_param_name,
           },
         };
       } else {
