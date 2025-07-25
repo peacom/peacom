@@ -20,3 +20,10 @@ export enum ChannelSummaryType {
   HOUR = 1,
   MINUTE_15
 }
+
+export enum ChannelRCSLaunchStatus {
+  REQUEST = 1,
+  APPROVE = 2,
+  REJECT = 3,
+  LAUNCH = 4
+}
