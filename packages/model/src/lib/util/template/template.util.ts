@@ -85,7 +85,7 @@ async function renderWhatsappButton(
     }
   */
   const {url, redirectUrlType, landingPage} = button;
-  let generateResult = null;
+  let generateResult;
   if (redirectUrlType === URL_TYPE.LANDING_PAGE) {
     generateResult = await generateUrl({
       generateType: URL_GENERATE_TYPE.REDIRECT,
@@ -390,8 +390,9 @@ export const parseMessageAndShortLink = async (message: string, generateUrl: gen
     listUrlSet.add(i[0])
   }
   const listUrl: Array<string> = [...listUrlSet];
+  const urls = []
   if (listUrl.length) {
-    const urls = []
+
     for (let i = 0; i < listUrl.length; i += 1) {
       const t = listUrl[i]
       const urlObj = await generateUrl({
@@ -401,7 +402,7 @@ export const parseMessageAndShortLink = async (message: string, generateUrl: gen
       urls.push(urlObj.url)
     }
   }
-  return rs;
+  return {message: rs, urls};
 }
 
 export async function renderTemplateMessage({
@@ -540,7 +541,9 @@ export async function renderTemplateMessage({
       const {previewUrl, message, shortLink} = content;
       content.message = renderTemplate(message, answerKeys);
       if (shortLink) {
-        content.message = await parseMessageAndShortLink(message, generateUrl)
+        const {message, urls} = await parseMessageAndShortLink(content.message, generateUrl)
+        content.message = message;
+        rs.urls.push(...urls)
       }
 
       // TODO: Implement insert link to content message after generate link

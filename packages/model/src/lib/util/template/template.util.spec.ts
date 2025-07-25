@@ -75,11 +75,11 @@ describe('template.util.spec.ts', () => {
     })
     console.log(JSON.stringify(rs1))
   });
-  it('renderTemplateMessage', async () => {
+  it('renderTemplateMessage shortLink', async () => {
     const rs1 = await renderTemplateMessage({
       content: {
         type: MESSAGE_TYPE.TEXT,
-        message: "This is {{a}} with short link https://google.com",
+        message: "{{{message}}}",
         templateMessageSuggestions: [{
           action: SuggestionActionType.OPEN_URL,
           text: 'abc',
@@ -89,11 +89,11 @@ describe('template.util.spec.ts', () => {
         shortLink: true
       },
       answerKeys: {
-        a: 'bacdef'
+        message: 'This is testing message with https://google.com'
       },
       timezone: 'UTC',
       generateUrl
     })
-    console.log(JSON.stringify(rs1))
+    console.log(JSON.stringify(rs1, null, 2))
   });
 })
