@@ -44,7 +44,8 @@ export enum BULK_BROADCAST_QUEUE {
   SMPP_VIET_GUY = 'BROADCAST_SMPP_VIET_GUY',
   SMS_VIET_GUY = 'BROADCAST_SMS_VIET_GUY',
   SMS_CAKRA = 'BROADCAST_SMS_CAKRA',
-  SMS_INTERNATIONAL_VIETGUY = 'BROADCAST_SMS_INTERNATIONAL_VIETGUY'
+  SMS_INTERNATIONAL_VIETGUY = 'BROADCAST_SMS_INTERNATIONAL_VIETGUY',
+  SMS_MIKA = 'BROADCAST_SMS_MIKA',
 }
 
 export const getApplicationBroadcastQueueName = (applicationId: Application, partnerId: PARTNER | null = null) => {
@@ -110,6 +111,8 @@ export const getApplicationBroadcastQueueName = (applicationId: Application, par
           return BULK_BROADCAST_QUEUE.SMS_CAKRA;
         case PARTNER.SMS_INTERNATIONAL_VIETGUY:
           return BULK_BROADCAST_QUEUE.SMS_INTERNATIONAL_VIETGUY;
+        case PARTNER.MIKA:
+          return BULK_BROADCAST_QUEUE.SMS_MIKA;
         default:
           return BULK_BROADCAST_QUEUE.SMS;
       }
