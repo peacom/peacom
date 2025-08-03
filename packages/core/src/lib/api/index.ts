@@ -1,5 +1,5 @@
 export * from './api.constant'
-export * from './queue/queue.api'
+export * from './queue'
 export * from './core.api'
 export * from './micro-service.api'
 export * from './certificate/https-server'
