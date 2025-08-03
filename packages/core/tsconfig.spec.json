@@ -4,7 +4,10 @@
     "outDir": "../../dist/out-tsc",
     "module": "commonjs",
     "types": ["jest", "node"],
-    "allowJs": true
+    "allowJs": true,
+    "lib": [
+      "ES2021.String"
+    ]
   },
   "include": [
     "jest.config.ts",
