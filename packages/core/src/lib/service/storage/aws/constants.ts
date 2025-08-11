@@ -2,6 +2,9 @@
 import {S3} from "@aws-sdk/client-s3"
 import {hasText} from "@peacom/model";
 import * as process from "process";
+import { NodeHttpHandler } from "@smithy/node-http-handler";
+import { HttpsProxyAgent } from "https-proxy-agent";
+import { HttpHandlerUserInput as __HttpHandlerUserInput } from '@smithy/protocol-http/dist-types/httpHandler';
 
 export const S3_OPTION = {
   accessKeyId: process.env['S3_ACCESS_KEY'] || '',
@@ -12,6 +15,7 @@ export const S3_OPTION = {
   auth: process.env['S3_AUTH'] || "",
   forcePathStyle: process.env['S3_PATH_STYLE'] !== '1',
   acl: process.env['S3_ACL'] || 0,
+  proxy: process.env['S3_PROXY'] || '',
 };
 
 export const S3_INFO = {
@@ -35,7 +39,8 @@ interface S3Config {
   credentials?: {
     accessKeyId: string,
     secretAccessKey: string
-  }
+  },
+  requestHandler?: __HttpHandlerUserInput
 }
 
 const getS3ByOption = () => {
@@ -51,6 +56,13 @@ const getS3ByOption = () => {
   if (S3_OPTION.accessKeyId && S3_OPTION.secretAccessKey) {
     s3Options.credentials = {accessKeyId: S3_OPTION.accessKeyId, secretAccessKey: S3_OPTION.secretAccessKey}
   }
+
+  if (S3_OPTION.proxy) {
+    s3Options.requestHandler = new NodeHttpHandler({
+      httpsAgent: new HttpsProxyAgent(S3_OPTION.proxy)
+    })
+  }
+
   return new S3(s3Options)
 }
 
