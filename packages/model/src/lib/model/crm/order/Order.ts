@@ -7,3 +7,9 @@ export enum ORDER_PARTNER_STATUS {
   CONFIRM = 2,
   FAIL = 3
 }
+
+export enum ORDER_CREATED_FROM_TYPE {
+  PLATFORM = 1 ,
+  API = 2,
+  LANDING_PAGE
+}
