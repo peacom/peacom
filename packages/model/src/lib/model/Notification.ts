@@ -27,6 +27,8 @@ export enum MessageEvent {
   CONVERSATION_MESSAGE = 'conversation.message',
   CONVERSATION_LIVE_AGENT = 'conversation.live_agent',
   TICKET_ASSIGN = 'ticket.assign',
+  TICKET_NO_AGENT = 'ticket.no_agent',
+  TICKET_TRANSFER = 'ticket.transfer',
   USER_INVITE = 'user.invite',
   ORDER_CREATE = 'order.create',
   ORDER_STATUS = 'order.status',
@@ -59,7 +61,9 @@ export enum NotificationType {
   ORDER_CREATE,
   ORDER_STATUS,
   MONITOR_ALERT,
-  CHANNEL_INFO
+  CHANNEL_INFO,
+  TICKET_NO_AGENT,
+  TICKET_TRANSFER
 }
 
 export const mappingNotificationMessageToType = (messageEvent: MessageEvent): NotificationType => {
@@ -114,6 +118,10 @@ export const mappingNotificationMessageToType = (messageEvent: MessageEvent): No
       return NotificationType.COMPANY_SUSPEND_BO_SA
     case MessageEvent.CHANNEL_INFO:
       return NotificationType.CHANNEL_INFO
+    case MessageEvent.TICKET_NO_AGENT:
+      return NotificationType.TICKET_NO_AGENT
+    case MessageEvent.TICKET_TRANSFER:
+      return NotificationType.TICKET_TRANSFER
   }
 }
 
