@@ -4,6 +4,7 @@ interface Contact {
   id: string
   name?: string
   phone?: string
+  urlRef?: string
   isSubscribed: boolean
   extraData: Record<string, unknown>
   avatarUrl?: string
@@ -20,6 +21,7 @@ export interface ApiCoreHandleParams {
   applicationMessageId: string;
   from: Contact
   conversation?: Conversation
+  bulkRef?: string
 }
 
 export interface ApiCoreLiveAgentParams {
