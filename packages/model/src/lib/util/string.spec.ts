@@ -48,11 +48,16 @@ describe('string.util', () => {
     ).toEqual(['39s']);
   });
   it('render template', () => {
-    expect(renderTemplate('{{abc}} {{def}}', {
+    expect(renderTemplate('{{abc}} {{def}} {{a.b}}', {
       abc: 'testing',
-      def: 'peacom'
-    })).toEqual('testing peacom');
+      def: 'peacom', a: {b: "134"}
+    })).toEqual('testing peacom 134');
   });
+  it('render url', ()=>{
+    console.log(renderTemplate('https://google.com?code={{{a.code}}}', {
+      a: {code: '1234'}
+    }))
+  })
 
   it('render template', () => {
     console.log(renderTemplate('{{sms}}', {
