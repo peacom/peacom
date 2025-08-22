@@ -101,7 +101,8 @@ export enum PARTNER {
   SMS_INTERNATIONAL_VIETGUY,
   MIKA,
   SMPP,
-  METFONE
+  METFONE,
+  RADICA
 }
 
 export const partnerStr = (id: PARTNER | null) => {
@@ -178,6 +179,8 @@ export const partnerStr = (id: PARTNER | null) => {
       return 'SMPP'
     case PARTNER.METFONE:
       return 'METFONE'
+    case PARTNER.RADICA:
+      return 'RADICA'
     default:
       return '';
   }
