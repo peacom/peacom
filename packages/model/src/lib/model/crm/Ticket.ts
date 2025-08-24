@@ -9,7 +9,8 @@ export enum TICKET_STATUS {
   PENDING = 1,
   OPEN = 2,
   RESOLVE = 3,
-  CLOSE
+  CLOSE,
+  FORCE_CLOSE
 }
 
 export enum TICKET_REQUEST_TYPE {
