@@ -45,6 +45,10 @@ export function startOfDate(date: DateType, tz = "") {
   return getDate(date, tz).startOf("date").toDate();
 }
 
+export function addSeconds(date: DateType, seconds: number, tz = "") {
+  return getDate(date, tz).add(seconds, "seconds").toDate();
+}
+
 export function addHours(date: DateType, hours: number, tz = "") {
   return getDate(date, tz).add(hours, "hours").toDate();
 }
@@ -132,6 +136,26 @@ export const getListHour = (fromTime: Date, toTime: Date, hourStep = 1) => {
   }
   return rs;
 }
+
+export const getListRangeTime = (fromTime: Date, toTime: Date, min = 60) => {
+  const rs: { startTime: Date; endTime: Date }[] = [];
+  let start = new Date(fromTime);
+  let end = addMin(start, min);
+  while (start < toTime) {
+    // Nếu end vượt quá toTime, gán end = toTime
+    if (end > toTime) {
+      end = new Date(toTime);
+    }
+    rs.push({
+      startTime: new Date(start),
+      endTime: new Date(end)
+    });
+    // Cập nhật start và end cho vòng lặp tiếp theo
+    start = new Date(end);
+    end = addMin(start, min);
+  }
+  return rs;
+};
 
 export const getLastRangeMinute = (rangeMin: number, fromDate = new Date()) => {
   if (rangeMin <= 0) {

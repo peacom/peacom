@@ -1,7 +1,7 @@
 import {
   addDays,
   addHours,
-  addMonths,
+  addMonths, addSeconds,
   endLastMonth,
   endOfDate,
   endOfHour,
@@ -12,7 +12,7 @@ import {
   formatTimeTZ,
   getDate,
   getLastRangeMinute,
-  getListHour, getTimeOfDate,
+  getListHour, getListRangeTime, getTimeOfDate,
   getTimeZoneOffset, isInWorkingHour, isRangeTimeOverlap,
   parseDateTimeByFormat,
   startLastMonth,
@@ -44,6 +44,10 @@ describe('date.util', () => {
     console.log(getDate('2023-06-17T23:59:59.999Z', DEFAULT_TIME_ZONE).toDate())
     console.log(endOfDate('2023-06-17T16:59:59.999Z', DEFAULT_TIME_ZONE))
     console.log(endOfDate('2023-06-17T23:59:59.999Z', "GMT+0"))
+  });
+  it('addSeconds', () => {
+    console.log(formatDateTimeTZ(addSeconds(new Date(), 1), DEFAULT_TIME_ZONE))
+    console.log(formatDateTimeTZ(addSeconds(new Date(), 1), "Asia/Tokyo"))
   });
   it('addHour', () => {
     console.log(addHours(new Date(), -1))
@@ -84,6 +88,10 @@ describe('date.util', () => {
   it('List hour', () => {
     const startTime = startOfDate(addHours(new Date(), -25), DEFAULT_TIME_ZONE)
     console.log(getListHour(startTime, new Date()))
+  })
+  it('get List RangeTime', () => {
+    const startTime = startOfDate(addDays(new Date(), -1), DEFAULT_TIME_ZONE)
+    console.log(getListRangeTime(startTime, new Date(), 60))
   })
   it("formatTime", () => {
     const departureDatetime = new Date("2023-03-23T08:00:00Z");
