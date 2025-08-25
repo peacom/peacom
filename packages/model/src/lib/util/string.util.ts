@@ -298,8 +298,8 @@ export function templateMessageParamsReplace(rawMessage: any, replaceFunc: Funct
           const rcDescriptionParams = parseTemplatePartner(rc.description);
           addParams(rcDescriptionParams);
         }
-        if (rc.image) {
-          const rcImageParams = parseTemplatePartner(rc.image);
+        if (hasText(rc.image) || hasText(rc.fileUrl)) {
+          const rcImageParams = parseTemplatePartner(rc.image || rc.fileUrl);
           addParams(rcImageParams);
         }
         if (rc.suggestions && rc.suggestions.length) {
@@ -380,6 +380,9 @@ export function templateMessageParamsReplace(rawMessage: any, replaceFunc: Funct
         }
         if (hasText(richCard.image)) {
           richCard.image = replaceString(richCard.image);
+        }
+        if (hasText(richCard.fileUrl)) {
+          richCard.fileUrl = replaceString(richCard.fileUrl);
         }
         if (richCard.suggestions && richCard.suggestions.length) {
           replaceSuggestions(richCard.suggestions);

@@ -4,9 +4,9 @@ import {
   WHATSAPP_BUTTON_URL_TYPE,
   WHATSAPP_TEMPLATE_BUTTON_TYPE,
   WhatsappTemplateButton,
-} from '../../model/message';
+} from '../../model';
 import {hasText, renderTemplate} from '../string.util';
-import {Url, URL_GENERATE_TYPE, URL_TYPE} from '../../model/url/Url';
+import {Url, URL_GENERATE_TYPE, URL_TYPE} from '../../model';
 import {objectDeepClone} from '../general.util';
 import {DATE_TIME_FORMAT, parseDateTimeByFormat} from '../date';
 
@@ -585,6 +585,9 @@ export async function renderTemplateMessage({
           }
           if (hasText(richCard.image)) {
             richCard.image = renderTemplate(richCard.image, answerKeys);
+          }
+          if (hasText(richCard.fileUrl)) {
+            richCard.fileUrl = renderTemplate(richCard.fileUrl, answerKeys);
           }
           if (hasText(richCard.description)) {
             richCard.description = renderTemplate(
