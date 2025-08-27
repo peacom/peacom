@@ -13,6 +13,7 @@ export enum MessageEvent {
   TEMPLATE_APPROVE = 'template.approve',
   TEMPLATE_REJECT = 'template.reject',
   TEMPLATE_DELETE = 'template.delete',
+  TEMPLATE_UPDATE = 'template.update',
   COMPANY_KYC_REQUEST = 'company.kyc.request',
   COMPANY_KYC_REJECT = 'company.kyc.reject',
   COMPANY_KYC_APPROVE = 'company.kyc.approve',
@@ -63,7 +64,8 @@ export enum NotificationType {
   MONITOR_ALERT,
   CHANNEL_INFO,
   TICKET_NO_AGENT,
-  TICKET_TRANSFER
+  TICKET_TRANSFER,
+  TEMPLATE_UPDATE
 }
 
 export const mappingNotificationMessageToType = (messageEvent: MessageEvent): NotificationType => {
@@ -122,6 +124,8 @@ export const mappingNotificationMessageToType = (messageEvent: MessageEvent): No
       return NotificationType.TICKET_NO_AGENT
     case MessageEvent.TICKET_TRANSFER:
       return NotificationType.TICKET_TRANSFER
+    case MessageEvent.TEMPLATE_UPDATE:
+      return NotificationType.TEMPLATE_UPDATE
   }
 }
 
