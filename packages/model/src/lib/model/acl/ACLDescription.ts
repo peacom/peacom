@@ -465,6 +465,11 @@ export const PERMISSION_CHAT_LIST: Record<number, ActionDescription> = {
     name: 'View summary about conversation',
     enableType: false,
   },
+  [PERMISSION.CHAT.REPORT]: {
+    actionId: PERMISSION.CHAT.REPORT,
+    name: 'Report',
+    enableType: false,
+  },
 };
 
 export const PERMISSION_COMPLIANCE_LIST: Record<number, ActionDescription> = {

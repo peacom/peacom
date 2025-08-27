@@ -17,7 +17,12 @@ export const getBackgroundTaskQueueName = (backgroundType: BACKGROUND_TASK) => {
     ].includes(backgroundType)
   ) {
     rs = BACKGROUND_QUEUE.BACKGROUND_TASK_SANDBOX;
-  } else if (backgroundType === BACKGROUND_TASK.BULK_CAMPAIGN_REPORT) {
+  } else if (
+    [
+      BACKGROUND_TASK.BULK_CAMPAIGN_REPORT,
+      BACKGROUND_TASK.EXPORT_CHAT_LOGS
+    ].includes(backgroundType)
+  ) {
     rs = BACKGROUND_QUEUE.BACKGROUND_BE;
   }
   return rs;
