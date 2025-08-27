@@ -2,17 +2,27 @@ import {PARTNER_MESSAGE_TYPE} from "./index";
 import {MESSAGE_STATUS, RawMessage, Application, TEMPLATE_STATUS, ChannelStatus} from "@peacom/model";
 import {JobsOptions} from "bullmq";
 
+export enum TemplateEventType {
+  STATUS, CATEGORY
+}
+
 export interface TemplateEvent {
   publicId: string // MMP Internal ID
+  type?: TemplateEventType
   partnerTemplateId?: string
-  status: TEMPLATE_STATUS
+  status?: TEMPLATE_STATUS
   cause?: string
   extraData?: Record<string, any>
 }
 
+export enum ChannelEventType {
+  STATUS
+}
+
 export interface ChannelEvent {
   publicId: string // MMP Internal ID
-  status: ChannelStatus
+  type?: ChannelEventType
+  status?: ChannelStatus
   cause?: string
   extraData?: Record<string, any>
 }
