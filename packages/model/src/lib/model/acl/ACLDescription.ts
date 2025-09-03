@@ -598,6 +598,11 @@ export const PERMISSION_BILLING_CDR_LIST: Record<number, ActionDescription> = {
     name: 'Setting',
     enableType: false,
   },
+  [PERMISSION.BILLING_CDR.MONTHLY_BILLING]: {
+    actionId: PERMISSION.BILLING_CDR.MONTHLY_BILLING,
+    name: 'Monthly Billing',
+    enableType: false,
+  },
 };
 
 export const PERMISSION_API_KEY_LIST: Record<number, ActionDescription> = {

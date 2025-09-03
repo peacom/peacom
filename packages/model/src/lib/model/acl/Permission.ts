@@ -151,6 +151,7 @@ export const PERMISSION = {
     DELETE: 90,
     SETTING: 145,
     CREATE_SMS: 227,
+    MONTHLY_BILLING: 238
   },
   API_KEY: {
     READ: 91,
@@ -348,7 +349,7 @@ export const PERMISSION = {
   },
 };
 
-// MAX= 237
+// MAX= 238
 export interface ActionDescription {
   actionId: number;
   name: string;
