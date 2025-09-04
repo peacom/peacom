@@ -80,6 +80,18 @@ export interface GenerateImageProp {
   output: string;
 }
 
+async function createFile(canvas: Canvas, fileName: string, output: string): Promise<string> {
+  const outputPath = path.join(output);
+  if (!fs.existsSync(outputPath)) fs.mkdirSync(outputPath, { recursive: true });
+  const filePath = path.resolve(outputPath, `${fileName}.png`);
+  const fileWriteStream = fs.createWriteStream(filePath);
+  canvas.createPNGStream().pipe(fileWriteStream);
+
+  return new Promise((res) =>
+    fileWriteStream.on('finish', () => res(filePath))
+  );
+}
+
 /**
  * Generates a new image based on a base image and overlays of text or image items.
  *
@@ -92,48 +104,33 @@ export interface GenerateImageProp {
  * @returns Full path of the generated image file.
  */
 export async function generateImage(props: GenerateImageProp): Promise<string> {
-  try {
-    const baseImage = await loadImage(props.baseImage);
-    const canvas = createCanvas(props.width ?? baseImage.width, props.height ?? baseImage.height);
-    const ctx = canvas.getContext('2d');
+  const baseImage = await loadImage(props.baseImage);
+  const canvas = createCanvas(props.width ?? baseImage.width, props.height ?? baseImage.height);
+  const ctx = canvas.getContext('2d');
 
-    // Draw base image
-    ctx.drawImage(baseImage, 0, 0, canvas.width, canvas.height);
+  // Draw base image
+  ctx.drawImage(baseImage, 0, 0, canvas.width, canvas.height);
 
-    // Draw overlay items
-    if (props.items) {
-      for (const item of props.items) {
-        const { type, data, location, options } = item;
-        if (type === GenerateType.IMAGE) {
-          const image = await loadImage(data);
-          ctx.drawImage(image, location.x, location.y, options?.width ?? image.width, options?.height ?? image.height);
-        } else {
-          ctx.font = options?.font || '20px sans-serif';
-          ctx.textAlign = options?.textAlign || 'left';
-          ctx.textBaseline = options?.textBaseline || 'middle';
-          ctx.fillStyle = options?.fillStyle || '#ffffff';
-          ctx.fillText(data, location.x, location.y);
-        }
+  // Draw overlay items
+  if (props.items) {
+    for (const item of props.items) {
+      const { type, data, location, options } = item;
+      if (type === GenerateType.IMAGE) {
+        const image = await loadImage(data);
+        ctx.drawImage(image, location.x, location.y, options?.width ?? image.width, options?.height ?? image.height);
+      } else {
+        ctx.font = options?.font || '20px sans-serif';
+        ctx.textAlign = options?.textAlign || 'left';
+        ctx.textBaseline = options?.textBaseline || 'middle';
+        ctx.fillStyle = options?.fillStyle || '#ffffff';
+        ctx.fillText(data, location.x, location.y);
       }
     }
-
-    const fileName = props.fileName ? `${props.fileName}-${uuid()}` : uuid();
-    return createFile(canvas, fileName, props.output);
-  } catch (err) {
-     console.error(err)
-     return "";
   }
+
+  const fileName = props.fileName ? `${props.fileName}-${uuid()}` : `${uuid()}`;
+  return createFile(canvas, fileName, props.output);
 }
 
 
-async function createFile(canvas: Canvas, fileName: string, output: string): Promise<string> {
-  const outputPath = path.join(output);
-  if (!fs.existsSync(outputPath)) fs.mkdirSync(outputPath, { recursive: true });
-  const filePath = path.resolve(outputPath, `${fileName}.png`);
-  const fileWriteStream = fs.createWriteStream(filePath);
-  canvas.createPNGStream().pipe(fileWriteStream);
 
-  return new Promise((res) =>
-    fileWriteStream.on('finish', () => res(filePath))
-  );
-}
