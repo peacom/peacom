@@ -126,3 +126,9 @@ export enum TRANSACTION_ESCROW_TYPE {
 export const isChannelSupportTemplateTariff = (applicationId: number) => {
   return [Application.WHATSAPP, Application.RCS].includes(applicationId);
 };
+
+export enum BILLING_CDR_TYPE {
+  BROADCAST = 1,
+  CONVERSATION = 2,
+  MONTHLY = 3
+}
