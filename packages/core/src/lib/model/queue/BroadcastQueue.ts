@@ -50,6 +50,7 @@ export enum BULK_BROADCAST_QUEUE {
   SMS_METFONE = 'BROADCAST_SMS_METFONE',
   SMS_RADICA = 'BROADCAST_SMS_RADICA',
   SMS_INTERNATIONAL_AURA = 'BROADCAST_SMS_INTERNATIONAL_AURA',
+  SMS_VIHAT = 'BROADCAST_SMS_VIHAT',
 }
 
 export const getApplicationBroadcastQueueName = (applicationId: Application, partnerId: PARTNER | null = null) => {
@@ -125,6 +126,8 @@ export const getApplicationBroadcastQueueName = (applicationId: Application, par
           return BULK_BROADCAST_QUEUE.SMS_RADICA;
         case PARTNER.INTERNATIONAL_AURA:
           return BULK_BROADCAST_QUEUE.SMS_INTERNATIONAL_AURA;
+        case PARTNER.VIHAT:
+          return BULK_BROADCAST_QUEUE.SMS_VIHAT;
         default:
           return BULK_BROADCAST_QUEUE.SMS;
       }
