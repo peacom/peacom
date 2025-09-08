@@ -14,6 +14,14 @@ export const LIST_MASTER_COMPANY_PERMISSION = [
     permission: PERMISSION.BULK_CAMPAIGN.DELETE_CONTACT,
     type: AclActionType.FULL,
   },
+  {
+    permission: PERMISSION.BULK_CAMPAIGN.BROADCAST,
+    type: AclActionType.FULL,
+  },
+  {
+    permission: PERMISSION.BULK_CAMPAIGN.UPLOAD_FILE,
+    type: AclActionType.FULL,
+  },
   // Company Member
   { permission: PERMISSION.COMPANY_MEMBER.READ, type: AclActionType.FULL },
   { permission: PERMISSION.COMPANY_MEMBER.CREATE, type: AclActionType.FULL },

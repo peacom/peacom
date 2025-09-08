@@ -390,6 +390,18 @@ export const PERMISSION_BULK_CAMPAIGN: Record<number, ActionDescription> = {
     description: 'Monitor Bulk',
     enableType: false
   },
+  [PERMISSION.BULK_CAMPAIGN.BROADCAST]: {
+    actionId: PERMISSION.BULK_CAMPAIGN.BROADCAST,
+    name: 'Broadcast BC',
+    description: 'Broadcast BC',
+    enableType: false
+  },
+  [PERMISSION.BULK_CAMPAIGN.UPLOAD_FILE]: {
+    actionId: PERMISSION.BULK_CAMPAIGN.UPLOAD_FILE,
+    name: 'Upload file',
+    description: 'Upload file',
+    enableType: false
+  },
 };
 
 export const PERMISSION_BLACK_LIST: Record<number, ActionDescription> = {
