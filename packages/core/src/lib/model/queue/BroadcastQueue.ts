@@ -1,4 +1,4 @@
-import { Application, PARTNER } from '@peacom/model';
+import {Application, applicationStr, PARTNER, partnerStr} from '@peacom/model';
 
 export const BULK_BROADCAST_JOB_QUEUE = 'BULK_BROADCAST_JOB_QUEUE';
 
@@ -50,6 +50,7 @@ export enum BULK_BROADCAST_QUEUE {
   SMS_METFONE = 'BROADCAST_SMS_METFONE',
   SMS_RADICA = 'BROADCAST_SMS_RADICA',
   SMS_INTERNATIONAL_AURA = 'BROADCAST_SMS_INTERNATIONAL_AURA',
+  SMS_VIHAT = 'BROADCAST_SMS_VIHAT',
 }
 
 export const getApplicationBroadcastQueueName = (applicationId: Application, partnerId: PARTNER | null = null) => {
@@ -125,6 +126,8 @@ export const getApplicationBroadcastQueueName = (applicationId: Application, par
           return BULK_BROADCAST_QUEUE.SMS_RADICA;
         case PARTNER.INTERNATIONAL_AURA:
           return BULK_BROADCAST_QUEUE.SMS_INTERNATIONAL_AURA;
+        case PARTNER.VIHAT:
+          return BULK_BROADCAST_QUEUE.SMS_VIHAT;
         default:
           return BULK_BROADCAST_QUEUE.SMS;
       }
@@ -152,7 +155,13 @@ export const getApplicationBroadcastQueueName = (applicationId: Application, par
     case Application.TELEGRAM_GATEWAY: {
       return BULK_BROADCAST_QUEUE.TELEGRAM_GATEWAY;
     }
-    default:
-      throw new Error(`Not support for Application (${applicationId}) - Partner (${partnerId})`);
+    default: {
+      const str = ['BROADCAST', applicationStr(applicationId)]
+      if (partnerId) {
+        str.push(partnerStr(partnerId))
+      }
+      return str.join("_").replace(" ", "_");
+      // throw new Error(`Not support for Application (${applicationId}) - Partner (${partnerId})`);
+    }
   }
 };

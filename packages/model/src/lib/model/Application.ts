@@ -103,7 +103,8 @@ export enum PARTNER {
   SMPP,
   METFONE,
   RADICA,
-  INTERNATIONAL_AURA
+  INTERNATIONAL_AURA,
+  VIHAT
 }
 
 export const partnerStr = (id: PARTNER | null) => {
@@ -184,6 +185,8 @@ export const partnerStr = (id: PARTNER | null) => {
       return 'RADICA'
     case PARTNER.INTERNATIONAL_AURA:
       return 'INTERNATIONAL AURA'
+    case PARTNER.VIHAT:
+      return 'VIHAT'
     default:
       return '';
   }
