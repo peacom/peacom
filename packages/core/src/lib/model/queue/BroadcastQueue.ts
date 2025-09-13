@@ -1,4 +1,4 @@
-import { Application, PARTNER } from '@peacom/model';
+import {Application, applicationStr, PARTNER, partnerStr} from '@peacom/model';
 
 export const BULK_BROADCAST_JOB_QUEUE = 'BULK_BROADCAST_JOB_QUEUE';
 
@@ -155,7 +155,13 @@ export const getApplicationBroadcastQueueName = (applicationId: Application, par
     case Application.TELEGRAM_GATEWAY: {
       return BULK_BROADCAST_QUEUE.TELEGRAM_GATEWAY;
     }
-    default:
-      throw new Error(`Not support for Application (${applicationId}) - Partner (${partnerId})`);
+    default: {
+      const str = ['BROADCAST', applicationStr(applicationId)]
+      if (partnerId) {
+        str.push(partnerStr(partnerId))
+      }
+      return str.join("_").replace(" ", "_");
+      // throw new Error(`Not support for Application (${applicationId}) - Partner (${partnerId})`);
+    }
   }
 };
