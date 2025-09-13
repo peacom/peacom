@@ -228,3 +228,10 @@ export interface ApplicationInfo {
   publicId?: string; // Public ID of Application Channel
   partnerId: PARTNER;
 }
+
+export enum PLATFORM {
+  PEACOM = "PEACOM",
+  TSEL = "TSEL",
+  TNG = "TNG",
+  MSH_VNA = "MSH_VNA"
+}
