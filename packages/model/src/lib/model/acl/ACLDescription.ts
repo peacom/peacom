@@ -102,7 +102,8 @@ export const PERMISSION_CONTACT_LIST: Record<number, ActionDescription> = {
   [PERMISSION.CONTACT.READ]: {
     actionId: PERMISSION.CONTACT.READ,
     name: 'Read',
-    enableType: false
+    enableType: true,
+    listType: CompanyTypeList
   },
   [PERMISSION.CONTACT.UPDATE]: {
     actionId: PERMISSION.CONTACT.UPDATE,
