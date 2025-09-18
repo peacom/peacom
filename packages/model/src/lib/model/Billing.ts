@@ -54,6 +54,21 @@ export const tariffTypeStr = (tariffType: TARIFF_TYPE) => {
   }
 }
 
+export enum  CHANNEL_TARIFF_TYPE {
+  PROVIDER = 1,
+  SELLING
+}
+
+export const ChannelTariffTypeStr = (channelTariffType: CHANNEL_TARIFF_TYPE) =>{
+  switch (channelTariffType) {
+    case CHANNEL_TARIFF_TYPE.PROVIDER:
+      return "PROVIDER"
+    case CHANNEL_TARIFF_TYPE.SELLING:
+      return "SELLING"
+    default:
+      return `UNKNOWN ${channelTariffType}`
+  }
+}
 
 export enum SETTING_TIME_TARIFF {
   HOUR = 1,
