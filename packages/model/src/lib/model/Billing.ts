@@ -54,6 +54,11 @@ export const tariffTypeStr = (tariffType: TARIFF_TYPE) => {
   }
 }
 
+export enum  CHANNEL_TARIFF_TYPE {
+  PROVIDER = 1,
+  SELLING
+}
+
 
 export enum SETTING_TIME_TARIFF {
   HOUR = 1,
