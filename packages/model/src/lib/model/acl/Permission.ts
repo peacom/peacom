@@ -349,9 +349,15 @@ export const PERMISSION = {
     UPDATE: 234,
     DELETE: 235
   },
+  SMPP: {
+    READ: 241,
+    CREATE: 242,
+    UPDATE: 243,
+    DELETE: 244
+  },
 };
 
-// MAX= 240
+// MAX= 244
 export interface ActionDescription {
   actionId: number;
   name: string;

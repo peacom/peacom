@@ -1327,3 +1327,25 @@ export const PERMISSION_MULTI_ROUTE: Record<number, ActionDescription> = {
     enableType: false
   },
 }
+
+export const PERMISSION_SMPP: Record<number, ActionDescription> = {
+  [PERMISSION.SMPP.READ]: {
+    actionId: PERMISSION.SMPP.READ,
+    name: 'Read',
+    enableType: false
+  },
+  [PERMISSION.SMPP.CREATE]: {
+    actionId: PERMISSION.SMPP.CREATE,
+    name: 'Create',
+    enableType: false
+  },
+  [PERMISSION.SMPP.UPDATE]: {
+    actionId: PERMISSION.SMPP.UPDATE,
+    name: 'Update',
+    enableType: false
+  }, [PERMISSION.SMPP.DELETE]: {
+    actionId: PERMISSION.SMPP.DELETE,
+    name: 'Delete',
+    enableType: false
+  },
+}
