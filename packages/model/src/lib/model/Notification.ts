@@ -33,7 +33,8 @@ export enum MessageEvent {
   USER_INVITE = 'user.invite',
   ORDER_CREATE = 'order.create',
   ORDER_STATUS = 'order.status',
-  MONITOR_ALERT = 'monitor.alert'
+  MONITOR_BALANCE_ALERT = 'monitor.balance.alert',
+  MONITOR_COST_ALERT = 'monitor.cost.alert',
 }
 
 // We're migrating using MessageEvent to NotificationType (number) for faster index
@@ -61,17 +62,20 @@ export enum NotificationType {
   USER_INVITE,
   ORDER_CREATE,
   ORDER_STATUS,
-  MONITOR_ALERT,
+  MONITOR_BALANCE_ALERT,
   CHANNEL_INFO,
   TICKET_NO_AGENT,
   TICKET_TRANSFER,
-  TEMPLATE_UPDATE
+  TEMPLATE_UPDATE,
+  MONITOR_COST_ALERT,
 }
 
 export const mappingNotificationMessageToType = (messageEvent: MessageEvent): NotificationType => {
   switch (messageEvent) {
-    case MessageEvent.MONITOR_ALERT:
-      return NotificationType.MONITOR_ALERT;
+    case MessageEvent.MONITOR_COST_ALERT:
+      return NotificationType.MONITOR_COST_ALERT;
+    case MessageEvent.MONITOR_BALANCE_ALERT:
+      return NotificationType.MONITOR_BALANCE_ALERT;
     case MessageEvent.ORDER_CREATE:
       return NotificationType.ORDER_CREATE;
     case MessageEvent.ORDER_STATUS:
