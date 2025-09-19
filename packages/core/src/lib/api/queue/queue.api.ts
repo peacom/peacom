@@ -39,6 +39,9 @@ export const queueAddPartnerEvent = (queue: Queue, message: QueuePartnerEventPar
       break;
     case PARTNER_MESSAGE_TYPE.TEMPLATE:
       jobId = `${message.event.template?.partnerTemplateId || message.event.template?.publicId}_${message.event.template?.status}`
+      break;
+    default:
+      jobId = v4()
   }
   return queue.add(jobId, message, {jobId, ...(message.jobOpt || {})})
 }

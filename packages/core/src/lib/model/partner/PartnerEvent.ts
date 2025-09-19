@@ -6,6 +6,17 @@ export enum TemplateEventType {
   STATUS, CATEGORY
 }
 
+export enum PhoneEventType {
+  CALL_CONSENT,
+  CALL_END
+}
+
+export interface PhoneEvent {
+  type: PhoneEventType,
+  userId: string
+  extraData?: Record<string, any>
+}
+
 export interface TemplateEvent {
   publicId: string // MMP Internal ID
   type?: TemplateEventType
@@ -39,6 +50,7 @@ export interface PartnerEvent {
   from?: string
   clientMessageId?: string
   template?: TemplateEvent
+  phoneEvent?: PhoneEvent
 }
 
 export interface QueuePartnerEventParam {
