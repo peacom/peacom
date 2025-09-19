@@ -1391,11 +1391,11 @@ export const PERMISSION_MONITOR_ALERT: Record<number, ActionDescription> = {
     name: 'Create',
     enableType: false
   },
-  [PERMISSION.MONITOR_PROFILE.UPDATE]: {
+  [PERMISSION.MONITOR_ALERT.UPDATE]: {
     actionId: PERMISSION.MONITOR_ALERT.UPDATE,
     name: 'Update',
     enableType: false
-  }, [PERMISSION.MONITOR_PROFILE.DELETE]: {
+  }, [PERMISSION.MONITOR_ALERT.DELETE]: {
     actionId: PERMISSION.MONITOR_ALERT.DELETE,
     name: 'Delete',
     enableType: false
