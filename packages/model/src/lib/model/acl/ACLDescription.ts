@@ -1349,3 +1349,56 @@ export const PERMISSION_SMPP: Record<number, ActionDescription> = {
     enableType: false
   },
 }
+
+export const PERMISSION_FINANCE: Record<number, ActionDescription> = {
+  [PERMISSION.FINANCE.MARGIN]: {
+    actionId: PERMISSION.FINANCE.MARGIN,
+    name: 'Margin',
+    enableType: false,
+  },
+}
+
+export const PERMISSION_MONITOR_PROFILE: Record<number, ActionDescription> = {
+  [PERMISSION.MONITOR_PROFILE.READ]: {
+    actionId: PERMISSION.MONITOR_PROFILE.READ,
+    name: 'Read',
+    enableType: false
+  },
+  [PERMISSION.MONITOR_PROFILE.CREATE]: {
+    actionId: PERMISSION.MONITOR_PROFILE.CREATE,
+    name: 'Create',
+    enableType: false
+  },
+  [PERMISSION.MONITOR_PROFILE.UPDATE]: {
+    actionId: PERMISSION.MONITOR_PROFILE.UPDATE,
+    name: 'Update',
+    enableType: false
+  }, [PERMISSION.MONITOR_PROFILE.DELETE]: {
+    actionId: PERMISSION.MONITOR_PROFILE.DELETE,
+    name: 'Delete',
+    enableType: false
+  },
+}
+
+export const PERMISSION_MONITOR_ALERT: Record<number, ActionDescription> = {
+  [PERMISSION.MONITOR_ALERT.READ]: {
+    actionId: PERMISSION.MONITOR_ALERT.READ,
+    name: 'Read',
+    enableType: false
+  },
+  [PERMISSION.MONITOR_ALERT.CREATE]: {
+    actionId: PERMISSION.MONITOR_ALERT.CREATE,
+    name: 'Create',
+    enableType: false
+  },
+  [PERMISSION.MONITOR_PROFILE.UPDATE]: {
+    actionId: PERMISSION.MONITOR_ALERT.UPDATE,
+    name: 'Update',
+    enableType: false
+  }, [PERMISSION.MONITOR_PROFILE.DELETE]: {
+    actionId: PERMISSION.MONITOR_ALERT.DELETE,
+    name: 'Delete',
+    enableType: false
+  },
+}
+
