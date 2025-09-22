@@ -18,5 +18,7 @@ export enum CUSTOMER_ATTRIBUTE_PROPERTY_ID {
   PHONE = -5,
   COUNTRY = -6,
   LABEL = -7,
-  NAME = -8
+  NAME = -8,
+  APPLICATION = -9,
+  CHANNEL = -10
 }

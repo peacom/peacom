@@ -46,7 +46,7 @@ describe('template.util.spec.ts', () => {
     const rs = await renderTemplateMessage({
       content: {
         type: MESSAGE_TYPE.TEXT,
-        message: "This is {{a}}"
+        message: "This is {{a}} *500#"
       },
       answerKeys: {
         a: 'testing'
