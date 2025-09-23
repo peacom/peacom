@@ -101,3 +101,31 @@ export const PROPERTY_TYPE_OPERATION: Record<TYPE_PROPERTY, Array<PROPERTY_OPERA
     PROPERTY_OPERATION.VALUE_IS_SET
   ]
 }
+
+/**
+ * @param list1
+ * @param list2
+ * @param condition
+ */
+export const unionSet = (list1: Set<number>, list2: Set<number>, condition: CONDITION) => {
+  console.log(
+    "Union Set: ",
+    +condition === CONDITION.AND ? "AND" : "OR",
+    list1?.size,
+    list2?.size
+  );
+  let rs = new Set();
+  if (+condition === CONDITION.AND) {
+    // Only filter item which existed in both array
+    if (list1 && list2) {
+      list1.forEach((item) => {
+        if (list2.has(item)) {
+          rs.add(item);
+        }
+      });
+    }
+  } else {
+    rs = new Set([...(list1 || []), ...(list2 || [])]);
+  }
+  return rs;
+};
