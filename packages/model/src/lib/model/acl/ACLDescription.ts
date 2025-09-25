@@ -1168,6 +1168,12 @@ export const PERMISSION_CHANNEL: Record<number, ActionDescription> = {
     name: 'Request',
     enableType: false
   },
+  [PERMISSION.CHANNEL.REVIEW]: {
+    actionId: PERMISSION.CHANNEL.REVIEW,
+    name: 'Review',
+    enableType: true,
+    listType: BoAdminTypeList
+  },
   [PERMISSION.CHANNEL.READ]: {
     actionId: PERMISSION.CHANNEL.READ,
     name: 'Channel READ',

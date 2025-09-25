@@ -296,7 +296,8 @@ export const PERMISSION = {
     CREATE: 193,
     UPDATE: 194,
     DELETE: 195,
-    LIVE_MESSAGE: 197
+    LIVE_MESSAGE: 197,
+    REVIEW: 246
   },
   PRODUCT_PARTNER: {
     READ: 198,
