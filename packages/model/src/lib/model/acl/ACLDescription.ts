@@ -395,13 +395,13 @@ export const PERMISSION_BULK_CAMPAIGN: Record<number, ActionDescription> = {
     actionId: PERMISSION.BULK_CAMPAIGN.BROADCAST,
     name: 'Broadcast BC',
     description: 'Broadcast BC',
-    enableType: false
+    enableType: true
   },
   [PERMISSION.BULK_CAMPAIGN.UPLOAD_FILE]: {
     actionId: PERMISSION.BULK_CAMPAIGN.UPLOAD_FILE,
     name: 'Upload file',
     description: 'Upload file',
-    enableType: false
+    enableType: true
   },
 };
 
