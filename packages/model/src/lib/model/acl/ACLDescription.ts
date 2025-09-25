@@ -1166,8 +1166,7 @@ export const PERMISSION_CHANNEL: Record<number, ActionDescription> = {
   [PERMISSION.CHANNEL.REQUEST]: {
     actionId: PERMISSION.CHANNEL.REQUEST,
     name: 'Request',
-    enableType: true,
-    listType: BoAdminCompanyTypeList
+    enableType: false
   },
   [PERMISSION.CHANNEL.READ]: {
     actionId: PERMISSION.CHANNEL.READ,
