@@ -361,7 +361,7 @@ export const PERMISSION = {
   }
 };
 
-// MAX= 245
+// MAX= 246
 export interface ActionDescription {
   actionId: number;
   name: string;
