@@ -37,7 +37,7 @@ export const writeFileStream = async (stream: any, data: any) => {
   }
 }
 
-export const closeFileStream = async (stream) => new Promise((resolve) => {
+export const closeFileStream = async (stream: any) => new Promise((resolve: any) => {
   stream.end();
   stream.on("finish", () => {
     console.log("closeFileStream Success");
