@@ -36,3 +36,11 @@ export const writeFileStream = async (stream: any, data: any) => {
     });
   }
 }
+
+export const closeFileStream = async (stream) => new Promise((resolve) => {
+  stream.end();
+  stream.on("finish", () => {
+    console.log("closeFileStream Success");
+    resolve();
+  });
+})
