@@ -14,7 +14,7 @@ export const getBackgroundTaskQueueName = (backgroundType: BACKGROUND_TASK) => {
       BACKGROUND_TASK.IMPORT_BULK_CAMPAIGN_FROM_STORAGE,
       BACKGROUND_TASK.IMPORT_BULK_CAMPAIGN_FROM_RETARGETING,
       BACKGROUND_TASK.CARRIER_CDR
-    ].includes(backgroundType)
+    ].includes(Number(backgroundType))
   ) {
     rs = BACKGROUND_QUEUE.BACKGROUND_TASK_SANDBOX;
   } else if ([
@@ -22,14 +22,18 @@ export const getBackgroundTaskQueueName = (backgroundType: BACKGROUND_TASK) => {
     BACKGROUND_TASK.EXPORT_COUPON_CODE,
     BACKGROUND_TASK.GENERATE_IMAGE_COUPON_CODE,
     BACKGROUND_TASK.IMPORT_BULK_CONTACT_FROM_SEGMENT,
-    BACKGROUND_TASK.EXPORT_CUSTOMER_FROM_SEGMENT
-  ].includes(backgroundType)) {
+    BACKGROUND_TASK.EXPORT_CUSTOMER_FROM_SEGMENT,
+    BACKGROUND_TASK.IMPORT_CUSTOMER,
+    BACKGROUND_TASK.EXPORT_CUSTOMER,
+    BACKGROUND_TASK.EXPORT_AGENT_CUSTOMER,
+
+  ].includes(Number(backgroundType))) {
     rs = BACKGROUND_QUEUE.BACKGROUND_CRM
   } else if (
     [
       BACKGROUND_TASK.BULK_CAMPAIGN_REPORT,
       BACKGROUND_TASK.EXPORT_CHAT_LOGS
-    ].includes(backgroundType)
+    ].includes(Number(backgroundType))
   ) {
     rs = BACKGROUND_QUEUE.BACKGROUND_BE;
   }
