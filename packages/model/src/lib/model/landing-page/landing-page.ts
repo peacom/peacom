@@ -1,3 +1,8 @@
+export enum LandingPageStatus {
+  DISABLE,
+  ENABLE
+}
+
 export enum LandingPageType {
   PRODUCT = 1,
   ONBOARD
