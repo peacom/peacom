@@ -70,7 +70,9 @@ export const CUSTOMER_PROPERTY_DEFAULT_LIST = [
     priority: 0,
     label: 'label',
     type: TYPE_PROPERTY.SELECT,
-    setting: null
+    setting: {
+      isMulti: true
+    }
   },
   {
     id: CUSTOMER_ATTRIBUTE_PROPERTY_ID.NAME, name: 'Name',
