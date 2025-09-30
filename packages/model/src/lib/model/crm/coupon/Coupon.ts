@@ -30,6 +30,7 @@ export enum COUPON_CODE_ORIGIN {
 }
 
 export enum COUPON_CODE_STATUS {
+  PENDING = 0,
   AVAILABLE = 1,
   DISTRIBUTED,
   VIEWED,
