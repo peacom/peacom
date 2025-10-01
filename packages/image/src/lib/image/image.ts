@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { Canvas, createCanvas, loadImage } from 'canvas';
+import {Canvas, createCanvas, loadImage} from 'canvas';
 import {v4 as uuid} from "uuid";
 
 export enum GenerateType {
@@ -82,10 +82,12 @@ export interface GenerateImageProp {
 
 async function createFile(canvas: Canvas, fileName: string, output: string): Promise<string> {
   const outputPath = path.join(output);
-  if (!fs.existsSync(outputPath)) fs.mkdirSync(outputPath, { recursive: true });
-  const filePath = path.resolve(outputPath, `${fileName}.png`);
+  if (!fs.existsSync(outputPath)) fs.mkdirSync(outputPath, {recursive: true});
+  const filePath = path.resolve(outputPath, `${fileName}.jpg`);
   const fileWriteStream = fs.createWriteStream(filePath);
-  canvas.createPNGStream().pipe(fileWriteStream);
+  canvas.createJPEGStream({
+    quality: 5
+  }).pipe(fileWriteStream);
 
   return new Promise((res) =>
     fileWriteStream.on('finish', () => res(filePath))
@@ -114,7 +116,7 @@ export async function generateImage(props: GenerateImageProp): Promise<string> {
   // Draw overlay items
   if (props.items) {
     for (const item of props.items) {
-      const { type, data, location, options } = item;
+      const {type, data, location, options} = item;
       if (type === GenerateType.IMAGE) {
         const image = await loadImage(data);
         ctx.drawImage(image, location.x, location.y, options?.width ?? image.width, options?.height ?? image.height);
@@ -128,7 +130,7 @@ export async function generateImage(props: GenerateImageProp): Promise<string> {
     }
   }
 
-  const fileName = props.fileName ? `${props.fileName}-${uuid()}` : `${uuid()}`;
+  const fileName = props.fileName || `${uuid()}`;
   return createFile(canvas, fileName, props.output);
 }
 

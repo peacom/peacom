@@ -35,6 +35,7 @@ describe('image', () => {
       },
     ];
     const outputUrl = await generateImage({ baseImage, output, items, fileName: "meomeo_with_image_item_non_options" });
+    console.log(outputUrl)
     expect(fs.existsSync(outputUrl)).toBeTruthy();
   });
 
