@@ -3,14 +3,14 @@ import {
   downloadS3Url,
   getAwsKeyInfo, getPreSignedUrl, getS3UrlKey,
   s3RemoveFile, s3RemoveMultipleFile,
-  uploadLocalFileToS3, uploadMultipartLocalFileToS3, uploadMultipartS3FromUrl,
+  uploadLocalFileToS3, uploadMultipartS3FromUrl,
   uploadS3FromUrl
 } from './s3.service';
 import * as path from "path";
 import * as fs from "fs";
 
 describe('s3.service.specs.ts', () => {
-  it.skip('uploadS3FromUrl test env key', async () => {
+  it.only('uploadS3FromUrl test env key', async () => {
     console.log(process.env['S3_SECRET_KEY'])
     const rs = await uploadS3FromUrl({url: 'https://pngimg.com/uploads/birds/birds_PNG9.png'})
     console.log(rs);
@@ -27,19 +27,11 @@ describe('s3.service.specs.ts', () => {
     console.log(rs);
   }, 200000);
 
-  it('uploadS3FromLocalFile xml', async () => {
+  it.only('uploadS3FromLocalFile xml', async () => {
     const xmlFile = path.join(__dirname, 'RBM_7_10_data.xlsx')
     const rs = await uploadLocalFileToS3({filePath: xmlFile});
     console.log(rs);
   }, 200000);
-
-  it.only('uploadMultipartS3FromLocalFile xml', async () => {
-    const xmlFile = path.join(__dirname, 'RBM_7_10_data.xlsx')
-    const rs = await uploadMultipartLocalFileToS3({filePath: xmlFile});
-    console.log(rs);
-  }, 200000);
-
-
 
   it.skip('Download S3 AWS Large file', async () => {
     const fileName = "birds_PNG9";
