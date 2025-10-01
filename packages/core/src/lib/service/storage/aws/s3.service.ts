@@ -6,7 +6,7 @@ import {
   GetObjectCommand,
   PutObjectCommand,
   PutObjectCommandInput,
-  PutObjectRequest
+  PutObjectRequest, CreateMultipartUploadCommand
 } from "@aws-sdk/client-s3";
 // eslint-disable-next-line @nx/enforce-module-boundaries
 import {createPresignedPost} from "@aws-sdk/s3-presigned-post"
@@ -216,6 +216,27 @@ export const uploadS3FromUrl = async (
   };
 };
 
+export const uploadMultipartS3FromUrl = async (
+  {url = "", mimeType = "", name = ""},
+  folder = S3_FOLDERS.DEFAULT,
+): Promise<AwsFileInfo> => {
+  const data = await fetch(url).then(t => t.arrayBuffer());
+  const fileInfo = getFileInfoFromUrl(url);
+  const uploadAwsInfo = await uploadS3Multipart(
+    {
+      fileName: name || fileInfo.name,
+      contentType: mimeType || fileInfo.type,
+      data: data as Uint8Array,
+    },
+    folder,
+  );
+  return {
+    ...uploadAwsInfo,
+    extension: fileInfo.extension,
+    size: data.byteLength
+  };
+};
+
 const isComplete = ({end, length}: { end: number, length: number }) => end === length - 1;
 
 interface GetObjectRangeProp {
@@ -340,3 +361,26 @@ export async function s3RemoveMultipleFile({bucket = S3_INFO.BUCKET, keys = [] a
   });
   return s3.send(command);
 }
+
+export const uploadS3Multipart = async (
+  {fileName = "", contentType = "application/octet-stream", data}: UploadS3BufferProp,
+  folder = S3_FOLDERS.TICKET,
+): Promise<AwsFileInfo> => {
+  // Setting up S3 upload parameters
+  const key = `${folder}/${fileName}`;
+  const params: PutObjectCommandInput = {
+    Bucket: S3_INFO.BUCKET,
+    Key: key,
+    Body: data,
+  };
+
+  if (hasText(contentType)) {
+    params.ContentType = contentType;
+  }
+
+  const command = new CreateMultipartUploadCommand(params);
+  await s3.send(command);
+  return {
+    key, name: fileName, url: getS3Url(key), type: contentType
+  };
+};

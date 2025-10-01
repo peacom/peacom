@@ -3,7 +3,7 @@ import {
   downloadS3Url,
   getAwsKeyInfo, getPreSignedUrl, getS3UrlKey,
   s3RemoveFile, s3RemoveMultipleFile,
-  uploadLocalFileToS3,
+  uploadLocalFileToS3, uploadMultipartS3FromUrl,
   uploadS3FromUrl
 } from './s3.service';
 import * as path from "path";
@@ -16,15 +16,20 @@ describe('s3.service.specs.ts', () => {
     console.log(rs);
   }, 200000);
 
+  it.only('uploadMultipartS3FromUrl', async () => {
+    const rs = await uploadMultipartS3FromUrl({url: 'https://pngimg.com/uploads/birds/birds_PNG9.png'})
+    console.log(rs)
+  }, 200000)
+
   it.only('uploadS3FromUrl Viettel test env key', async () => {
     console.log(process.env['S3_SECRET_KEY'])
-    const rs = await uploadS3FromUrl({ url: 'https://pngimg.com/uploads/birds/birds_PNG9.png' }, 'files');
+    const rs = await uploadS3FromUrl({url: 'https://pngimg.com/uploads/birds/birds_PNG9.png'}, 'files');
     console.log(rs);
   }, 200000);
 
   it('uploadS3FromLocalFile xml', async () => {
     const xmlFile = path.join(__dirname, 'RBM_7_10_data.xlsx')
-    const rs = await uploadLocalFileToS3({ filePath: xmlFile });
+    const rs = await uploadLocalFileToS3({filePath: xmlFile});
     console.log(rs);
   }, 200000);
 
@@ -49,7 +54,7 @@ describe('s3.service.specs.ts', () => {
   it.only('Download S3 Viettel Large file', async () => {
     const fileName = "birds_PNG9";
     const folder = path.join(__dirname, 'output');
-    if(!fs.existsSync(folder)){
+    if (!fs.existsSync(folder)) {
       fs.mkdirSync(folder)
     }
     await downloadS3Url({
