@@ -62,6 +62,39 @@ export const uploadLocalFileToS3 = async (
   };
 };
 
+export const uploadMultipartLocalFileToS3 = async (
+  {filePath = ""},
+  folder = S3_FOLDERS.DEFAULT
+): Promise<AwsFileInfo> => {
+  const rs = getFileInfoFromLocalFile(filePath);
+  const fileStream = fs.createReadStream(filePath);
+
+  // Setting up S3 upload parameters
+  const key = `${folder}/${path.basename(filePath)}`;
+  const params: PutObjectCommandInput = {
+    Bucket: S3_INFO.BUCKET,
+    Key: key,
+    Body: fileStream,
+    ContentType: rs.type,
+    ContentLength: rs.size
+  };
+
+  const command = new CreateMultipartUploadCommand(params);
+  /*
+  const multipartUpload = new Upload({
+    client: s3,
+    params
+    })
+  return multipartUpload.done()
+   */
+  await s3.send(command);
+
+  return {
+    ...rs,
+    key,
+    url: getS3Url(params.Key)
+  };
+};
 
 interface FileProp {
   fileName: string;
