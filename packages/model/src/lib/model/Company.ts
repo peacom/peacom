@@ -55,3 +55,9 @@ export const companyTypeStr = (type: COMPANY_TYPE) => {
       return `UNKNOWN ${type}`
   }
 }
+
+export enum COMPANY_CATEGORY {
+  PERFORMANCE_BASED = 1,
+  NON_PERFORMANCE_BASED = 2
+}
+
