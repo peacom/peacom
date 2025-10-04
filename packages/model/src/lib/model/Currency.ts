@@ -13,6 +13,7 @@ export enum CURRENCY {
 }
 
 export const DEFAULT_CURRENCY_ID = CURRENCY.VND
+export const DEFAULT_COUNTRY_CODE = "VN"
 
 export const currencyStr = (id: CURRENCY | null | undefined) => {
   switch (id) {
