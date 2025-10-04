@@ -5,7 +5,7 @@ export enum USER_STATUS {
 }
 
 
-export enum USER_STATUS {
+export enum USER_INVITE_STATUS {
   INVITED = 1,
   VIEWED = 2,
   CONFIRMED = 3,
