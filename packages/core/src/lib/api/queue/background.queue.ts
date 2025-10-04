@@ -26,7 +26,7 @@ export const getBackgroundTaskQueueName = (backgroundType: BACKGROUND_TASK) => {
     BACKGROUND_TASK.IMPORT_CUSTOMER,
     BACKGROUND_TASK.EXPORT_CUSTOMER,
     BACKGROUND_TASK.EXPORT_AGENT_CUSTOMER,
-
+    BACKGROUND_TASK.IMPORT_BULK_CONTACT_FROM_CUSTOMER,
   ].includes(Number(backgroundType))) {
     rs = BACKGROUND_QUEUE.BACKGROUND_CRM
   } else if (
