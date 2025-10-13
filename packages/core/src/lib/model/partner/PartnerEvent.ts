@@ -51,7 +51,8 @@ export interface PartnerEvent {
   from?: string
   clientMessageId?: string
   template?: TemplateEvent
-  phoneEvent?: PhoneEvent
+  phoneEvent?: PhoneEvent,
+  channelEvent?: ChannelEvent
 }
 
 export interface QueuePartnerEventParam {
