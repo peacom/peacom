@@ -279,19 +279,19 @@ export const PERMISSION_TEMPLATE: Record<number, ActionDescription> = {
     actionId: PERMISSION.TEMPLATE.READ,
     name: 'Read',
     description: 'View list of template',
-    enableType: false
+    enableType: true
   },
   [PERMISSION.TEMPLATE.CREATE]: {
     actionId: PERMISSION.TEMPLATE.CREATE,
     name: 'Create',
     description: 'Create and request review template',
-    enableType: false
+    enableType: true
   },
   [PERMISSION.TEMPLATE.UPDATE]: {
     actionId: PERMISSION.TEMPLATE.UPDATE,
     name: 'Update',
     description: 'Update and request review template',
-    enableType: false
+    enableType: true
   },
   [PERMISSION.TEMPLATE.DELETE]: {
     actionId: PERMISSION.TEMPLATE.DELETE,
