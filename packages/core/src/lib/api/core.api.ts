@@ -42,7 +42,11 @@ export const handleCoreMessage = async (CORE_URL: string, params: ApiCoreHandleP
     }
     return JSON.parse(bodyStr)
   } catch (e: any) {
-    throw new FormError(new FieldError('api', FIELD_ERROR.BAD_REQUEST, `${url} - ${errorToTraceText(e)}`))
+    const errorTrace = errorToTraceText(e)
+    if (log) {
+      log(`CORE RESPONSE ERROR: ${url} - ${errorTrace}`)
+    }
+    throw new FormError(new FieldError('api', FIELD_ERROR.BAD_REQUEST, `${url} - ${errorTrace}`))
   }
 }
 
