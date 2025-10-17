@@ -54,6 +54,19 @@ export const errorToTraceText = (error: any) => {
     }
   } else {
     rs.push(`Message: <strong>${error.message}</strong>`);
+    if (error.cause) {
+      const {cause} = error
+      if (cause.message) {
+        rs.push(cause.message)
+      }
+      if (Array.isArray(cause.errors)) {
+        cause.errors.forEach((t: any) => {
+          if (t.message) {
+            rs.push(` - ${t.message}`)
+          }
+        })
+      }
+    }
   }
   rs.push(error.stack);
   return rs.join("\n");

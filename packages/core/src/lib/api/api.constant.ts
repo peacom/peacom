@@ -1,4 +1,12 @@
-import {Application, ApplicationInfo, Message, RawMessage, SEND_MESSAGE_VIA, Conversation} from '@peacom/model';
+import {
+  Application,
+  ApplicationInfo,
+  Message,
+  RawMessage,
+  SEND_MESSAGE_VIA,
+  Conversation,
+  CONVERSATION_BILLING_EVENT
+} from '@peacom/model';
 
 interface Contact {
   id: string
@@ -78,6 +86,16 @@ export interface ApiChannelMessageResponse {
   [key: string]: unknown
 }
 
+export interface ApiPartnerConversation {
+  messageId: string // Message Public ID
+  channelId?: string // Channel Public ID
+  conversationId: string // Partner Conversation ID
+  type: CONVERSATION_BILLING_EVENT
+  extraData: any
+
+  [key: string]: any
+}
+
 export type LOG_FUNCTION = ((t: unknown) => void) | null
 
 export const MICROSERVICE_URL: Record<Application, string> = {
@@ -96,7 +114,7 @@ export const MICROSERVICE_URL: Record<Application, string> = {
   [Application.GOOGLE_BUSINESS]: process.env['GOOGLE_BUSINESS_INTEGRATION'] || 'http://127.0.0.1:4006/eip/google/business',
   [Application.LIVE_CHAT]: process.env['LIVE_CHAT_INTEGRATION'] || 'http://127.0.0.1:4020/eip/live-chat',
   [Application.MMS]: process.env['MMS_INTEGRATION'] || 'http://127.0.0.1:4010',
-  [Application.INSTAGRAM]:  process.env['INSTAGRAM_INTEGRATION'] || 'http://127.0.0.1:4011/eip/instagram',
+  [Application.INSTAGRAM]: process.env['INSTAGRAM_INTEGRATION'] || 'http://127.0.0.1:4011/eip/instagram',
   [Application.WECOM_CUSTOMER]: process.env['WECOM_CUSTOMER'] || 'http://127.0.0.1:4033',
   [Application.WECOM_CUSTOMER_GROUP]: process.env['WECOM_CUSTOMER_GROUP'] || 'http://127.0.0.1:4033',
   [Application.WECOM_INTERNAL]: process.env['WECOM_INTERNAL'] || 'http://127.0.0.1:4033',

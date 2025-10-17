@@ -1,3 +1,5 @@
+import {Application, errorToTraceText, handleCoreMessage, MESSAGE_TYPE, PARTNER} from "@peacom/core";
+
 const JSON_OBJ = {
   "applicationInfo": {
     "application": 6, "applicationId": 6, "partnerId": 8, "setting": {
@@ -205,4 +207,46 @@ describe('core.api.spec.ts', () => {
       console.error(e)
     }
   });
+  it('test handleCoreMessage', async () => {
+    try {
+      const rs = await handleCoreMessage('https://mmp.peacom.co:234', {
+        rawMessage: {
+          type: MESSAGE_TYPE.TEXT,
+          message: 'test',
+          extra: {}
+        }, sentTime: new Date().getTime(), to: {
+          id: '934734',
+          applicationId: Application.TELEGRAM, partnerId: PARTNER.TELEGRAM
+        },
+        applicationMessageId: '1234',
+        extraData: {},
+        from: {
+          id: "1", name: '', country: 'vn', extraData: {}, isSubscribed: true, language: 'vn'
+        }
+      })
+    } catch (e) {
+      console.log(errorToTraceText(e))
+    }
+  }, 50000)
+  it('test handleCoreMessage localhost', async () => {
+    try {
+      const rs = await handleCoreMessage('http://localhost:234', {
+        rawMessage: {
+          type: MESSAGE_TYPE.TEXT,
+          message: 'test',
+          extra: {}
+        }, sentTime: new Date().getTime(), to: {
+          id: '934734',
+          applicationId: Application.TELEGRAM, partnerId: PARTNER.TELEGRAM
+        },
+        applicationMessageId: '1234',
+        extraData: {},
+        from: {
+          id: "1", name: '', country: 'vn', extraData: {}, isSubscribed: true, language: 'vn'
+        }
+      })
+    } catch (e) {
+      console.log(errorToTraceText(e))
+    }
+  }, 50000)
 });

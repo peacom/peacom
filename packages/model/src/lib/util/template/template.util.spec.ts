@@ -169,4 +169,95 @@ describe('template.util.spec.ts', () => {
     })
     console.log(JSON.stringify(rs1, null, 2))
   });
+  it('renderTemplateMessage zalo template', async () => {
+    const rs1 = await renderTemplateMessage({
+      content: {
+
+          "type": "zalo_zns_template",
+          "source": 2,
+          "zaloZnsTemplateParam": {
+            "template": {
+              "status": "ENABLE",
+              "templateId": 473867,
+              "createdTime": 1754019517400,
+              "templateName": "Nhắc Hội viên tạo Mật khẩu",
+              "templateQuality": "UNDEFINED"
+            },
+            "templateData": [
+              {
+                "name": "Name",
+                "param": {
+                  "name": "Name",
+                  "type": "STRING",
+                  "require": true,
+                  "maxLength": 50,
+                  "minLength": 0,
+                  "acceptNull": false
+                },
+                "value": ""
+              },
+              {
+                "name": "FFP_Num",
+                "param": {
+                  "name": "FFP_Num",
+                  "type": "STRING",
+                  "require": true,
+                  "maxLength": 30,
+                  "minLength": 0,
+                  "acceptNull": false
+                },
+                "value": ""
+              }
+            ],
+            "templateInfo": {
+              "reason": "Template đã được duyệt",
+              "status": "ENABLE",
+              "timeout": 7200000,
+              "listParams": [
+                {
+                  "name": "Name",
+                  "type": "STRING",
+                  "require": true,
+                  "maxLength": 50,
+                  "minLength": 0,
+                  "acceptNull": false
+                },
+                {
+                  "name": "FFP_Num",
+                  "type": "STRING",
+                  "require": true,
+                  "maxLength": 30,
+                  "minLength": 0,
+                  "acceptNull": false
+                }
+              ],
+              "previewUrl": "https://account.zalo.cloud/znspreview/haZ11H9fi7bhOZyGd_FJXw==",
+              "templateId": 473867,
+              "listButtons": [
+                {
+                  "type": 0,
+                  "title": "Đặt mật khẩu  ngay",
+                  "content": "https://www.vietnamairlines.com/vn/vi/lotusmiles/forgot-password-new"
+                }
+              ],
+              "templateTag": "CUSTOMER_CARE",
+              "templateName": "Nhắc Hội viên tạo Mật khẩu",
+              "templateQuality": "null",
+              "applyTemplateQuota": false
+            }
+          },
+          "context": {
+            "Name": "Khoa",
+            "FFP_Num": "123"
+          }
+        },
+      answerKeys: {
+        "Name": "Khoa",
+        "FFP_Num": "123"
+      },
+      timezone: 'UTC',
+      generateUrl
+    })
+    console.log(JSON.stringify(rs1, null, 2))
+  });
 })

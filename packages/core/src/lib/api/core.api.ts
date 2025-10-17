@@ -7,7 +7,7 @@ import {
   ApiReactionParams,
   LOG_FUNCTION
 } from "./api.constant";
-import {FormError} from "@peacom/model";
+import {errorToTraceText, FIELD_ERROR, FieldError, FormError} from "@peacom/model";
 import {myFetch} from "./fetch";
 
 export enum CORE_API_PATH {
@@ -24,23 +24,26 @@ export const handleCoreMessage = async (CORE_URL: string, params: ApiCoreHandleP
   if (log) {
     log(`CORE REQUEST: ${url} - ${JSON.stringify(params)}`)
   }
-
-  const rs = await myFetch(url, {
-    method: "POST",
-    body: JSON.stringify(params),
-    headers: {
-      "content-type": "application/json"
+  try {
+    const rs = await myFetch(url, {
+      method: "POST",
+      body: JSON.stringify(params),
+      headers: {
+        "content-type": "application/json"
+      }
+    })
+    const bodyStr = await rs.text();
+    if (log) {
+      log(`CORE RESPONSE: ${url} - ${bodyStr}`)
     }
-  })
-  const bodyStr = await rs.text();
-  if (log) {
-    log(`CORE RESPONSE: ${url} - ${bodyStr}`)
-  }
 
-  if (!rs.ok) {
-    throw new FormError(JSON.parse(bodyStr))
+    if (!rs.ok) {
+      throw new FormError(JSON.parse(bodyStr))
+    }
+    return JSON.parse(bodyStr)
+  } catch (e: any) {
+    throw new FormError(new FieldError('api', FIELD_ERROR.BAD_REQUEST, `${url} - ${errorToTraceText(e)}`))
   }
-  return JSON.parse(bodyStr)
 }
 
 export const handleCoreLiveAgent = async (CORE_URL: string, params: ApiCoreLiveAgentParams, log: LOG_FUNCTION = null): Promise<ApiCoreLiveAgentResponse> => {
