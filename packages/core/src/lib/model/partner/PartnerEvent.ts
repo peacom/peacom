@@ -40,15 +40,15 @@ export interface ChannelEvent {
 }
 
 export interface PartnerEvent {
-  eventId?: string // Should be required
+  eventId: string // Should be required uuidv4 using for tracking between client and our
   type: PARTNER_MESSAGE_TYPE
   timestamp: number
-  messageId: string // Peacom Message Public ID = Partner Application Message ID
-  cause: string
-  status: MESSAGE_STATUS
+  messageId?: string // Peacom Message Public ID = Partner Application Message ID
+  cause?: string
+  status?: MESSAGE_STATUS
   message?: RawMessage
   publicId?: string // channel publicId OA, BOT Public ID
-  applicationId: Application
+  applicationId?: Application
   from?: string
   clientMessageId?: string
   template?: TemplateEvent
