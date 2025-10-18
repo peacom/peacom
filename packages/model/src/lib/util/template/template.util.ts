@@ -5,10 +5,10 @@ import {
   WHATSAPP_TEMPLATE_BUTTON_TYPE,
   WhatsappTemplateButton,
 } from '../../model';
-import {hasText, renderTemplate} from '../string.util';
-import {Url, URL_GENERATE_TYPE, URL_TYPE} from '../../model';
-import {objectDeepClone} from '../general.util';
-import {DATE_TIME_FORMAT, parseDateTimeByFormat} from '../date';
+import { hasText, renderTemplate } from '../string.util';
+import { Url, URL_GENERATE_TYPE, URL_TYPE } from '../../model';
+import { objectDeepClone } from '../general.util';
+import { DATE_TIME_FORMAT, parseDateTimeByFormat } from '../date';
 
 export interface GenerateUrlInput {
   redirectUrl: string;
@@ -17,7 +17,7 @@ export interface GenerateUrlInput {
   generateType: URL_GENERATE_TYPE;
   urlOrigin?: string;
   landingPageId?: number;
-  context?: any
+  context?: any;
 }
 
 export interface GenerateUrlOutput {
@@ -85,14 +85,15 @@ async function renderWhatsappButton(
       }
     }
   */
-  const {url, redirectUrlType, landingPage} = button;
+  const { url, redirectUrlType, landingPage } = button;
   let generateResult;
   if (redirectUrlType === URL_TYPE.LANDING_PAGE) {
     generateResult = await generateUrl({
       generateType: URL_GENERATE_TYPE.REDIRECT,
       type: redirectUrlType,
       landingPageId: landingPage?.id,
-      redirectUrl: '', context: answerKeys
+      redirectUrl: '',
+      context: answerKeys,
     });
   } else {
     generateResult = await generateUrl({
@@ -100,7 +101,7 @@ async function renderWhatsappButton(
       type: redirectUrlType,
       urlOrigin: button['redirectUrl'] || url,
       redirectUrl: button['redirectUrl'] || url,
-      context: answerKeys
+      context: answerKeys,
     });
   }
 
@@ -151,7 +152,7 @@ async function renderWhatsappAlibabaParams(
         (params.type === 'URL' || params.type === 'DYNAMIC_URL') &&
         params.isTracking
       ) {
-        const {url, data} = params;
+        const { url, data } = params;
         let redirectUrl = `${url}`;
         if (params.urlType === WHATSAPP_BUTTON_URL_TYPE.DYNAMIC) {
           redirectUrl = `${url}${data}`; //renderTemplate(`${url}${data}`, answerKeys);
@@ -162,7 +163,7 @@ async function renderWhatsappAlibabaParams(
           type: URL_TYPE.ORIGIN,
           urlOrigin: url,
           generateType: URL_GENERATE_TYPE.REDIRECT,
-          context: answerKeys
+          context: answerKeys,
         });
 
         urls.push(generateResult.url);
@@ -216,7 +217,7 @@ async function renderAlibabaButton(
     };
   }
 
-  const {url, redirectUrlType, landingPage} = button;
+  const { url, redirectUrlType, landingPage } = button;
   let generateResult = null;
   if (redirectUrlType === URL_TYPE.LANDING_PAGE) {
     generateResult = await generateUrl({
@@ -224,7 +225,7 @@ async function renderAlibabaButton(
       type: redirectUrlType,
       landingPageId: landingPage.id,
       redirectUrl: '',
-      context: answerKeys
+      context: answerKeys,
     });
   } else {
     generateResult = await generateUrl({
@@ -232,7 +233,7 @@ async function renderAlibabaButton(
       type: redirectUrlType,
       urlOrigin: button['redirectUrl'] || url,
       redirectUrl: button['redirectUrl'] || url,
-      context: answerKeys
+      context: answerKeys,
     });
   }
 
@@ -259,11 +260,11 @@ async function renderWhatsappAlibabaParamsV2(
   );
   console.log(`Render alibaba V2 answerKeys ~> `, JSON.stringify(answerKeys));
   const result: any = {};
-  const {header, body, buttons, carousel} = waParams;
+  const { header, body, buttons, carousel } = waParams;
 
   if (Array.isArray(header) && header.length) {
     for (const value of header) {
-      const {alibaba_param_name} = value;
+      const { alibaba_param_name } = value;
       // header text
       if (value.type === 'TEXT') {
         result[alibaba_param_name] = renderTemplate(value.data, answerKeys);
@@ -289,7 +290,7 @@ async function renderWhatsappAlibabaParamsV2(
   // body
   if (Array.isArray(body) && body.length) {
     for (const value of body) {
-      const {alibaba_param_name} = value;
+      const { alibaba_param_name } = value;
       result[alibaba_param_name] = renderTemplate(value.data, answerKeys);
     }
   }
@@ -297,8 +298,8 @@ async function renderWhatsappAlibabaParamsV2(
   // buttons
   if (Array.isArray(buttons) && buttons.length) {
     for (const button of buttons) {
-      const {alibaba_param_name} = button;
-      const {data, extraData} = await renderAlibabaButton(
+      const { alibaba_param_name } = button;
+      const { data, extraData } = await renderAlibabaButton(
         button,
         answerKeys,
         urls,
@@ -339,8 +340,8 @@ async function renderWhatsappAlibabaParamsV2(
       }
       if (Array.isArray(card.buttons) && card.buttons.length) {
         for (const button of card.buttons) {
-          const {alibaba_param_name} = button;
-          const {data, extraData} = await renderAlibabaButton(
+          const { alibaba_param_name } = button;
+          const { data, extraData } = await renderAlibabaButton(
             button,
             answerKeys,
             urls,
@@ -411,23 +412,23 @@ export const parseMessageAndShortLink = async (
       urls.push(urlObj.url);
     }
   }
-  return {message: rs, urls};
+  return { message: rs, urls };
 };
 
 export async function renderTemplateMessage({
-                                              content: _content,
-                                              answerKeys,
-                                              timezone,
-                                              generateUrl,
-                                            }: RenderTemplateMessageProp) {
+  content: _content,
+  answerKeys,
+  timezone,
+  generateUrl,
+}: RenderTemplateMessageProp) {
   const content = objectDeepClone(_content);
-  const rs = {content: null, urls: []} as RenderTemplateMessageResult;
+  const rs = { content: null, urls: [] } as RenderTemplateMessageResult;
   if (content) {
     if (content.peacomTemplateMessage) {
       content.peacomTemplateMessage.params = answerKeys;
     } else if (content.whatsappTemplateParam) {
       // WHATSAPP
-      const {header, body, buttons, media, alibabaParams, carousel} =
+      const { header, body, buttons, media, alibabaParams, carousel } =
         content.whatsappTemplateParam;
       // only Alibaba
       if (alibabaParams) {
@@ -534,7 +535,7 @@ export async function renderTemplateMessage({
       }
     } else if (content.zaloZnsTemplateParam) {
       // Zalo ZNS
-      const {templateData} = content.zaloZnsTemplateParam;
+      const { templateData } = content.zaloZnsTemplateParam;
       if (Array.isArray(templateData)) {
         content.zaloZnsTemplateParam.templateData = templateData.map(
           (item) => ({
@@ -547,10 +548,10 @@ export async function renderTemplateMessage({
       MESSAGE_TYPE.TEXT === content.type ||
       MESSAGE_TYPE.QUICK_REPLY === content.type
     ) {
-      const {previewUrl, message, shortLink} = content;
+      const { previewUrl, message, shortLink } = content;
       content.message = renderTemplate(message, answerKeys);
       if (shortLink) {
-        const {message, urls} = await parseMessageAndShortLink(
+        const { message, urls } = await parseMessageAndShortLink(
           content.message,
           generateUrl
         );
@@ -560,14 +561,14 @@ export async function renderTemplateMessage({
 
       // TODO: Implement insert link to content message after generate link
       if (previewUrl) {
-        const {image, title, redirectUrl, position} = previewUrl;
+        const { image, title, redirectUrl, position } = previewUrl;
         const generateUrlRs = await generateUrl({
           redirectUrl,
-          content: {image, title},
+          content: { image, title },
           type: URL_TYPE.ORIGIN,
           generateType: URL_GENERATE_TYPE.PREVIEW_URL,
           urlOrigin: redirectUrl,
-          context: answerKeys
+          context: answerKeys,
         });
         if (position === 1) {
           content.message = `${generateUrlRs.link}\n${content.message}`;
@@ -609,7 +610,7 @@ export async function renderTemplateMessage({
                     type: URL_TYPE.ORIGIN,
                     generateType: URL_GENERATE_TYPE.REDIRECT,
                     urlOrigin: suggestion.postbackData,
-                    context: answerKeys
+                    context: answerKeys,
                   });
                   rs.urls.push(newUrl.url);
                   suggestion.postbackData = newUrl.link;
@@ -754,9 +755,9 @@ export async function renderTemplateMessage({
       ].includes(content.type)
     ) {
       if (content.zaloTemplateMessage) {
-        const {elements, buttons} = content.zaloTemplateMessage;
+        const { elements, buttons } = content.zaloTemplateMessage;
         if (elements) {
-          const {header, text, table} = elements;
+          const { header, text, table } = elements;
           if (header && hasText(header.content)) {
             header.content = renderTemplate(header.content, answerKeys);
           }
@@ -804,6 +805,33 @@ export async function renderTemplateMessage({
           }
         }
       }
+    } else if (MESSAGE_TYPE.LOCATION === content.type) {
+      if (content.location) {
+        if (hasText(content.location.latitude)) {
+          content.location.latitude = renderTemplate(
+            content.location.latitude,
+            answerKeys
+          );
+        }
+        if (hasText(content.location.longitude)) {
+          content.location.longitude = renderTemplate(
+            content.location.longitude,
+            answerKeys
+          );
+        }
+        if (hasText(content.location.name)) {
+          content.location.name = renderTemplate(
+            content.location.name,
+            answerKeys
+          );
+        }
+        if (hasText(content.location.address)) {
+          content.location.address = renderTemplate(
+            content.location.address,
+            answerKeys
+          );
+        }
+      }
     } else {
       // Media, File ...
       if (hasText(content.message)) {
@@ -821,7 +849,6 @@ export async function renderTemplateMessage({
       for (let i = 0; i < content.templateMessageSuggestions.length; i += 1) {
         const suggestionTemplate = content.templateMessageSuggestions[i];
         if (hasText(suggestionTemplate.postbackData)) {
-
           if (
             suggestionTemplate.action === SuggestionActionType.OPEN_URL &&
             suggestionTemplate.tracking
@@ -832,7 +859,7 @@ export async function renderTemplateMessage({
               type: URL_TYPE.ORIGIN,
               generateType: URL_GENERATE_TYPE.REDIRECT,
               urlOrigin: suggestionTemplate.postbackData,
-              context: answerKeys
+              context: answerKeys,
             });
             rs.urls.push(newUrl.url);
             suggestionTemplate.postbackData = newUrl.link;
