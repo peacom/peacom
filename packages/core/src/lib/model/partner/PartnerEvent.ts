@@ -40,6 +40,7 @@ export interface ChannelEvent {
 }
 
 export interface PartnerEvent {
+  eventId?: string // Should be required
   type: PARTNER_MESSAGE_TYPE
   timestamp: number
   messageId: string // Peacom Message Public ID = Partner Application Message ID
