@@ -29,16 +29,16 @@ export const queueAddOutgoingMessage = (queue: Queue, message: QueueOutgoingMess
 }
 
 export const queueAddPartnerEvent = (queue: Queue, message: QueuePartnerEventParam) => {
-  let jobId = ''
+  let jobId: string
   switch (message.event.type) {
     case PARTNER_MESSAGE_TYPE.EVENT:
-      jobId = `${message.event.messageId}_${message.event.status}`
+      jobId = message.event.eventId || `${message.event.messageId}_${message.event.status}`
       break;
     case PARTNER_MESSAGE_TYPE.MESSAGE:
-      jobId = message.event.messageId
+      jobId = message.event.eventId || message.event.messageId || ''
       break;
     case PARTNER_MESSAGE_TYPE.TEMPLATE:
-      jobId = `${message.event.template?.partnerTemplateId || message.event.template?.publicId}_${message.event.template?.status}`
+      jobId = message.event.eventId || `${message.event.template?.partnerTemplateId || message.event.template?.publicId}_${message.event.template?.status}`
       break;
     default:
       jobId = v4()
