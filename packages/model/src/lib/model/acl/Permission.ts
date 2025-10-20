@@ -6,7 +6,7 @@ export enum AclActionType {
   SYSTEM_ADMIN = 5,
 }
 
-// max=245
+// max=248
 
 export const PERMISSION = {
   COMPANY: {
@@ -356,12 +356,16 @@ export const PERMISSION = {
     UPDATE: 243,
     DELETE: 244
   },
+  STORAGE:{
+    VIEW: 247,
+    DELETE: 248
+  },
   FINANCE:{
     MARGIN: 245
   }
 };
 
-// MAX= 246
+// MAX= 248
 export interface ActionDescription {
   actionId: number;
   name: string;
