@@ -193,4 +193,7 @@ export const LIST_MASTER_COMPANY_PERMISSION = [
   { permission: PERMISSION.COUPON.CREATE, type: AclActionType.FULL },
   { permission: PERMISSION.COUPON.UPDATE, type: AclActionType.FULL },
   { permission: PERMISSION.COUPON.DELETE, type: AclActionType.FULL },
+  /* STORAGE */
+  { permission: PERMISSION.STORAGE.VIEW, type: AclActionType.FULL },
+  { permission: PERMISSION.STORAGE.DELETE, type: AclActionType.FULL },
 ];
