@@ -137,6 +137,31 @@ export const getListHour = (fromTime: Date, toTime: Date, hourStep = 1) => {
   return rs;
 }
 
+export const getListMinute = (fromTime: Date, toTime: Date, minStep = 1) => {
+  const rs = []
+  let isContinue = true
+  let _fromTime = fromTime
+  let _nextTime = fromTime;
+  while (isContinue) {
+    const item = {from: _fromTime}
+    _nextTime = addMin(_fromTime, minStep)
+    if (_nextTime.getTime() < toTime.getTime()) {
+      rs.push({
+        from: _fromTime,
+        to: _nextTime
+      })
+    } else {
+      rs.push({
+        from: _nextTime,
+        to: toTime
+      })
+      isContinue = false
+    }
+    _fromTime = _nextTime;
+  }
+  return rs;
+}
+
 export const getListRangeTime = (fromTime: Date, toTime: Date, min = 60) => {
   const rs: { startTime: Date; endTime: Date }[] = [];
   let start = new Date(fromTime);
