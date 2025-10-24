@@ -1180,7 +1180,7 @@ export const PERMISSION_CHANNEL: Record<number, ActionDescription> = {
     enableType: true,
     listType: BoAdminCompanyTypeList
   },
-  [PERMISSION.CHANNEL.UPDATE]: {
+  [PERMISSION.CHANNEL.CREATE]: {
     actionId: PERMISSION.CHANNEL.CREATE,
     name: 'Channel CREATE',
     enableType: true,
