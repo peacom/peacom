@@ -1414,3 +1414,18 @@ export const PERMISSION_MONITOR_ALERT: Record<number, ActionDescription> = {
   },
 }
 
+export const PERMISSION_STORAGE: Record<number, ActionDescription> = {
+  [PERMISSION.STORAGE.VIEW]: {
+    actionId: PERMISSION.STORAGE.VIEW,
+    name: 'View',
+    enableType: true,
+    listType: OwnerOrCompanyTypeList,
+  },
+  [PERMISSION.STORAGE.DELETE]: {
+    actionId: PERMISSION.STORAGE.DELETE,
+    name: 'Delete',
+    enableType: true,
+    listType: OwnerOrCompanyTypeList,
+  }
+}
+

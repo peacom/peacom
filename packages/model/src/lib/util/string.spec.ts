@@ -49,7 +49,7 @@ describe('string.util', () => {
   });
   it('render template', () => {
     expect(renderTemplate('{{abc}} {{def}} {{a.b}}', {
-      abc: 'testing',
+      abc: '7days-1gb',
       def: 'peacom', a: {b: "134"}
     })).toEqual('testing peacom 134');
   });

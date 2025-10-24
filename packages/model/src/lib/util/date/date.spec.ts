@@ -12,7 +12,7 @@ import {
   formatTimeTZ,
   getDate,
   getLastRangeMinute,
-  getListHour, getListRangeTime, getTimeOfDate,
+  getListHour, getListMinute, getListRangeTime, getTimeOfDate,
   getTimeZoneOffset, isInWorkingHour, isRangeTimeOverlap,
   parseDateTimeByFormat,
   startLastMonth,
@@ -92,6 +92,11 @@ describe('date.util', () => {
   it('get List RangeTime', () => {
     const startTime = startOfDate(addDays(new Date(), -1), DEFAULT_TIME_ZONE)
     console.log(getListRangeTime(startTime, new Date(), 60))
+  })
+  it('get getListMinute', ()=>{
+    const startTime = new Date('2025-09-30T14:01:00.000Z');
+    const toTime = new Date("2025-10-01T03:31:59.999Z")
+    console.log(getListMinute(startTime, toTime, 15))
   })
   it("formatTime", () => {
     const departureDatetime = new Date("2023-03-23T08:00:00Z");

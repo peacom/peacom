@@ -32,7 +32,7 @@ export function badRequest(name: string, code: string, message: string) {
   return new FormError(new FieldError(name, code, message));
 }
 
-export const errorToTraceText = (error: any) => {
+export const errorToTraceText = (error: any, includeStack = true) => {
   const rs = [];
   if (hasText(error.name)) {
     rs.push(error.name);
@@ -68,6 +68,9 @@ export const errorToTraceText = (error: any) => {
       }
     }
   }
-  rs.push(error.stack);
+  if (includeStack) {
+    rs.push(error.stack);
+  }
+
   return rs.join("\n");
 };

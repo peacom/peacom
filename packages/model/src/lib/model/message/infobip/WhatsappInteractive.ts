@@ -11,6 +11,7 @@ export enum WhatsappInteractiveType {
   product_list = 'product_list',
   catalog_message = 'catalog_message',
   flow = 'flow',
+  location_request_message = 'location_request_message',
 }
 
 export enum WhatsappInteractiveHeaderType {
