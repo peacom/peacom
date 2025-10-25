@@ -90,8 +90,9 @@ describe('date.util', () => {
     console.log(getListHour(startTime, new Date()))
   })
   it('get List RangeTime', () => {
-    const startTime = startOfDate(addDays(new Date(), -1), DEFAULT_TIME_ZONE)
-    console.log(getListRangeTime(startTime, new Date(), 60))
+    const startTime = new Date('2025-09-30T14:01:00.000Z');
+    const toTime = new Date("2025-10-01T03:31:59.999Z")
+    console.log(getListRangeTime(startTime, toTime, 15))
   })
   it('get getListMinute', ()=>{
     const startTime = new Date('2025-09-30T14:01:00.000Z');

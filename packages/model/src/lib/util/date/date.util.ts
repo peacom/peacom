@@ -165,19 +165,22 @@ export const getListMinute = (fromTime: Date, toTime: Date, minStep = 1) => {
 export const getListRangeTime = (fromTime: Date, toTime: Date, min = 60) => {
   const rs: { startTime: Date; endTime: Date }[] = [];
   let start = new Date(fromTime);
-  let end = addMin(start, min);
-  while (start < toTime) {
-    // Nếu end vượt quá toTime, gán end = toTime
-    if (end > toTime) {
-      end = new Date(toTime);
-    }
-    rs.push({
-      startTime: new Date(start),
-      endTime: new Date(end)
-    });
-    // Cập nhật start và end cho vòng lặp tiếp theo
-    start = new Date(end);
+  let end = start
+  while (end < toTime) {
     end = addMin(start, min);
+    if (end > toTime) {
+      end = toTime
+      rs.push({
+        startTime: start,
+        endTime: end
+      })
+    } else {
+      rs.push({
+        startTime: new Date(start),
+        endTime: new Date(end)
+      });
+    }
+    start = end;
   }
   return rs;
 };
