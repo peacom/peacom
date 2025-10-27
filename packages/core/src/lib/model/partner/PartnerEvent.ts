@@ -44,6 +44,7 @@ export interface ChannelEvent {
   type?: ChannelEventType
   status?: ChannelStatus
   launchStatus?: ChannelRCSLaunchStatus
+  carrierId?: string
   cause?: string
   extraData?: Record<string, any>
 }
