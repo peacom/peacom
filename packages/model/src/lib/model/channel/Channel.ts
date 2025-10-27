@@ -24,6 +24,5 @@ export enum ChannelSummaryType {
 export enum ChannelRCSLaunchStatus {
   REQUEST = 1,
   APPROVE = 2,
-  REJECT = 3,
-  LAUNCH = 4
+  REJECT = 3
 }

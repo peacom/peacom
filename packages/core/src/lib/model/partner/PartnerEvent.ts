@@ -1,5 +1,13 @@
 import {PARTNER_MESSAGE_TYPE} from "./index";
-import {MESSAGE_STATUS, RawMessage, Application, TEMPLATE_STATUS, ChannelStatus, TARIFF_TYPE} from "@peacom/model";
+import {
+  MESSAGE_STATUS,
+  RawMessage,
+  Application,
+  TEMPLATE_STATUS,
+  ChannelStatus,
+  TARIFF_TYPE,
+  ChannelRCSLaunchStatus
+} from "@peacom/model";
 import {JobsOptions} from "bullmq";
 
 export enum TemplateEventType {
@@ -28,13 +36,14 @@ export interface TemplateEvent {
 }
 
 export enum ChannelEventType {
-  STATUS
+  STATUS, CARRIER_LAUNCH
 }
 
 export interface ChannelEvent {
   publicId: string // MMP Internal ID
   type?: ChannelEventType
   status?: ChannelStatus
+  launchStatus?: ChannelRCSLaunchStatus
   cause?: string
   extraData?: Record<string, any>
 }
