@@ -9,6 +9,7 @@ export enum MessageEvent {
   CHANNEL_OA_STATUS = 'channel.oa.status',
   CHANNEL_INFO = 'channel.info',
   CHANNEL_REQUEST = 'channel.request',
+  CHANNEL_RCS_CARRIER_STATUS = 'channel.rcs.carrier.status',
   TEMPLATE_REQUEST = 'template.request',
   TEMPLATE_APPROVE = 'template.approve',
   TEMPLATE_REJECT = 'template.reject',
@@ -65,7 +66,8 @@ export enum NotificationType {
   CHANNEL_INFO,
   TICKET_NO_AGENT,
   TICKET_TRANSFER,
-  TEMPLATE_UPDATE
+  TEMPLATE_UPDATE,
+  CHANNEL_RCS_CARRIER_STATUS,
 }
 
 export const mappingNotificationMessageToType = (messageEvent: MessageEvent): NotificationType => {
@@ -126,6 +128,8 @@ export const mappingNotificationMessageToType = (messageEvent: MessageEvent): No
       return NotificationType.TICKET_TRANSFER
     case MessageEvent.TEMPLATE_UPDATE:
       return NotificationType.TEMPLATE_UPDATE
+    case MessageEvent.CHANNEL_RCS_CARRIER_STATUS:
+      return NotificationType.CHANNEL_RCS_CARRIER_STATUS
   }
 }
 
