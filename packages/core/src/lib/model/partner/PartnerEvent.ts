@@ -39,12 +39,16 @@ export enum ChannelEventType {
   STATUS, CARRIER_LAUNCH
 }
 
+export interface CarrierLaunchEvent {
+  carrierId: string
+  status: ChannelRCSLaunchStatus
+}
+
 export interface ChannelEvent {
   publicId: string // MMP Internal ID
   type?: ChannelEventType
   status?: ChannelStatus
-  launchStatus?: ChannelRCSLaunchStatus
-  carrierId?: string
+  carrierLaunchEvents?: CarrierLaunchEvent[]
   cause?: string
   extraData?: Record<string, any>
 }
