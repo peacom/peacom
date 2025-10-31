@@ -1,9 +1,9 @@
 import * as _ from 'lodash'
-import { render } from 'mustache';
-import { v4 as uuidv4 } from 'uuid';
-import { formatDateTimeTZ } from './date';
-import { MESSAGE_TYPE, SuggestionActionType } from '../model';
-import { objectDeepClone } from './general.util';
+import {render} from 'mustache';
+import {v4 as uuidv4} from 'uuid';
+import {formatDateTimeTZ} from './date';
+import {MESSAGE_TYPE, SuggestionActionType} from '../model';
+import {objectDeepClone} from './general.util';
 
 
 export function generateRandomCode(length: number) {
@@ -161,10 +161,14 @@ const RENDER_FUNCTION = {
 };
 
 export function renderTemplate(string: string, context: any) {
-  return render(string, {
-    ...context,
-    ...RENDER_FUNCTION
-  });
+  try {
+    return render(string, {
+      ...context,
+      ...RENDER_FUNCTION
+    });
+  } catch (e: any) {
+    return `Template error: ${e.message}`;
+  }
 }
 
 export function formatBytes(bytes: number, decimals: number = 2): string {
@@ -220,7 +224,7 @@ export function stringParamsReplace(message: string, replaceFunc: Function) {
 
 export function templateMessageParamsReplace(rawMessage: any, replaceFunc: Function) {
   let newRawMessage = objectDeepClone(rawMessage);
-  const { type } = rawMessage;
+  const {type} = rawMessage;
   const templateParams = [] as any;
   const addParams = (params: Array<any>) => {
     params.forEach(t => {
@@ -287,7 +291,7 @@ export function templateMessageParamsReplace(rawMessage: any, replaceFunc: Funct
       }
       break;
     case MESSAGE_TYPE.RICH_CARD:
-      const { richCards = [] } = rawMessage;
+      const {richCards = []} = rawMessage;
       for (let r = 0; r < richCards.length; r += 1) {
         const rc = richCards[r];
         if (hasText(rc.title)) {
@@ -369,7 +373,7 @@ export function templateMessageParamsReplace(rawMessage: any, replaceFunc: Funct
       }
       break;
     case MESSAGE_TYPE.RICH_CARD:
-      const { richCards = [] } = newRawMessage;
+      const {richCards = []} = newRawMessage;
       for (let r = 0; r < richCards.length; r += 1) {
         const richCard = richCards[r];
         if (hasText(richCard.title)) {
@@ -402,11 +406,11 @@ export function templateMessageParamsReplace(rawMessage: any, replaceFunc: Funct
   };
 }
 
-export function valueParamsReplace(context: any, params: Array<any>, replaceFunc: Function ) {
+export function valueParamsReplace(context: any, params: Array<any>, replaceFunc: Function) {
   const newParams = {} as any;
   for (let i = 0; i < params.length; i += 1) {
     const key = replaceFunc(i, newParams[i]);
-    newParams[key] = _.get(context, params[i].variable,'');
+    newParams[key] = _.get(context, params[i].variable, '');
   }
   return newParams;
 }
