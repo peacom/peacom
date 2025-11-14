@@ -35,6 +35,20 @@ export interface TemplateEvent {
   extraData?: Record<string, any>
 }
 
+export enum ConversationEventType {
+  BILLING = 1
+}
+
+export interface ConversationEvent {
+  conversation: {
+    channelId: string
+    from: string
+  },
+  type: ConversationEventType
+  extraData?: Record<string, any>
+  conversationBillingId?: string
+}
+
 export enum ChannelEventType {
   STATUS, CARRIER_LAUNCH
 }

@@ -3,7 +3,8 @@ export enum PARTNER_MESSAGE_TYPE {
   MESSAGE = 2,
   TEMPLATE,
   CHANNEL,
-  PHONE
+  PHONE,
+  CONVERSATION
 }
 
 export * from './PartnerEvent'
