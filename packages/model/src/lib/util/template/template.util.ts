@@ -426,6 +426,8 @@ export async function renderTemplateMessage({
   if (content) {
     if (content.peacomTemplateMessage) {
       content.peacomTemplateMessage.params = answerKeys;
+    } else if (content.mmp) {
+      content.mmp.params = answerKeys;
     } else if (content.whatsappTemplateParam) {
       // WHATSAPP
       const { header, body, buttons, media, alibabaParams, carousel } =
