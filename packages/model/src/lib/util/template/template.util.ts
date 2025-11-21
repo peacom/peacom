@@ -428,6 +428,8 @@ export async function renderTemplateMessage({
       content.peacomTemplateMessage.params = answerKeys;
     } else if (content.mmp) {
       content.mmp.params = answerKeys;
+    } else if (content.rcsDotgo || content.rcsTanla || content.rcsIoh) {
+      content.context = answerKeys;
     } else if (content.whatsappTemplateParam) {
       // WHATSAPP
       const { header, body, buttons, media, alibabaParams, carousel } =
