@@ -123,11 +123,12 @@ export const buildFormResultMessage = (message: string, extra = null): RawMessag
   extra
 });
 
-export const buildSharePostMessage = (
+export const buildShareMessage = (
   payload: {
     url: string;
     id?: string;
     title?: string;
+    type?: string;
   },
   extra = null
 ): RawMessage => ({

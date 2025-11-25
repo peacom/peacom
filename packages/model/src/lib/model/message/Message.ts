@@ -317,6 +317,7 @@ export interface RawMessage {
     url: string;
     title?: string;
     id?: string;
+    type?: string;
   };
 }
 
