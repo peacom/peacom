@@ -122,3 +122,9 @@ export const buildFormResultMessage = (message: string, extra = null): RawMessag
   message,
   extra
 });
+
+export const buildSharePostMessage = (url: string, extra = null): RawMessage => ({
+  type: MESSAGE_TYPE.SHARE_POST,
+  url,
+  extra
+})
