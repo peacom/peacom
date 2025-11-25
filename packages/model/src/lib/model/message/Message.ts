@@ -98,7 +98,7 @@ export enum MESSAGE_TYPE {
   CALL_CONSENT = 'CALL_CONSENT',
   CALL_CONFIRM = 'CALL_CONFIRM',
   CALL_INFO = 'CALL_INFO',
-  SHARE_POST = 'SHARE_POST',
+  SHARE = 'SHARE',
 }
 
 export const GENERAL_MESSAGE = [
@@ -313,7 +313,11 @@ export interface RawMessage {
   formMessages?: Array<FormMessageItem>;
   articleMessages?: Array<ArticlesMessageItem>;
   choiceMessages?: Array<ChoiceMessageItem>;
-  url?: string; // for share post
+  sharePayload?: {
+    url: string;
+    title?: string;
+    id?: string;
+  };
 }
 
 export interface Message {

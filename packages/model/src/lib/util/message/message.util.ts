@@ -123,8 +123,15 @@ export const buildFormResultMessage = (message: string, extra = null): RawMessag
   extra
 });
 
-export const buildSharePostMessage = (url: string, extra = null): RawMessage => ({
-  type: MESSAGE_TYPE.SHARE_POST,
-  url,
-  extra
-})
+export const buildSharePostMessage = (
+  payload: {
+    url: string;
+    id?: string;
+    title?: string;
+  },
+  extra = null
+): RawMessage => ({
+  type: MESSAGE_TYPE.SHARE,
+  sharePayload: payload,
+  extra,
+});
