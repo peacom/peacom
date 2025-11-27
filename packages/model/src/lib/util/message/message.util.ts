@@ -122,3 +122,17 @@ export const buildFormResultMessage = (message: string, extra = null): RawMessag
   message,
   extra
 });
+
+export const buildShareMessage = (
+  payload: {
+    url: string;
+    id?: string;
+    title?: string;
+    type?: string;
+  },
+  extra = null
+): RawMessage => ({
+  type: MESSAGE_TYPE.SHARE,
+  sharePayload: payload,
+  extra,
+});

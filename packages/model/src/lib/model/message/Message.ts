@@ -97,7 +97,8 @@ export enum MESSAGE_TYPE {
   VIBER_LIST_MESSAGE = 'VIBER_LIST_MESSAGE',
   CALL_CONSENT = 'CALL_CONSENT',
   CALL_CONFIRM = 'CALL_CONFIRM',
-  CALL_INFO = 'CALL_INFO'
+  CALL_INFO = 'CALL_INFO',
+  SHARE = 'SHARE',
 }
 
 export const GENERAL_MESSAGE = [
@@ -107,7 +108,7 @@ export const GENERAL_MESSAGE = [
   MESSAGE_TYPE.PICTURE,
   MESSAGE_TYPE.FILE,
   MESSAGE_TYPE.VIBER_CAROUSEL,
-  MESSAGE_TYPE.VIBER_LIST_MESSAGE
+  MESSAGE_TYPE.VIBER_LIST_MESSAGE,
 ];
 
 export const APPLICATION_MESSAGE: Record<Application, Array<MESSAGE_TYPE>> = {
@@ -312,6 +313,12 @@ export interface RawMessage {
   formMessages?: Array<FormMessageItem>;
   articleMessages?: Array<ArticlesMessageItem>;
   choiceMessages?: Array<ChoiceMessageItem>;
+  sharePayload?: {
+    url: string;
+    title?: string;
+    id?: string;
+    type?: string;
+  };
 }
 
 export interface Message {

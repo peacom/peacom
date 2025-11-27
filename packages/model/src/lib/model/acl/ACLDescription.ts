@@ -6,6 +6,10 @@ const BoAdminCompanyTypeList = [
   AclActionType.BACK_OFFICE,
   AclActionType.SYSTEM_ADMIN,
 ];
+const SystemCompanyTypeList = [
+  AclActionType.FULL,
+  AclActionType.SYSTEM_ADMIN,
+];
 const CompanyTypeList = [
   AclActionType.FULL,
   AclActionType.PARTIAL,
@@ -28,7 +32,7 @@ export const PERMISSION_COMPANY_LIST: Record<number, ActionDescription> = {
     actionId: PERMISSION.COMPANY.CREATE,
     name: 'Create',
     enableType: true,
-    listType: BoAdminTypeList,
+    listType: SystemCompanyTypeList,
   },
   [PERMISSION.COMPANY.READ]: {
     actionId: PERMISSION.COMPANY.READ,
