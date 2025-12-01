@@ -6,8 +6,8 @@ import {Application, applicationStr, PARTNER} from '@peacom/model';
 export enum CONVERSATION_QUEUE {
   TELEGRAM_IN = 'TELEGRAM_IN',
   TELEGRAM_OUT = 'TELEGRAM_OUT',
-  VIBER_IN = 'VIBER_IN',
-  VIBER_OUT = 'VIBER_OUT',
+  VIBER_IN = 'VIBER_IN',  // VIBER ==> viber-bot
+  VIBER_OUT = 'VIBER_OUT', // viber-bot
   RCS_IN = 'RCS_IN',
   RCS_OUT = 'RCS_OUT',
   RCS_DOTGO_IN = 'RCS_DOTGO_IN',
@@ -34,6 +34,8 @@ export enum CONVERSATION_QUEUE {
   WECOM_CUSTOMER_GROUP = 'WECOM_CUSTOMER_GROUP',
   WECOM_INTERNAL_IN = 'WECOM_INTERNAL_IN',
   WECOM_INTERNAL_OUT = 'WECOM_INTERNAL_OUT',
+  VIBER_BUSINESS_IN = 'VIBER_BUSINESS_IN',
+  VIBER_BUSINESS_OUT = 'VIBER_BUSINESS_OUT'
 }
 
 export const getApplicationConversationQueueOutName = (
@@ -59,6 +61,8 @@ export const getApplicationConversationQueueOutName = (
       return CONVERSATION_QUEUE.RCS_OUT;
     case Application.WHATSAPP:
       return CONVERSATION_QUEUE.WHATSAPP_OUT;
+    case Application.VIBER:
+      return CONVERSATION_QUEUE.VIBER_BUSINESS_OUT;
     case Application.VIBER_BOT:
       return CONVERSATION_QUEUE.VIBER_OUT;
     case Application.FACEBOOK:
