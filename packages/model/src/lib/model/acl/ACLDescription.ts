@@ -17,6 +17,7 @@ const CompanyTypeList = [
 ];
 const OwnerTypeList = [AclActionType.OWNER];
 const OwnerOrCompanyTypeList = [AclActionType.OWNER, AclActionType.FULL];
+const SystemAdminTypeList = [AclActionType.SYSTEM_ADMIN]
 
 /**
  * TODO: Note
@@ -62,7 +63,7 @@ export const PERMISSION_COMPANY_LIST: Record<number, ActionDescription> = {
     actionId: PERMISSION.COMPANY.EDIT_BILLING,
     name: 'Billing, Tariff Update',
     enableType: true,
-    listType: BoAdminTypeList,
+    listType: SystemAdminTypeList,
   },
   [PERMISSION.COMPANY.TRANSACTION_HISTORY]: {
     actionId: PERMISSION.COMPANY.TRANSACTION_HISTORY,
