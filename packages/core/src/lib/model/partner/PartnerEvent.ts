@@ -82,6 +82,7 @@ export interface PartnerEvent {
   template?: TemplateEvent
   phoneEvent?: PhoneEvent,
   channelEvent?: ChannelEvent
+  nonBilling?: boolean
 }
 
 export interface QueuePartnerEventParam {
