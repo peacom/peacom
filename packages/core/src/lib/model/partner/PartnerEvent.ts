@@ -75,6 +75,7 @@ export interface PartnerEvent {
   cause?: string
   status?: MESSAGE_STATUS
   message?: RawMessage
+  replyToMessageId?: string
   publicId?: string // channel publicId OA, BOT Public ID
   applicationId?: Application
   from?: string
