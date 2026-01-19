@@ -1435,3 +1435,18 @@ export const PERMISSION_STORAGE: Record<number, ActionDescription> = {
   }
 }
 
+export const PERMISSION_ECOMMERCE_ORDER: Record<number, ActionDescription> = {
+  [PERMISSION.ECOMMERCE_ORDER.READ]: {
+    actionId: PERMISSION.ECOMMERCE_ORDER.READ,
+    name: 'Read',
+    enableType: true,
+    listType: SystemAdminTypeList,
+  },
+  [PERMISSION.ECOMMERCE_ORDER.UPDATE]: {
+    actionId: PERMISSION.ECOMMERCE_ORDER.UPDATE,
+    name: 'Update',
+    enableType: true,
+    listType: SystemAdminTypeList,
+  },
+};
+
