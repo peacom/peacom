@@ -1,4 +1,4 @@
-import {Application, applicationStr, PARTNER} from '@peacom/model';
+import { Application, applicationStr, PARTNER } from '@peacom/model';
 
 /**
  * Define QUEUE by partner and service, for guarantee the limit rate
@@ -6,7 +6,7 @@ import {Application, applicationStr, PARTNER} from '@peacom/model';
 export enum CONVERSATION_QUEUE {
   TELEGRAM_IN = 'TELEGRAM_IN',
   TELEGRAM_OUT = 'TELEGRAM_OUT',
-  VIBER_IN = 'VIBER_IN',  // VIBER ==> viber-bot
+  VIBER_IN = 'VIBER_IN', // VIBER ==> viber-bot
   VIBER_OUT = 'VIBER_OUT', // viber-bot
   RCS_IN = 'RCS_IN',
   RCS_OUT = 'RCS_OUT',
@@ -35,7 +35,9 @@ export enum CONVERSATION_QUEUE {
   WECOM_INTERNAL_IN = 'WECOM_INTERNAL_IN',
   WECOM_INTERNAL_OUT = 'WECOM_INTERNAL_OUT',
   VIBER_BUSINESS_IN = 'VIBER_BUSINESS_IN',
-  VIBER_BUSINESS_OUT = 'VIBER_BUSINESS_OUT'
+  VIBER_BUSINESS_OUT = 'VIBER_BUSINESS_OUT',
+  WECHAT_IN = 'WECHAT_IN',
+  WECHAT_OUT = 'WECHAT_OUT',
 }
 
 export const getApplicationConversationQueueOutName = (
@@ -81,6 +83,8 @@ export const getApplicationConversationQueueOutName = (
       return CONVERSATION_QUEUE.WECOM_CUSTOMER;
     case Application.WECOM_INTERNAL:
       return CONVERSATION_QUEUE.WECOM_INTERNAL_OUT;
+    case Application.WECHAT:
+      return CONVERSATION_QUEUE.WECHAT_OUT;
     default:
       throw new Error(
         `Not support conversation for application ${applicationStr(

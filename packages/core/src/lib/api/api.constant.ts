@@ -118,6 +118,7 @@ export const MICROSERVICE_URL: Record<Application, string> = {
   [Application.WECOM_CUSTOMER]: process.env['WECOM_CUSTOMER'] || 'http://127.0.0.1:4033',
   [Application.WECOM_CUSTOMER_GROUP]: process.env['WECOM_CUSTOMER_GROUP'] || 'http://127.0.0.1:4033',
   [Application.WECOM_INTERNAL]: process.env['WECOM_INTERNAL'] || 'http://127.0.0.1:4033',
+  [Application.WECHAT]: process.env['WECOM_INTERNAL'] || 'http://127.0.0.1:4033',
 
 }
 

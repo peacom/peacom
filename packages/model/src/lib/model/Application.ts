@@ -17,7 +17,8 @@ export enum Application {
   INSTAGRAM = 17,
   WECOM_CUSTOMER,
   WECOM_CUSTOMER_GROUP,
-  WECOM_INTERNAL
+  WECOM_INTERNAL,
+  WECHAT
 }
 
 export const applicationStr = (id?: number) => {
@@ -60,6 +61,8 @@ export const applicationStr = (id?: number) => {
       return 'WECOM CUSTOMER GROUP'
     case Application.WECOM_INTERNAL:
       return 'WECOM INTERNAL'
+    case Application.WECHAT:
+      return 'WECHAT';
     default:
       return `${id || ''}`;
   }
@@ -105,7 +108,8 @@ export enum PARTNER {
   RADICA,
   INTERNATIONAL_AURA,
   VIHAT,
-  IOH
+  IOH,
+  TENCENT
 }
 
 export const partnerStr = (id: PARTNER | null) => {
@@ -190,6 +194,8 @@ export const partnerStr = (id: PARTNER | null) => {
       return 'VIHAT'
     case PARTNER.IOH:
       return 'IOH'
+    case PARTNER.TENCENT:
+      return 'TENCENT'
     default:
       return '';
   }
@@ -208,6 +214,7 @@ export const isBotApplication = (appId: string | number) => {
     Application.WECOM_CUSTOMER,
     Application.WECOM_CUSTOMER_GROUP,
     Application.WECOM_INTERNAL,
+    Application.WECHAT
   ].includes(Number(appId));
 };
 
