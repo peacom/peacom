@@ -328,7 +328,7 @@ export interface RawMessage {
     id?: string;
     type?: string;
   };
-  news: {
+  news?: {
     articles?: Array<{
       title?: string;
       description?: string;
