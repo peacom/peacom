@@ -99,6 +99,7 @@ export enum MESSAGE_TYPE {
   CALL_CONFIRM = 'CALL_CONFIRM',
   CALL_INFO = 'CALL_INFO',
   SHARE = 'SHARE',
+  NEWS = 'NEWS',
 }
 
 export const GENERAL_MESSAGE = [
@@ -197,8 +198,11 @@ export const APPLICATION_MESSAGE: Record<Application, Array<MESSAGE_TYPE>> = {
   [Application.WECHAT]: [
     MESSAGE_TYPE.TEXT,
     MESSAGE_TYPE.PICTURE,
+    MESSAGE_TYPE.VIDEO,
     MESSAGE_TYPE.FILE,
-  ]
+    MESSAGE_TYPE.NEWS,
+    MESSAGE_TYPE.QUICK_REPLY,
+  ],
 };
 
 export enum SEND_MESSAGE_VIA {
@@ -323,6 +327,14 @@ export interface RawMessage {
     title?: string;
     id?: string;
     type?: string;
+  };
+  news: {
+    articles?: Array<{
+      title?: string;
+      description?: string;
+      url?: string;
+      picurl?: string;
+    }>;
   };
 }
 
