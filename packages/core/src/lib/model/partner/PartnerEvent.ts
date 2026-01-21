@@ -46,6 +46,7 @@ export interface ConversationEvent {
   },
   type: ConversationEventType
   extraData?: Record<string, any>
+  expiredDate?: string
   conversationBillingId?: string
 }
 
