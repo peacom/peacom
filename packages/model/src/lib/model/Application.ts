@@ -109,7 +109,8 @@ export enum PARTNER {
   INTERNATIONAL_AURA,
   VIHAT,
   IOH,
-  TENCENT
+  TENCENT,
+  SGLOBAL
 }
 
 export const partnerStr = (id: PARTNER | null) => {
@@ -179,7 +180,7 @@ export const partnerStr = (id: PARTNER | null) => {
     case PARTNER.CAKRA:
       return 'CAKRA'
     case PARTNER.SMS_INTERNATIONAL_VIETGUY:
-      return 'SMS_INTERNATIONAL_VIETGUY'
+      return 'SMS INTERNATIONAL VIETGUY'
     case PARTNER.MIKA:
       return 'MIKA'
     case PARTNER.SMPP:
@@ -196,6 +197,8 @@ export const partnerStr = (id: PARTNER | null) => {
       return 'IOH'
     case PARTNER.TENCENT:
       return 'TENCENT'
+    case PARTNER.SGLOBAL:
+      return 'SGLOBAL'
     default:
       return '';
   }
