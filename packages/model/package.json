@@ -1,6 +1,6 @@
 {
   "name": "@peacom/model",
-  "version": "2.0.360",
+  "version": "2.0.362",
   "type": "commonjs",
   "dependencies": {
     "google-libphonenumber": "^3.2.41",
@@ -9,7 +9,7 @@
     "moment-timezone": "^0.5.47",
     "mustache": "^4.2.0",
     "uuid": "^11.1.0",
-    "lodash": "^4.17.21"
+    "lodash": "4.17.23"
   },
   "devDependencies": {
     "@types/google-libphonenumber": "^7.4.30",

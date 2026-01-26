@@ -195,6 +195,11 @@ export const APPLICATION_MESSAGE: Record<Application, Array<MESSAGE_TYPE>> = {
     MESSAGE_TYPE.PICTURE,
     MESSAGE_TYPE.FILE,
   ],
+  [Application.WECOM_COMPANY]: [
+    MESSAGE_TYPE.TEXT,
+    MESSAGE_TYPE.PICTURE,
+    MESSAGE_TYPE.FILE,
+  ],
   [Application.WECHAT]: [
     MESSAGE_TYPE.TEXT,
     MESSAGE_TYPE.PICTURE,

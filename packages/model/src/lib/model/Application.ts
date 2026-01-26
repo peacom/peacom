@@ -18,7 +18,8 @@ export enum Application {
   WECOM_CUSTOMER,
   WECOM_CUSTOMER_GROUP,
   WECOM_INTERNAL,
-  WECHAT
+  WECHAT,
+  WECOM_COMPANY
 }
 
 export const applicationStr = (id?: number) => {
@@ -63,6 +64,8 @@ export const applicationStr = (id?: number) => {
       return 'WECOM INTERNAL'
     case Application.WECHAT:
       return 'WECHAT';
+    case Application.WECOM_COMPANY:
+      return 'WECOM COMPANY'
     default:
       return `${id || ''}`;
   }
@@ -217,7 +220,8 @@ export const isBotApplication = (appId: string | number) => {
     Application.WECOM_CUSTOMER,
     Application.WECOM_CUSTOMER_GROUP,
     Application.WECOM_INTERNAL,
-    Application.WECHAT
+    Application.WECHAT,
+    Application.WECOM_COMPANY
   ].includes(Number(appId));
 };
 
