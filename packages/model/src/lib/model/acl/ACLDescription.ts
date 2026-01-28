@@ -1450,3 +1450,24 @@ export const PERMISSION_ECOMMERCE_ORDER: Record<number, ActionDescription> = {
   },
 };
 
+export const PERMISSION_PRODUCT_SERVICE: Record<number, ActionDescription> = {
+  [PERMISSION.PRODUCT_SERVICE.READ]: {
+    actionId: PERMISSION.PRODUCT_SERVICE.READ,
+    name: 'Read',
+    enableType: false
+  },
+  [PERMISSION.PRODUCT_SERVICE.CREATE]: {
+    actionId: PERMISSION.PRODUCT_SERVICE.CREATE,
+    name: 'Create',
+    enableType: false
+  },
+  [PERMISSION.PRODUCT_SERVICE.UPDATE]: {
+    actionId: PERMISSION.PRODUCT_SERVICE.UPDATE,
+    name: 'Update',
+    enableType: false
+  }, [PERMISSION.PRODUCT_SERVICE.DELETE]: {
+    actionId: PERMISSION.PRODUCT_SERVICE.DELETE,
+    name: 'Delete',
+    enableType: false
+  },
+}
