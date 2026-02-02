@@ -1,0 +1,7 @@
+export enum EC_WAREHOUSE_STATUS {
+  AVAILABLE = 1,
+  PROGRESSING = 2,
+  LOCKED = 3,
+  SOLD = 4,
+  REDEEM = 5
+}
