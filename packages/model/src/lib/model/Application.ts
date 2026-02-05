@@ -19,7 +19,8 @@ export enum Application {
   WECOM_CUSTOMER_GROUP,
   WECOM_INTERNAL,
   WECHAT,
-  WECOM_COMPANY
+  WECOM_COMPANY,
+  LINE
 }
 
 export const applicationStr = (id?: number) => {
@@ -66,6 +67,8 @@ export const applicationStr = (id?: number) => {
       return 'WECHAT';
     case Application.WECOM_COMPANY:
       return 'WECOM COMPANY'
+    case Application.LINE:
+      return 'LINE'
     default:
       return `${id || ''}`;
   }
@@ -113,7 +116,8 @@ export enum PARTNER {
   VIHAT,
   IOH,
   TENCENT,
-  SGLOBAL
+  SGLOBAL,
+  LINE
 }
 
 export const partnerStr = (id: PARTNER | null) => {
@@ -202,6 +206,8 @@ export const partnerStr = (id: PARTNER | null) => {
       return 'TENCENT'
     case PARTNER.SGLOBAL:
       return 'SGLOBAL'
+    case PARTNER.LINE:
+      return 'LINE'
     default:
       return '';
   }
@@ -221,7 +227,8 @@ export const isBotApplication = (appId: string | number) => {
     Application.WECOM_CUSTOMER_GROUP,
     Application.WECOM_INTERNAL,
     Application.WECHAT,
-    Application.WECOM_COMPANY
+    Application.WECOM_COMPANY,
+    Application.LINE
   ].includes(Number(appId));
 };
 
