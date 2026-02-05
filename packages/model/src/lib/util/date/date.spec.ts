@@ -31,7 +31,7 @@ describe('date.util', () => {
     console.log(parseDateTimeByFormat('240829082217', 'YYMMDDHHmmss', "UTC"))
   })
   it('should work', () => {
-    const dateStr = '2022-12-20T10:23:55Z'
+    const dateStr = '2022-12-20 10:23:55'
     console.log(new Date(dateStr), new Date(dateStr).toISOString())
     console.log(formatDateTimeTZ(new Date(dateStr), DEFAULT_TIME_ZONE))
     console.log(formatDateTimeTZ(dateStr, 'UTC'))
