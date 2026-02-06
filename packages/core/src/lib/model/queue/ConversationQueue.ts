@@ -38,6 +38,8 @@ export enum CONVERSATION_QUEUE {
   VIBER_BUSINESS_OUT = 'VIBER_BUSINESS_OUT',
   WECHAT_IN = 'WECHAT_IN',
   WECHAT_OUT = 'WECHAT_OUT',
+  LINE_IN = 'LINE_IN',
+  LINE_OUT = 'LINE_OUT',
 }
 
 export const getApplicationConversationQueueOutName = (
@@ -85,6 +87,8 @@ export const getApplicationConversationQueueOutName = (
       return CONVERSATION_QUEUE.WECOM_INTERNAL_OUT;
     case Application.WECHAT:
       return CONVERSATION_QUEUE.WECHAT_OUT;
+    case Application.LINE:
+      return CONVERSATION_QUEUE.LINE_OUT;
     default:
       throw new Error(
         `Not support conversation for application ${applicationStr(
