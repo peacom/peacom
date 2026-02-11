@@ -7,3 +7,13 @@ export enum LineTemplateType {
   CAROUSEL = 'carousel',
   IMAGE_CAROUSEL = 'image_carousel',
 }
+
+export enum LineImageAspectRatio {
+  RECTANGLE = 'rectangle',
+  SQUARE = 'square',
+}
+
+export enum LineImageSize {
+  COVER = 'cover',
+  CONTAIN = 'contain',
+}
