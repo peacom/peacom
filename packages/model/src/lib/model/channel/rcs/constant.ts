@@ -50,3 +50,9 @@ export enum RCS_MESSAGE_TRAFFIC_TYPE {
   BASIC_MESSAGE = "basic_message",
   SINGLE_MESSAGE = "single_message",
 }
+
+export enum RCS_TEMPLATE_TYPE {
+  PROMOTIONAL = "PROMOTIONAL",
+  TRANSACTIONAL = "TRANSACTIONAL",
+  OTP = "OTP"
+}
