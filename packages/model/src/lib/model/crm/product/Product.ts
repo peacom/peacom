@@ -4,14 +4,14 @@
  *  - Bill ==> POSTPAID
  */
 export enum PRODUCT_TYPE {
-  PHYSICAL = 1,
-  ESIM = 2,
-  MOBILE_E_SIM_TOPUP = 3,
-  ESIM_PACKAGE = 4,
-  SIM = 5,
-  COUPON = 6,
-  INSURANCE = 7,
-  DIGITAL = 8
+  PHYSICAL = 0,
+  ESIM = 1,
+  MOBILE_E_SIM_TOPUP = 2,
+  ESIM_PACKAGE = 3,
+  SIM = 4,
+  COUPON = 5,
+  INSURANCE = 6,
+  DIGITAL = 7
 }
 
 export enum PRODUCT_PARTNER {
