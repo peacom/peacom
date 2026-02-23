@@ -19,13 +19,13 @@ export enum LineImageSize {
 }
 
 export enum LineTemplateAction {
-  postback = 'postback',
-  message = 'message',
-  uri = 'uri',
-  datetimepicker = 'datetimepicker',
-  camera = 'camera',
-  cameraRoll = 'cameraRoll',
-  location = 'location',
-  richmenuswitch = 'richmenuswitch',
-  clipboard = 'clipboard',
+  POSTBACK = 'postback',
+  MESSAGE = 'message',
+  URI = 'uri',
+  DATETIMEPICKER = 'datetimepicker',
+  CAMERA = 'camera',
+  CAMERAROLL = 'cameraRoll',
+  LOCATION = 'location',
+  RICHMENUSWITCH = 'richmenuswitch',
+  CLIPBOARD = 'clipboard',
 }
