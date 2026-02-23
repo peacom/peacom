@@ -17,3 +17,15 @@ export enum LineImageSize {
   COVER = 'cover',
   CONTAIN = 'contain',
 }
+
+export enum LineTemplateAction {
+  postback = 'postback',
+  message = 'message',
+  uri = 'uri',
+  datetimepicker = 'datetimepicker',
+  camera = 'camera',
+  cameraRoll = 'cameraRoll',
+  location = 'location',
+  richmenuswitch = 'richmenuswitch',
+  clipboard = 'clipboard',
+}
