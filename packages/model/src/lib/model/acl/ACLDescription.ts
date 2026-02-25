@@ -1171,8 +1171,7 @@ export const PERMISSION_CHANNEL: Record<number, ActionDescription> = {
   [PERMISSION.CHANNEL.REQUEST]: {
     actionId: PERMISSION.CHANNEL.REQUEST,
     name: 'Request',
-    enableType: true,
-    listType: BoAdminTypeList
+    enableType: false
   },
   [PERMISSION.CHANNEL.REVIEW]: {
     actionId: PERMISSION.CHANNEL.REVIEW,
@@ -1209,6 +1208,18 @@ export const PERMISSION_CHANNEL: Record<number, ActionDescription> = {
     name: 'View live message',
     enableType: true,
     listType: BoAdminCompanyTypeList
+  },
+  [PERMISSION.CHANNEL.RCS_LAUNCH]: {
+    actionId: PERMISSION.CHANNEL.RCS_LAUNCH,
+    name: 'RCS Launch',
+    enableType: true,
+    listType: BoAdminCompanyTypeList
+  },
+  [PERMISSION.CHANNEL.SYNC_CONVERSATION]: {
+    actionId: PERMISSION.CHANNEL.SYNC_CONVERSATION,
+    enableType: true,
+    name: 'Sync bot conversation (messages, contacts)',
+    listType: CompanyTypeList,
   },
 };
 
