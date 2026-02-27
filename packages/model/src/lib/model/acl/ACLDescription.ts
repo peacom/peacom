@@ -1482,3 +1482,25 @@ export const PERMISSION_PRODUCT_SERVICE: Record<number, ActionDescription> = {
     enableType: false
   },
 }
+
+export const PERMISSION_SURVEY_SERVICE: Record<number, ActionDescription> = {
+  [PERMISSION.SURVEY.READ]: {
+    actionId: PERMISSION.SURVEY.READ,
+    name: 'Read',
+    enableType: false
+  },
+  [PERMISSION.SURVEY.CREATE]: {
+    actionId: PERMISSION.SURVEY.CREATE,
+    name: 'Create',
+    enableType: false
+  },
+  [PERMISSION.SURVEY.UPDATE]: {
+    actionId: PERMISSION.SURVEY.UPDATE,
+    name: 'Update',
+    enableType: false
+  }, [PERMISSION.SURVEY.DELETE]: {
+    actionId: PERMISSION.SURVEY.DELETE,
+    name: 'Delete',
+    enableType: false
+  },
+}
