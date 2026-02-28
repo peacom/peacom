@@ -9,6 +9,8 @@ import { hasText, renderTemplate } from '../string.util';
 import { Url, URL_GENERATE_TYPE, URL_TYPE } from '../../model';
 import { objectDeepClone } from '../general.util';
 import { DATE_TIME_FORMAT, parseDateTimeByFormat } from '../date';
+import { render } from 'mustache';
+import { renderLineTemplate } from './template-line.util';
 
 export interface GenerateUrlInput {
   redirectUrl: string;
@@ -840,6 +842,16 @@ export async function renderTemplateMessage({
             answerKeys
           );
         }
+      }
+    } else if (content.lineTemplate) {
+      const { altText, template } = content.lineTemplate;
+
+      if (altText && hasText(altText)) {
+        content.lineTemplate.altText = renderTemplate(altText, answerKeys);
+      }
+
+      if (template) {
+        renderLineTemplate(template, answerKeys);
       }
     } else {
       // Media, File ...
