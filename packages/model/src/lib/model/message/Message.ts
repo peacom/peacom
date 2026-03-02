@@ -100,7 +100,8 @@ export enum MESSAGE_TYPE {
   CALL_INFO = 'CALL_INFO',
   SHARE = 'SHARE',
   NEWS = 'NEWS',
-  LINE_TEMPLATE = 'LINE_TEMPLATE'
+  LINE_TEMPLATE = 'LINE_TEMPLATE',
+  CALENDAR = 'CALENDAR',
 }
 
 export const GENERAL_MESSAGE = [
@@ -216,7 +217,7 @@ export const APPLICATION_MESSAGE: Record<Application, Array<MESSAGE_TYPE>> = {
     MESSAGE_TYPE.FILE,
     MESSAGE_TYPE.LOCATION,
     MESSAGE_TYPE.LINE_TEMPLATE,
-  ]
+  ],
 };
 
 export enum SEND_MESSAGE_VIA {
@@ -349,6 +350,9 @@ export interface RawMessage {
       url?: string;
       picurl?: string;
     }>;
+  };
+  calendar?: {
+    datetime?: string;
   };
 }
 

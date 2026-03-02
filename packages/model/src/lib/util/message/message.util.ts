@@ -30,6 +30,10 @@ interface LocationMessage {
   message?: string
 }
 
+interface CalendarMessage {
+  datetime: string
+}
+
 export const buildLocationMessage = (
   {location, message = ""}: LocationMessage,
   extra = null
@@ -135,4 +139,13 @@ export const buildShareMessage = (
   type: MESSAGE_TYPE.SHARE,
   sharePayload: payload,
   extra,
+});
+
+export const buildCalendarMessage = (
+  calendar: CalendarMessage,
+  extra = null
+): RawMessage => ({
+  type: MESSAGE_TYPE.CALENDAR,
+  calendar,
+  extra
 });
