@@ -11,7 +11,8 @@ export enum PRODUCT_TYPE {
   SIM = 4,
   COUPON = 5,
   INSURANCE = 6,
-  DIGITAL = 7
+  DIGITAL = 7,
+  INSURANCE_ESIM = 8,
 }
 
 export enum PRODUCT_PARTNER {
