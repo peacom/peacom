@@ -1504,3 +1504,25 @@ export const PERMISSION_SURVEY_SERVICE: Record<number, ActionDescription> = {
     enableType: false
   },
 }
+
+export const PERMISSION_EC_WAREHOUSE: Record<number, ActionDescription> = {
+  [PERMISSION.EC_WAREHOUSE.READ]: {
+    actionId: PERMISSION.EC_WAREHOUSE.READ,
+    name: 'Read',
+    enableType: false
+  },
+  [PERMISSION.EC_WAREHOUSE.CREATE]: {
+    actionId: PERMISSION.EC_WAREHOUSE.CREATE,
+    name: 'Create',
+    enableType: false
+  },
+  [PERMISSION.EC_WAREHOUSE.UPDATE]: {
+    actionId: PERMISSION.EC_WAREHOUSE.UPDATE,
+    name: 'Update',
+    enableType: false
+  }, [PERMISSION.EC_WAREHOUSE.DELETE]: {
+    actionId: PERMISSION.EC_WAREHOUSE.DELETE,
+    name: 'Delete',
+    enableType: false
+  }
+}
