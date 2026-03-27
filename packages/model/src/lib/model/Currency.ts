@@ -10,7 +10,7 @@ export enum CURRENCY {
   INR = 8,
   MYR = 9,
   KHR = 10,
-  CRD = 11
+  TKN = 11
 }
 
 export const DEFAULT_CURRENCY_ID = CURRENCY.VND
@@ -38,8 +38,8 @@ export const currencyStr = (id: CURRENCY | null | undefined) => {
       return "MYR"
     case CURRENCY.KHR:
       return "KHR"
-    case CURRENCY.CRD:
-      return "CRD"
+    case CURRENCY.TKN:
+      return "TKN"
     default:
       return "VND";
   }
