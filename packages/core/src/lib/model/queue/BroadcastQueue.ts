@@ -52,7 +52,8 @@ export enum BULK_BROADCAST_QUEUE {
   SMS_RADICA = 'BROADCAST_SMS_RADICA',
   SMS_INTERNATIONAL_AURA = 'BROADCAST_SMS_INTERNATIONAL_AURA',
   SMS_VIHAT = 'BROADCAST_SMS_VIHAT',
-  SMS_SGLOBAL = 'BROADCAST_SMS_SGLOBAL'
+  SMS_SGLOBAL = 'BROADCAST_SMS_SGLOBAL',
+  ZALO_OA = 'BROADCAST_ZALO_OA'
 }
 
 export const getApplicationBroadcastQueueName = (applicationId: Application, partnerId: PARTNER | null = null) => {
@@ -93,7 +94,7 @@ export const getApplicationBroadcastQueueName = (applicationId: Application, par
       }
       throw new Error(`Not support for Application (${applicationId}) - Partner (${partnerId})`);
     case Application.ZALO: {
-      return BULK_BROADCAST_QUEUE.ZALO;
+      return BULK_BROADCAST_QUEUE.ZALO_OA;
     }
     case Application.SMS: {
       switch (partnerId) {
