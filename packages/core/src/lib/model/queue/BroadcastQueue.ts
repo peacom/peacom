@@ -92,6 +92,9 @@ export const getApplicationBroadcastQueueName = (applicationId: Application, par
           return BULK_BROADCAST_QUEUE.ZALO_IRIS;
       }
       throw new Error(`Not support for Application (${applicationId}) - Partner (${partnerId})`);
+    case Application.ZALO: {
+      return BULK_BROADCAST_QUEUE.ZALO;
+    }
     case Application.SMS: {
       switch (partnerId) {
         case PARTNER.GMS:
