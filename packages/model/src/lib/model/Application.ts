@@ -237,6 +237,7 @@ export const isOAApplication = (appId: string | number) => {
     Application.RCS,
     Application.SMS,
     Application.ZALO_ZNS,
+    Application.ZALO,
     Application.WHATSAPP,
     Application.MMS,
     Application.VIBER_BUSINESS,
