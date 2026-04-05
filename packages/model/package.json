@@ -1,6 +1,6 @@
 {
   "name": "@peacom/model",
-  "version": "3.0.1",
+  "version": "3.0.3",
   "type": "commonjs",
   "dependencies": {
     "google-libphonenumber": "^3.2.41",
@@ -20,6 +20,6 @@
     "@types/lodash": "^4.17.17"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "registry": "https://ad7d0981-d2c3-4c08-8218-92dc4c997472.peacom.co"
   }
 }
