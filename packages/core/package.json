@@ -1,7 +1,12 @@
 {
   "name": "@peacom/core",
-  "version": "3.0.3",
+  "version": "3.0.5",
   "type": "commonjs",
+  "author": {
+    "email": "contact@peacom.co",
+    "name": "IT Department",
+    "url": "https://peacom.co"
+  },
   "dependencies": {
     "@aws-sdk/client-s3": "3.616.0",
     "@aws-sdk/s3-presigned-post": "^3.616.0",
@@ -17,7 +22,7 @@
     "@peacom/model": "latest"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "registry": "https://ad7d0981-d2c3-4c08-8218-92dc4c997472.peacom.co"
   },
   "devDependencies": {
     "@types/mime-types": "^2.1.4",
