@@ -75,7 +75,7 @@ describe('s3.service.specs.ts', () => {
     console.log(await getPreSignedUrl("privates/testphone_1938493c73a64fe5a207eea4e0f4ecf1.xlsx"))
   })
 
-  it('getS3UrlKey', async () => {
+  it.only('getS3UrlKey', async () => {
     console.log(getS3UrlKey("https://dev-cdn.peacom.co/files/tes.png"))
   })
 

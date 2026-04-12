@@ -1,10 +1,9 @@
-import * as _ from 'lodash'
-import {render} from 'mustache';
-import {v4 as uuidv4} from 'uuid';
-import {formatDateTimeTZ} from './date';
-import {MESSAGE_TYPE, SuggestionActionType} from '../model';
-import {objectDeepClone} from './general.util';
-
+import * as _ from 'lodash';
+import { render } from 'mustache';
+import { v4 as uuidv4 } from 'uuid';
+import { formatDateTimeTZ } from './date';
+import { MESSAGE_TYPE, SuggestionActionType } from '../model';
+import { objectDeepClone } from './general.util';
 
 export function generateRandomCode(length: number) {
   let text = '';
@@ -17,7 +16,7 @@ export function generateRandomCode(length: number) {
   return text;
 }
 
-export const hasText = (str: string) => {
+export const hasText = (str?: string) => {
   const testStr = `${str || ''}`;
   return !!str && testStr.length > 0;
 };
@@ -224,7 +223,7 @@ export function stringParamsReplace(message: string, replaceFunc: Function) {
 
 export function templateMessageParamsReplace(rawMessage: any, replaceFunc: Function) {
   let newRawMessage = objectDeepClone(rawMessage);
-  const {type} = rawMessage;
+  const { type } = rawMessage;
   const templateParams = [] as any;
   const addParams = (params: Array<any>) => {
     params.forEach(t => {
@@ -291,7 +290,7 @@ export function templateMessageParamsReplace(rawMessage: any, replaceFunc: Funct
       }
       break;
     case MESSAGE_TYPE.RICH_CARD:
-      const {richCards = []} = rawMessage;
+      const { richCards = [] } = rawMessage;
       for (let r = 0; r < richCards.length; r += 1) {
         const rc = richCards[r];
         if (hasText(rc.title)) {
@@ -373,7 +372,7 @@ export function templateMessageParamsReplace(rawMessage: any, replaceFunc: Funct
       }
       break;
     case MESSAGE_TYPE.RICH_CARD:
-      const {richCards = []} = newRawMessage;
+      const { richCards = [] } = newRawMessage;
       for (let r = 0; r < richCards.length; r += 1) {
         const richCard = richCards[r];
         if (hasText(richCard.title)) {
@@ -426,36 +425,36 @@ export function toLowerCaseNonAccentVietnamese(str: any) {
 //     str = str.replace(/\u00F9|\u00FA|\u1EE5|\u1EE7|\u0169|\u01B0|\u1EEB|\u1EE9|\u1EF1|\u1EED|\u1EEF/g, "u");
 //     str = str.replace(/\u1EF3|\u00FD|\u1EF5|\u1EF7|\u1EF9/g, "y");
 //     str = str.replace(/\u0111/g, "d");
-  str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, 'a');
-  str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, 'e');
-  str = str.replace(/ì|í|ị|ỉ|ĩ/g, 'i');
-  str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, 'o');
-  str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, 'u');
-  str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, 'y');
+  str = str.replace(/[àáạảãâầấậẩẫăằắặẳẵ]/g, 'a');
+  str = str.replace(/[èéẹẻẽêềếệểễ]/g, 'e');
+  str = str.replace(/[ìíịỉĩ]/g, 'i');
+  str = str.replace(/[òóọỏõôồốộổỗơờớợởỡ]/g, 'o');
+  str = str.replace(/[ùúụủũưừứựửữ]/g, 'u');
+  str = str.replace(/[ỳýỵỷỹ]/g, 'y');
   str = str.replace(/đ/g, 'd');
   // Some system encode vietnamese combining accent as individual utf-8 characters
-  str = str.replace(/\u0300|\u0301|\u0303|\u0309|\u0323/g, ''); // Huyền sắc hỏi ngã nặng
-  str = str.replace(/\u02C6|\u0306|\u031B/g, ''); // Â, Ê, Ă, Ơ, Ư
+  str = str.replace(/[\u0300\u0301\u0303\u0309\u0323]/g, ''); // Huyền sắc hỏi ngã nặng
+  str = str.replace(/[\u02C6\u0306\u031B]/g, ''); // Â, Ê, Ă, Ơ, Ư
   return str;
 }
 
 export function toNonAccentVietnamese(str: any) {
-  str = str.replace(/A|Á|À|Ã|Ạ|Â|Ấ|Ầ|Ẫ|Ậ|Ă|Ắ|Ằ|Ẵ|Ặ/g, 'A');
-  str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, 'a');
-  str = str.replace(/E|É|È|Ẽ|Ẹ|Ê|Ế|Ề|Ễ|Ệ/, 'E');
-  str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, 'e');
-  str = str.replace(/I|Í|Ì|Ĩ|Ị/g, 'I');
-  str = str.replace(/ì|í|ị|ỉ|ĩ/g, 'i');
-  str = str.replace(/O|Ó|Ò|Õ|Ọ|Ô|Ố|Ồ|Ỗ|Ộ|Ơ|Ớ|Ờ|Ỡ|Ợ/g, 'O');
-  str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, 'o');
-  str = str.replace(/U|Ú|Ù|Ũ|Ụ|Ư|Ứ|Ừ|Ữ|Ự/g, 'U');
-  str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, 'u');
-  str = str.replace(/Y|Ý|Ỳ|Ỹ|Ỵ/g, 'Y');
-  str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, 'y');
+  str = str.replace(/[AÁÀÃẠÂẤẦẪẬĂẮẰẴẶ]/g, 'A');
+  str = str.replace(/[àáạảãâầấậẩẫăằắặẳẵ]/g, 'a');
+  str = str.replace(/[EÉÈẼẸÊẾỀỄỆ]/, 'E');
+  str = str.replace(/[èéẹẻẽêềếệểễ]/g, 'e');
+  str = str.replace(/[IÍÌĨỊ]/g, 'I');
+  str = str.replace(/[ìíịỉĩ]/g, 'i');
+  str = str.replace(/[OÓÒÕỌÔỐỒỖỘƠỚỜỠỢ]/g, 'O');
+  str = str.replace(/[òóọỏõôồốộổỗơờớợởỡ]/g, 'o');
+  str = str.replace(/[UÚÙŨỤƯỨỪỮỰ]/g, 'U');
+  str = str.replace(/[ùúụủũưừứựửữ]/g, 'u');
+  str = str.replace(/[YÝỲỸỴ]/g, 'Y');
+  str = str.replace(/[ỳýỵỷỹ]/g, 'y');
   str = str.replace(/Đ/g, 'D');
   str = str.replace(/đ/g, 'd');
   // Some system encode vietnamese combining accent as individual utf-8 characters
-  str = str.replace(/\u0300|\u0301|\u0303|\u0309|\u0323/g, ''); // Huyền sắc hỏi ngã nặng
-  str = str.replace(/\u02C6|\u0306|\u031B/g, ''); // Â, Ê, Ă, Ơ, Ư
+  str = str.replace(/[\u0300\u0301\u0303\u0309\u0323]/g, ''); // Huyền sắc hỏi ngã nặng
+  str = str.replace(/[\u02C6\u0306\u031B]/g, ''); // Â, Ê, Ă, Ơ, Ư
   return str;
 }

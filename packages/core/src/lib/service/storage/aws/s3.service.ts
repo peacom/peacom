@@ -118,7 +118,7 @@ export const createPreSignedUrl = async ({
 };
 
 export const getS3UrlKey = (url: string) => {
-  if (hasText(S3_OPTION.domain) && url.startsWith(S3_OPTION.domain)) {
+  if (S3_OPTION.domain && hasText(S3_OPTION.domain) && url.startsWith(S3_OPTION.domain)) {
     return rightString(
       url,
       url.length -
