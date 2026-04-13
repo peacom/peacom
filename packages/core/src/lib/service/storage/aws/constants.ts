@@ -1,4 +1,4 @@
-import { S3 } from '@aws-sdk/client-s3';
+import { PutObjectRequest, S3 } from '@aws-sdk/client-s3';
 import { hasText } from '@peacom/model';
 import * as process from 'process';
 import { NodeHttpHandler } from '@smithy/node-http-handler';
@@ -9,11 +9,13 @@ export interface S3_Options {
   accessKeyId: string;
   secretAccessKey: string;
   endpoint: string;
+  bucket: string;
   region?: string;
   domain?: string; // Using for custom domain
   forcePathStyle?: boolean;
   acl?: any;
   proxy?: string;
+
 }
 
 export const S3_OPTION: S3_Options = {
@@ -24,7 +26,8 @@ export const S3_OPTION: S3_Options = {
   domain: process.env['S3_DOMAIN'] || '',
   forcePathStyle: process.env['S3_PATH_STYLE'] !== '1',
   acl: process.env['S3_ACL'] || 0,
-  proxy: process.env['S3_PROXY'] || ''
+  proxy: process.env['S3_PROXY'] || '',
+  bucket: process.env['S3_BUCKET'] || ''
 };
 
 export const S3_INFO = {
@@ -76,3 +79,41 @@ const getS3ByOption = () => {
 };
 
 export const s3 = getS3ByOption();
+
+export interface FileProp {
+  fileName: string;
+  contentType: string;
+  folder?: string;
+  maxSize?: number;
+}
+
+export interface UploadS3BufferProp extends FileProp {
+  data: PutObjectRequest["Body"] | string | Uint8Array | Buffer;
+}
+
+export interface GetObjectRangeProp {
+  bucket: string;
+  key: string;
+  start: number;
+  end: number;
+}
+
+export interface DownloadLargeFileProps {
+  url: string;
+  outputFile: string;
+  chunkSize: number;
+
+  log?(message: string): void
+
+  onError?(err: Error): void;
+}
+
+export interface DownloadLargeFileKeyProps {
+  key: string;
+  outputFile: string;
+  chunkSize: number;
+
+  log?(message: string): void
+
+  onError?(err: Error): void;
+}
