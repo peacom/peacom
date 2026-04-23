@@ -106,7 +106,8 @@ export enum COMPANY_TRANSACTION_PURPOSE {
   FALLBACK = 8,
   ORDER = 9,
   ESCROW_CONVERSATION_MESSAGE,
-  CALL_CONSENT
+  CALL_CONSENT,
+  ESCROW_GENERATE_VIDEO
 }
 
 export const companyTransactionPurposeStr = (purpose: COMPANY_TRANSACTION_PURPOSE) => {
@@ -131,6 +132,8 @@ export const companyTransactionPurposeStr = (purpose: COMPANY_TRANSACTION_PURPOS
       return 'Fallback'
     case COMPANY_TRANSACTION_PURPOSE.ORDER:
       return 'Order'
+    case COMPANY_TRANSACTION_PURPOSE.ESCROW_GENERATE_VIDEO:
+      return 'Escrow Generate Video'
     default:
       return `UNKNOWN ${purpose}`
   }
