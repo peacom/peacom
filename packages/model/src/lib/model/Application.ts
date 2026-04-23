@@ -117,7 +117,8 @@ export enum PARTNER {
   IOH,
   TENCENT,
   SGLOBAL,
-  LINE
+  LINE,
+  BYTE_DANCE
 }
 
 export const partnerStr = (id: PARTNER | null) => {
