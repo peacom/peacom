@@ -107,7 +107,8 @@ export enum COMPANY_TRANSACTION_PURPOSE {
   ORDER = 9,
   ESCROW_CONVERSATION_MESSAGE,
   CALL_CONSENT,
-  TOP_UP_VOUCHER = 12
+  TOP_UP_VOUCHER = 12,
+  ESCROW_GENERATE_VIDEO
 }
 
 export const companyTransactionPurposeStr = (purpose: COMPANY_TRANSACTION_PURPOSE) => {
@@ -134,6 +135,8 @@ export const companyTransactionPurposeStr = (purpose: COMPANY_TRANSACTION_PURPOS
       return 'Order';
     case COMPANY_TRANSACTION_PURPOSE.TOP_UP_VOUCHER:
       return 'Top Up Voucher';
+    case COMPANY_TRANSACTION_PURPOSE.ESCROW_GENERATE_VIDEO:
+      return 'Escrow Generate Video'
     default:
       return `UNKNOWN ${purpose}`;
   }
