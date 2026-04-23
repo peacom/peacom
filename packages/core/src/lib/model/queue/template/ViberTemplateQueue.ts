@@ -1,0 +1,5 @@
+export enum ViberTemplateQueue {
+  IN = 'VIBER_TEMPLATE_IN',
+  CREATE = 'VIBER_TEMPLATE_CREATE',
+  DELETE = 'VIBER_TEMPLATE_DELETE',
+}

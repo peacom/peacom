@@ -5,7 +5,8 @@ export enum ORDER_STATUS {
 export enum ORDER_PARTNER_STATUS {
   PENDING = 1,
   CONFIRM = 2,
-  FAIL = 3
+  FAIL = 3,
+  PROCESSING =4
 }
 
 export enum ORDER_CREATED_FROM_TYPE {

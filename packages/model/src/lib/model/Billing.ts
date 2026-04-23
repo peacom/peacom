@@ -107,35 +107,38 @@ export enum COMPANY_TRANSACTION_PURPOSE {
   ORDER = 9,
   ESCROW_CONVERSATION_MESSAGE,
   CALL_CONSENT,
+  TOP_UP_VOUCHER = 12,
   ESCROW_GENERATE_VIDEO
 }
 
 export const companyTransactionPurposeStr = (purpose: COMPANY_TRANSACTION_PURPOSE) => {
-  switch (purpose){
+  switch (purpose) {
     case COMPANY_TRANSACTION_PURPOSE.BILLING:
-      return 'Billing'
+      return 'Billing';
     case COMPANY_TRANSACTION_PURPOSE.TOPUP:
-      return 'Top Up'
+      return 'Top Up';
     case COMPANY_TRANSACTION_PURPOSE.ESCROW_BULK_BROADCAST:
-      return 'Escrow Bulk Broadcast'
+      return 'Escrow Bulk Broadcast';
     case COMPANY_TRANSACTION_PURPOSE.ESCROW_CONVERSATION:
-      return 'Escrow Conversation'
+      return 'Escrow Conversation';
     case COMPANY_TRANSACTION_PURPOSE.ESCROW_CONVERSATION_MESSAGE:
-      return 'Escrow Conversation Message'
+      return 'Escrow Conversation Message';
     case COMPANY_TRANSACTION_PURPOSE.ESCROW_API_BROADCAST:
-      return 'Escrow API Broadcast'
+      return 'Escrow API Broadcast';
     case COMPANY_TRANSACTION_PURPOSE.ESCROW_API_CONVERSATION:
-      return 'Escrow API Conversation'
+      return 'Escrow API Conversation';
     case COMPANY_TRANSACTION_PURPOSE.ESCROW_CONFIRM:
-      return 'Escrow Confirm'
+      return 'Escrow Confirm';
     case COMPANY_TRANSACTION_PURPOSE.FALLBACK:
-      return 'Fallback'
+      return 'Fallback';
     case COMPANY_TRANSACTION_PURPOSE.ORDER:
-      return 'Order'
+      return 'Order';
+    case COMPANY_TRANSACTION_PURPOSE.TOP_UP_VOUCHER:
+      return 'Top Up Voucher';
     case COMPANY_TRANSACTION_PURPOSE.ESCROW_GENERATE_VIDEO:
       return 'Escrow Generate Video'
     default:
-      return `UNKNOWN ${purpose}`
+      return `UNKNOWN ${purpose}`;
   }
 }
 
