@@ -1,1 +1,1 @@
-export * from './constant.ts'
+export * from './constant'
