@@ -1,6 +1,5 @@
 import * as fs from "fs";
 import * as path from "path";
-// eslint-disable-next-line @nx/enforce-module-boundaries
 import {
   DeleteObjectCommandInput, DeleteObjectsCommand,
   GetObjectCommand,
@@ -8,10 +7,20 @@ import {
   PutObjectCommandInput,
   PutObjectRequest, CreateMultipartUploadCommand
 } from "@aws-sdk/client-s3";
-// eslint-disable-next-line @nx/enforce-module-boundaries
 import {createPresignedPost} from "@aws-sdk/s3-presigned-post"
 import {getSignedUrl} from "@aws-sdk/s3-request-presigner";
-import {s3, S3_ACL_OPTIONS, S3_FOLDERS, S3_INFO, S3_OPTION} from './constants';
+import {
+  DownloadLargeFileKeyProps,
+  DownloadLargeFileProps,
+  FileProp,
+  GetObjectRangeProp,
+  s3,
+  S3_ACL_OPTIONS,
+  S3_FOLDERS,
+  S3_INFO,
+  S3_OPTION,
+  UploadS3BufferProp
+} from './constants';
 import {
   filterNonAlphaNumeric,
   hasText,
@@ -66,13 +75,6 @@ export const uploadLocalFileToS3 = async (
   }
 };
 
-interface FileProp {
-  fileName: string;
-  contentType: string;
-  folder?: string;
-  maxSize?: number;
-}
-
 export const getPreSignedUrl = async (key: string) => {
   const command = new GetObjectCommand({
     Bucket: S3_INFO.BUCKET,
@@ -118,7 +120,7 @@ export const createPreSignedUrl = async ({
 };
 
 export const getS3UrlKey = (url: string) => {
-  if (hasText(S3_OPTION.domain) && url.startsWith(S3_OPTION.domain)) {
+  if (S3_OPTION.domain && hasText(S3_OPTION.domain) && url.startsWith(S3_OPTION.domain)) {
     return rightString(
       url,
       url.length -
@@ -171,9 +173,7 @@ export const getAwsKeyInfo = async (key: string): Promise<AwsFileInfo> => {
   };
 };
 
-interface UploadS3BufferProp extends FileProp {
-  data: PutObjectRequest["Body"] | string | Uint8Array | Buffer;
-}
+
 
 export const uploadS3Buffer = async (
   {fileName = "", contentType = "application/octet-stream", data}: UploadS3BufferProp,
@@ -241,33 +241,6 @@ export const uploadMultipartS3FromUrl = async (
 };
 
 const isComplete = ({end, length}: { end: number, length: number }) => end === length - 1;
-
-interface GetObjectRangeProp {
-  bucket: string;
-  key: string;
-  start: number;
-  end: number;
-}
-
-interface DownloadLargeFileProps {
-  url: string;
-  outputFile: string;
-  chunkSize: number;
-
-  log?(message: string): void
-
-  onError?(err: Error): void;
-}
-
-interface DownloadLargeFileKeyProps {
-  key: string;
-  outputFile: string;
-  chunkSize: number;
-
-  log?(message: string): void
-
-  onError?(err: Error): void;
-}
 
 export const getObjectRange = ({bucket, key, start, end}: GetObjectRangeProp) => {
   const command = new GetObjectCommand({
