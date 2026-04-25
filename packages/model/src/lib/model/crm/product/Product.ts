@@ -27,5 +27,6 @@ export enum SERIAL_STATUS {
   PENDING = 0,
   REDEEMED = 1,
   REDEEMED_FAIL = 2,
-  CANCEL = 3
+  CANCEL = 3,
+  PROCESSING = 4
 }

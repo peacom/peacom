@@ -117,7 +117,8 @@ export enum PARTNER {
   IOH,
   TENCENT,
   SGLOBAL,
-  LINE
+  LINE,
+  BYTE_DANCE
 }
 
 export const partnerStr = (id: PARTNER | null) => {
@@ -264,4 +265,5 @@ export enum PLATFORM {
   TELIN = "TELIN",
   GO_MESSAGE = "GOMESSAGE",
   MOBIFONE_GLOBAL = "MOBIFONE_GLOBAL",
+  MESSAVY = "MESSAVY",
 }
