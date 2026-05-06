@@ -3,6 +3,7 @@ import {
   SuggestionActionType,
   WHATSAPP_BUTTON_URL_TYPE,
   WHATSAPP_TEMPLATE_BUTTON_TYPE,
+  WhatsappInteractiveType,
   WhatsappTemplateButton,
 } from '../../model';
 import { hasText, renderTemplate } from '../string.util';
@@ -852,6 +853,77 @@ export async function renderTemplateMessage({
 
       if (template) {
         renderLineTemplate(template, answerKeys);
+      }
+    } else if (content.type === MESSAGE_TYPE.FB_WHATSAPP_INTERACTIVE) {
+      const { header, action, type, footer, body } =
+        content.whatsappInteractive;
+      if (header) {
+        if (hasText(header.text)) {
+          content.whatsappInteractive.header.text = renderTemplate(
+            header.text,
+            answerKeys
+          );
+        }
+        // whatsappInteractive.header.media
+        if (header.media && hasText(header.media.url)) {
+          content.whatsappInteractive.header.media.url = renderTemplate(
+            header.media.url,
+            answerKeys
+          );
+        }
+      }
+      if (footer && hasText(footer.text)) {
+        content.whatsappInteractive.footer.text = renderTemplate(
+          footer.text,
+          answerKeys
+        );
+      }
+      content.whatsappInteractive.body.text = renderTemplate(
+        body.text,
+        answerKeys
+      );
+      if (type === WhatsappInteractiveType.list) {
+        content.whatsappInteractive.action.button = renderTemplate(
+          action.button,
+          answerKeys
+        );
+        const { sessions } = action;
+        content.whatsappInteractive.action.sessions = sessions.map(
+          (session: any) => {
+            const { title, id, rows } = session;
+            return {
+              id,
+              title: renderTemplate(title, answerKeys),
+              rows: rows.map((row: any) => ({
+                ID: row.ID,
+                title: renderTemplate(row.title, answerKeys),
+                description: renderTemplate(row.description, answerKeys),
+              })),
+            };
+          }
+        );
+      } else if (type === WhatsappInteractiveType.button) {
+        const { buttons } = action;
+        content.whatsappInteractive.action.buttons = buttons.map(
+          (button: any) => ({
+            type: button.type,
+            id: button.id,
+            title: renderTemplate(button.title, answerKeys),
+          })
+        );
+      } else if (type === WhatsappInteractiveType.cta_url) {
+        if (action?.parameters?.url) {
+          action.parameters.url = renderTemplate(
+            action.parameters.url,
+            answerKeys
+          );
+        }
+        if (action?.parameters?.display_text) {
+          action.parameters.display_text = renderTemplate(
+            action.parameters.display_text,
+            answerKeys
+          );
+        }
       }
     } else {
       // Media, File ...
