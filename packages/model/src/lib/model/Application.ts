@@ -101,24 +101,25 @@ export enum PARTNER {
   DOTGO = 24,
   AURA = 25,
   GAPIT = 26,
-  WECOM,
-  MMP_MULTI_ROUTE,
-  YULORE,
-  VIET_GUY_SMPP,
-  TANLA,
-  CAKRA,
-  SMS_INTERNATIONAL_VIETGUY,
-  MIKA,
-  SMPP,
-  METFONE,
-  RADICA,
-  INTERNATIONAL_AURA,
-  VIHAT,
-  IOH,
-  TENCENT,
-  SGLOBAL,
-  LINE,
-  BYTE_DANCE
+  WECOM = 27,
+  MMP_MULTI_ROUTE = 28,
+  YULORE = 29,
+  VIET_GUY_SMPP = 30,
+  TANLA = 31,
+  CAKRA = 32,
+  SMS_INTERNATIONAL_VIETGUY = 33,
+  MIKA = 34,
+  SMPP = 35,
+  METFONE = 36,
+  RADICA = 37,
+  INTERNATIONAL_AURA = 38,
+  VIHAT = 39,
+  IOH = 40,
+  TENCENT = 41,
+  SGLOBAL = 42,
+  LINE = 43,
+  BYTE_DANCE = 44,
+  VAS = 45,
 }
 
 export const partnerStr = (id: PARTNER | null) => {
@@ -209,6 +210,8 @@ export const partnerStr = (id: PARTNER | null) => {
       return 'SGLOBAL'
     case PARTNER.LINE:
       return 'LINE'
+    case PARTNER.VAS:
+      return 'VAS'
     default:
       return '';
   }
