@@ -20,7 +20,8 @@ export enum Application {
   WECOM_INTERNAL,
   WECHAT,
   WECOM_COMPANY,
-  LINE
+  LINE,
+  EMAIL
 }
 
 export const applicationStr = (id?: number) => {

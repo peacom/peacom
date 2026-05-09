@@ -1,5 +1,0 @@
-export enum AUTH_REQUEST_STATUS {
-  PENDING = 0,
-  CONFIRMED = 1,
-  CLAIMED = 2,
-}
