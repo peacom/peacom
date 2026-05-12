@@ -1,57 +1,61 @@
-export const VideoMode = [
-  {
-    value: 1,
-    label: 'Reference generation'
-  },
-  {
-    value: 2,
-    label: 'First & Last frame'
+export enum VIDEO_MODE {
+  Reference = 1,
+  FirstLastFrame = 2
+}
+
+export const getVideoModeStr = (type: VIDEO_MODE) => {
+  switch (type) {
+    case VIDEO_MODE.Reference:
+      return 'Reference generation';
+    case VIDEO_MODE.FirstLastFrame:
+      return 'First & Last frame';
   }
-];
+}
 
 export const FRAME_RATE = 24;
 
-export const VideoDuration = [
-  {
-    value: 1,
-    label: 'Seconds'
-  },
-  {
-    value: 2,
-    label: 'Smart Length'
-  },
-];
+export enum VIDEO_DURATION {
+  Seconds = 1,
+  SmartLength = 2
+}
 
-export const VideoRatio = [
-  {
-    value: 1,
-    label: '21:9'
-  },
-  {
-    value: 2,
-    label: 'S16:9'
-  },
-  {
-    value: 3,
-    label: '4:3'
-  },
-  {
-    value: 4,
-    label: '1:1'
-  },
-  {
-    value: 5,
-    label: '3:4'
-  },
-  {
-    value: 6,
-    label: '9:16'
-  },
-  {
-    value: 7,
-    label: 'adaptive'
-  },
-];
+export const getVideoDurationStr = (type: VIDEO_DURATION) => {
+  switch (type) {
+    case VIDEO_DURATION.Seconds:
+      return 'Seconds';
+    case VIDEO_DURATION.SmartLength:
+      return 'Smart Length';
+  }
+}
+
+export enum VIDEO_RATIO {
+  '21_9' = 1,
+  '16_9' = 2,
+  '4_3'= 3,
+  '1_1'= 4,
+  '3_4'= 5,
+  '9_16' = 6,
+  adaptive = 7,
+}
+
+export const getVideoRatioStr = (type: VIDEO_RATIO) => {
+  switch (type) {
+    case VIDEO_RATIO['21_9']:
+      return '21:9';
+    case VIDEO_RATIO['16_9']:
+      return '16:9';
+    case VIDEO_RATIO['4_3']:
+      return '4:3';
+    case VIDEO_RATIO['1_1']:
+      return '1:1';
+    case VIDEO_RATIO['3_4']:
+      return '3:4';
+    case VIDEO_RATIO['9_16']:
+      return '9:16';
+    case VIDEO_RATIO.adaptive:
+      return 'adaptive';
+  }
+}
 
 export const VideoResolution = [
   {
@@ -63,6 +67,20 @@ export const VideoResolution = [
     label: '720p'
   }
 ];
+
+export enum VIDEO_RESOLUTION {
+  '480p' = 1,
+  '720p' = 2
+}
+
+export const getVideoResolutionStr = (type: VIDEO_RESOLUTION) => {
+  switch (type) {
+    case VIDEO_RESOLUTION['480p']:
+      return '480p';
+    case VIDEO_RESOLUTION['720p']:
+      return '720p';
+  }
+}
 
 export const SEEDANCE_2_FAST_FRAME = {
   '480p': {
