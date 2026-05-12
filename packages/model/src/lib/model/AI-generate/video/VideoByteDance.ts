@@ -29,33 +29,33 @@ export const getVideoDurationStr = (type: VIDEO_DURATION) => {
 }
 
 export enum VIDEO_RATIO {
-  '21_9' = 1,
-  '16_9' = 2,
-  '4_3'= 3,
-  '1_1'= 4,
-  '3_4'= 5,
-  '9_16' = 6,
+  '21:9' = 1,
+  '16:9' = 2,
+  '4:3' = 3,
+  '1:1' = 4,
+  '3:4' = 5,
+  '9:16' = 6,
   adaptive = 7,
 }
 
 export const getVideoRatioStr = (type: VIDEO_RATIO) => {
   switch (type) {
-    case VIDEO_RATIO['21_9']:
+    case VIDEO_RATIO['21:9']:
       return '21:9';
-    case VIDEO_RATIO['16_9']:
+    case VIDEO_RATIO['16:9']:
       return '16:9';
-    case VIDEO_RATIO['4_3']:
+    case VIDEO_RATIO['4:3']:
       return '4:3';
-    case VIDEO_RATIO['1_1']:
+    case VIDEO_RATIO['1:1']:
       return '1:1';
-    case VIDEO_RATIO['3_4']:
+    case VIDEO_RATIO['3:4']:
       return '3:4';
-    case VIDEO_RATIO['9_16']:
+    case VIDEO_RATIO['9:16']:
       return '9:16';
     case VIDEO_RATIO.adaptive:
       return 'adaptive';
   }
-}
+};
 
 export const VideoResolution = [
   {
