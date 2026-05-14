@@ -6,8 +6,9 @@ export default {
     'dotenv/config'
   ],
   transform: {
-    '^.+\\.[tj]s$': ['ts-jest', { tsconfig: '<rootDir>/tsconfig.spec.json' }],
+    '^.+\\.[tj]s$': ['ts-jest', { tsconfig: '<rootDir>/tsconfig.spec.json' }]
   },
+  transformIgnorePatterns: ['node_modules/(?!(https-proxy-agent|agent-base|uuid)/)'],
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../coverage/packages/model',
+  coverageDirectory: '../../coverage/packages/model'
 };
