@@ -221,7 +221,7 @@ async function renderAlibabaButton(
   }
 
   const { url, redirectUrlType, landingPage } = button;
-  let generateResult: null;
+  let generateResult: GenerateUrlOutput | null = null;
   if (redirectUrlType === URL_TYPE.LANDING_PAGE) {
     generateResult = await generateUrl({
       generateType: URL_GENERATE_TYPE.REDIRECT,
@@ -239,11 +239,13 @@ async function renderAlibabaButton(
       context: answerKeys
     });
   }
+  if (generateResult) {
+    // code will be appended to end of the url
+    button.data = generateResult?.url?.code;
 
-  // code will be appended to end of the url
-  button.data = generateResult.url.code;
+    urls.push(generateResult.url);
+  }
 
-  urls.push(generateResult.url);
 
   return {
     data: button.data,
