@@ -53,7 +53,8 @@ export enum COUPON_CODE_ACTION {
 export enum COUPON_ITEM_TYPE {
   TEXT = 1,
   QRCODE,
-  BARCODE
+  BARCODE_128,
+  BARCODE_EAN_13
 }
 
 export enum COUPON_GENERATE_TYPE {
