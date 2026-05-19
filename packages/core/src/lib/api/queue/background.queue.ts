@@ -1,5 +1,6 @@
-import {BACKGROUND_TASK} from "@peacom/model";
-import {BACKGROUND_QUEUE} from "../../model";
+import { BACKGROUND_TASK } from '@peacom/model';
+import { BACKGROUND_QUEUE } from '../../model';
+import { getApplicationQueueName } from '../../model/queue/ApplicationQueue';
 
 export const getBackgroundTaskQueueName = (backgroundType: BACKGROUND_TASK) => {
   let rs = BACKGROUND_QUEUE.BACKGROUND_TASK;
@@ -36,6 +37,19 @@ export const getBackgroundTaskQueueName = (backgroundType: BACKGROUND_TASK) => {
     ].includes(Number(backgroundType))
   ) {
     rs = BACKGROUND_QUEUE.BACKGROUND_BE;
+  }
+  return rs;
+};
+
+export const getBackgroundTaskSyncQueueName = (backgroundType: BACKGROUND_TASK, applicationId) => {
+  let rs:string = BACKGROUND_QUEUE.BACKGROUND_SYNC;
+
+  if (
+    [
+      BACKGROUND_TASK.CHANNEL_SYNC,
+    ].includes(Number(backgroundType))
+  ) {
+    rs = `${BACKGROUND_QUEUE.BACKGROUND_SYNC}_${getApplicationQueueName(applicationId)}`;
   }
   return rs;
 };
