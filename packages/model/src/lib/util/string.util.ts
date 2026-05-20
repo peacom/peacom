@@ -4,11 +4,21 @@ import { v4 as uuidv4 } from 'uuid';
 import { formatDateTimeTZ } from './date';
 import { MESSAGE_TYPE, SuggestionActionType } from '../model';
 import { objectDeepClone } from './general.util';
+import { Ean13Utils } from './EAN13.util';
 
 export function generateRandomCode(length: number) {
   let text = '';
   const possible =
     'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+  for (let i = 0; i < length; i += 1)
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+  return text;
+}
+
+export function generateRandom(length: number, possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'): string {
+  let text = '';
 
   for (let i = 0; i < length; i += 1)
     text += possible.charAt(Math.floor(Math.random() * possible.length));
@@ -457,4 +467,9 @@ export function toNonAccentVietnamese(str: any) {
   str = str.replace(/[\u0300\u0301\u0303\u0309\u0323]/g, ''); // Huyền sắc hỏi ngã nặng
   str = str.replace(/[\u02C6\u0306\u031B]/g, ''); // Â, Ê, Ă, Ơ, Ư
   return str;
+}
+
+export function randomEAN13 (str: string) {
+  const ean = generateRandom(12, str);
+  return Ean13Utils.generate(ean)
 }

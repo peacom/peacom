@@ -3,9 +3,10 @@ import {
   alphaNumericToString,
   filterNonAlphaNumeric,
   isNumberOnly,
-  leftString, parseTemplate,
+  leftString, parseTemplate, randomEAN13,
   renderTemplate, stringParamsReplace, templateMessageParamsReplace, valueParamsReplace
 } from './';
+import { Ean13Utils } from './EAN13.util';
 
 describe('string.util', () => {
   it('isNumber', () => {
@@ -194,4 +195,9 @@ describe('string.util', () => {
     const testValueParams = valueParamsReplace(userContext, params, (i: number) => `v${i}`);
     console.log(testValueParams);
   });
+  it('ean13 random', ()=>{
+    const ean13Ran = randomEAN13('12345')
+    console.log(ean13Ran)
+    console.log(Ean13Utils.validate(`${ean13Ran}`))
+  })
 });
