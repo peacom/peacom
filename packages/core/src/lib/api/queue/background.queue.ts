@@ -1,4 +1,4 @@
-import { BACKGROUND_TASK } from '@peacom/model';
+import { Application, BACKGROUND_TASK } from '@peacom/model';
 import { BACKGROUND_QUEUE } from '../../model';
 import { getApplicationQueueName } from '../../model/queue/ApplicationQueue';
 
@@ -41,7 +41,7 @@ export const getBackgroundTaskQueueName = (backgroundType: BACKGROUND_TASK) => {
   return rs;
 };
 
-export const getBackgroundTaskSyncQueueName = (backgroundType: BACKGROUND_TASK, applicationId) => {
+export const getBackgroundTaskSyncQueueName = (backgroundType: BACKGROUND_TASK, applicationId: Application) => {
   let rs:string = BACKGROUND_QUEUE.BACKGROUND_SYNC;
 
   if (

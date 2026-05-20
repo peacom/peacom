@@ -121,6 +121,7 @@ export const MICROSERVICE_URL: Record<Application, string> = {
   [Application.WECOM_COMPANY]: process.env['WECOM_INTERNAL'] || 'http://127.0.0.1:4033',
   [Application.WECHAT]: process.env['WECOM_INTERNAL'] || 'http://127.0.0.1:4033',
   [Application.LINE]: process.env['LINE_INTEGRATION'] || 'http://127.0.0.1:4041/eip/line',
+  [Application.EMAIL]: process.env['EMAIL_INTEGRATION'] || 'http://127.0.0.1:4038/eip/line',
 }
 
 export const INTEGRATED_CHANNEL = [Application.APPLE, Application.ZALO, Application.ZALO_ZNS, Application.GOOGLE_BUSINESS, Application.RCS]
