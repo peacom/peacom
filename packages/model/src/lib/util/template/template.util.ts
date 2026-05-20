@@ -438,10 +438,10 @@ export async function renderTemplateMessage({
   const content = objectDeepClone(_content);
   const rs = { content: null, urls: [] } as RenderTemplateMessageResult;
   if (content) {
-    if (content.peacomTemplateMessage) {
-      content.peacomTemplateMessage.params = answerKeys;
-    } else if (content.mmp) {
+    if (content.mmp) {
       content.mmp.params = answerKeys;
+    } else if (content.peacomTemplateMessage) {
+      content.peacomTemplateMessage.params = answerKeys;
     } else if (content.viberOTPTemplate) {
       content.context = {
         ...answerKeys,
