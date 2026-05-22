@@ -1,4 +1,7 @@
 import { Application } from './Application';
+import { RCS_MESSAGE_TRAFFIC_TYPE, RCS_TEMPLATE_TYPE } from './channel';
+import { WHATSAPP_TEMPLATE_CATEGORY, ZALO_TEMPLATE_CATEGORY } from './message';
+import { VIBER_TEMPLATE_CATEGORY } from './message/viber';
 
 /**
  * This is store on DB with tinyint (1byte), so the value must below 255
@@ -164,3 +167,72 @@ export enum BILLING_CDR_TYPE {
   CONVERSATION = 2,
   MONTHLY = 3
 }
+
+export const getTemplateTariffType = (applicationId: Application, useCase: string, trafficType?: string) => {
+  const normalizedUseCase = useCase.trim().toUpperCase();
+
+  switch (applicationId) {
+    case Application.RCS:
+      if (trafficType === RCS_MESSAGE_TRAFFIC_TYPE.BASIC_MESSAGE) {
+        switch (normalizedUseCase) {
+          case RCS_TEMPLATE_TYPE.TRANSACTIONAL:
+            return TARIFF_TYPE.PER_TRANSACTION_BASIC_MESSAGE;
+          case RCS_TEMPLATE_TYPE.PROMOTIONAL:
+            return TARIFF_TYPE.PER_BROADCAST_BASIC_MESSAGE;
+          default:
+            return `UNKNOWN ${normalizedUseCase}`;
+        }
+      }
+      if (trafficType === RCS_MESSAGE_TRAFFIC_TYPE.SINGLE_MESSAGE) {
+        switch (normalizedUseCase) {
+          case RCS_TEMPLATE_TYPE.TRANSACTIONAL:
+            return TARIFF_TYPE.PER_TRANSACTIONAL_MESSAGE;
+          case RCS_TEMPLATE_TYPE.PROMOTIONAL:
+            return TARIFF_TYPE.PER_BROADCAST_MESSAGE;
+          default:
+            return `UNKNOWN ${normalizedUseCase}`;
+        }
+      }
+      return null;
+    case Application.WHATSAPP:
+      switch (normalizedUseCase) {
+        case WHATSAPP_TEMPLATE_CATEGORY.MARKETING:
+          return TARIFF_TYPE.PER_BROADCAST_MARKETING;
+        case WHATSAPP_TEMPLATE_CATEGORY.UTILITY:
+          return TARIFF_TYPE.PER_BROADCAST_UTILITY;
+        case WHATSAPP_TEMPLATE_CATEGORY.AUTHENTICATION:
+          return TARIFF_TYPE.PER_BROADCAST_AUTHENTICATION;
+        default:
+          return `UNKNOWN ${normalizedUseCase}`;
+      }
+
+    case Application.ZALO:
+      switch (normalizedUseCase) {
+        case ZALO_TEMPLATE_CATEGORY.BROADCAST_MESSAGE:
+          return TARIFF_TYPE.PER_BROADCAST_MESSAGE;
+        case ZALO_TEMPLATE_CATEGORY.CALL_CONSENT:
+          return TARIFF_TYPE.PER_BROADCAST_CALL_CONSENT;
+        case ZALO_TEMPLATE_CATEGORY.MARKETING:
+          return TARIFF_TYPE.PER_BROADCAST_MARKETING;
+        case ZALO_TEMPLATE_CATEGORY.UTILITY:
+          return TARIFF_TYPE.PER_BROADCAST_UTILITY;
+        case ZALO_TEMPLATE_CATEGORY.AUTHENTICATION:
+          return TARIFF_TYPE.PER_BROADCAST_AUTHENTICATION;
+        default:
+          return `UNKNOWN ${normalizedUseCase}`;
+      }
+
+    case Application.VIBER:
+      switch (normalizedUseCase) {
+        case VIBER_TEMPLATE_CATEGORY.BROADCAST_MESSAGE:
+          return TARIFF_TYPE.PER_BROADCAST_MESSAGE;
+        case VIBER_TEMPLATE_CATEGORY.AUTHENTICATION:
+          return TARIFF_TYPE.PER_BROADCAST_AUTHENTICATION;
+        default:
+          return `UNKNOWN ${normalizedUseCase}`;
+      }
+
+    default:
+      return `UNKNOWN ${applicationId}`;
+  }
+};

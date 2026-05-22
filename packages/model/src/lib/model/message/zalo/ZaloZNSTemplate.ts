@@ -24,3 +24,10 @@ export interface ZaloZnsTemmplateParam {
     param: ZaloZnsParam
   }>
 }
+export enum ZALO_TEMPLATE_CATEGORY {
+  BROADCAST_MESSAGE = 'BROADCAST MESSAGE',
+  CALL_CONSENT = 'CALL CONSENT',
+  MARKETING = 'MARKETING',
+  UTILITY = 'UTILITY',
+  AUTHENTICATION = 'AUTHENTICATION'
+}
