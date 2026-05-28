@@ -165,73 +165,32 @@ export enum BILLING_CDR_TYPE {
   MONTHLY = 3
 }
 
-export const tariffTypeByApplicationStr = (applicationId: Application, tariffType: TARIFF_TYPE) => {
-  let result = `UNKNOWN ${tariffType}`;
+const TARIFF_LABEL_MAP: Partial<Record<Application, Partial<Record<TARIFF_TYPE, string>>>> = {
+  [Application.RCS]: {
+    [TARIFF_TYPE.PER_TRANSACTION_BASIC_MESSAGE]: "TRANSACTIONAL BASIC MESSAGE",
+    [TARIFF_TYPE.PER_TRANSACTIONAL_MESSAGE]:"TRANSACTIONAL MESSAGE",
+    [TARIFF_TYPE.PER_BROADCAST_BASIC_MESSAGE]: "PROMOTIONAL BASIC MESSAGE",
+    [TARIFF_TYPE.PER_BROADCAST_MESSAGE]: "PROMOTIONAL MESSAGE",
+  },
+  [Application.WHATSAPP]: {
+    [TARIFF_TYPE.PER_BROADCAST_MARKETING]: "MARKETING",
+    [TARIFF_TYPE.PER_BROADCAST_UTILITY]: "UTILITY",
+    [TARIFF_TYPE.PER_BROADCAST_AUTHENTICATION]: "AUTHENTICATION",
+  },
+  [Application.ZALO_ZNS]: {
+    [TARIFF_TYPE.PER_BROADCAST_MESSAGE]: "BROADCAST MESSAGE",
+    [TARIFF_TYPE.PER_BROADCAST_MARKETING]: "MARKETING",
+    [TARIFF_TYPE.PER_BROADCAST_UTILITY]: "UTILITY",
+    [TARIFF_TYPE.PER_BROADCAST_AUTHENTICATION]: "AUTHENTICATION",
+    [TARIFF_TYPE.PER_BROADCAST_CALL_CONSENT]: "CALL CONSENT",
+  },
+  [Application.VIBER]: {
+    [TARIFF_TYPE.PER_BROADCAST_MARKETING]: "PROMOTIONAL",
+    [TARIFF_TYPE.PER_BROADCAST_UTILITY]: "TRANSACTIONAL",
+    [TARIFF_TYPE.PER_BROADCAST_AUTHENTICATION]: "AUTHENTICATION",
+  },
+};
 
-  if (Application.RCS === applicationId) {
-    switch (tariffType) {
-      case TARIFF_TYPE.PER_TRANSACTION_BASIC_MESSAGE:
-        result = 'TRANSACTIONAL BASIC MESSAGE';
-        break;
-      case TARIFF_TYPE.PER_TRANSACTIONAL_MESSAGE:
-        result = 'TRANSACTIONAL MESSAGE';
-        break;
-      case TARIFF_TYPE.PER_BROADCAST_BASIC_MESSAGE:
-        result = 'PROMOTIONAL BASIC MESSAGE';
-        break;
-      case TARIFF_TYPE.PER_BROADCAST_MESSAGE:
-        result = 'PROMOTIONAL MESSAGE';
-        break;
-    }
-  }
-
-  if (Application.WHATSAPP === applicationId) {
-    switch (tariffType) {
-      case TARIFF_TYPE.PER_BROADCAST_MARKETING:
-        result = 'MARKETING';
-        break;
-      case TARIFF_TYPE.PER_BROADCAST_UTILITY:
-        result = 'UTILITY';
-        break;
-      case TARIFF_TYPE.PER_BROADCAST_AUTHENTICATION:
-        result = 'AUTHENTICATION';
-        break;
-    }
-  }
-
-  if (Application.ZALO_ZNS === applicationId) {
-    switch (tariffType) {
-      case TARIFF_TYPE.PER_BROADCAST_MESSAGE:
-        result = 'BROADCAST MESSAGE';
-        break;
-      case TARIFF_TYPE.PER_BROADCAST_MARKETING:
-        result = 'MARKETING';
-        break;
-      case TARIFF_TYPE.PER_BROADCAST_UTILITY:
-        result = 'UTILITY';
-        break;
-      case TARIFF_TYPE.PER_BROADCAST_AUTHENTICATION:
-        result = 'AUTHENTICATION';
-        break;
-      case TARIFF_TYPE.PER_BROADCAST_CALL_CONSENT:
-        result = 'CALL CONSENT';
-        break;
-    }
-  }
-
-  if (Application.VIBER === applicationId) {
-    switch (tariffType) {
-      case TARIFF_TYPE.PER_BROADCAST_MARKETING:
-        result = 'PROMOTIONAL';
-        break;
-      case TARIFF_TYPE.PER_BROADCAST_UTILITY:
-        result = 'TRANSACTIONAL';
-        break;
-      case TARIFF_TYPE.PER_BROADCAST_AUTHENTICATION:
-        result = 'AUTHENTICATION';
-        break;
-    }
-  }
-
-  return result
+export const tariffTypeByApplicationStr = (applicationId: Application,tariffType: TARIFF_TYPE) => {
+  return TARIFF_LABEL_MAP[applicationId]?.[tariffType] ?? tariffTypeStr(tariffType);
 };
