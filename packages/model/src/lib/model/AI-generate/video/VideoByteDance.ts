@@ -57,20 +57,10 @@ export const getVideoRatioStr = (type: VIDEO_RATIO) => {
   }
 };
 
-export const VideoResolution = [
-  {
-    value: 1,
-    label: '480p'
-  },
-  {
-    value: 2,
-    label: '720p'
-  }
-];
-
 export enum VIDEO_RESOLUTION {
   '480p' = 1,
-  '720p' = 2
+  '720p' = 2,
+  '1080p' = 3,
 }
 
 export const getVideoResolutionStr = (type: VIDEO_RESOLUTION) => {
@@ -79,6 +69,8 @@ export const getVideoResolutionStr = (type: VIDEO_RESOLUTION) => {
       return '480p';
     case VIDEO_RESOLUTION['720p']:
       return '720p';
+    case VIDEO_RESOLUTION['1080p']:
+      return '1080p';
   }
 }
 
@@ -98,5 +90,13 @@ export const SEEDANCE_2_FAST_FRAME = {
     '3:4': [834, 1112],
     '9:16': [720, 1280],
     '21:9': [1470, 630],
+  },
+  '1080': {
+    '16:9': [1920, 1088],
+    '4:3': [1664, 1248],
+    '1:1': [1440, 1440],
+    '3:4': [1248, 1664],
+    '9:16': [1088, 1920],
+    '21:9': [2176, 928],
   },
 };
