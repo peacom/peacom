@@ -221,10 +221,10 @@ export const tariffTypeByApplicationStr = (applicationId: Application, tariffTyp
 
   if (Application.VIBER === applicationId) {
     switch (tariffType) {
-      case TARIFF_TYPE.PER_BROADCAST_MESSAGE:
+      case TARIFF_TYPE.PER_BROADCAST_MARKETING:
         result = 'PROMOTIONAL';
         break;
-      case TARIFF_TYPE.PER_TRANSACTIONAL_MESSAGE:
+      case TARIFF_TYPE.PER_BROADCAST_UTILITY:
         result = 'TRANSACTIONAL';
         break;
       case TARIFF_TYPE.PER_BROADCAST_AUTHENTICATION:
