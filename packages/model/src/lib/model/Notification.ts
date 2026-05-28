@@ -34,7 +34,11 @@ export enum MessageEvent {
   USER_INVITE = 'user.invite',
   ORDER_CREATE = 'order.create',
   ORDER_STATUS = 'order.status',
-  MONITOR_ALERT = 'monitor.alert'
+  MONITOR_ALERT = 'monitor.alert',
+  EMAIL_REGISTER = 'email.register',
+  RESET_PASSWORD = 'reset.password',
+  RESEND_EMAIL = 'resend.email',
+  CREATE_USER = 'create.user',
 }
 
 // We're migrating using MessageEvent to NotificationType (number) for faster index
@@ -68,10 +72,22 @@ export enum NotificationType {
   TICKET_TRANSFER,
   TEMPLATE_UPDATE,
   CHANNEL_RCS_CARRIER_STATUS,
+  EMAIL_REGISTER,
+  RESET_PASSWORD,
+  RESEND_EMAIL,
+  CREATE_USER,
 }
 
 export const mappingNotificationMessageToType = (messageEvent: MessageEvent): NotificationType => {
   switch (messageEvent) {
+    case MessageEvent.CREATE_USER:
+      return NotificationType.CREATE_USER;
+    case MessageEvent.RESEND_EMAIL:
+      return NotificationType.RESEND_EMAIL;
+    case MessageEvent.RESET_PASSWORD:
+      return NotificationType.RESET_PASSWORD;
+    case MessageEvent.EMAIL_REGISTER:
+      return NotificationType.EMAIL_REGISTER;
     case MessageEvent.MONITOR_ALERT:
       return NotificationType.MONITOR_ALERT;
     case MessageEvent.ORDER_CREATE:
@@ -109,7 +125,7 @@ export const mappingNotificationMessageToType = (messageEvent: MessageEvent): No
     case MessageEvent.VNA_SUMMARY_CHECK_IN_REPORT:
       return NotificationType.VNA_SUMMARY_CHECK_IN_REPORT;
     case MessageEvent.TICKET_ASSIGN:
-      return NotificationType.TICKET_ASSIGN
+      return NotificationType.TICKET_ASSIGN;
     case MessageEvent.COMPANY_KYC_REQUEST:
       return NotificationType.COMPANY_KYC_REQUEST;
     case MessageEvent.COMPANY_SUSPEND:
@@ -119,17 +135,17 @@ export const mappingNotificationMessageToType = (messageEvent: MessageEvent): No
     case MessageEvent.COMPANY_KYC_REJECT:
       return NotificationType.COMPANY_KYC_REJECT;
     case MessageEvent.COMPANY_SUSPEND_BO_SA:
-      return NotificationType.COMPANY_SUSPEND_BO_SA
+      return NotificationType.COMPANY_SUSPEND_BO_SA;
     case MessageEvent.CHANNEL_INFO:
-      return NotificationType.CHANNEL_INFO
+      return NotificationType.CHANNEL_INFO;
     case MessageEvent.TICKET_NO_AGENT:
-      return NotificationType.TICKET_NO_AGENT
+      return NotificationType.TICKET_NO_AGENT;
     case MessageEvent.TICKET_TRANSFER:
-      return NotificationType.TICKET_TRANSFER
+      return NotificationType.TICKET_TRANSFER;
     case MessageEvent.TEMPLATE_UPDATE:
-      return NotificationType.TEMPLATE_UPDATE
+      return NotificationType.TEMPLATE_UPDATE;
     case MessageEvent.CHANNEL_RCS_CARRIER_STATUS:
-      return NotificationType.CHANNEL_RCS_CARRIER_STATUS
+      return NotificationType.CHANNEL_RCS_CARRIER_STATUS;
   }
 }
 
