@@ -12,6 +12,7 @@ import { objectDeepClone } from '../general.util';
 import { DATE_TIME_FORMAT, parseDateTimeByFormat } from '../date';
 import { renderLineTemplate } from './template-line.util';
 import { renderViberTemplate } from './viber/viber-template';
+import { renderWhatsappTemplate } from './template-whatsapp-v2.util';
 
 export interface GenerateUrlInput {
   redirectUrl: string;
@@ -941,7 +942,10 @@ export async function renderTemplateMessage({
           );
         }
       }
-    } else {
+    } else if (MESSAGE_TYPE.FB_WHATSAPP_TEMPLATE && content.version === '3.0') {
+      await renderWhatsappTemplate(content, answerKeys, generateUrl, rs.urls);
+    }
+    else {
       // Media, File ...
       if (hasText(content.message)) {
         content.message = renderTemplate(content.message, answerKeys);
