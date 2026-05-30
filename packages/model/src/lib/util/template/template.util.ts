@@ -4,7 +4,7 @@ import {
   WHATSAPP_BUTTON_URL_TYPE,
   WHATSAPP_TEMPLATE_BUTTON_TYPE,
   WhatsappInteractiveType,
-  WhatsappTemplateButton
+  WhatsappTemplateButton,
 } from '../../model';
 import { hasText, renderTemplate } from '../string.util';
 import { Url, URL_GENERATE_TYPE, URL_TYPE } from '../../model';
@@ -56,18 +56,18 @@ async function renderWhatsappButton(
         });
         button['flow_action_data'] = {
           ...flow_action_data,
-          ...(answerKeys?.contact || {})
+          ...(answerKeys?.contact || {}),
         };
       } else {
         button['flow_action_data'] = {
-          ...(answerKeys?.contact || {})
+          ...(answerKeys?.contact || {}),
         };
       }
     }
 
     return {
       ...button,
-      data: renderTemplate(button.data || '', answerKeys)
+      data: renderTemplate(button.data || '', answerKeys),
     };
   }
 
@@ -97,7 +97,7 @@ async function renderWhatsappButton(
       type: redirectUrlType,
       landingPageId: landingPage?.id,
       redirectUrl: '',
-      context: answerKeys
+      context: answerKeys,
     });
   } else {
     generateResult = await generateUrl({
@@ -105,7 +105,7 @@ async function renderWhatsappButton(
       type: redirectUrlType,
       urlOrigin: button['redirectUrl'] || url,
       redirectUrl: button['redirectUrl'] || url,
-      context: answerKeys
+      context: answerKeys,
     });
   }
 
@@ -167,7 +167,7 @@ async function renderWhatsappAlibabaParams(
           type: URL_TYPE.ORIGIN,
           urlOrigin: url,
           generateType: URL_GENERATE_TYPE.REDIRECT,
-          context: answerKeys
+          context: answerKeys,
         });
 
         urls.push(generateResult.url);
@@ -199,11 +199,11 @@ async function renderAlibabaButton(
         });
         button['flow_action_data'] = {
           ...flow_action_data,
-          ...(answerKeys?.contact || {})
+          ...(answerKeys?.contact || {}),
         };
       } else {
         button['flow_action_data'] = {
-          ...(answerKeys?.contact || {})
+          ...(answerKeys?.contact || {}),
         };
       }
 
@@ -217,7 +217,7 @@ async function renderAlibabaButton(
 
     return {
       data: button.data,
-      extraData
+      extraData,
     };
   }
 
@@ -229,7 +229,7 @@ async function renderAlibabaButton(
       type: redirectUrlType,
       landingPageId: landingPage.id,
       redirectUrl: '',
-      context: answerKeys
+      context: answerKeys,
     });
   } else {
     generateResult = await generateUrl({
@@ -237,7 +237,7 @@ async function renderAlibabaButton(
       type: redirectUrlType,
       urlOrigin: button['redirectUrl'] || url,
       redirectUrl: button['redirectUrl'] || url,
-      context: answerKeys
+      context: answerKeys,
     });
   }
   if (generateResult) {
@@ -247,10 +247,9 @@ async function renderAlibabaButton(
     urls.push(generateResult.url);
   }
 
-
   return {
     data: button.data,
-    extraData
+    extraData,
   };
 }
 
@@ -284,8 +283,8 @@ async function renderWhatsappAlibabaParamsV2(
           ...result['__extraData'],
           media: {
             ...value.media,
-            alibaba_param_name
-          }
+            alibaba_param_name,
+          },
         };
       } else {
         result[alibaba_param_name] = renderTemplate(value.data, answerKeys);
@@ -314,7 +313,7 @@ async function renderWhatsappAlibabaParamsV2(
       if (alibaba_param_name) {
         result['__extraData'] = {
           ...result['__extraData'],
-          ...extraData
+          ...extraData,
         };
         result[alibaba_param_name] = data;
       }
@@ -356,7 +355,7 @@ async function renderWhatsappAlibabaParamsV2(
           if (alibaba_param_name) {
             result['__extraData'] = {
               ...result['__extraData'],
-              ...extraData
+              ...extraData,
             };
 
             result[alibaba_param_name] = data;
@@ -412,7 +411,7 @@ export const parseMessageAndShortLink = async (
         redirectUrl: t,
         content: {},
         type: URL_TYPE.ORIGIN,
-        generateType: URL_GENERATE_TYPE.REDIRECT
+        generateType: URL_GENERATE_TYPE.REDIRECT,
       });
       rs = rs.replaceAll(t, urlObj.link);
       urls.push(urlObj.url);
@@ -431,11 +430,11 @@ export const parseMessageAndShortLink = async (
  * @param generateUrl
  */
 export async function renderTemplateMessage({
-                                              content: _content,
-                                              answerKeys, // mmp params
-                                              timezone,
-                                              generateUrl
-                                            }: RenderTemplateMessageProp) {
+  content: _content,
+  answerKeys, // mmp params
+  timezone,
+  generateUrl,
+}: RenderTemplateMessageProp) {
   const content = objectDeepClone(_content);
   const rs = { content: null, urls: [] } as RenderTemplateMessageResult;
   if (content) {
@@ -446,11 +445,14 @@ export async function renderTemplateMessage({
     } else if (content.viberOTPTemplate) {
       content.context = {
         ...answerKeys,
-        extraData: answerKeys
+        extraData: answerKeys,
       };
     } else if (content.viberTemplate) {
       const newContent = renderViberTemplate({
-        content, answerKeys, timezone, generateUrl
+        content,
+        answerKeys,
+        timezone,
+        generateUrl,
       });
       content.context = newContent.params;
     } else if (content.rcsDotgo || content.rcsTanla || content.rcsIoh) {
@@ -491,14 +493,14 @@ export async function renderTemplateMessage({
               return {
                 ...value,
                 type: value.type,
-                data: renderedValue
+                data: renderedValue,
               };
             }
             return {
               ...value, // filename
               type: value.media.format || value.media.type,
               format: value.media.format || value.media.type,
-              url: renderTemplate(value.media.url, answerKeys)
+              url: renderTemplate(value.media.url, answerKeys),
             };
           });
         }
@@ -512,7 +514,7 @@ export async function renderTemplateMessage({
             return {
               ...value,
               type: value.type,
-              data: renderedValue
+              data: renderedValue,
             };
           });
         }
@@ -537,7 +539,7 @@ export async function renderTemplateMessage({
               card.body = card.body.map((i: any) => ({
                 ...i,
                 type: i.type,
-                data: renderTemplate(i.data, answerKeys)
+                data: renderTemplate(i.data, answerKeys),
               }));
             }
             if (card.header && card.header.length) {
@@ -548,7 +550,7 @@ export async function renderTemplateMessage({
                   format: i.media.format || i.media.type,
                   contentType: i.media.contentType,
                   url: renderTemplate(i.media.url, answerKeys),
-                  data: renderTemplate(i.media.data, answerKeys)
+                  data: renderTemplate(i.media.data, answerKeys),
                 };
               });
             }
@@ -569,7 +571,7 @@ export async function renderTemplateMessage({
         content.zaloZnsTemplateParam.templateData = templateData.map(
           (item) => ({
             ...item,
-            value: renderTemplate(item.value, answerKeys)
+            value: renderTemplate(item.value, answerKeys),
           })
         );
       }
@@ -597,7 +599,7 @@ export async function renderTemplateMessage({
           type: URL_TYPE.ORIGIN,
           generateType: URL_GENERATE_TYPE.PREVIEW_URL,
           urlOrigin: redirectUrl,
-          context: answerKeys
+          context: answerKeys,
         });
         if (position === 1) {
           content.message = `${generateUrlRs.link}\n${content.message}`;
@@ -639,7 +641,7 @@ export async function renderTemplateMessage({
                     type: URL_TYPE.ORIGIN,
                     generateType: URL_GENERATE_TYPE.REDIRECT,
                     urlOrigin: suggestion.postbackData,
-                    context: answerKeys
+                    context: answerKeys,
                   });
                   rs.urls.push(newUrl.url);
                   suggestion.postbackData = newUrl.link;
@@ -780,7 +782,7 @@ export async function renderTemplateMessage({
     } else if (
       [
         MESSAGE_TYPE.ZALO_TRANSACTION_MESSAGE,
-        MESSAGE_TYPE.ZALO_PROMOTION_MESSAGE
+        MESSAGE_TYPE.ZALO_PROMOTION_MESSAGE,
       ].includes(content.type)
     ) {
       if (content.zaloTemplateMessage) {
@@ -914,8 +916,8 @@ export async function renderTemplateMessage({
               rows: rows.map((row: any) => ({
                 ID: row.ID,
                 title: renderTemplate(row.title, answerKeys),
-                description: renderTemplate(row.description, answerKeys)
-              }))
+                description: renderTemplate(row.description, answerKeys),
+              })),
             };
           }
         );
@@ -925,7 +927,7 @@ export async function renderTemplateMessage({
           (button: any) => ({
             type: button.type,
             id: button.id,
-            title: renderTemplate(button.title, answerKeys)
+            title: renderTemplate(button.title, answerKeys),
           })
         );
       } else if (type === WhatsappInteractiveType.cta_url) {
@@ -944,8 +946,61 @@ export async function renderTemplateMessage({
       }
     } else if (MESSAGE_TYPE.FB_WHATSAPP_TEMPLATE && content.version === '3.0') {
       await renderWhatsappTemplate(content, answerKeys, generateUrl, rs.urls);
-    }
-    else {
+    } else if (MESSAGE_TYPE.APPLE_APP_EXTENSION === content.type && content.appExtension) {
+      content.appExtension.teamId = renderTemplate(
+        content.appExtension.teamId,
+        answerKeys
+      );
+      content.appExtension.extensionId = renderTemplate(
+        content.appExtension.extensionId,
+        answerKeys
+      );
+    } else if (MESSAGE_TYPE.APPLE_TIME_PICKER === content.type && content.appleTimePicker) {
+      const tp = content.appleTimePicker;
+
+      if (hasText(tp.label)) {
+        tp.label = renderTemplate(tp.label, answerKeys);
+      }
+
+      if (tp.media) {
+        if (hasText(tp.media.mediaName)) {
+          tp.media.mediaName = renderTemplate(tp.media.mediaName, answerKeys);
+        }
+        if (hasText(tp.media.mediaUri)) {
+          tp.media.mediaUri = renderTemplate(tp.media.mediaUri, answerKeys);
+        }
+      }
+
+      if (tp.location) {
+        if (hasText(tp.location.label)) {
+          tp.location.label = renderTemplate(tp.location.label, answerKeys);
+        }
+        if (hasText(tp.location.latitude)) {
+          tp.location.latitude = renderTemplate(tp.location.latitude, answerKeys);
+        }
+        if (hasText(tp.location.longitude)) {
+          tp.location.longitude = renderTemplate(tp.location.longitude, answerKeys);
+        }
+      }
+
+      if (tp.options?.length) {
+        tp.options = tp.options.map((opt: { startTime: string; endTime: string }) => ({
+          ...opt,
+          startTime: hasText(opt.startTime) ? renderTemplate(opt.startTime, answerKeys) : opt.startTime,
+          endTime: hasText(opt.endTime) ? renderTemplate(opt.endTime, answerKeys) : opt.endTime,
+        }));
+      }
+    } else if (MESSAGE_TYPE.APPLE_QUICK_REPLY === content.type && content.appleQuickReply) {
+      if (hasText(content.message)) {
+        content.message = renderTemplate(content.message, answerKeys);
+      }
+      content.appleQuickReply = content.appleQuickReply.map((item: { label: string }) => ({
+        ...item,
+        label: hasText(item.label)
+          ? renderTemplate(item.label, answerKeys)
+          : item.label,
+      }));
+    } else {
       // Media, File ...
       if (hasText(content.message)) {
         content.message = renderTemplate(content.message, answerKeys);
@@ -972,7 +1027,7 @@ export async function renderTemplateMessage({
               type: URL_TYPE.ORIGIN,
               generateType: URL_GENERATE_TYPE.REDIRECT,
               urlOrigin: suggestionTemplate.postbackData,
-              context: answerKeys
+              context: answerKeys,
             });
             rs.urls.push(newUrl.url);
             suggestionTemplate.postbackData = newUrl.link;
