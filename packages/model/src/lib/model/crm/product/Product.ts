@@ -21,6 +21,7 @@ export enum PRODUCT_PARTNER {
   JOYTEL = 3,
   OSP = 4,
   PVI = 5,
+  SIM_PN = 6
 }
 
 export enum SERIAL_STATUS {
