@@ -461,21 +461,20 @@ export async function renderTemplateMessage({
   const content = objectDeepClone(_content);
   const rs = { content: null, urls: [] } as RenderTemplateMessageResult;
   if (content) {
+    await parseAnswerKeysAndShortLink(content, answerKeys, rs.urls, generateUrl);
     if (content.mmp) {
       content.mmp.params = answerKeys;
     } else if (content.peacomTemplateMessage) {
       content.peacomTemplateMessage.params = answerKeys;
     } else if (content.viberOTPTemplate) {
-      const parseAnswerKeys = await parseAnswerKeysAndShortLink(content, answerKeys, rs.urls, generateUrl);
       content.context = {
-        ...parseAnswerKeys,
-        extraData: parseAnswerKeys,
+        ...answerKeys,
+        extraData: answerKeys,
       };
     } else if (content.viberTemplate) {
-      const parseAnswerKeys = await parseAnswerKeysAndShortLink(content, answerKeys, rs.urls, generateUrl);
       const newContent = renderViberTemplate({
         content,
-        answerKeys: parseAnswerKeys,
+        answerKeys,
         timezone,
         generateUrl,
       });
@@ -604,9 +603,8 @@ export async function renderTemplateMessage({
       MESSAGE_TYPE.TEXT === content.type ||
       MESSAGE_TYPE.QUICK_REPLY === content.type
     ) {
-      const parseAnswerKeys = await parseAnswerKeysAndShortLink(content, answerKeys, rs.urls, generateUrl);
       const { previewUrl, message, shortLink } = content;
-      content.message = renderTemplate(message, parseAnswerKeys);
+      content.message = renderTemplate(message, answerKeys);
       if (shortLink) {
         const { message, urls } = await parseMessageAndShortLink(
           content.message,
