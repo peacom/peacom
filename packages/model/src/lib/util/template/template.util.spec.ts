@@ -46,13 +46,15 @@ describe('template.util.spec.ts', () => {
     const rs = await renderTemplateMessage({
       content: {
         type: MESSAGE_TYPE.TEXT,
-        message: "This is {{a}} *500#"
+        message: "This is {{a}} *500#",
+        isEnableShortLink: true
       },
       answerKeys: {
-        a: 'testing'
+        a: 'testing',
+        b: 'https://vietlott.vn/vi/trung-thuong/ket-qua-trung-thuong/655.html'
       },
       timezone: 'UTC',
-      generateUrl
+      generateUrl,
     })
     console.log(rs)
     const rs1 = await renderTemplateMessage({

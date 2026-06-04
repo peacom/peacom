@@ -420,6 +420,29 @@ export const parseMessageAndShortLink = async (
   return { message: rs, urls };
 };
 
+async function parseAnswerKeysAndShortLink (
+  content: any,
+  answerKeys: any,
+  urls: Url[],
+  generateUrl: generateUrlFunction
+) {
+  if (!!content?.isEnableShortLink) {
+    const newUrls = []
+    for (const key in answerKeys) {
+      const value = answerKeys[key];
+      const { message: newValue, urls: _urls } = await parseMessageAndShortLink(
+        value,
+        generateUrl
+      );
+      answerKeys[key] = newValue;
+      newUrls.push(..._urls)
+    }
+
+    urls.push(...newUrls);
+  }
+  return answerKeys
+}
+
 /**
  *
  * @param _content
@@ -443,14 +466,16 @@ export async function renderTemplateMessage({
     } else if (content.peacomTemplateMessage) {
       content.peacomTemplateMessage.params = answerKeys;
     } else if (content.viberOTPTemplate) {
+      const parseAnswerKeys = await parseAnswerKeysAndShortLink(content, answerKeys, rs.urls, generateUrl);
       content.context = {
-        ...answerKeys,
-        extraData: answerKeys,
+        ...parseAnswerKeys,
+        extraData: parseAnswerKeys,
       };
     } else if (content.viberTemplate) {
+      const parseAnswerKeys = await parseAnswerKeysAndShortLink(content, answerKeys, rs.urls, generateUrl);
       const newContent = renderViberTemplate({
         content,
-        answerKeys,
+        answerKeys: parseAnswerKeys,
         timezone,
         generateUrl,
       });
@@ -579,8 +604,9 @@ export async function renderTemplateMessage({
       MESSAGE_TYPE.TEXT === content.type ||
       MESSAGE_TYPE.QUICK_REPLY === content.type
     ) {
+      const parseAnswerKeys = await parseAnswerKeysAndShortLink(content, answerKeys, rs.urls, generateUrl);
       const { previewUrl, message, shortLink } = content;
-      content.message = renderTemplate(message, answerKeys);
+      content.message = renderTemplate(message, parseAnswerKeys);
       if (shortLink) {
         const { message, urls } = await parseMessageAndShortLink(
           content.message,
@@ -1124,5 +1150,7 @@ export async function renderTemplateMessage({
     }
   }
   rs.content = content;
+  console.log("CHECK ANSWERKEY >>>>>", answerKeys)
+  console.log("CHECK >>>>>>>>", rs)
   return rs;
 }
