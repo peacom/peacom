@@ -50,8 +50,20 @@ describe('template.util.spec.ts', () => {
         isEnableShortLink: true
       },
       answerKeys: {
-        a: 'testing',
-        b: 'https://vietlott.vn/vi/trung-thuong/ket-qua-trung-thuong/655.html'
+        bot: { uri: '' },
+        phone: '84789811922',
+        bulkContactId: 14369244,
+        extraData: {
+          website: 'https://vietlott.vn/vi/trung-thuong/ket-qua-trung-thuong/655.html'
+        },
+        bulk: { expiredDate: undefined },
+        contact: {
+          phone: '84789811922',
+          name: 'hoa test',
+          language: null,
+          avatarUrl: '',
+          country: ''
+        }
       },
       timezone: 'UTC',
       generateUrl,

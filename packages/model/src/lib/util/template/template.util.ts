@@ -430,8 +430,20 @@ async function parseAnswerKeysAndShortLink (
     const newUrls = []
     for (const key in answerKeys) {
       const value = answerKeys[key];
+      if(!value) continue;
+      if (
+        typeof value === 'object' &&
+        !Array.isArray(value)
+      ) {
+        await parseAnswerKeysAndShortLink(content,
+          value,
+          newUrls,
+          generateUrl);
+        continue;
+      }
+
       const { message: newValue, urls: _urls } = await parseMessageAndShortLink(
-        value,
+        value.toString(),
         generateUrl
       );
       answerKeys[key] = newValue;
@@ -1147,6 +1159,7 @@ export async function renderTemplateMessage({
       }
     }
   }
+  console.log("CHECKK >>>as", answerKeys)
   rs.content = content;
   return rs;
 }
