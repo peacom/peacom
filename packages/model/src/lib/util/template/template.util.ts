@@ -1150,7 +1150,5 @@ export async function renderTemplateMessage({
     }
   }
   rs.content = content;
-  console.log("CHECK ANSWERKEY >>>>>", answerKeys)
-  console.log("CHECK >>>>>>>>", rs)
   return rs;
 }
