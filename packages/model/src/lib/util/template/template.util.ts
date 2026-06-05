@@ -607,7 +607,8 @@ export async function renderTemplateMessage({
         content.zaloZnsTemplateParam.templateData = templateData.map(
           (item) => ({
             ...item,
-            value: renderTemplate(item.value, answerKeys),
+            value:
+              renderTemplate(item.value, answerKeys) || answerKeys[item.name],
           })
         );
       }
@@ -982,7 +983,10 @@ export async function renderTemplateMessage({
       }
     } else if (MESSAGE_TYPE.FB_WHATSAPP_TEMPLATE && content.version === '3.0') {
       await renderWhatsappTemplate(content, answerKeys, generateUrl, rs.urls);
-    } else if (MESSAGE_TYPE.APPLE_APP_EXTENSION === content.type && content.appExtension) {
+    } else if (
+      MESSAGE_TYPE.APPLE_APP_EXTENSION === content.type &&
+      content.appExtension
+    ) {
       content.appExtension.teamId = renderTemplate(
         content.appExtension.teamId,
         answerKeys
@@ -991,7 +995,10 @@ export async function renderTemplateMessage({
         content.appExtension.extensionId,
         answerKeys
       );
-    } else if (MESSAGE_TYPE.APPLE_TIME_PICKER === content.type && content.appleTimePicker) {
+    } else if (
+      MESSAGE_TYPE.APPLE_TIME_PICKER === content.type &&
+      content.appleTimePicker
+    ) {
       const tp = content.appleTimePicker;
 
       if (hasText(tp.label)) {
@@ -1012,30 +1019,47 @@ export async function renderTemplateMessage({
           tp.location.label = renderTemplate(tp.location.label, answerKeys);
         }
         if (hasText(tp.location.latitude)) {
-          tp.location.latitude = renderTemplate(tp.location.latitude, answerKeys);
+          tp.location.latitude = renderTemplate(
+            tp.location.latitude,
+            answerKeys
+          );
         }
         if (hasText(tp.location.longitude)) {
-          tp.location.longitude = renderTemplate(tp.location.longitude, answerKeys);
+          tp.location.longitude = renderTemplate(
+            tp.location.longitude,
+            answerKeys
+          );
         }
       }
 
       if (tp.options?.length) {
-        tp.options = tp.options.map((opt: { startTime: string; endTime: string }) => ({
-          ...opt,
-          startTime: hasText(opt.startTime) ? renderTemplate(opt.startTime, answerKeys) : opt.startTime,
-          endTime: hasText(opt.endTime) ? renderTemplate(opt.endTime, answerKeys) : opt.endTime,
-        }));
+        tp.options = tp.options.map(
+          (opt: { startTime: string; endTime: string }) => ({
+            ...opt,
+            startTime: hasText(opt.startTime)
+              ? renderTemplate(opt.startTime, answerKeys)
+              : opt.startTime,
+            endTime: hasText(opt.endTime)
+              ? renderTemplate(opt.endTime, answerKeys)
+              : opt.endTime,
+          })
+        );
       }
-    } else if (MESSAGE_TYPE.APPLE_QUICK_REPLY === content.type && content.appleQuickReply) {
+    } else if (
+      MESSAGE_TYPE.APPLE_QUICK_REPLY === content.type &&
+      content.appleQuickReply
+    ) {
       if (hasText(content.message)) {
         content.message = renderTemplate(content.message, answerKeys);
       }
-      content.appleQuickReply = content.appleQuickReply.map((item: { label: string }) => ({
-        ...item,
-        label: hasText(item.label)
-          ? renderTemplate(item.label, answerKeys)
-          : item.label,
-      }));
+      content.appleQuickReply = content.appleQuickReply.map(
+        (item: { label: string }) => ({
+          ...item,
+          label: hasText(item.label)
+            ? renderTemplate(item.label, answerKeys)
+            : item.label,
+        })
+      );
     } else {
       // Media, File ...
       if (hasText(content.message)) {
