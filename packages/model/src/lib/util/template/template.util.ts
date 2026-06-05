@@ -1183,7 +1183,6 @@ export async function renderTemplateMessage({
       }
     }
   }
-  console.log("CHECKK >>>as", answerKeys)
   rs.content = content;
   return rs;
 }
