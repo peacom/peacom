@@ -33,6 +33,7 @@ export enum MessageEvent {
   TICKET_TRANSFER = 'ticket.transfer',
   USER_INVITE = 'user.invite',
   ORDER_CREATE = 'order.create',
+  ORDER_SIM_INFO = 'order.sim_info',
   ORDER_STATUS = 'order.status',
   MONITOR_ALERT = 'monitor.alert',
   EMAIL_REGISTER = 'email.register',
@@ -76,6 +77,7 @@ export enum NotificationType {
   RESET_PASSWORD,
   RESEND_EMAIL,
   CREATE_USER,
+  ORDER_SIM_INFO,
 }
 
 export const mappingNotificationMessageToType = (messageEvent: MessageEvent): NotificationType => {
@@ -94,6 +96,8 @@ export const mappingNotificationMessageToType = (messageEvent: MessageEvent): No
       return NotificationType.ORDER_CREATE;
     case MessageEvent.ORDER_STATUS:
       return NotificationType.ORDER_STATUS;
+    case MessageEvent.ORDER_SIM_INFO:
+      return NotificationType.ORDER_SIM_INFO;
     case MessageEvent.USER_INVITE:
       return NotificationType.USER_INVITE;
     case MessageEvent.BACKGROUND_TASK:
