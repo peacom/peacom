@@ -61,6 +61,7 @@ export enum VIDEO_RESOLUTION {
   '480p' = 1,
   '720p' = 2,
   '1080p' = 3,
+  '4k' = 4,
 }
 
 export const getVideoResolutionStr = (type: VIDEO_RESOLUTION) => {
@@ -71,6 +72,8 @@ export const getVideoResolutionStr = (type: VIDEO_RESOLUTION) => {
       return '720p';
     case VIDEO_RESOLUTION['1080p']:
       return '1080p';
+    case VIDEO_RESOLUTION['4k']:
+      return '4k';
   }
 }
 
@@ -92,6 +95,14 @@ export const SEEDANCE_2_FAST_FRAME = {
     '21:9': [1470, 630],
   },
   '1080p': {
+    '16:9': [1920, 1088],
+    '4:3': [1664, 1248],
+    '1:1': [1440, 1440],
+    '3:4': [1248, 1664],
+    '9:16': [1088, 1920],
+    '21:9': [2176, 928],
+  },
+  '4k': {
     '16:9': [1920, 1088],
     '4:3': [1664, 1248],
     '1:1': [1440, 1440],
