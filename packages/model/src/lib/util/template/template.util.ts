@@ -1060,6 +1060,23 @@ export async function renderTemplateMessage({
             : item.label,
         })
       );
+    } else if (
+      MESSAGE_TYPE.APPLE_AUTHENTICATION === content.type &&
+      content.appleAuthentication
+    ) {
+      if (hasText(content.message)) {
+        content.message = renderTemplate(content.message, answerKeys);
+      }
+      const auth = content.appleAuthentication;
+      if (hasText(auth.header)) {
+        auth.header = renderTemplate(auth.header, answerKeys);
+      }
+      if (hasText(auth.redirectUri)) {
+        auth.redirectUri = renderTemplate(auth.redirectUri, answerKeys);
+      }
+      if (hasText(auth.state)) {
+        auth.state = renderTemplate(auth.state, answerKeys);
+      }
     } else {
       // Media, File ...
       if (hasText(content.message)) {
