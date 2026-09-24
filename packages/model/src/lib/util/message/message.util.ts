@@ -149,3 +149,26 @@ export const buildCalendarMessage = (
   calendar,
   extra
 });
+
+interface AdReferralMessage {
+  message?: string; // customer's typed text alongside the ad referral, if any
+  adTitle?: string;
+  photoUrl?: string;
+  videoUrl?: string;
+  postId?: string;
+  adId?: string;
+}
+
+export const buildAdReferralMessage = (
+  {message = "", adTitle, photoUrl, videoUrl, postId, adId}: AdReferralMessage,
+  extra = null
+): RawMessage => ({
+  type: MESSAGE_TYPE.AD_REFERRAL,
+  message,
+  adTitle,
+  photoUrl,
+  videoUrl,
+  postId,
+  adId,
+  extra
+});

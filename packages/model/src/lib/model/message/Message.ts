@@ -108,6 +108,7 @@ export enum MESSAGE_TYPE {
   APPLE_QUICK_REPLY = 'APPLE_QUICK_REPLY',
   APPLE_AUTHENTICATION = 'APPLE_AUTHENTICATION',
   APPLE_FORM = 'APPLE_FORM',
+  AD_REFERRAL = 'AD_REFERRAL',
 }
 
 export const GENERAL_MESSAGE = [
@@ -361,6 +362,11 @@ export interface RawMessage {
   calendar?: {
     datetime?: string;
   };
+  adTitle?: string;
+  photoUrl?: string;
+  videoUrl?: string;
+  postId?: string;
+  adId?: string;
 }
 
 export interface Message {
