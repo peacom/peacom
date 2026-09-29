@@ -121,6 +121,7 @@ export enum PARTNER {
   LINE = 43,
   BYTE_DANCE = 44,
   VAS = 45,
+  PA = 46
 }
 
 export const partnerStr = (id: PARTNER | null) => {
