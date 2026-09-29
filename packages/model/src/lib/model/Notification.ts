@@ -35,6 +35,7 @@ export enum MessageEvent {
   TICKET_SUPPORT_ADDED = 'ticket.support_added', // User is added to a ticket as Support
   TICKET_TEAM_MANAGER_ASSIGNED = 'ticket.team_manager_assigned', // Owner assigns a Team Manager to the ticket
   TICKET_MENTION = 'ticket.mention', // User is @mentioned in an internal message
+  TICKET_ASSIGN_AWAY_AGENT = 'ticket.assign_away_agent', // Ticket assigned to an agent who is away → Team Managers
   USER_INVITE = 'user.invite',
   ORDER_CREATE = 'order.create',
   ORDER_SIM_INFO = 'order.sim_info',
@@ -87,6 +88,7 @@ export enum NotificationType {
   TICKET_SUPPORT_ADDED,
   TICKET_TEAM_MANAGER_ASSIGNED,
   TICKET_MENTION,
+  TICKET_ASSIGN_AWAY_AGENT,
 }
 
 export const mappingNotificationMessageToType = (messageEvent: MessageEvent): NotificationType => {
@@ -163,6 +165,8 @@ export const mappingNotificationMessageToType = (messageEvent: MessageEvent): No
       return NotificationType.TICKET_TEAM_MANAGER_ASSIGNED;
     case MessageEvent.TICKET_MENTION:
       return NotificationType.TICKET_MENTION;
+    case MessageEvent.TICKET_ASSIGN_AWAY_AGENT:
+      return NotificationType.TICKET_ASSIGN_AWAY_AGENT;
     case MessageEvent.TEMPLATE_UPDATE:
       return NotificationType.TEMPLATE_UPDATE;
     case MessageEvent.CHANNEL_RCS_CARRIER_STATUS:
