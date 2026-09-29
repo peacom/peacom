@@ -46,6 +46,7 @@ export enum BACKGROUND_TASK {
   EXPORT_BILLING_MONTHLY_TNG = 45,
   EXPORT_BULK_SUMMARY = 46,
   IMPORT_BULK_CONTACT_FROM_CUSTOMER = 47,
+  IMPORT_CUSTOMER_CONVERSATION = 48, // Import customers + conversation history (MPower file: tabs Customer, Conversation)
 }
 
 export enum BACKGROUND_TASK_STATUS {

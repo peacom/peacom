@@ -6,7 +6,7 @@ export enum AclActionType {
   SYSTEM_ADMIN = 5,
 }
 
-// max=264
+// max=266
 
 export const PERMISSION = {
   COMPANY: {
@@ -111,6 +111,8 @@ export const PERMISSION = {
     LIVE_AGENT: 67, // Join and Leave,
     DASHBOARD: 186,
     REPORT: 237,
+    INTERNAL: 265, // Send and view internal messages (message.sendType = SEND_TYPE.INTERNAL)
+    TRANSFER_TEAM_MEMBER: 266, // Ticket owner assigns a Team Manager of an agent group to the ticket
   },
   COMPLIANCE: {
     READ: 68,

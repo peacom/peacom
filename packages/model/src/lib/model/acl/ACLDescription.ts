@@ -488,6 +488,18 @@ export const PERMISSION_CHAT_LIST: Record<number, ActionDescription> = {
     name: 'Report',
     enableType: false,
   },
+  [PERMISSION.CHAT.INTERNAL]: {
+    actionId: PERMISSION.CHAT.INTERNAL,
+    name: 'Internal message',
+    description: 'Send and view internal messages between agents. Customers never receive them.',
+    enableType: false,
+  },
+  [PERMISSION.CHAT.TRANSFER_TEAM_MEMBER]: {
+    actionId: PERMISSION.CHAT.TRANSFER_TEAM_MEMBER,
+    name: 'Transfer to team member',
+    description: 'Ticket owner assigns a Team Manager of an agent group to the ticket.',
+    enableType: false,
+  },
 };
 
 export const PERMISSION_COMPLIANCE_LIST: Record<number, ActionDescription> = {

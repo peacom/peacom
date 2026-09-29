@@ -18,6 +18,7 @@ export enum SEND_TYPE {
   VIA_BROADCAST = 1,
   VIA_BOT = 2,
   RECEIVE = 3,
+  INTERNAL = 4, // Internal message between agents, never sent to channel / customer
 }
 
 export const sendTypeStr = (sendType: SEND_TYPE | null) => {
@@ -28,6 +29,8 @@ export const sendTypeStr = (sendType: SEND_TYPE | null) => {
       return 'RECEIVE';
     case SEND_TYPE.VIA_BOT:
       return 'CONVERSATION';
+    case SEND_TYPE.INTERNAL:
+      return 'INTERNAL';
     default:
       return 'UNKNOWN';
   }
