@@ -55,6 +55,7 @@ export enum BULK_BROADCAST_QUEUE {
   SMS_SGLOBAL = 'BROADCAST_SMS_SGLOBAL',
   ZALO_OA = 'BROADCAST_ZALO_OA',
   SMS_VAS = 'BROADCAST_SMS_VAS',
+  RCS_XL_SMART = 'BROADCAST_RCS_XL_SMART',
 }
 
 export const getApplicationBroadcastQueueName = (applicationId: Application, partnerId: PARTNER | null = null) => {
@@ -72,6 +73,8 @@ export const getApplicationBroadcastQueueName = (applicationId: Application, par
           return BULK_BROADCAST_QUEUE.RCS_TANLA;
         case PARTNER.IOH:
           return BULK_BROADCAST_QUEUE.RCS_IOH;
+        case PARTNER.XL_SMART:
+          return BULK_BROADCAST_QUEUE.RCS_XL_SMART;
       }
       throw new Error(`Not support for Application (${applicationId}) - Partner (${partnerId})`);
     case Application.VIBER: {

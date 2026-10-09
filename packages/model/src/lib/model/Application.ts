@@ -121,7 +121,8 @@ export enum PARTNER {
   LINE = 43,
   BYTE_DANCE = 44,
   VAS = 45,
-  PA = 46
+  PA = 46,
+  XL_SMART = 47
 }
 
 export const partnerStr = (id: PARTNER | null) => {
@@ -214,6 +215,8 @@ export const partnerStr = (id: PARTNER | null) => {
       return 'LINE'
     case PARTNER.VAS:
       return 'VAS'
+    case PARTNER.XL_SMART:
+      return 'XL SMART'
     default:
       return '';
   }
