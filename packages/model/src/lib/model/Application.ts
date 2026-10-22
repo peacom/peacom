@@ -251,7 +251,9 @@ export const isOAApplication = (appId: string | number) => {
     Application.MMS,
     Application.VIBER_BUSINESS,
     Application.VIBER,
+    Application.VIBER_BOT,
     Application.TELEGRAM_GATEWAY,
+    Application.TELEGRAM,
   ].includes(Number(appId));
 };
 
