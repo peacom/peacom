@@ -1,4 +1,5 @@
 export enum ChannelStatus {
+  DRAFT = 0,
   REQUEST = 1,
   PROCESSING,
   LAUNCH,
