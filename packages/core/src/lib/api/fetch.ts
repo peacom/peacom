@@ -1,13 +1,12 @@
-import {sslAgent} from "./certificate/https-server";
+import {installPeacomCA} from "./certificate/https-server";
 import {FieldError, FormError} from "@peacom/model";
 
 
 export const myFetch = (url: any, opts?: any) => {
-  let options = opts || {};
   if (url.startsWith('https://')) {
-    options.dispatcher = sslAgent;
+    installPeacomCA();
   }
-  return fetch(url, options);
+  return fetch(url, opts || {});
 };
 
 export const parseResponse = async (resp: Response, log?: (message: string) => void) => {
