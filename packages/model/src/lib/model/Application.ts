@@ -122,7 +122,10 @@ export enum PARTNER {
   BYTE_DANCE = 44,
   VAS = 45,
   PA = 46,
-  XL_SMART = 47
+  XL_SMART = 47,
+  // Channels served by mmp itself (Live Chat). Not PEACOM: PEACOM relays to the upper
+  // Peacom platform through MMP_OUT (getApplicationConversationQueueOutName)
+  MMP = 48
 }
 
 export const partnerStr = (id: PARTNER | null) => {
@@ -217,6 +220,8 @@ export const partnerStr = (id: PARTNER | null) => {
       return 'VAS'
     case PARTNER.XL_SMART:
       return 'XL SMART'
+    case PARTNER.MMP:
+      return 'MMP INTERNAL'
     default:
       return '';
   }

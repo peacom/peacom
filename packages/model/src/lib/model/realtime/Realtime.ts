@@ -7,6 +7,8 @@ export enum REALTIME_EVENT {
   TICKET_UPDATED = 'ticket.updated',
   NOTIFICATION_NEW = 'notification.new',
   MESSAGE_STATUS = 'message.status',
+  // Visitor typing in a conversation (Live Chat), action START / STOP
+  CONVERSATION_TYPING = 'conversation.typing',
 }
 
 export enum REALTIME_ACTION {
@@ -27,6 +29,8 @@ export enum REALTIME_ACTION {
   SENT = 'sent',
   DELIVERED = 'delivered',
   FAILED = 'failed',
+  START = 'start',
+  STOP = 'stop',
 }
 
 export type RealtimeId = number | string;
